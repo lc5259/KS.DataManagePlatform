@@ -21,7 +21,7 @@ namespace KS.DataManage.Client
 		public static FrmMain CreateMainForm()
 		{
 			ApplicationInitializer._MainForm = new FrmMain();
-            //有啥用?
+            //有啥用?11
 			ApplicationInitializer._MainForm.CreateControl();
 			return ApplicationInitializer._MainForm;
 		}
