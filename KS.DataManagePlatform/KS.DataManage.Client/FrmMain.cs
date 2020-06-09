@@ -1,4 +1,4 @@
-﻿using ComponentFactory.Krypton.Docking;
+using ComponentFactory.Krypton.Docking;
 using ComponentFactory.Krypton.Navigator;
 using ComponentFactory.Krypton.Workspace;
 using System;
