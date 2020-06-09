@@ -9,11 +9,16 @@ namespace KS.DataManage.Client
         //private static readonly string _resourcePath = ApplicationInitializer._currentPath + "Config\\ResourceConfigure.xml";
         //private static readonly string _exceptionPath = ApplicationInitializer._currentPath + "Config\\ExceptionConfigure.xml";
         //private static readonly string _configurePath = ApplicationInitializer._currentPath + "Config\\Configure.xml";
+<<<<<<< HEAD
 		private static FrmMain _MainForm = null;
+=======
+		private static Form1 _MainForm = null;
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
 		private static void Update(Form frm)
 		{
 			frm.Visible = false;
 		}
+<<<<<<< HEAD
 		public static FrmMain GetMainForm()
 		{
 			return ApplicationInitializer._MainForm;
@@ -21,6 +26,15 @@ namespace KS.DataManage.Client
 		public static FrmMain CreateMainForm()
 		{
 			ApplicationInitializer._MainForm = new FrmMain();
+=======
+		public static Form1 GetMainForm()
+		{
+			return ApplicationInitializer._MainForm;
+		}
+		public static Form1 CreateMainForm()
+		{
+			ApplicationInitializer._MainForm = new Form1();
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
             //”–…∂”√?
 			ApplicationInitializer._MainForm.CreateControl();
 			return ApplicationInitializer._MainForm;

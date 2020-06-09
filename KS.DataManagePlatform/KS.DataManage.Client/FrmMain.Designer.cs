@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿namespace KS.DataManage.Client
+=======
+﻿namespace KS.Zero.Client
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
 {
     partial class FrmMain
     {
@@ -36,13 +40,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.pnlTitle = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
             this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+=======
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
             this.button1 = new System.Windows.Forms.Button();
             this.kbtnMin = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnClose = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnMax = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label1 = new System.Windows.Forms.Label();
             this.pBLogo = new System.Windows.Forms.PictureBox();
+<<<<<<< HEAD
+=======
+            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
             ((System.ComponentModel.ISupportInitialize)(this.kDWorkspaceContent)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel.SuspendLayout();
@@ -128,6 +139,7 @@
             this.pnlTitle.DoubleClick += new System.EventHandler(this.pnlTitle_DoubleClick);
             this.pnlTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTitle_MouseMove);
             // 
+<<<<<<< HEAD
             // kryptonButton1
             // 
             this.kryptonButton1.Location = new System.Drawing.Point(514, -10);
@@ -137,6 +149,8 @@
             this.kryptonButton1.Values.Text = "kryptonButton1";
             this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
+=======
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(383, 0);
@@ -169,7 +183,11 @@
             this.kbtnMin.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
             this.kbtnMin.StateTracking.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
             this.kbtnMin.TabIndex = 21;
+<<<<<<< HEAD
             this.kbtnMin.Values.Image = global::KS.DataManage.Client.Properties.Resources.min16X16;
+=======
+            this.kbtnMin.Values.Image = global::KS.Zero.Client.Properties.Resources.min16X16;
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
             this.kbtnMin.Values.Text = "";
             this.kbtnMin.Click += new System.EventHandler(this.kbtnMin_Click);
             // 
@@ -195,7 +213,11 @@
             this.kbtnClose.StateTracking.Back.Color2 = System.Drawing.Color.Red;
             this.kbtnClose.StateTracking.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
             this.kbtnClose.TabIndex = 20;
+<<<<<<< HEAD
             this.kbtnClose.Values.Image = global::KS.DataManage.Client.Properties.Resources.close_16X16;
+=======
+            this.kbtnClose.Values.Image = global::KS.Zero.Client.Properties.Resources.close_16X16;
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
             this.kbtnClose.Values.Text = "";
             this.kbtnClose.Click += new System.EventHandler(this.kbtnClose_Click);
             // 
@@ -221,7 +243,11 @@
             this.kbtnMax.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
             this.kbtnMax.StateTracking.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
             this.kbtnMax.TabIndex = 19;
+<<<<<<< HEAD
             this.kbtnMax.Values.Image = global::KS.DataManage.Client.Properties.Resources.screenexpand16px;
+=======
+            this.kbtnMax.Values.Image = global::KS.Zero.Client.Properties.Resources.screenexpand16px;
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
             this.kbtnMax.Values.Text = "";
             this.kbtnMax.Click += new System.EventHandler(this.kbtnMax_Click);
             // 
@@ -241,7 +267,11 @@
             // 
             this.pBLogo.BackColor = System.Drawing.SystemColors.ControlDark;
             this.pBLogo.Dock = System.Windows.Forms.DockStyle.Left;
+<<<<<<< HEAD
             this.pBLogo.Image = global::KS.DataManage.Client.Properties.Resources.main;
+=======
+            this.pBLogo.Image = global::KS.Zero.Client.Properties.Resources.main;
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
             this.pBLogo.Location = new System.Drawing.Point(0, 0);
             this.pBLogo.Margin = new System.Windows.Forms.Padding(0);
             this.pBLogo.Name = "pBLogo";
@@ -250,6 +280,18 @@
             this.pBLogo.TabIndex = 13;
             this.pBLogo.TabStop = false;
             // 
+<<<<<<< HEAD
+=======
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Location = new System.Drawing.Point(514, -10);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(162, 49);
+            this.kryptonButton1.TabIndex = 23;
+            this.kryptonButton1.Values.Text = "kryptonButton1";
+            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
+            // 
+>>>>>>> 14a0b7e32aaf4f64778ce500a153f375270bfd59
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
