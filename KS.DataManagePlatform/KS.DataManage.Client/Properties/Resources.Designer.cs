@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KS.DataManagePlatform.Properties {
+namespace KS.DataManage.Client.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace KS.DataManagePlatform.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KS.DataManagePlatform.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KS.DataManage.Client.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,12 +61,62 @@ namespace KS.DataManagePlatform.Properties {
         }
         
         /// <summary>
-        ///   查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Icon main {
+        internal static System.Drawing.Bitmap close_16X16 {
+            get {
+                object obj = ResourceManager.GetObject("close_16X16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap copy16px {
+            get {
+                object obj = ResourceManager.GetObject("copy16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap login {
+            get {
+                object obj = ResourceManager.GetObject("login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap main {
             get {
                 object obj = ResourceManager.GetObject("main", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap min16X16 {
+            get {
+                object obj = ResourceManager.GetObject("min16X16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap screenexpand16px {
+            get {
+                object obj = ResourceManager.GetObject("screenexpand16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
