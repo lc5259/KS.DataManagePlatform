@@ -292,7 +292,7 @@ namespace KS.DataManage.Client
         //    }
         //    catch (Exception ex )
         //    {
-                
+
         //        throw ex;
         //    }
 
@@ -339,8 +339,8 @@ namespace KS.DataManage.Client
         //    //pageTmp.StateSelected.Tab.Content.ShortText.Color1 = System.Drawing.Color.White;
         //    //pageTmp.StateTracking.Tab.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(220)))), ((int)(((byte)(200)))));
         //    //pageTmp.StateTracking.Tab.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(200)))), ((int)(((byte)(150)))));
-            
-            
+
+
         //    if (ninfo.NodeTag == null || ninfo.NodeTag.Equals(string.Empty) || ninfo.NodeTag.Equals("-"))
         //    {
         //        MessageBox.Show(string.Format("菜单{0}尚未配置!", ninfo.NodeText), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -510,7 +510,7 @@ namespace KS.DataManage.Client
         private void kDWorkspaceContent_PageCloseClicked(object sender, UniqueNameEventArgs e)
         {
             _pageDic.Remove(e.UniqueName);
-        } 
+        }
         #endregion
 
         private void button1_Click(object sender, EventArgs e)
