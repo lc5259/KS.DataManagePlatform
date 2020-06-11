@@ -40,8 +40,6 @@
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.SystemTSMItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SetTSMItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.InputTSMItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OutputTSMItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AccountTSMItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -198,38 +196,24 @@
             // SystemTSMItem
             // 
             this.SystemTSMItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SetTSMItem,
-            this.toolStripSeparator1,
             this.InputTSMItem,
             this.OutputTSMItem});
             this.SystemTSMItem.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.SystemTSMItem.Name = "SystemTSMItem";
-            this.SystemTSMItem.Size = new System.Drawing.Size(57, 26);
+            this.SystemTSMItem.Size = new System.Drawing.Size(122, 26);
             this.SystemTSMItem.Text = "系统(&F)";
-            // 
-            // SetTSMItem
-            // 
-            this.SetTSMItem.Name = "SetTSMItem";
-            this.SetTSMItem.Size = new System.Drawing.Size(146, 22);
-            this.SetTSMItem.Text = "参数设置";
-            this.SetTSMItem.Click += new System.EventHandler(this.SetTSMItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
             // 
             // InputTSMItem
             // 
             this.InputTSMItem.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.InputTSMItem.Name = "InputTSMItem";
-            this.InputTSMItem.Size = new System.Drawing.Size(146, 22);
+            this.InputTSMItem.Size = new System.Drawing.Size(180, 22);
             this.InputTSMItem.Text = "账号配置导出";
             // 
             // OutputTSMItem
             // 
             this.OutputTSMItem.Name = "OutputTSMItem";
-            this.OutputTSMItem.Size = new System.Drawing.Size(146, 22);
+            this.OutputTSMItem.Size = new System.Drawing.Size(180, 22);
             this.OutputTSMItem.Text = "账号配置导出";
             // 
             // AccountTSMItem
@@ -476,12 +460,10 @@
         private System.Windows.Forms.ToolStripMenuItem AccountTSMItem;
         private System.Windows.Forms.ToolStripMenuItem LotsTSMItem;
         private System.Windows.Forms.ToolStripMenuItem AboutTSMItem;
-        private System.Windows.Forms.ToolStripMenuItem SetTSMItem;
         private System.Windows.Forms.ToolStripMenuItem InputTSMItem;
         private System.Windows.Forms.ToolStripMenuItem OutputTSMItem;
         private System.Windows.Forms.ToolStripMenuItem AddTSMItem;
         private System.Windows.Forms.ToolStripMenuItem DeleteTSMItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem GeneTSMItem;
         private System.Windows.Forms.ToolStripMenuItem UsTSMItem;
         private System.Windows.Forms.ToolStripMenuItem VersionTSMItem;

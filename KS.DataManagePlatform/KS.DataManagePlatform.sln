@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.DataManage.Template", "K
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.DataManage.Client", "KS.DataManage.Client\KS.DataManage.Client.csproj", "{80AEDCA2-7B67-46B5-8947-37A9DDF6089E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.DataManage.Entity", "KS.DataManage.Entity\KS.DataManage.Entity.csproj", "{0D2AF9C7-2385-43C3-A008-68608D43C0A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{80AEDCA2-7B67-46B5-8947-37A9DDF6089E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80AEDCA2-7B67-46B5-8947-37A9DDF6089E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80AEDCA2-7B67-46B5-8947-37A9DDF6089E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D2AF9C7-2385-43C3-A008-68608D43C0A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D2AF9C7-2385-43C3-A008-68608D43C0A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D2AF9C7-2385-43C3-A008-68608D43C0A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D2AF9C7-2385-43C3-A008-68608D43C0A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
