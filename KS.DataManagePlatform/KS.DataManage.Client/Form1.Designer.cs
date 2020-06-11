@@ -28,12 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.uC_FutureContractInfo1 = new KS.DataManage.Client.UC_FutureContractInfo();
+            this.SuspendLayout();
+            // 
+            // uC_FutureContractInfo1
+            // 
+            this.uC_FutureContractInfo1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_FutureContractInfo1.Location = new System.Drawing.Point(0, 0);
+            this.uC_FutureContractInfo1.Name = "uC_FutureContractInfo1";
+            this.uC_FutureContractInfo1.Size = new System.Drawing.Size(974, 602);
+            this.uC_FutureContractInfo1.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(974, 602);
+            this.Controls.Add(this.uC_FutureContractInfo1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private UC_FutureContractInfo uC_FutureContractInfo1;
     }
 }

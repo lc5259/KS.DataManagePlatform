@@ -1,6 +1,8 @@
 using ComponentFactory.Krypton.Docking;
 using ComponentFactory.Krypton.Navigator;
 using ComponentFactory.Krypton.Workspace;
+using KS.DataManage.Utils;
+using KS.Zero.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -19,7 +21,7 @@ namespace KS.DataManage.Client
         }
         private delegate void BeforeLoad();
 
-        //UCMenu ucMenu;
+        UCMenu ucMenu;
         private static Dictionary<string, KryptonPage> _pageDic = new Dictionary<string, KryptonPage>();
         public static Dictionary<string, KryptonPage> PageDic
         {
@@ -220,196 +222,167 @@ namespace KS.DataManage.Client
         #endregion
 
         #region KryptonPage 相关
-        //private KryptonPage MainFormNodeChaned(NodeInfo ninfo)
-        //{
-        //    KryptonWorkspaceCell cell = kDWorkspaceContent.FirstVisibleCell();
-        //    try
-        //    {
-        //        if (cell == null)
-        //        {
-        //            cell = new KryptonWorkspaceCell();
-        //            kDWorkspaceContent.Root.Children.Add(cell);
-        //        }
+        private KryptonPage MainFormNodeChaned(NodeInfo ninfo)
+        {
+            KryptonWorkspaceCell cell = kDWorkspaceContent.FirstVisibleCell();
+            try
+            {
+                if (cell == null)
+                {
+                    cell = new KryptonWorkspaceCell();
+                    kDWorkspaceContent.Root.Children.Add(cell);
+                }
 
-        //        #region 基于菜单表 要重写
-        //        //新增 判断如果不存在则新增
-        //        if (!_pageDic.ContainsKey(ninfo.NodeName) && kDWorkspaceContent.PageForUniqueName(ninfo.NodeName) == null)
-        //        {
-        //            KryptonPage pageTmp = OpenForm(ninfo);
-        //            if (pageTmp != null)
-        //            {
-        //                cell.Pages.Add(pageTmp);
-        //                cell.SelectedPage = pageTmp;
-        //                cell.Focus();
-        //            }
-        //            return pageTmp;
-        //        }
-        //        else if (_pageDic.ContainsKey(ninfo.NodeName) && kDWorkspaceContent.PageForUniqueName(ninfo.NodeName) != null)
-        //        {
-        //            KryptonFloatingWindow kfw = FindFWindow(_pageDic[ninfo.NodeName]);
-        //            if (kfw == null)
-        //            {
-        //                //如果这个page已经存在那么就要把它找出来 不在FloatWindow里的情况
-        //                cell = kDWorkspaceContent.CellForUniqueName(ninfo.NodeName);
-        //                kDWorkspaceContent.ActiveCell = cell;
-        //                cell.SelectedPage = _pageDic[ninfo.NodeName];
-        //                return cell.SelectedPage;
-        //            }
-        //            else
-        //            {
-        //                kfw.Activate();
-        //                KryptonFloatspace kfs = kfw.FloatspaceControl;
-        //                kfs.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-        //                Form f = kfw.FindForm();
-        //                //f.Select();
-        //                //f.Show();
-        //                //f.Activate();
-        //                cell = kfs.CellForUniqueName(ninfo.NodeName);
-        //                kfs.ActiveCell = cell;
-        //                cell.SelectedPage = _pageDic[ninfo.NodeName];
-        //                cell.Focus();
-        //                return cell.SelectedPage;
-        //            }
-        //            //cell = kDWorkspaceContent.CellForUniqueName(e.NodeName);
-        //            //kDWorkspaceContent.ActiveCell = cell;
-        //            //cell.SelectedPage = _pageDic[e.NodeName];
-        //        }
-        //        else if (kDWorkspaceContent.PageForUniqueName(ninfo.NodeName) != null)
-        //        {
-        //            KryptonPage pageTmp = kDWorkspaceContent.PageForUniqueName(ninfo.NodeName);
-        //            kDWorkspaceContent.ClosePage(pageTmp);
-        //            bool a = pageTmp.Visible;
-        //            //其他特殊情况
-        //            pageTmp = OpenForm(ninfo);
+                #region 基于菜单表 要重写
+                //新增 判断如果不存在则新增
+                if (!_pageDic.ContainsKey(ninfo.NodeName) && kDWorkspaceContent.PageForUniqueName(ninfo.NodeName) == null)
+                {
+                    KryptonPage pageTmp = OpenForm(ninfo);
+                    if (pageTmp != null)
+                    {
+                        cell.Pages.Add(pageTmp);
+                        cell.SelectedPage = pageTmp;
+                        cell.Focus();
+                    }
+                    return pageTmp;
+                }
+                else if (_pageDic.ContainsKey(ninfo.NodeName) && kDWorkspaceContent.PageForUniqueName(ninfo.NodeName) != null)
+                {
+                    KryptonFloatingWindow kfw = FindFWindow(_pageDic[ninfo.NodeName]);
+                    if (kfw == null)
+                    {
+                        //如果这个page已经存在那么就要把它找出来 不在FloatWindow里的情况
+                        cell = kDWorkspaceContent.CellForUniqueName(ninfo.NodeName);
+                        kDWorkspaceContent.ActiveCell = cell;
+                        cell.SelectedPage = _pageDic[ninfo.NodeName];
+                        return cell.SelectedPage;
+                    }
+                    else
+                    {
+                        kfw.Activate();
+                        KryptonFloatspace kfs = kfw.FloatspaceControl;
+                        kfs.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
+                        Form f = kfw.FindForm();
+                        cell = kfs.CellForUniqueName(ninfo.NodeName);
+                        kfs.ActiveCell = cell;
+                        cell.SelectedPage = _pageDic[ninfo.NodeName];
+                        cell.Focus();
+                        return cell.SelectedPage;
+                    }
+                }
+                else if (kDWorkspaceContent.PageForUniqueName(ninfo.NodeName) != null)
+                {
+                    KryptonPage pageTmp = kDWorkspaceContent.PageForUniqueName(ninfo.NodeName);
+                    kDWorkspaceContent.ClosePage(pageTmp);
+                    bool a = pageTmp.Visible;
+                    //其他特殊情况
+                    pageTmp = OpenForm(ninfo);
 
-        //            cell.Pages.Add(pageTmp);
-        //            cell.SelectedPage = pageTmp;
-        //            cell.Focus();
-        //            return cell.SelectedPage;
-        //        }
-        //        return null;
-        //        #endregion
-        //    }
-        //    catch (Exception ex )
-        //    {
+                    cell.Pages.Add(pageTmp);
+                    cell.SelectedPage = pageTmp;
+                    cell.Focus();
+                    return cell.SelectedPage;
+                }
+                return null;
+                #endregion
+            }
+            catch (Exception ex)
+            {
 
-        //        throw ex;
-        //    }
+                throw ex;
+            }
+        }
 
-        //    //KryptonPage pageTmp = OpenForm(ninfo);
-        //    ////pageTmp.Visible = false;
-        //    //if (pageTmp != null)
-        //    //{
-        //    //    //pageTmp.TextTitle = ninfo.NodeText;
-        //    //    //pageTmp.Text = ninfo.NodeText;
-        //    //    cell.Pages.Add(pageTmp);
-        //    //    //pageTmp.Visible = true;
-        //    //    cell.SelectedPage = pageTmp;
+        private static KryptonFloatingWindow FindFWindow(KryptonPage p)
+        {
+            KryptonFloatingWindow kfw = null;
+            foreach (var item in kFWList)
+            {
+                if (item.Contains(p))
+                {
+                    kfw = item;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return kfw;
+        }
 
-        //    //    cell.Focus();
-        //    //}
-        //    //return null;
+        private static KryptonPage OpenForm(NodeInfo ninfo)
+        {
+            if (ninfo.NodeTag == null || ninfo.NodeTag.Equals(string.Empty) || ninfo.NodeTag.Equals("-"))
+            {
+                MessageBox.Show(string.Format("菜单{0}尚未配置!", ninfo.NodeText), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return null;
+            }
+            UserControl uc = new UserControl();
+            KryptonPage pageTmp = new KryptonPage();
+            if (true)
+            {
+                uc = System.Activator.CreateInstance(Type.GetType(ninfo.NodeTag)) as UserControl;
+            }
+            pageTmp.SuspendLayout();
+            pageTmp.ClearFlags(KryptonPageFlags.DockingAllowAutoHidden | KryptonPageFlags.DockingAllowDocked);
+            pageTmp.TextTitle = ninfo.NodeText;
+            pageTmp.Text = ninfo.NodeText;
+            pageTmp.TextDescription = ninfo.NodeText;
+            pageTmp.UniqueName = ninfo.NodeName;
 
-        //    //选择Menu 的uc
+            pageTmp.Controls.Add(uc);
+            uc.Dock = DockStyle.Fill;
+            pageTmp.ResumeLayout(false);
+            pageTmp.PerformLayout();
+            _pageDic.Add(pageTmp.UniqueName, pageTmp);
+            return pageTmp;
+        }
 
-        //}
+        internal void InitialDockingMenu()
+        {
+            ucMenu = new UCMenu();
+            ucMenu.ChangeSelect += new ChangeSelectHandler(MainFormNodeChaned);
+            KryptonDockingWorkspace w = kryptonDockingManager.ManageWorkspace(kDWorkspaceContent);
+            kryptonDockingManager.ManageControl(panel1, w);
+            kryptonDockingManager.ManageFloating(this);
 
-        //private static KryptonFloatingWindow FindFWindow(KryptonPage p)
-        //{
-        //    KryptonFloatingWindow kfw = null;
-        //    foreach (var item in kFWList)
-        //    {
-        //        if (item.Contains(p))
-        //        {
-        //            kfw = item;
-        //        }
-        //        else
-        //        {
-        //            continue;
-        //        }
-        //    }
-        //    return kfw;
-        //}
+            // Add docking pages
+            KryptonPage kp = NewMenu("文 件");
+            kp.Width = 50;
+            kp.UniqueName = "left";
+            KryptonPage[] kpArr = new KryptonPage[] { kp };
+            //KryptonDockingControl kdc = new KryptonDockingControl("Menu",,w);
+            kryptonDockingManager.AddDockspace("Control", DockingEdge.Left, kpArr);
 
-        //private static KryptonPage OpenForm(NodeInfo ninfo)
-        //{
-        //    //KryptonPage pageTmp = new KryptonPage();
-        //    //pageTmp.StateSelected.Tab.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(180)))), ((int)(((byte)(120)))));
-        //    //pageTmp.StateSelected.Tab.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(148)))), ((int)(((byte)(95)))));
-        //    //pageTmp.StateSelected.Tab.Content.ShortText.Color1 = System.Drawing.Color.White;
-        //    //pageTmp.StateTracking.Tab.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(220)))), ((int)(((byte)(200)))));
-        //    //pageTmp.StateTracking.Tab.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(200)))), ((int)(((byte)(150)))));
+            kp.ClearFlags(KryptonPageFlags.DockingAllowDropDown
+                | KryptonPageFlags.DockingAllowClose
+                | KryptonPageFlags.DockingAllowFloating
+                | KryptonPageFlags.DockingAllowWorkspace
+                | KryptonPageFlags.AllowPageDrag);
+        }
 
+        private KryptonPage NewMenu(string s)
+        {
+            // Create new page with title and image
+            KryptonPage p = new KryptonPage();
+            p.Text = s + " 生 成 ";
+            p.TextTitle = p.Text;
+            p.TextDescription = p.Text;
+            p.UniqueName = p.Text;
 
-        //    if (ninfo.NodeTag == null || ninfo.NodeTag.Equals(string.Empty) || ninfo.NodeTag.Equals("-"))
-        //    {
-        //        MessageBox.Show(string.Format("菜单{0}尚未配置!", ninfo.NodeText), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        return null;
-        //    }
-        //    UserControl uc = new UserControl();
-        //    KryptonPage pageTmp = new KryptonPage();
-        //    if (true)
-        //    {
-        //        uc = System.Activator.CreateInstance(Type.GetType(ninfo.NodeTag)) as UserControl;
-        //    }
-        //    pageTmp.ClearFlags(KryptonPageFlags.DockingAllowAutoHidden | KryptonPageFlags.DockingAllowDocked);
-        //    pageTmp.TextTitle = ninfo.NodeText;
-        //    pageTmp.Text = ninfo.NodeText;
-        //    pageTmp.TextDescription = ninfo.NodeText;
-        //    pageTmp.UniqueName = ninfo.NodeName;
+            // Add the control for display inside the page
+            ucMenu.Dock = DockStyle.Fill;
+            ucMenu.Text = "Page Content";
+            p.Controls.Add(ucMenu);
 
-        //    pageTmp.Controls.Add(uc);
-        //    uc.Dock = DockStyle.Fill;
+            p.ClearFlags(KryptonPageFlags.DockingAllowDropDown
+                | KryptonPageFlags.DockingAllowClose
+                | KryptonPageFlags.DockingAllowFloating
+                | KryptonPageFlags.DockingAllowWorkspace
+                | KryptonPageFlags.AllowPageDrag);
 
-        //    _pageDic.Add(pageTmp.UniqueName, pageTmp);
-        //    return pageTmp;
-        //}
-
-        //internal void InitialDockingMenu(int userID)
-        //{
-        //    ucMenu = new UCMenu(userID);
-        //    ucMenu.ChangeSelect += new ChangeSelectHandler(MainFormNodeChaned);
-        //    KryptonDockingWorkspace w = kryptonDockingManager.ManageWorkspace(kDWorkspaceContent);
-        //    kryptonDockingManager.ManageControl(panel1, w);
-        //    kryptonDockingManager.ManageFloating(this);
-
-        //    // Add docking pages
-        //    KryptonPage kp = NewMenu("管 理");
-        //    KryptonPage[] kpArr = new KryptonPage[] { kp };
-        //    //KryptonDockingControl kdc = new KryptonDockingControl("Menu",,w);
-        //    kryptonDockingManager.AddDockspace("Control", DockingEdge.Left, kpArr);
-
-
-        //    kp.ClearFlags(KryptonPageFlags.DockingAllowDropDown
-        //        | KryptonPageFlags.DockingAllowClose
-        //        | KryptonPageFlags.DockingAllowFloating
-        //        | KryptonPageFlags.DockingAllowWorkspace
-        //        | KryptonPageFlags.AllowPageDrag);
-        //}
-
-        //private KryptonPage NewMenu(string s)
-        //{
-
-        //    // Create new page with title and image
-        //    KryptonPage p = new KryptonPage();
-        //    p.Text = s + " 菜 单 ";
-        //    p.TextTitle = p.Text;
-        //    p.TextDescription = p.Text;
-        //    p.UniqueName = p.Text;
-
-        //    // Add the control for display inside the page
-        //    ucMenu.Dock = DockStyle.Fill;
-        //    ucMenu.Text = "Page Content";
-        //    p.Controls.Add(ucMenu);
-
-        //    p.ClearFlags(KryptonPageFlags.DockingAllowDropDown
-        //        | KryptonPageFlags.DockingAllowClose
-        //        | KryptonPageFlags.DockingAllowFloating
-        //        | KryptonPageFlags.DockingAllowWorkspace
-        //        | KryptonPageFlags.AllowPageDrag);
-
-        //    return p;
-        //}
+            return p;
+        }
         #endregion
 
         internal void Initialize()
@@ -438,7 +411,7 @@ namespace KS.DataManage.Client
             //    }
             //    else
             //    {
-            //        //InitialDockingMenu();
+            InitialDockingMenu();
             //        //CommandBusService.RegisterDynamic(110, this.GetType(), "ClosingForm", null, null, this);
             //        //登录ToolStripMenuItem.Enabled = false;
             //        //注销ToolStripMenuItem.Enabled = true;
@@ -513,25 +486,41 @@ namespace KS.DataManage.Client
         }
         #endregion
 
+        /// <summary>
+        /// 调试用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
 
             //MemuTemp.Focus();
             //System.Drawing.Font fn = new Font(FontClass.pfc.Families[0], 12, FontStyle.Regular);//Fixedsys Excelsior 3.01  
             //button1.Font = FontClass.LoadFontFromFile();
-            button1.Text = "\uF00B";
+            ////button1.Text = "\uF00B";
+            var s = _pageDic["参数2"];
         }
 
+        /// <summary>
+        /// 调试用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
 
             //System.Drawing.Font fn = new Font(FontClass.pfc.Families[0], 12, FontStyle.Regular);//Fixedsys Excelsior 3.01  
             //kryptonButton1.StateNormal.Content.ShortText.Font = FontClass.LoadFontFromFile();
-            kryptonButton1.Values.Text = "\uF0C7";
+            /////kryptonButton1.Values.Text = "\uF0C7";
             //kryptonButton1.Text = "\uF00B";
+            //menuStrip1.ForeColor
+            this.MainFormNodeChaned(new NodeInfo("参数2", "参数设置2", "KS.DataManage.Client.UC_CstmrInfoMgt,KS.DataManage.Client"));
         }
 
-
+        private void SetTSMItem_Click(object sender, EventArgs e)
+        {
+            this.MainFormNodeChaned(new NodeInfo("参数1", "1设置", "KS.DataManage.Client.UC_FutureContractInfo,KS.DataManage.Client"));
+        }
         /////////////////////////////////没什么用////////////////////////////////////////////////////
     }
 }

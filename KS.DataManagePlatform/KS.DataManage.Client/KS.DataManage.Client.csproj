@@ -81,8 +81,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UC_CstmrInfoMgt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_CstmrInfoMgt.Designer.cs">
+      <DependentUpon>UC_CstmrInfoMgt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_FutureContractInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_FutureContractInfo.Designer.cs">
+      <DependentUpon>UC_FutureContractInfo.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,9 +105,29 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC_CstmrInfoMgt.resx">
+      <DependentUpon>UC_CstmrInfoMgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_FutureContractInfo.resx">
+      <DependentUpon>UC_FutureContractInfo.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KS.DataManage.Controls\KS.DataManage.Controls.csproj">
+      <Project>{DC402A92-E99D-435C-A981-98767E7B5EEA}</Project>
+      <Name>KS.DataManage.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KS.DataManage.Template\KS.DataManage.Template.csproj">
+      <Project>{1A2EC2C3-DEDF-4EFB-B5F9-3EF2BDF771A7}</Project>
+      <Name>KS.DataManage.Template</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KS.DataManage.Utils\KS.DataManage.Utils.csproj">
+      <Project>{2303AC03-8E93-4AF2-8681-51AC3E66194D}</Project>
+      <Name>KS.DataManage.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
