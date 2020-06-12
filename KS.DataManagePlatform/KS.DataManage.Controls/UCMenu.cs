@@ -84,7 +84,22 @@ namespace KS.Zero.Controls
             param.Name = "参数设置";
             kryptonTreeView.Nodes.Add(param);//节点加到treeview
         }
+        public void AddTreeNode(string  NodeName)
+        {
+            TreeNode param = new TreeNode();
+            param.Text = NodeName;
+            param.Tag = "KS.DataManage.Client.UC_FutureContractInfo,KS.DataManage.Client";
+            param.Name = NodeName;
+            kryptonTreeView.Nodes.Add(param);//节点加到treeview
+            DiGuiNode(param);
+            kryptonTreeView.Refresh();
+        }
 
+        public void RemoveTreeNode(string NodeKeyName)
+        {
+            kryptonTreeView.Nodes.RemoveByKey(NodeKeyName);
+            kryptonTreeView.Refresh();
+        }
         private void kryptonTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             this.UseWaitCursor = true;

@@ -188,6 +188,6 @@
 
         #endregion
 
-        private ComponentFactory.Krypton.Toolkit.KryptonTreeView kryptonTreeView;
+        public ComponentFactory.Krypton.Toolkit.KryptonTreeView kryptonTreeView;
     }
 }

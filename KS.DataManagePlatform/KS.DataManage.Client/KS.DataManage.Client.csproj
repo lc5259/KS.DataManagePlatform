@@ -62,7 +62,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UC_AddGroupConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC_AddGroupConfig.Designer.cs">
+      <DependentUpon>UC_AddGroupConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="ApplicationInitializer.cs" />
+    <Compile Include="AppStartLogoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC_BatchFileGeneration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC_BatchFileGeneration.Designer.cs">
+      <DependentUpon>UC_BatchFileGeneration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_DelGroupConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC_DelGroupConfig.Designer.cs">
+      <DependentUpon>UC_DelGroupConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +116,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UC_AddGroupConfig.resx">
+      <DependentUpon>UC_AddGroupConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppStartLogoForm.resx">
+      <DependentUpon>AppStartLogoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_BatchFileGeneration.resx">
+      <DependentUpon>UC_BatchFileGeneration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_DelGroupConfig.resx">
+      <DependentUpon>UC_DelGroupConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
