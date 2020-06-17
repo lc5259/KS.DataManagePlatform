@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.DataManagePlatform", "KS.DataManagePlatform\KS.DataManagePlatform.csproj", "{DFE198F4-DA88-4379-BF9B-83375A21936F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.DataManage.Controls", "KS.DataManage.Controls\KS.DataManage.Controls.csproj", "{DC402A92-E99D-435C-A981-98767E7B5EEA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.DataManage.Utils", "KS.DataManage.Utils\KS.DataManage.Utils.csproj", "{2303AC03-8E93-4AF2-8681-51AC3E66194D}"
@@ -15,16 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.DataManage.Client", "KS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.DataManage.Entity", "KS.DataManage.Entity\KS.DataManage.Entity.csproj", "{0D2AF9C7-2385-43C3-A008-68608D43C0A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.DataManagePlatform", "KS.DataManagePlatform\KS.DataManagePlatform.csproj", "{DFE198F4-DA88-4379-BF9B-83375A21936F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DFE198F4-DA88-4379-BF9B-83375A21936F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFE198F4-DA88-4379-BF9B-83375A21936F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFE198F4-DA88-4379-BF9B-83375A21936F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFE198F4-DA88-4379-BF9B-83375A21936F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC402A92-E99D-435C-A981-98767E7B5EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DC402A92-E99D-435C-A981-98767E7B5EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC402A92-E99D-435C-A981-98767E7B5EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{0D2AF9C7-2385-43C3-A008-68608D43C0A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D2AF9C7-2385-43C3-A008-68608D43C0A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D2AF9C7-2385-43C3-A008-68608D43C0A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE198F4-DA88-4379-BF9B-83375A21936F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE198F4-DA88-4379-BF9B-83375A21936F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE198F4-DA88-4379-BF9B-83375A21936F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE198F4-DA88-4379-BF9B-83375A21936F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
