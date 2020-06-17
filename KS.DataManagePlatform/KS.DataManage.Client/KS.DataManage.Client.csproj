@@ -62,6 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppStartLogoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UC_AddGroupConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,9 +72,6 @@
       <DependentUpon>UC_AddGroupConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="ApplicationInitializer.cs" />
-    <Compile Include="AppStartLogoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="UC_BatchFileGeneration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,11 +122,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UC_AddGroupConfig.resx">
-      <DependentUpon>UC_AddGroupConfig.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AppStartLogoForm.resx">
       <DependentUpon>AppStartLogoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_AddGroupConfig.resx">
+      <DependentUpon>UC_AddGroupConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_BatchFileGeneration.resx">
       <DependentUpon>UC_BatchFileGeneration.cs</DependentUpon>
