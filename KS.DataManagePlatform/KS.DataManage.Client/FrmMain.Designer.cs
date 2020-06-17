@@ -172,9 +172,9 @@
             // 
             this.pnlMenu.Controls.Add(this.menuStrip);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlMenu.Location = new System.Drawing.Point(593, 0);
+            this.pnlMenu.Location = new System.Drawing.Point(534, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(335, 30);
+            this.pnlMenu.Size = new System.Drawing.Size(394, 30);
             this.pnlMenu.TabIndex = 24;
             // 
             // menuStrip
@@ -189,7 +189,7 @@
             this.AboutTSMItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(335, 30);
+            this.menuStrip.Size = new System.Drawing.Size(394, 30);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -200,7 +200,7 @@
             this.OutputTSMItem});
             this.SystemTSMItem.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.SystemTSMItem.Name = "SystemTSMItem";
-            this.SystemTSMItem.Size = new System.Drawing.Size(122, 26);
+            this.SystemTSMItem.Size = new System.Drawing.Size(57, 26);
             this.SystemTSMItem.Text = "系统(&F)";
             // 
             // InputTSMItem
@@ -275,11 +275,12 @@
             // 
             // kryptonButton1
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(448, -9);
+            this.kryptonButton1.Location = new System.Drawing.Point(260, -9);
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.Size = new System.Drawing.Size(103, 49);
             this.kryptonButton1.TabIndex = 23;
             this.kryptonButton1.Values.Text = "kryptonButton1";
+            this.kryptonButton1.Visible = false;
             this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
             // button1
@@ -290,6 +291,7 @@
             this.button1.TabIndex = 22;
             this.button1.Text = "test";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // kbtnMin
