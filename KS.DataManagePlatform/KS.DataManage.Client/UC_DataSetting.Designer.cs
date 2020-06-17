@@ -171,7 +171,7 @@
             // 
             this.tableLayoutPanel6.ColumnCount = 4;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
             this.tableLayoutPanel6.Controls.Add(this.kGBFileList, 0, 1);
@@ -257,7 +257,7 @@
             this.kGBTradeID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kGBTradeID.Location = new System.Drawing.Point(3, 3);
             this.kGBTradeID.Name = "kGBTradeID";
-            this.kGBTradeID.Size = new System.Drawing.Size(555, 74);
+            this.kGBTradeID.Size = new System.Drawing.Size(455, 74);
             this.kGBTradeID.TabIndex = 2;
             this.kGBTradeID.Values.Heading = "资金账号";
             // 

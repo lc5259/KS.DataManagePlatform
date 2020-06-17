@@ -62,7 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UCShowData.cs" />
+    <Compile Include="UCShowData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UCShowData.Designer.cs">
       <DependentUpon>UCShowData.cs</DependentUpon>
     </Compile>

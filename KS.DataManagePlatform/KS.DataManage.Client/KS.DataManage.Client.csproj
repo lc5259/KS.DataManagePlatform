@@ -120,6 +120,12 @@
     <Compile Include="UC_FutureContractInfo.Designer.cs">
       <DependentUpon>UC_FutureContractInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_GeneFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_GeneFile.Designer.cs">
+      <DependentUpon>UC_GeneFile.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AppStartLogoForm.resx">
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_FutureContractInfo.resx">
       <DependentUpon>UC_FutureContractInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_GeneFile.resx">
+      <DependentUpon>UC_GeneFile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
