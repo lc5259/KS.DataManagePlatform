@@ -99,6 +99,8 @@
             this.kryBtSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryLbDate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonSplitContainer3 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
+            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel1)).BeginInit();
@@ -335,6 +337,7 @@
             // kryptonPanel1
             // 
             this.kryptonPanel1.AutoScroll = true;
+            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
             this.kryptonPanel1.Controls.Add(this.kryLbSingleMotorCenterAccountCount);
             this.kryptonPanel1.Controls.Add(this.kryLbSingleCffexAccountCount);
             this.kryptonPanel1.Controls.Add(this.kryCBTXT);
@@ -395,27 +398,30 @@
             // 
             // kryBtSingleToCffex
             // 
-            this.kryBtSingleToCffex.Location = new System.Drawing.Point(197, 304);
+            this.kryBtSingleToCffex.Location = new System.Drawing.Point(197, 292);
             this.kryBtSingleToCffex.Name = "kryBtSingleToCffex";
             this.kryBtSingleToCffex.Size = new System.Drawing.Size(66, 25);
             this.kryBtSingleToCffex.TabIndex = 35;
             this.kryBtSingleToCffex.Values.Text = "<==";
+            this.kryBtSingleToCffex.Click += new System.EventHandler(this.kryBtSingleToCffex_Click);
             // 
             // kryBtSingleToSync
             // 
-            this.kryBtSingleToSync.Location = new System.Drawing.Point(197, 262);
+            this.kryBtSingleToSync.Location = new System.Drawing.Point(197, 250);
             this.kryBtSingleToSync.Name = "kryBtSingleToSync";
             this.kryBtSingleToSync.Size = new System.Drawing.Size(66, 25);
             this.kryBtSingleToSync.TabIndex = 34;
             this.kryBtSingleToSync.Values.Text = "<==>";
+            this.kryBtSingleToSync.Click += new System.EventHandler(this.kryBtSingleToSync_Click);
             // 
             // kryBtSingleToMotorCenter
             // 
-            this.kryBtSingleToMotorCenter.Location = new System.Drawing.Point(197, 222);
+            this.kryBtSingleToMotorCenter.Location = new System.Drawing.Point(197, 210);
             this.kryBtSingleToMotorCenter.Name = "kryBtSingleToMotorCenter";
             this.kryBtSingleToMotorCenter.Size = new System.Drawing.Size(66, 25);
             this.kryBtSingleToMotorCenter.TabIndex = 33;
             this.kryBtSingleToMotorCenter.Values.Text = "==>";
+            this.kryBtSingleToMotorCenter.Click += new System.EventHandler(this.kryBtSingleToMotorCenter_Click);
             // 
             // kryCLBSingleMotorCenterAccount
             // 
@@ -434,6 +440,8 @@
             this.kryCLBSingleCffexAccount.Size = new System.Drawing.Size(120, 169);
             this.kryCLBSingleCffexAccount.TabIndex = 31;
             this.kryCLBSingleCffexAccount.SelectedValueChanged += new System.EventHandler(this.kryCLBSingleCffexAccount_SelectedValueChanged);
+            this.kryCLBSingleCffexAccount.DoubleClick += new System.EventHandler(this.kryCLBSingleCffexAccount_DoubleClick);
+            this.kryCLBSingleCffexAccount.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.kryCLBSingleCffexAccount_MouseDoubleClick);
             // 
             // kryCBSingleMotorCenterAccount
             // 
@@ -543,6 +551,7 @@
             // kryptonPanel3
             // 
             this.kryptonPanel3.AutoScroll = true;
+            this.kryptonPanel3.Controls.Add(this.kryptonButton2);
             this.kryptonPanel3.Controls.Add(this.krypTBFolderName);
             this.kryptonPanel3.Controls.Add(this.kryLbMoreMotorCenterAccountCount);
             this.kryptonPanel3.Controls.Add(this.kryLbMoreCffexAccountCount);
@@ -593,41 +602,48 @@
             // 
             // kryBtMoreToCffex
             // 
-            this.kryBtMoreToCffex.Location = new System.Drawing.Point(163, 306);
+            this.kryBtMoreToCffex.Location = new System.Drawing.Point(163, 293);
             this.kryBtMoreToCffex.Name = "kryBtMoreToCffex";
             this.kryBtMoreToCffex.Size = new System.Drawing.Size(66, 25);
             this.kryBtMoreToCffex.TabIndex = 55;
             this.kryBtMoreToCffex.Values.Text = "<==";
+            this.kryBtMoreToCffex.Click += new System.EventHandler(this.kryBtMoreToCffex_Click);
             // 
             // kryBtMoreToSync
             // 
-            this.kryBtMoreToSync.Location = new System.Drawing.Point(163, 264);
+            this.kryBtMoreToSync.Location = new System.Drawing.Point(163, 251);
             this.kryBtMoreToSync.Name = "kryBtMoreToSync";
             this.kryBtMoreToSync.Size = new System.Drawing.Size(66, 25);
             this.kryBtMoreToSync.TabIndex = 54;
             this.kryBtMoreToSync.Values.Text = "<==>";
+            this.kryBtMoreToSync.Click += new System.EventHandler(this.kryBtMoreToSync_Click);
             // 
             // kryBtMoreToMotorCenter
             // 
-            this.kryBtMoreToMotorCenter.Location = new System.Drawing.Point(163, 224);
+            this.kryBtMoreToMotorCenter.Location = new System.Drawing.Point(163, 211);
             this.kryBtMoreToMotorCenter.Name = "kryBtMoreToMotorCenter";
             this.kryBtMoreToMotorCenter.Size = new System.Drawing.Size(66, 25);
             this.kryBtMoreToMotorCenter.TabIndex = 53;
             this.kryBtMoreToMotorCenter.Values.Text = "==>";
+            this.kryBtMoreToMotorCenter.Click += new System.EventHandler(this.kryBtMoreToMotorCenter_Click);
             // 
             // kryCLBMoreMotorCenterAccount
             // 
+            this.kryCLBMoreMotorCenterAccount.CheckOnClick = true;
             this.kryCLBMoreMotorCenterAccount.Location = new System.Drawing.Point(241, 197);
             this.kryCLBMoreMotorCenterAccount.Name = "kryCLBMoreMotorCenterAccount";
             this.kryCLBMoreMotorCenterAccount.Size = new System.Drawing.Size(120, 165);
             this.kryCLBMoreMotorCenterAccount.TabIndex = 52;
+            this.kryCLBMoreMotorCenterAccount.SelectedValueChanged += new System.EventHandler(this.kryCLBMoreMotorCenterAccount_SelectedValueChanged);
             // 
             // kryCLBMoreCffexAccount
             // 
+            this.kryCLBMoreCffexAccount.CheckOnClick = true;
             this.kryCLBMoreCffexAccount.Location = new System.Drawing.Point(32, 197);
             this.kryCLBMoreCffexAccount.Name = "kryCLBMoreCffexAccount";
             this.kryCLBMoreCffexAccount.Size = new System.Drawing.Size(120, 165);
             this.kryCLBMoreCffexAccount.TabIndex = 51;
+            this.kryCLBMoreCffexAccount.SelectedValueChanged += new System.EventHandler(this.kryCLBMoreCffexAccount_SelectedValueChanged);
             // 
             // kryCBMoreMotorCenterAccount
             // 
@@ -636,6 +652,7 @@
             this.kryCBMoreMotorCenterAccount.Size = new System.Drawing.Size(114, 20);
             this.kryCBMoreMotorCenterAccount.TabIndex = 50;
             this.kryCBMoreMotorCenterAccount.Values.Text = "监控中心账号：";
+            this.kryCBMoreMotorCenterAccount.CheckedChanged += new System.EventHandler(this.kryCBMoreMotorCenterAccount_CheckedChanged);
             // 
             // kryCBMoreCffexAccount
             // 
@@ -644,6 +661,7 @@
             this.kryCBMoreCffexAccount.Size = new System.Drawing.Size(101, 20);
             this.kryCBMoreCffexAccount.TabIndex = 49;
             this.kryCBMoreCffexAccount.Values.Text = "中金所账号：";
+            this.kryCBMoreCffexAccount.CheckedChanged += new System.EventHandler(this.kryCBMoreCffexAccount_CheckedChanged);
             // 
             // krypBtMoreAccountMotorCenter
             // 
@@ -652,6 +670,7 @@
             this.krypBtMoreAccountMotorCenter.Size = new System.Drawing.Size(73, 25);
             this.krypBtMoreAccountMotorCenter.TabIndex = 48;
             this.krypBtMoreAccountMotorCenter.Values.Text = "监控中心";
+            this.krypBtMoreAccountMotorCenter.Click += new System.EventHandler(this.krypBtMoreAccountMotorCenter_Click);
             // 
             // kryBtMoreAccountCffex
             // 
@@ -660,6 +679,7 @@
             this.kryBtMoreAccountCffex.Size = new System.Drawing.Size(73, 25);
             this.kryBtMoreAccountCffex.TabIndex = 47;
             this.kryBtMoreAccountCffex.Values.Text = "中金所";
+            this.kryBtMoreAccountCffex.Click += new System.EventHandler(this.kryBtMoreAccountCffex_Click);
             // 
             // kryBtMoreAccountAll
             // 
@@ -668,6 +688,7 @@
             this.kryBtMoreAccountAll.Size = new System.Drawing.Size(73, 25);
             this.kryBtMoreAccountAll.TabIndex = 46;
             this.kryBtMoreAccountAll.Values.Text = "全部";
+            this.kryBtMoreAccountAll.Click += new System.EventHandler(this.kryBtMoreAccountAll_Click);
             // 
             // kryTBMoreFundAcconutNo
             // 
@@ -683,6 +704,7 @@
             this.kryRadioButtonFolderCustomizeNO.Size = new System.Drawing.Size(35, 20);
             this.kryRadioButtonFolderCustomizeNO.TabIndex = 44;
             this.kryRadioButtonFolderCustomizeNO.Values.Text = "否";
+            this.kryRadioButtonFolderCustomizeNO.CheckedChanged += new System.EventHandler(this.kryRadioButtonFolderCustomizeNO_CheckedChanged);
             // 
             // kryRadioButtonFolderCustomizeYES
             // 
@@ -691,6 +713,7 @@
             this.kryRadioButtonFolderCustomizeYES.Size = new System.Drawing.Size(35, 20);
             this.kryRadioButtonFolderCustomizeYES.TabIndex = 43;
             this.kryRadioButtonFolderCustomizeYES.Values.Text = "是";
+            this.kryRadioButtonFolderCustomizeYES.CheckedChanged += new System.EventHandler(this.kryRadioButtonFolderCustomizeYES_CheckedChanged);
             // 
             // kryLbMoreFundAccountNo
             // 
@@ -780,6 +803,24 @@
             this.kryptonSplitContainer3.Size = new System.Drawing.Size(932, 699);
             this.kryptonSplitContainer3.SplitterDistance = 645;
             this.kryptonSplitContainer3.TabIndex = 6;
+            // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Location = new System.Drawing.Point(197, 328);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(66, 25);
+            this.kryptonButton1.TabIndex = 40;
+            this.kryptonButton1.Values.Text = "xxx";
+            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
+            // 
+            // kryptonButton2
+            // 
+            this.kryptonButton2.Location = new System.Drawing.Point(163, 328);
+            this.kryptonButton2.Name = "kryptonButton2";
+            this.kryptonButton2.Size = new System.Drawing.Size(66, 25);
+            this.kryptonButton2.TabIndex = 59;
+            this.kryptonButton2.Values.Text = "xxx";
+            this.kryptonButton2.Click += new System.EventHandler(this.kryptonButton2_Click);
             // 
             // UC_GeneFile
             // 
@@ -903,5 +944,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryBtSave;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryLbDate;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer kryptonSplitContainer3;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
     }
 }
