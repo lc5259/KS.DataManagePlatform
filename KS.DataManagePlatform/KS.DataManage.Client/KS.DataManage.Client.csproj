@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UC_GeneFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_GeneFile.Designer.cs">
+      <DependentUpon>UC_GeneFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_AddGroupConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UC_GeneFile.resx">
+      <DependentUpon>UC_GeneFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_AddGroupConfig.resx">
       <DependentUpon>UC_AddGroupConfig.cs</DependentUpon>
     </EmbeddedResource>

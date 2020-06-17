@@ -68,7 +68,7 @@
             // 
             // kryButtonOK
             // 
-            this.kryButtonOK.Location = new System.Drawing.Point(69, 103);
+            this.kryButtonOK.Location = new System.Drawing.Point(83, 99);
             this.kryButtonOK.Name = "kryButtonOK";
             this.kryButtonOK.Size = new System.Drawing.Size(90, 25);
             this.kryButtonOK.TabIndex = 9;
@@ -77,7 +77,7 @@
             // 
             // kryButtonCancel
             // 
-            this.kryButtonCancel.Location = new System.Drawing.Point(253, 103);
+            this.kryButtonCancel.Location = new System.Drawing.Point(234, 99);
             this.kryButtonCancel.Name = "kryButtonCancel";
             this.kryButtonCancel.Size = new System.Drawing.Size(90, 25);
             this.kryButtonCancel.TabIndex = 10;
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 153);
+            this.ClientSize = new System.Drawing.Size(397, 146);
             this.Controls.Add(this.kryButtonCancel);
             this.Controls.Add(this.kryButtonOK);
             this.Controls.Add(this.kryCheckBoxContinuousGroup);

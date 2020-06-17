@@ -553,5 +553,11 @@ namespace KS.DataManage.Client
             }
             delGroupConfig.ShowDialog();
         }
+
+        private void GeneTSMItem_Click(object sender, EventArgs e)
+        {
+            BatchFileGeneration _batchFileGeneration = new BatchFileGeneration();
+            _batchFileGeneration.ShowDialog();
+        }
     }
 }

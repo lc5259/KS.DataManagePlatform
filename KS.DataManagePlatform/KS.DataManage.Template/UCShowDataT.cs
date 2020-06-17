@@ -21,14 +21,14 @@ namespace KS.Zero.Client.Controls
         {
             this.model = t;
 
-            this.kbtnOutput.Visible = flgoutput;
-            this.kbtnSearch.Visible = flgsearch;
-            this.kbtnInsert.Visible = flginsert;
-            this.kbtnUpdate.Visible = flgupdate;
-            this.kbtnCopy.Visible = flgcopy;
-            this.kbtnDelete.Visible = flgdelete;
+            //this.kbtnOutput.Visible = flgoutput;
+            //this.kbtnSearch.Visible = flgsearch;
+            //this.kbtnInsert.Visible = flginsert;
+            //this.kbtnUpdate.Visible = flgupdate;
+            //this.kbtnCopy.Visible = flgcopy;
+            //this.kbtnDelete.Visible = flgdelete;
 
-            this.kDGV.DataSource = list;
+            //this.kDGV.DataSource = list;
         }
     }
 }

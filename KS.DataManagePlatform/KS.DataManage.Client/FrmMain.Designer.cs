@@ -267,8 +267,9 @@
             // GeneTSMItem
             // 
             this.GeneTSMItem.Name = "GeneTSMItem";
-            this.GeneTSMItem.Size = new System.Drawing.Size(126, 22);
+            this.GeneTSMItem.Size = new System.Drawing.Size(180, 22);
             this.GeneTSMItem.Text = "一键生成";
+            this.GeneTSMItem.Click += new System.EventHandler(this.GeneTSMItem_Click);
             // 
             // AboutTSMItem
             // 

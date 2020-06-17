@@ -177,7 +177,8 @@
             this.Controls.Add(this.labelDate);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.labelGroupData);
-           // this.Name = "BatchFileGeneration";
+            //this.Name = "BatchFileGeneration";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "批量文件生成";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

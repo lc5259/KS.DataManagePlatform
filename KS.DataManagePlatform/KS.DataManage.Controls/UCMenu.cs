@@ -74,7 +74,7 @@ namespace KS.Zero.Controls
             {
                 TreeNode cNode = new TreeNode();
                 cNode.Text = i.ToString() + i + i + i + i;
-                cNode.Tag = "KS.DataManage.Client.UC_FutureContractInfo,KS.DataManage.Client";
+                cNode.Tag = "KS.DataManage.Client.UC_GeneFile,KS.DataManage.Client";
                 cNode.Name = i.ToString() + i + i + i + i;
                 kryptonTreeView.Nodes.Add(cNode);//节点加到treeview
             }
@@ -88,7 +88,7 @@ namespace KS.Zero.Controls
         {
             TreeNode param = new TreeNode();
             param.Text = NodeName;
-            param.Tag = "KS.DataManage.Client.UC_FutureContractInfo,KS.DataManage.Client";
+            param.Tag = "KS.DataManage.Client.UC_GeneFile,KS.DataManage.Client";
             param.Name = NodeName;
             kryptonTreeView.Nodes.Add(param);//节点加到treeview
             DiGuiNode(param);

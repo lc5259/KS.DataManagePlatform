@@ -31,9 +31,9 @@ namespace KS.DataManage.Client
             //DGV美化
             //GridViewShowData(SearchContract());
             //加载label
-            this.label1.Text = "交易所名称";
-            this.label2.Text = "品种名称";
-            this.label3.Text = "合约名称";
+            //this.label1.Text = "交易所名称";
+            //this.label2.Text = "品种名称";
+            //this.label3.Text = "合约名称";
 
             //下拉列表代码 comblist;
             //kryptonComboBox1.DataSource = CombList.GetExchangeCombList();
