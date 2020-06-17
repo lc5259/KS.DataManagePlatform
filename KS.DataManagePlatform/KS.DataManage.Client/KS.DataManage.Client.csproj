@@ -87,6 +87,12 @@
     <Compile Include="UC_CstmrInfoMgt.Designer.cs">
       <DependentUpon>UC_CstmrInfoMgt.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_DataSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_DataSetting.Designer.cs">
+      <DependentUpon>UC_DataSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_FutureContractInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_CstmrInfoMgt.resx">
       <DependentUpon>UC_CstmrInfoMgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_DataSetting.resx">
+      <DependentUpon>UC_DataSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_FutureContractInfo.resx">
       <DependentUpon>UC_FutureContractInfo.cs</DependentUpon>

@@ -13,7 +13,6 @@ namespace KS.DataManage.Entity
     {
         public string account { get; set; }
 
-        public string account { get; set; }
 
     }
 }
