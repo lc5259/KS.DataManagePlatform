@@ -40,8 +40,6 @@
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.SystemTSMItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SetTSMItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.InputTSMItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OutputTSMItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AccountTSMItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -198,38 +196,24 @@
             // SystemTSMItem
             // 
             this.SystemTSMItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SetTSMItem,
-            this.toolStripSeparator1,
             this.InputTSMItem,
             this.OutputTSMItem});
             this.SystemTSMItem.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.SystemTSMItem.Name = "SystemTSMItem";
-            this.SystemTSMItem.Size = new System.Drawing.Size(59, 26);
+            this.SystemTSMItem.Size = new System.Drawing.Size(122, 26);
             this.SystemTSMItem.Text = "系统(&F)";
-            // 
-            // SetTSMItem
-            // 
-            this.SetTSMItem.Name = "SetTSMItem";
-            this.SetTSMItem.Size = new System.Drawing.Size(152, 22);
-            this.SetTSMItem.Text = "参数设置";
-            this.SetTSMItem.Click += new System.EventHandler(this.SetTSMItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // InputTSMItem
             // 
             this.InputTSMItem.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.InputTSMItem.Name = "InputTSMItem";
-            this.InputTSMItem.Size = new System.Drawing.Size(152, 22);
+            this.InputTSMItem.Size = new System.Drawing.Size(180, 22);
             this.InputTSMItem.Text = "账号配置导出";
             // 
             // OutputTSMItem
             // 
             this.OutputTSMItem.Name = "OutputTSMItem";
-            this.OutputTSMItem.Size = new System.Drawing.Size(152, 22);
+            this.OutputTSMItem.Size = new System.Drawing.Size(180, 22);
             this.OutputTSMItem.Text = "账号配置导出";
             // 
             // AccountTSMItem
@@ -239,37 +223,34 @@
             this.DeleteTSMItem});
             this.AccountTSMItem.ForeColor = System.Drawing.SystemColors.Highlight;
             this.AccountTSMItem.Name = "AccountTSMItem";
-            this.AccountTSMItem.Size = new System.Drawing.Size(97, 26);
+            this.AccountTSMItem.Size = new System.Drawing.Size(91, 26);
             this.AccountTSMItem.Text = "账户分组配置";
             // 
             // AddTSMItem
             // 
             this.AddTSMItem.Name = "AddTSMItem";
-            this.AddTSMItem.Size = new System.Drawing.Size(180, 22);
+            this.AddTSMItem.Size = new System.Drawing.Size(122, 22);
             this.AddTSMItem.Text = "增加分组";
-            this.AddTSMItem.Click += new System.EventHandler(this.AddTSMItem_Click);
             // 
             // DeleteTSMItem
             // 
             this.DeleteTSMItem.Name = "DeleteTSMItem";
-            this.DeleteTSMItem.Size = new System.Drawing.Size(180, 22);
+            this.DeleteTSMItem.Size = new System.Drawing.Size(122, 22);
             this.DeleteTSMItem.Text = "删除分组";
-            this.DeleteTSMItem.Click += new System.EventHandler(this.DeleteTSMItem_Click);
             // 
             // LotsTSMItem
             // 
             this.LotsTSMItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.GeneTSMItem});
             this.LotsTSMItem.Name = "LotsTSMItem";
-            this.LotsTSMItem.Size = new System.Drawing.Size(97, 26);
+            this.LotsTSMItem.Size = new System.Drawing.Size(91, 26);
             this.LotsTSMItem.Text = "批量文件生成";
             // 
             // GeneTSMItem
             // 
             this.GeneTSMItem.Name = "GeneTSMItem";
-            this.GeneTSMItem.Size = new System.Drawing.Size(180, 22);
+            this.GeneTSMItem.Size = new System.Drawing.Size(122, 22);
             this.GeneTSMItem.Text = "一键生成";
-            this.GeneTSMItem.Click += new System.EventHandler(this.GeneTSMItem_Click);
             // 
             // AboutTSMItem
             // 
@@ -277,19 +258,19 @@
             this.UsTSMItem,
             this.VersionTSMItem});
             this.AboutTSMItem.Name = "AboutTSMItem";
-            this.AboutTSMItem.Size = new System.Drawing.Size(45, 26);
+            this.AboutTSMItem.Size = new System.Drawing.Size(43, 26);
             this.AboutTSMItem.Text = "关于";
             // 
             // UsTSMItem
             // 
             this.UsTSMItem.Name = "UsTSMItem";
-            this.UsTSMItem.Size = new System.Drawing.Size(126, 22);
+            this.UsTSMItem.Size = new System.Drawing.Size(122, 22);
             this.UsTSMItem.Text = "关于我们";
             // 
             // VersionTSMItem
             // 
             this.VersionTSMItem.Name = "VersionTSMItem";
-            this.VersionTSMItem.Size = new System.Drawing.Size(126, 22);
+            this.VersionTSMItem.Size = new System.Drawing.Size(122, 22);
             this.VersionTSMItem.Text = "版本信息";
             // 
             // kryptonButton1
@@ -479,12 +460,10 @@
         private System.Windows.Forms.ToolStripMenuItem AccountTSMItem;
         private System.Windows.Forms.ToolStripMenuItem LotsTSMItem;
         private System.Windows.Forms.ToolStripMenuItem AboutTSMItem;
-        private System.Windows.Forms.ToolStripMenuItem SetTSMItem;
         private System.Windows.Forms.ToolStripMenuItem InputTSMItem;
         private System.Windows.Forms.ToolStripMenuItem OutputTSMItem;
         private System.Windows.Forms.ToolStripMenuItem AddTSMItem;
         private System.Windows.Forms.ToolStripMenuItem DeleteTSMItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem GeneTSMItem;
         private System.Windows.Forms.ToolStripMenuItem UsTSMItem;
         private System.Windows.Forms.ToolStripMenuItem VersionTSMItem;

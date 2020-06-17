@@ -116,6 +116,8 @@ namespace KS.DataManagePlatform
 		}
 		private void AppStartLogoForm_Load(object sender, EventArgs e)
 		{
+
+
 		}
 	}
 }

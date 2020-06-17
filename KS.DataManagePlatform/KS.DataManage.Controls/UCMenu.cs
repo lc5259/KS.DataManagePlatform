@@ -80,7 +80,7 @@ namespace KS.Zero.Controls
             }
             TreeNode param = new TreeNode();
             param.Text = "参数设置";
-            param.Tag = "KS.DataManage.Client.UC_FutureContractInfo,KS.DataManage.Client";
+            param.Tag = "KS.DataManage.Client.UC_DataSetting,KS.DataManage.Client";
             param.Name = "参数设置";
             kryptonTreeView.Nodes.Add(param);//节点加到treeview
         }

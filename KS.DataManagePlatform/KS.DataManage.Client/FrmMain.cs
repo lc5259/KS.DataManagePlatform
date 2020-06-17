@@ -517,6 +517,9 @@ namespace KS.DataManage.Client
             //kryptonButton1.Text = "\uF00B";
             //menuStrip1.ForeColor
             this.MainFormNodeChaned(new NodeInfo("参数2", "参数设置2", "KS.DataManage.Client.UC_CstmrInfoMgt,KS.DataManage.Client"));
+            Log.Info("44444");
+            Log.Debug("2222");
+            Log.Error("1111");
         }
 
         private void SetTSMItem_Click(object sender, EventArgs e)
