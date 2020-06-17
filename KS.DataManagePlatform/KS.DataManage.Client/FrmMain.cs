@@ -1,7 +1,9 @@
 using ComponentFactory.Krypton.Docking;
 using ComponentFactory.Krypton.Navigator;
+using ComponentFactory.Krypton.Toolkit;
 using ComponentFactory.Krypton.Workspace;
 using KS.DataManage.Utils;
+using KS.DataManagePlatform;
 using KS.Zero.Controls;
 using System;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ namespace KS.DataManage.Client
         }
         private delegate void BeforeLoad();
 
-        UCMenu ucMenu;
+        static UCMenu ucMenu;
         private static Dictionary<string, KryptonPage> _pageDic = new Dictionary<string, KryptonPage>();
         public static Dictionary<string, KryptonPage> PageDic
         {
@@ -525,5 +527,34 @@ namespace KS.DataManage.Client
             this.MainFormNodeChaned(new NodeInfo("参数1", "1设置", "KS.DataManage.Client.UC_FutureContractInfo,KS.DataManage.Client"));
         }
         /////////////////////////////////没什么用////////////////////////////////////////////////////
+        ///
+       
+
+        private void AddTSMItem_Click(object sender, EventArgs e)
+        {
+            AddGroupConfig addGroupConfig = new AddGroupConfig();
+            addGroupConfig.ShowDialog();
+        }
+
+        public static void AddGroup(string  GroupName)
+        {
+            ucMenu.AddTreeNode(GroupName);
+        }
+
+        public static void RemoveGroup(string GroupKeyName)
+        {
+            ucMenu.RemoveTreeNode(GroupKeyName);
+        }
+
+        private void DeleteTSMItem_Click(object sender, EventArgs e)
+        {
+            DelGroupConfig delGroupConfig = new DelGroupConfig();
+            foreach (TreeNode item in ucMenu.kryptonTreeView.Nodes)
+            {
+                //delGroupConfig.kryCheckedListBox.Items.AddRange(new object[] { item.Name.ToString() });
+               delGroupConfig.kryCheckedListBox.Items.Add(new KryptonListItem(item.Name.ToString()));
+            }
+            delGroupConfig.ShowDialog();
+        }
     }
 }
