@@ -17,9 +17,15 @@ namespace KS.DataManage.Client
     {
         public FrmMain()
         {
-            //记得加上这句  
-            this.MaximumSize = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+            //Screen currentScreen = Screen.FromControl(this);
+            ////记得加上这句  
+            //this.MaximumSize = new Size(currentScreen.WorkingArea.Width, currentScreen.WorkingArea.Height);
+            
+            //this.MaximizedBounds = Screen.PrimaryScreen.WorkingArea;
+           
             InitializeComponent();
+           
+
         }
         private delegate void BeforeLoad();
 
@@ -132,6 +138,9 @@ namespace KS.DataManage.Client
         {
             if (this.WindowState == FormWindowState.Maximized)
             {
+                //Screen currentScreen = Screen.FromControl(this);
+                //this.Location = new Point(currentScreen.Bounds.Width, 0);
+
                 this.WindowState = FormWindowState.Normal;
                 this.kbtnMax.Values.Image = global::KS.DataManage.Client.Properties.Resources.screenexpand16px;
                 this.Padding = new System.Windows.Forms.Padding(3);
@@ -144,6 +153,14 @@ namespace KS.DataManage.Client
 
         private void FormMax()
         {
+
+            //Screen currentScreen = Screen.FromControl(this);
+            //this.MaximizedBounds = currentScreen.WorkingArea;
+            //this.MinimumSize = currentScreen.WorkingArea.Size;
+            Screen currentScreen = Screen.FromControl(this);
+            //记得加上这句  
+            this.MaximumSize = new Size(currentScreen.WorkingArea.Width, currentScreen.WorkingArea.Height);
+
             this.WindowState = FormWindowState.Maximized;
             this.kbtnMax.Values.Image = global::KS.DataManage.Client.Properties.Resources.copy16px;
             this.Padding = new System.Windows.Forms.Padding(0);

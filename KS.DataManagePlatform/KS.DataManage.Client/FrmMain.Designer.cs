@@ -197,7 +197,7 @@
             this.OutputTSMItem});
             this.SystemTSMItem.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.SystemTSMItem.Name = "SystemTSMItem";
-            this.SystemTSMItem.Size = new System.Drawing.Size(57, 26);
+            this.SystemTSMItem.Size = new System.Drawing.Size(59, 26);
             this.SystemTSMItem.Text = "系统(&F)";
             // 
             // InputTSMItem
@@ -220,19 +220,19 @@
             this.DeleteTSMItem});
             this.AccountTSMItem.ForeColor = System.Drawing.SystemColors.Highlight;
             this.AccountTSMItem.Name = "AccountTSMItem";
-            this.AccountTSMItem.Size = new System.Drawing.Size(91, 26);
+            this.AccountTSMItem.Size = new System.Drawing.Size(97, 26);
             this.AccountTSMItem.Text = "账户分组配置";
             // 
             // AddTSMItem
             // 
             this.AddTSMItem.Name = "AddTSMItem";
-            this.AddTSMItem.Size = new System.Drawing.Size(122, 22);
+            this.AddTSMItem.Size = new System.Drawing.Size(126, 22);
             this.AddTSMItem.Text = "增加分组";
             // 
             // DeleteTSMItem
             // 
             this.DeleteTSMItem.Name = "DeleteTSMItem";
-            this.DeleteTSMItem.Size = new System.Drawing.Size(122, 22);
+            this.DeleteTSMItem.Size = new System.Drawing.Size(126, 22);
             this.DeleteTSMItem.Text = "删除分组";
             // 
             // LotsTSMItem
@@ -240,13 +240,13 @@
             this.LotsTSMItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.GeneTSMItem});
             this.LotsTSMItem.Name = "LotsTSMItem";
-            this.LotsTSMItem.Size = new System.Drawing.Size(91, 26);
+            this.LotsTSMItem.Size = new System.Drawing.Size(97, 26);
             this.LotsTSMItem.Text = "批量文件生成";
             // 
             // GeneTSMItem
             // 
             this.GeneTSMItem.Name = "GeneTSMItem";
-            this.GeneTSMItem.Size = new System.Drawing.Size(122, 22);
+            this.GeneTSMItem.Size = new System.Drawing.Size(126, 22);
             this.GeneTSMItem.Text = "一键生成";
             // 
             // AboutTSMItem
@@ -255,19 +255,19 @@
             this.UsTSMItem,
             this.VersionTSMItem});
             this.AboutTSMItem.Name = "AboutTSMItem";
-            this.AboutTSMItem.Size = new System.Drawing.Size(43, 26);
+            this.AboutTSMItem.Size = new System.Drawing.Size(45, 26);
             this.AboutTSMItem.Text = "关于";
             // 
             // UsTSMItem
             // 
             this.UsTSMItem.Name = "UsTSMItem";
-            this.UsTSMItem.Size = new System.Drawing.Size(122, 22);
+            this.UsTSMItem.Size = new System.Drawing.Size(126, 22);
             this.UsTSMItem.Text = "关于我们";
             // 
             // VersionTSMItem
             // 
             this.VersionTSMItem.Name = "VersionTSMItem";
-            this.VersionTSMItem.Size = new System.Drawing.Size(122, 22);
+            this.VersionTSMItem.Size = new System.Drawing.Size(126, 22);
             this.VersionTSMItem.Text = "版本信息";
             // 
             // kryptonButton1
@@ -300,18 +300,26 @@
             this.kbtnMin.Name = "kbtnMin";
             this.kbtnMin.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.kbtnMin.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.kbtnMin.OverrideDefault.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMin.OverrideDefault.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnMin.OverrideDefault.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMin.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kbtnMin.Size = new System.Drawing.Size(30, 30);
             this.kbtnMin.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kbtnMin.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.kbtnMin.StateNormal.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMin.StateNormal.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnMin.StateNormal.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMin.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
             this.kbtnMin.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
+            this.kbtnMin.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMin.StatePressed.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnMin.StatePressed.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMin.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
             this.kbtnMin.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
+            this.kbtnMin.StateTracking.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMin.StateTracking.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnMin.StateTracking.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMin.TabIndex = 21;
             this.kbtnMin.Values.Image = global::KS.DataManage.Client.Properties.Resources.min16X16;
             this.kbtnMin.Values.Text = "";
@@ -326,18 +334,26 @@
             this.kbtnMax.Name = "kbtnMax";
             this.kbtnMax.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.kbtnMax.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.kbtnMax.OverrideDefault.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMax.OverrideDefault.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnMax.OverrideDefault.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMax.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kbtnMax.Size = new System.Drawing.Size(30, 30);
             this.kbtnMax.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kbtnMax.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.kbtnMax.StateNormal.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMax.StateNormal.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnMax.StateNormal.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMax.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
             this.kbtnMax.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
+            this.kbtnMax.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMax.StatePressed.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnMax.StatePressed.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMax.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
             this.kbtnMax.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
+            this.kbtnMax.StateTracking.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMax.StateTracking.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnMax.StateTracking.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnMax.TabIndex = 19;
             this.kbtnMax.Values.Image = global::KS.DataManage.Client.Properties.Resources.screenexpand16px;
             this.kbtnMax.Values.Text = "";
@@ -364,18 +380,26 @@
             this.kbtnClose.Name = "kbtnClose";
             this.kbtnClose.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.kbtnClose.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.kbtnClose.OverrideDefault.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnClose.OverrideDefault.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnClose.OverrideDefault.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnClose.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kbtnClose.Size = new System.Drawing.Size(30, 30);
             this.kbtnClose.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kbtnClose.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.kbtnClose.StateNormal.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnClose.StateNormal.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnClose.StateNormal.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnClose.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.kbtnClose.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.kbtnClose.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnClose.StatePressed.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnClose.StatePressed.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnClose.StateTracking.Back.Color1 = System.Drawing.Color.Red;
             this.kbtnClose.StateTracking.Back.Color2 = System.Drawing.Color.Red;
+            this.kbtnClose.StateTracking.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnClose.StateTracking.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.kbtnClose.StateTracking.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kbtnClose.TabIndex = 20;
             this.kbtnClose.Values.Image = global::KS.DataManage.Client.Properties.Resources.close_16X16;
             this.kbtnClose.Values.Text = "";
