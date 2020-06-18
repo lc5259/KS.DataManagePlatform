@@ -34,5 +34,16 @@ namespace KS.DataManage.Client
             SetFont();
         }
 
+        private void btnAddTradeID_Click(object sender, EventArgs e)
+        {
+            FrmTradeAccountSet ftas = new FrmTradeAccountSet();
+            ftas.ShowDialog();
+        }
+
+        private void kBtnOtherSet_Click(object sender, EventArgs e)
+        {
+            FrmFundOtherSet ffos = new FrmFundOtherSet();
+            ffos.ShowDialog();
+        }
     }
 }

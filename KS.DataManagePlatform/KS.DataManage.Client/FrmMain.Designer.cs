@@ -55,10 +55,10 @@
             this.kbtnMin = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnMax = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.pBLogo = new System.Windows.Forms.PictureBox();
             this.kbtnClose = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonContextMenuItems1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems();
             this.kryptonContextMenuItem1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItem();
+            this.pBLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kDWorkspaceContent)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel.SuspendLayout();
@@ -82,10 +82,6 @@
             this.kryptonDockingManager.FloatingWindowAdding += new System.EventHandler<ComponentFactory.Krypton.Docking.FloatingWindowEventArgs>(this.kryptonDockingManager_FloatingWindowAdding);
             this.kryptonDockingManager.FloatingWindowRemoved += new System.EventHandler<ComponentFactory.Krypton.Docking.FloatingWindowEventArgs>(this.kryptonDockingManager_FloatingWindowRemoved);
             // 
-            // kryptonManager
-            // 
-            this.kryptonManager.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
-            // 
             // kDWorkspaceContent
             // 
             this.kDWorkspaceContent.AutoHiddenHost = false;
@@ -98,6 +94,7 @@
             this.kDWorkspaceContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kDWorkspaceContent.Location = new System.Drawing.Point(0, 0);
             this.kDWorkspaceContent.Name = "kDWorkspaceContent";
+            this.kDWorkspaceContent.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             // 
             // 
             // 
@@ -207,13 +204,13 @@
             // 
             this.InputTSMItem.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.InputTSMItem.Name = "InputTSMItem";
-            this.InputTSMItem.Size = new System.Drawing.Size(180, 22);
+            this.InputTSMItem.Size = new System.Drawing.Size(146, 22);
             this.InputTSMItem.Text = "账号配置导出";
             // 
             // OutputTSMItem
             // 
             this.OutputTSMItem.Name = "OutputTSMItem";
-            this.OutputTSMItem.Size = new System.Drawing.Size(180, 22);
+            this.OutputTSMItem.Size = new System.Drawing.Size(146, 22);
             this.OutputTSMItem.Text = "账号配置导出";
             // 
             // AccountTSMItem
@@ -358,19 +355,6 @@
             this.label1.Text = "金仕达  特法数据处理平台";
             this.label1.DoubleClick += new System.EventHandler(this.pnlTitle_DoubleClick);
             // 
-            // pBLogo
-            // 
-            this.pBLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
-            this.pBLogo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pBLogo.Image = global::KS.DataManage.Client.Properties.Resources.main;
-            this.pBLogo.Location = new System.Drawing.Point(0, 0);
-            this.pBLogo.Margin = new System.Windows.Forms.Padding(0);
-            this.pBLogo.Name = "pBLogo";
-            this.pBLogo.Size = new System.Drawing.Size(30, 30);
-            this.pBLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pBLogo.TabIndex = 13;
-            this.pBLogo.TabStop = false;
-            // 
             // kbtnClose
             // 
             this.kbtnClose.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.FormClose;
@@ -405,6 +389,19 @@
             // kryptonContextMenuItem1
             // 
             this.kryptonContextMenuItem1.Text = "Menu Item";
+            // 
+            // pBLogo
+            // 
+            this.pBLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.pBLogo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pBLogo.Image = global::KS.DataManage.Client.Properties.Resources.main;
+            this.pBLogo.Location = new System.Drawing.Point(0, 0);
+            this.pBLogo.Margin = new System.Windows.Forms.Padding(0);
+            this.pBLogo.Name = "pBLogo";
+            this.pBLogo.Size = new System.Drawing.Size(30, 30);
+            this.pBLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pBLogo.TabIndex = 13;
+            this.pBLogo.TabStop = false;
             // 
             // FrmMain
             // 
