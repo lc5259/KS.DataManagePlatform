@@ -45,5 +45,6 @@ namespace KS.DataManage.Client
             FrmFundOtherSet ffos = new FrmFundOtherSet();
             ffos.ShowDialog();
         }
+
     }
 }

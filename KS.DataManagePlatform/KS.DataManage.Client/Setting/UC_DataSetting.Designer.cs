@@ -350,7 +350,7 @@
             this.kDGVFileList.AllowUserToAddRows = false;
             this.kDGVFileList.AllowUserToDeleteRows = false;
             this.kDGVFileList.AllowUserToResizeRows = false;
-            this.kDGVFileList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.kDGVFileList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.kDGVFileList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.kDGVFileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TargetFileOrganizationName,
