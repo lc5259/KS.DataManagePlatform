@@ -92,6 +92,12 @@
     <Compile Include="UC_BatchFileGeneration.Designer.cs">
       <DependentUpon>UC_BatchFileGeneration.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_CstmrInfoMgt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_CstmrInfoMgt.Designer.cs">
+      <DependentUpon>UC_CstmrInfoMgt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_DelGroupConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,12 +121,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="UC_CstmrInfoMgt.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_CstmrInfoMgt.Designer.cs">
-      <DependentUpon>UC_CstmrInfoMgt.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_DataSetting.cs">
       <SubType>UserControl</SubType>
@@ -157,6 +157,9 @@
     <EmbeddedResource Include="UC_BatchFileGeneration.resx">
       <DependentUpon>UC_BatchFileGeneration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC_CstmrInfoMgt.resx">
+      <DependentUpon>UC_CstmrInfoMgt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_DelGroupConfig.resx">
       <DependentUpon>UC_DelGroupConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,9 +172,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_CstmrInfoMgt.resx">
-      <DependentUpon>UC_CstmrInfoMgt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_DataSetting.resx">
       <DependentUpon>UC_DataSetting.cs</DependentUpon>

@@ -33,9 +33,19 @@
             this.kGBFileList = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.kDGVFileList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileOrganizationName = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TargetFileNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileFormat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileTXTEqueDBF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileColumnDirection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileIsOutTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileIsOutColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileIsConnector = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileIsIsSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileIsIsShowFundAccountNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileIsIEachAccountOutTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
@@ -74,35 +84,84 @@
             this.kGBSourceFileList = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kDGVSourceFileList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kGBKeyWords = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.kDGVKeyWords = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.ColIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColIndexNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kSplitContainerL3 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kGBFileWordsList = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.kDGVFileWordsList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonSplitContainer2 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kGBFilter = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.kDGVFilter = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kGBDict = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.kDGVDict = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.SourceFileNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileNameFunfAccountNoIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileSeparator = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileMergeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnAddSourceFile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnUpdateSourceFile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnDelSourceFile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.GenerateFileKeywordNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenerateFileKeywordName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenerateFileKeywordIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDelGenerateFileKeyword = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnUpdateGenerateFileKeyword = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnAddGenerateFileKeyword = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.FileFieldNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldTXTColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldDBFColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldColumnNameDigit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldColumnValueDigit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldColumnValueAccuracy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldAlignment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldIsOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldNotNull = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldCalculationSymbols = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldFixedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldIsSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldIsComplementCharacter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldIsFiledIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldIsDefaultValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldIsAbsoluteValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileFieldIsAbsoluteValueOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDelFileField = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnUpdateFileField = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnAddFileField = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.FilterConditionsNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FilterConditionsColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FilterConditionsColumnIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FilterConditionseConditionvalue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FilterConditionseConditionalSymbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDelFilterConditions = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnUpdateFilterConditions = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnAddFilterConditions = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonPanel6 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDelDataDictionary = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnUpdateDataDictionary = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnAddDataDictionary = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.DataDictionaryNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataDictionarySourceValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataDictionaryTargetValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDelTargetFile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnUpdateTargetFile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnAddTargetFile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1.Panel1)).BeginInit();
             this.kSplitContainerL1.Panel1.SuspendLayout();
@@ -191,6 +250,24 @@
             this.kGBDict.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kDGVDict)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
+            this.kryptonPanel3.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).BeginInit();
+            this.kryptonPanel4.SuspendLayout();
+            this.tableLayoutPanel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).BeginInit();
+            this.kryptonPanel5.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).BeginInit();
+            this.kryptonPanel6.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // kSplitContainerL1
@@ -212,7 +289,7 @@
             this.kSplitContainerL1.Panel2.Padding = new System.Windows.Forms.Padding(1);
             this.kSplitContainerL1.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
             this.kSplitContainerL1.Size = new System.Drawing.Size(1075, 733);
-            this.kSplitContainerL1.SplitterDistance = 245;
+            this.kSplitContainerL1.SplitterDistance = 269;
             this.kSplitContainerL1.StateCommon.Separator.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kSplitContainerL1.StateCommon.Separator.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kSplitContainerL1.TabIndex = 0;
@@ -233,7 +310,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1073, 243);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1073, 267);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // kGBFileList
@@ -247,7 +324,7 @@
             // kGBFileList.Panel
             // 
             this.kGBFileList.Panel.Controls.Add(this.tableLayoutPanel7);
-            this.kGBFileList.Size = new System.Drawing.Size(1069, 135);
+            this.kGBFileList.Size = new System.Drawing.Size(1069, 159);
             this.kGBFileList.TabIndex = 1;
             this.kGBFileList.Values.Heading = "文件列表";
             // 
@@ -257,12 +334,15 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel7.Controls.Add(this.kDGVFileList, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.kryptonPanel1, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1065, 111);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1065, 135);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
             // kDGVFileList
@@ -273,39 +353,119 @@
             this.kDGVFileList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.kDGVFileList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.kDGVFileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
+            this.TargetFileOrganizationName,
+            this.TargetFileNo,
+            this.TargetFileTitle,
+            this.TargetFileName,
+            this.TargetFileFormat,
+            this.TargetFileTXTEqueDBF,
+            this.TargetFileColumnDirection,
+            this.TargetFileIsOutTitle,
+            this.TargetFileIsOutColumnName,
+            this.TargetFileIsConnector,
+            this.TargetFileIsIsSummary,
+            this.TargetFileIsIsShowFundAccountNo,
+            this.TargetFileIsIEachAccountOutTitle});
             this.kDGVFileList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kDGVFileList.Location = new System.Drawing.Point(3, 3);
             this.kDGVFileList.Name = "kDGVFileList";
             this.kDGVFileList.ReadOnly = true;
             this.kDGVFileList.RowTemplate.Height = 23;
-            this.kDGVFileList.Size = new System.Drawing.Size(999, 105);
+            this.kDGVFileList.Size = new System.Drawing.Size(999, 129);
             this.kDGVFileList.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumn4
+            // TargetFileOrganizationName
             // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "序号";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewTextBoxColumn4.Width = 60;
+            this.TargetFileOrganizationName.HeaderText = "机构名称";
+            this.TargetFileOrganizationName.Name = "TargetFileOrganizationName";
+            this.TargetFileOrganizationName.ReadOnly = true;
+            this.TargetFileOrganizationName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TargetFileOrganizationName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.TargetFileOrganizationName.Width = 70;
             // 
-            // dataGridViewTextBoxColumn5
+            // TargetFileNo
             // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "名称";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 60;
+            this.TargetFileNo.HeaderText = "序号";
+            this.TargetFileNo.Name = "TargetFileNo";
+            this.TargetFileNo.ReadOnly = true;
+            this.TargetFileNo.Width = 58;
             // 
-            // dataGridViewTextBoxColumn6
+            // TargetFileTitle
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "索引号";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 72;
+            this.TargetFileTitle.HeaderText = "文件标题";
+            this.TargetFileTitle.Name = "TargetFileTitle";
+            this.TargetFileTitle.ReadOnly = true;
+            this.TargetFileTitle.Width = 70;
+            // 
+            // TargetFileName
+            // 
+            this.TargetFileName.HeaderText = "文件名称";
+            this.TargetFileName.Name = "TargetFileName";
+            this.TargetFileName.ReadOnly = true;
+            this.TargetFileName.Width = 70;
+            // 
+            // TargetFileFormat
+            // 
+            this.TargetFileFormat.HeaderText = "文件格式";
+            this.TargetFileFormat.Name = "TargetFileFormat";
+            this.TargetFileFormat.ReadOnly = true;
+            this.TargetFileFormat.Width = 70;
+            // 
+            // TargetFileTXTEqueDBF
+            // 
+            this.TargetFileTXTEqueDBF.HeaderText = "TXT和DBF列相同";
+            this.TargetFileTXTEqueDBF.Name = "TargetFileTXTEqueDBF";
+            this.TargetFileTXTEqueDBF.ReadOnly = true;
+            this.TargetFileTXTEqueDBF.Width = 96;
+            // 
+            // TargetFileColumnDirection
+            // 
+            this.TargetFileColumnDirection.HeaderText = "列方向";
+            this.TargetFileColumnDirection.Name = "TargetFileColumnDirection";
+            this.TargetFileColumnDirection.ReadOnly = true;
+            this.TargetFileColumnDirection.Width = 70;
+            // 
+            // TargetFileIsOutTitle
+            // 
+            this.TargetFileIsOutTitle.HeaderText = "输出标题";
+            this.TargetFileIsOutTitle.Name = "TargetFileIsOutTitle";
+            this.TargetFileIsOutTitle.ReadOnly = true;
+            this.TargetFileIsOutTitle.Width = 70;
+            // 
+            // TargetFileIsOutColumnName
+            // 
+            this.TargetFileIsOutColumnName.HeaderText = "输出列名";
+            this.TargetFileIsOutColumnName.Name = "TargetFileIsOutColumnName";
+            this.TargetFileIsOutColumnName.ReadOnly = true;
+            this.TargetFileIsOutColumnName.Width = 70;
+            // 
+            // TargetFileIsConnector
+            // 
+            this.TargetFileIsConnector.HeaderText = "连接符";
+            this.TargetFileIsConnector.Name = "TargetFileIsConnector";
+            this.TargetFileIsConnector.ReadOnly = true;
+            this.TargetFileIsConnector.Width = 70;
+            // 
+            // TargetFileIsIsSummary
+            // 
+            this.TargetFileIsIsSummary.HeaderText = "是否汇总";
+            this.TargetFileIsIsSummary.Name = "TargetFileIsIsSummary";
+            this.TargetFileIsIsSummary.ReadOnly = true;
+            this.TargetFileIsIsSummary.Width = 70;
+            // 
+            // TargetFileIsIsShowFundAccountNo
+            // 
+            this.TargetFileIsIsShowFundAccountNo.HeaderText = "首列是否显示资金账号";
+            this.TargetFileIsIsShowFundAccountNo.Name = "TargetFileIsIsShowFundAccountNo";
+            this.TargetFileIsIsShowFundAccountNo.ReadOnly = true;
+            this.TargetFileIsIsShowFundAccountNo.Width = 105;
+            // 
+            // TargetFileIsIEachAccountOutTitle
+            // 
+            this.TargetFileIsIEachAccountOutTitle.HeaderText = "各账号输出标题";
+            this.TargetFileIsIEachAccountOutTitle.Name = "TargetFileIsIEachAccountOutTitle";
+            this.TargetFileIsIEachAccountOutTitle.ReadOnly = true;
+            this.TargetFileIsIEachAccountOutTitle.Width = 93;
             // 
             // tableLayoutPanel8
             // 
@@ -574,7 +734,7 @@
             // 
             this.kRBtnDate.Location = new System.Drawing.Point(3, 29);
             this.kRBtnDate.Name = "kRBtnDate";
-            this.kRBtnDate.Size = new System.Drawing.Size(60, 20);
+            this.kRBtnDate.Size = new System.Drawing.Size(61, 20);
             this.kRBtnDate.StateCommon.LongText.Color1 = System.Drawing.Color.Black;
             this.kRBtnDate.StateCommon.LongText.Color2 = System.Drawing.Color.Black;
             this.kRBtnDate.TabIndex = 3;
@@ -585,43 +745,43 @@
             this.kRBtnAccount.Checked = true;
             this.kRBtnAccount.Location = new System.Drawing.Point(3, 56);
             this.kRBtnAccount.Name = "kRBtnAccount";
-            this.kRBtnAccount.Size = new System.Drawing.Size(60, 20);
+            this.kRBtnAccount.Size = new System.Drawing.Size(61, 20);
             this.kRBtnAccount.TabIndex = 4;
             this.kRBtnAccount.Values.Text = "按账号";
             // 
             // kryptonLabel1
             // 
             this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel1.Location = new System.Drawing.Point(95, 29);
+            this.kryptonLabel1.Location = new System.Drawing.Point(91, 29);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(117, 21);
+            this.kryptonLabel1.Size = new System.Drawing.Size(121, 21);
             this.kryptonLabel1.TabIndex = 5;
             this.kryptonLabel1.Values.Text = "中金所输出路径1：";
             // 
             // kryptonLabel2
             // 
             this.kryptonLabel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel2.Location = new System.Drawing.Point(379, 29);
+            this.kryptonLabel2.Location = new System.Drawing.Point(375, 29);
             this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(117, 21);
+            this.kryptonLabel2.Size = new System.Drawing.Size(121, 21);
             this.kryptonLabel2.TabIndex = 6;
             this.kryptonLabel2.Values.Text = "中金所输出路径2：";
             // 
             // kryptonLabel3
             // 
             this.kryptonLabel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel3.Location = new System.Drawing.Point(83, 56);
+            this.kryptonLabel3.Location = new System.Drawing.Point(78, 56);
             this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(129, 21);
+            this.kryptonLabel3.Size = new System.Drawing.Size(134, 21);
             this.kryptonLabel3.TabIndex = 7;
             this.kryptonLabel3.Values.Text = "监控中心输出路径1：";
             // 
             // kryptonLabel4
             // 
             this.kryptonLabel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel4.Location = new System.Drawing.Point(367, 56);
+            this.kryptonLabel4.Location = new System.Drawing.Point(362, 56);
             this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(129, 21);
+            this.kryptonLabel4.Size = new System.Drawing.Size(134, 21);
             this.kryptonLabel4.TabIndex = 8;
             this.kryptonLabel4.Values.Text = "监控中心输出路径2：";
             // 
@@ -670,7 +830,7 @@
             this.kTxtZJPath1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kTxtZJPath1.Location = new System.Drawing.Point(218, 29);
             this.kTxtZJPath1.Name = "kTxtZJPath1";
-            this.kTxtZJPath1.Size = new System.Drawing.Size(108, 20);
+            this.kTxtZJPath1.Size = new System.Drawing.Size(108, 23);
             this.kTxtZJPath1.TabIndex = 13;
             this.kTxtZJPath1.Text = "-";
             // 
@@ -679,7 +839,7 @@
             this.kTxtJKZXPath1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kTxtJKZXPath1.Location = new System.Drawing.Point(218, 56);
             this.kTxtJKZXPath1.Name = "kTxtJKZXPath1";
-            this.kTxtJKZXPath1.Size = new System.Drawing.Size(108, 20);
+            this.kTxtJKZXPath1.Size = new System.Drawing.Size(108, 23);
             this.kTxtJKZXPath1.TabIndex = 14;
             this.kTxtJKZXPath1.Text = "-";
             // 
@@ -688,7 +848,7 @@
             this.kTxtZJPath2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kTxtZJPath2.Location = new System.Drawing.Point(502, 29);
             this.kTxtZJPath2.Name = "kTxtZJPath2";
-            this.kTxtZJPath2.Size = new System.Drawing.Size(108, 20);
+            this.kTxtZJPath2.Size = new System.Drawing.Size(108, 23);
             this.kTxtZJPath2.TabIndex = 15;
             this.kTxtZJPath2.Text = "-";
             // 
@@ -697,7 +857,7 @@
             this.kTxtJKZXPath2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kTxtJKZXPath2.Location = new System.Drawing.Point(502, 56);
             this.kTxtJKZXPath2.Name = "kTxtJKZXPath2";
-            this.kTxtJKZXPath2.Size = new System.Drawing.Size(108, 20);
+            this.kTxtJKZXPath2.Size = new System.Drawing.Size(108, 23);
             this.kTxtJKZXPath2.TabIndex = 16;
             this.kTxtJKZXPath2.Text = "-";
             // 
@@ -726,8 +886,8 @@
             // 
             this.kSplitContainerL2.Panel2.Controls.Add(this.kSplitContainerL3);
             this.kSplitContainerL2.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kSplitContainerL2.Size = new System.Drawing.Size(1073, 481);
-            this.kSplitContainerL2.SplitterDistance = 155;
+            this.kSplitContainerL2.Size = new System.Drawing.Size(1073, 457);
+            this.kSplitContainerL2.SplitterDistance = 138;
             this.kSplitContainerL2.StateCommon.Separator.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kSplitContainerL2.StateCommon.Separator.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kSplitContainerL2.TabIndex = 0;
@@ -749,7 +909,7 @@
             this.kryptonSplitContainer1.Panel2.Controls.Add(this.kGBKeyWords);
             this.kryptonSplitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(1);
             this.kryptonSplitContainer1.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kryptonSplitContainer1.Size = new System.Drawing.Size(1073, 155);
+            this.kryptonSplitContainer1.Size = new System.Drawing.Size(1073, 138);
             this.kryptonSplitContainer1.SplitterDistance = 606;
             this.kryptonSplitContainer1.StateCommon.Separator.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kryptonSplitContainer1.StateCommon.Separator.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
@@ -764,7 +924,7 @@
             // kGBSourceFileList.Panel
             // 
             this.kGBSourceFileList.Panel.Controls.Add(this.tableLayoutPanel1);
-            this.kGBSourceFileList.Size = new System.Drawing.Size(604, 153);
+            this.kGBSourceFileList.Size = new System.Drawing.Size(604, 136);
             this.kGBSourceFileList.TabIndex = 1;
             this.kGBSourceFileList.Values.Heading = "原文件列表";
             // 
@@ -774,12 +934,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.Controls.Add(this.kDGVSourceFileList, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.kryptonPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(600, 129);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(600, 112);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // kDGVSourceFileList
@@ -788,34 +949,19 @@
             this.kDGVSourceFileList.AllowUserToDeleteRows = false;
             this.kDGVSourceFileList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.kDGVSourceFileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.SourceFileNo,
+            this.SourceFileName,
+            this.SourceFileNameFunfAccountNoIndex,
+            this.SourceFileFrom,
+            this.SourceFileSeparator,
+            this.SourceFileMergeType});
             this.kDGVSourceFileList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kDGVSourceFileList.Location = new System.Drawing.Point(3, 3);
             this.kDGVSourceFileList.Name = "kDGVSourceFileList";
             this.kDGVSourceFileList.ReadOnly = true;
             this.kDGVSourceFileList.RowTemplate.Height = 23;
-            this.kDGVSourceFileList.Size = new System.Drawing.Size(534, 123);
+            this.kDGVSourceFileList.Size = new System.Drawing.Size(534, 106);
             this.kDGVSourceFileList.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "序号";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "名称";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "索引号";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // kGBKeyWords
             // 
@@ -826,7 +972,7 @@
             // kGBKeyWords.Panel
             // 
             this.kGBKeyWords.Panel.Controls.Add(this.tableLayoutPanel2);
-            this.kGBKeyWords.Size = new System.Drawing.Size(460, 153);
+            this.kGBKeyWords.Size = new System.Drawing.Size(460, 136);
             this.kGBKeyWords.TabIndex = 0;
             this.kGBKeyWords.Values.Heading = "生成文件关键字";
             // 
@@ -836,12 +982,13 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.Controls.Add(this.kDGVKeyWords, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.kryptonPanel3, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(456, 129);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(456, 112);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // kDGVKeyWords
@@ -850,35 +997,16 @@
             this.kDGVKeyWords.AllowUserToDeleteRows = false;
             this.kDGVKeyWords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.kDGVKeyWords.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColIndex,
-            this.ColName,
-            this.ColIndexNo});
+            this.GenerateFileKeywordNo,
+            this.GenerateFileKeywordName,
+            this.GenerateFileKeywordIndex});
             this.kDGVKeyWords.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kDGVKeyWords.Location = new System.Drawing.Point(3, 3);
             this.kDGVKeyWords.Name = "kDGVKeyWords";
             this.kDGVKeyWords.ReadOnly = true;
             this.kDGVKeyWords.RowTemplate.Height = 23;
-            this.kDGVKeyWords.Size = new System.Drawing.Size(390, 123);
+            this.kDGVKeyWords.Size = new System.Drawing.Size(390, 106);
             this.kDGVKeyWords.TabIndex = 0;
-            // 
-            // ColIndex
-            // 
-            this.ColIndex.HeaderText = "序号";
-            this.ColIndex.Name = "ColIndex";
-            this.ColIndex.ReadOnly = true;
-            this.ColIndex.Width = 70;
-            // 
-            // ColName
-            // 
-            this.ColName.HeaderText = "名称";
-            this.ColName.Name = "ColName";
-            this.ColName.ReadOnly = true;
-            // 
-            // ColIndexNo
-            // 
-            this.ColIndexNo.HeaderText = "索引号";
-            this.ColIndexNo.Name = "ColIndexNo";
-            this.ColIndexNo.ReadOnly = true;
             // 
             // kSplitContainerL3
             // 
@@ -898,8 +1026,8 @@
             this.kSplitContainerL3.Panel2.Controls.Add(this.kryptonSplitContainer2);
             this.kSplitContainerL3.Panel2.Padding = new System.Windows.Forms.Padding(1);
             this.kSplitContainerL3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kSplitContainerL3.Size = new System.Drawing.Size(1073, 321);
-            this.kSplitContainerL3.SplitterDistance = 154;
+            this.kSplitContainerL3.Size = new System.Drawing.Size(1073, 314);
+            this.kSplitContainerL3.SplitterDistance = 189;
             this.kSplitContainerL3.StateCommon.Separator.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kSplitContainerL3.StateCommon.Separator.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kSplitContainerL3.TabIndex = 0;
@@ -913,22 +1041,24 @@
             // kGBFileWordsList.Panel
             // 
             this.kGBFileWordsList.Panel.Controls.Add(this.tableLayoutPanel3);
-            this.kGBFileWordsList.Size = new System.Drawing.Size(1071, 152);
+            this.kGBFileWordsList.Size = new System.Drawing.Size(1071, 187);
             this.kGBFileWordsList.TabIndex = 1;
             this.kGBFileWordsList.Values.Heading = "文件字段列表";
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.kryptonPanel4, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.kDGVFileWordsList, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1067, 128);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1067, 163);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // kDGVFileWordsList
@@ -937,34 +1067,30 @@
             this.kDGVFileWordsList.AllowUserToDeleteRows = false;
             this.kDGVFileWordsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.kDGVFileWordsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9});
+            this.FileFieldNo,
+            this.FileFieldTXTColumnName,
+            this.FileFieldDBFColumnName,
+            this.FileFieldColumnNameDigit,
+            this.FileFieldColumnValueDigit,
+            this.FileFieldColumnValueAccuracy,
+            this.FileFieldAlignment,
+            this.FileFieldIsOut,
+            this.FileFieldNotNull,
+            this.FileFieldCalculationSymbols,
+            this.FileFieldFixedValue,
+            this.FileFieldIsSummary,
+            this.FileFieldIsComplementCharacter,
+            this.FileFieldIsFiledIndex,
+            this.FileFieldIsDefaultValue,
+            this.FileFieldIsAbsoluteValue,
+            this.FileFieldIsAbsoluteValueOut});
             this.kDGVFileWordsList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kDGVFileWordsList.Location = new System.Drawing.Point(3, 3);
             this.kDGVFileWordsList.Name = "kDGVFileWordsList";
             this.kDGVFileWordsList.ReadOnly = true;
             this.kDGVFileWordsList.RowTemplate.Height = 23;
-            this.kDGVFileWordsList.Size = new System.Drawing.Size(1001, 122);
+            this.kDGVFileWordsList.Size = new System.Drawing.Size(981, 157);
             this.kDGVFileWordsList.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "序号";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "名称";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "索引号";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // kryptonSplitContainer2
             // 
@@ -983,8 +1109,8 @@
             this.kryptonSplitContainer2.Panel2.Controls.Add(this.kGBDict);
             this.kryptonSplitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(1);
             this.kryptonSplitContainer2.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kryptonSplitContainer2.Size = new System.Drawing.Size(1071, 160);
-            this.kryptonSplitContainer2.SplitterDistance = 467;
+            this.kryptonSplitContainer2.Size = new System.Drawing.Size(1071, 118);
+            this.kryptonSplitContainer2.SplitterDistance = 525;
             this.kryptonSplitContainer2.StateCommon.Separator.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kryptonSplitContainer2.StateCommon.Separator.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kryptonSplitContainer2.TabIndex = 0;
@@ -998,7 +1124,7 @@
             // kGBFilter.Panel
             // 
             this.kGBFilter.Panel.Controls.Add(this.tableLayoutPanel4);
-            this.kGBFilter.Size = new System.Drawing.Size(465, 158);
+            this.kGBFilter.Size = new System.Drawing.Size(523, 116);
             this.kGBFilter.TabIndex = 1;
             this.kGBFilter.Values.Heading = "过滤条件";
             // 
@@ -1007,13 +1133,14 @@
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel4.Controls.Add(this.kryptonPanel5, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.kDGVFilter, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(461, 134);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(519, 92);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // kDGVFilter
@@ -1022,34 +1149,18 @@
             this.kDGVFilter.AllowUserToDeleteRows = false;
             this.kDGVFilter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.kDGVFilter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12});
+            this.FilterConditionsNo,
+            this.FilterConditionsColumnName,
+            this.FilterConditionsColumnIndex,
+            this.FilterConditionseConditionvalue,
+            this.FilterConditionseConditionalSymbol});
             this.kDGVFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kDGVFilter.Location = new System.Drawing.Point(3, 3);
             this.kDGVFilter.Name = "kDGVFilter";
             this.kDGVFilter.ReadOnly = true;
             this.kDGVFilter.RowTemplate.Height = 23;
-            this.kDGVFilter.Size = new System.Drawing.Size(395, 128);
+            this.kDGVFilter.Size = new System.Drawing.Size(453, 86);
             this.kDGVFilter.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "序号";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "名称";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "索引号";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
             // kGBDict
             // 
@@ -1060,7 +1171,7 @@
             // kGBDict.Panel
             // 
             this.kGBDict.Panel.Controls.Add(this.tableLayoutPanel5);
-            this.kGBDict.Size = new System.Drawing.Size(597, 158);
+            this.kGBDict.Size = new System.Drawing.Size(539, 116);
             this.kGBDict.TabIndex = 1;
             this.kGBDict.Values.Heading = "数据字典";
             // 
@@ -1069,13 +1180,14 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel5.Controls.Add(this.kryptonPanel6, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.kDGVDict, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(593, 134);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(535, 92);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // kDGVDict
@@ -1084,34 +1196,557 @@
             this.kDGVDict.AllowUserToDeleteRows = false;
             this.kDGVDict.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.kDGVDict.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15});
+            this.DataDictionaryNo,
+            this.DataDictionarySourceValue,
+            this.DataDictionaryTargetValue});
             this.kDGVDict.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kDGVDict.Location = new System.Drawing.Point(3, 3);
             this.kDGVDict.Name = "kDGVDict";
             this.kDGVDict.ReadOnly = true;
             this.kDGVDict.RowTemplate.Height = 23;
-            this.kDGVDict.Size = new System.Drawing.Size(527, 128);
+            this.kDGVDict.Size = new System.Drawing.Size(469, 86);
             this.kDGVDict.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumn13
+            // kryptonPanel1
             // 
-            this.dataGridViewTextBoxColumn13.HeaderText = "序号";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.kryptonPanel1.Controls.Add(this.tableLayoutPanel13);
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(1008, 3);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(54, 129);
+            this.kryptonPanel1.TabIndex = 2;
             // 
-            // dataGridViewTextBoxColumn14
+            // SourceFileNo
             // 
-            this.dataGridViewTextBoxColumn14.HeaderText = "名称";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            this.SourceFileNo.HeaderText = "序号";
+            this.SourceFileNo.Name = "SourceFileNo";
+            this.SourceFileNo.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn15
+            // SourceFileName
             // 
-            this.dataGridViewTextBoxColumn15.HeaderText = "索引号";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.SourceFileName.HeaderText = "文件名";
+            this.SourceFileName.Name = "SourceFileName";
+            this.SourceFileName.ReadOnly = true;
+            // 
+            // SourceFileNameFunfAccountNoIndex
+            // 
+            this.SourceFileNameFunfAccountNoIndex.HeaderText = "资金账号索引";
+            this.SourceFileNameFunfAccountNoIndex.Name = "SourceFileNameFunfAccountNoIndex";
+            this.SourceFileNameFunfAccountNoIndex.ReadOnly = true;
+            // 
+            // SourceFileFrom
+            // 
+            this.SourceFileFrom.HeaderText = "文件来源";
+            this.SourceFileFrom.Name = "SourceFileFrom";
+            this.SourceFileFrom.ReadOnly = true;
+            // 
+            // SourceFileSeparator
+            // 
+            this.SourceFileSeparator.HeaderText = "分隔符";
+            this.SourceFileSeparator.Name = "SourceFileSeparator";
+            this.SourceFileSeparator.ReadOnly = true;
+            // 
+            // SourceFileMergeType
+            // 
+            this.SourceFileMergeType.HeaderText = "合并方式";
+            this.SourceFileMergeType.Name = "SourceFileMergeType";
+            this.SourceFileMergeType.ReadOnly = true;
+            // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.Controls.Add(this.tableLayoutPanel14);
+            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel2.Location = new System.Drawing.Point(543, 3);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.Size = new System.Drawing.Size(54, 106);
+            this.kryptonPanel2.TabIndex = 2;
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 1;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel14.Controls.Add(this.btnDelSourceFile, 0, 2);
+            this.tableLayoutPanel14.Controls.Add(this.btnUpdateSourceFile, 0, 1);
+            this.tableLayoutPanel14.Controls.Add(this.btnAddSourceFile, 0, 0);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 3;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(54, 106);
+            this.tableLayoutPanel14.TabIndex = 0;
+            // 
+            // btnAddSourceFile
+            // 
+            this.btnAddSourceFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddSourceFile.Location = new System.Drawing.Point(1, 1);
+            this.btnAddSourceFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddSourceFile.Name = "btnAddSourceFile";
+            this.btnAddSourceFile.Size = new System.Drawing.Size(52, 33);
+            this.btnAddSourceFile.TabIndex = 2;
+            this.btnAddSourceFile.Values.Text = "增加";
+            // 
+            // btnUpdateSourceFile
+            // 
+            this.btnUpdateSourceFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdateSourceFile.Location = new System.Drawing.Point(1, 36);
+            this.btnUpdateSourceFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateSourceFile.Name = "btnUpdateSourceFile";
+            this.btnUpdateSourceFile.Size = new System.Drawing.Size(52, 33);
+            this.btnUpdateSourceFile.TabIndex = 3;
+            this.btnUpdateSourceFile.Values.Text = "修改";
+            // 
+            // btnDelSourceFile
+            // 
+            this.btnDelSourceFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelSourceFile.Location = new System.Drawing.Point(1, 71);
+            this.btnDelSourceFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelSourceFile.Name = "btnDelSourceFile";
+            this.btnDelSourceFile.Size = new System.Drawing.Size(52, 34);
+            this.btnDelSourceFile.TabIndex = 4;
+            this.btnDelSourceFile.Values.Text = "删除";
+            // 
+            // GenerateFileKeywordNo
+            // 
+            this.GenerateFileKeywordNo.HeaderText = "序号";
+            this.GenerateFileKeywordNo.Name = "GenerateFileKeywordNo";
+            this.GenerateFileKeywordNo.ReadOnly = true;
+            this.GenerateFileKeywordNo.Width = 70;
+            // 
+            // GenerateFileKeywordName
+            // 
+            this.GenerateFileKeywordName.HeaderText = "名称";
+            this.GenerateFileKeywordName.Name = "GenerateFileKeywordName";
+            this.GenerateFileKeywordName.ReadOnly = true;
+            // 
+            // GenerateFileKeywordIndex
+            // 
+            this.GenerateFileKeywordIndex.HeaderText = "索引号";
+            this.GenerateFileKeywordIndex.Name = "GenerateFileKeywordIndex";
+            this.GenerateFileKeywordIndex.ReadOnly = true;
+            // 
+            // kryptonPanel3
+            // 
+            this.kryptonPanel3.Controls.Add(this.tableLayoutPanel15);
+            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel3.Location = new System.Drawing.Point(399, 3);
+            this.kryptonPanel3.Name = "kryptonPanel3";
+            this.kryptonPanel3.Size = new System.Drawing.Size(54, 106);
+            this.kryptonPanel3.TabIndex = 1;
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 1;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel15.Controls.Add(this.btnDelGenerateFileKeyword, 0, 2);
+            this.tableLayoutPanel15.Controls.Add(this.btnUpdateGenerateFileKeyword, 0, 1);
+            this.tableLayoutPanel15.Controls.Add(this.btnAddGenerateFileKeyword, 0, 0);
+            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 3;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(54, 106);
+            this.tableLayoutPanel15.TabIndex = 1;
+            // 
+            // btnDelGenerateFileKeyword
+            // 
+            this.btnDelGenerateFileKeyword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelGenerateFileKeyword.Location = new System.Drawing.Point(1, 71);
+            this.btnDelGenerateFileKeyword.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelGenerateFileKeyword.Name = "btnDelGenerateFileKeyword";
+            this.btnDelGenerateFileKeyword.Size = new System.Drawing.Size(52, 34);
+            this.btnDelGenerateFileKeyword.TabIndex = 4;
+            this.btnDelGenerateFileKeyword.Values.Text = "删除";
+            // 
+            // btnUpdateGenerateFileKeyword
+            // 
+            this.btnUpdateGenerateFileKeyword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdateGenerateFileKeyword.Location = new System.Drawing.Point(1, 36);
+            this.btnUpdateGenerateFileKeyword.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateGenerateFileKeyword.Name = "btnUpdateGenerateFileKeyword";
+            this.btnUpdateGenerateFileKeyword.Size = new System.Drawing.Size(52, 33);
+            this.btnUpdateGenerateFileKeyword.TabIndex = 3;
+            this.btnUpdateGenerateFileKeyword.Values.Text = "修改";
+            // 
+            // btnAddGenerateFileKeyword
+            // 
+            this.btnAddGenerateFileKeyword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddGenerateFileKeyword.Location = new System.Drawing.Point(1, 1);
+            this.btnAddGenerateFileKeyword.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddGenerateFileKeyword.Name = "btnAddGenerateFileKeyword";
+            this.btnAddGenerateFileKeyword.Size = new System.Drawing.Size(52, 33);
+            this.btnAddGenerateFileKeyword.TabIndex = 2;
+            this.btnAddGenerateFileKeyword.Values.Text = "增加";
+            // 
+            // FileFieldNo
+            // 
+            this.FileFieldNo.HeaderText = "序号";
+            this.FileFieldNo.Name = "FileFieldNo";
+            this.FileFieldNo.ReadOnly = true;
+            // 
+            // FileFieldTXTColumnName
+            // 
+            this.FileFieldTXTColumnName.HeaderText = "TXT列名";
+            this.FileFieldTXTColumnName.Name = "FileFieldTXTColumnName";
+            this.FileFieldTXTColumnName.ReadOnly = true;
+            // 
+            // FileFieldDBFColumnName
+            // 
+            this.FileFieldDBFColumnName.HeaderText = "DBF列名";
+            this.FileFieldDBFColumnName.Name = "FileFieldDBFColumnName";
+            this.FileFieldDBFColumnName.ReadOnly = true;
+            // 
+            // FileFieldColumnNameDigit
+            // 
+            this.FileFieldColumnNameDigit.HeaderText = "列名位数";
+            this.FileFieldColumnNameDigit.Name = "FileFieldColumnNameDigit";
+            this.FileFieldColumnNameDigit.ReadOnly = true;
+            // 
+            // FileFieldColumnValueDigit
+            // 
+            this.FileFieldColumnValueDigit.HeaderText = "列值位数";
+            this.FileFieldColumnValueDigit.Name = "FileFieldColumnValueDigit";
+            this.FileFieldColumnValueDigit.ReadOnly = true;
+            // 
+            // FileFieldColumnValueAccuracy
+            // 
+            this.FileFieldColumnValueAccuracy.HeaderText = "列值精度";
+            this.FileFieldColumnValueAccuracy.Name = "FileFieldColumnValueAccuracy";
+            this.FileFieldColumnValueAccuracy.ReadOnly = true;
+            // 
+            // FileFieldAlignment
+            // 
+            this.FileFieldAlignment.HeaderText = "对齐方式";
+            this.FileFieldAlignment.Name = "FileFieldAlignment";
+            this.FileFieldAlignment.ReadOnly = true;
+            // 
+            // FileFieldIsOut
+            // 
+            this.FileFieldIsOut.HeaderText = "是否输出";
+            this.FileFieldIsOut.Name = "FileFieldIsOut";
+            this.FileFieldIsOut.ReadOnly = true;
+            // 
+            // FileFieldNotNull
+            // 
+            this.FileFieldNotNull.HeaderText = "不可为空";
+            this.FileFieldNotNull.Name = "FileFieldNotNull";
+            this.FileFieldNotNull.ReadOnly = true;
+            // 
+            // FileFieldCalculationSymbols
+            // 
+            this.FileFieldCalculationSymbols.HeaderText = "计算符号";
+            this.FileFieldCalculationSymbols.Name = "FileFieldCalculationSymbols";
+            this.FileFieldCalculationSymbols.ReadOnly = true;
+            // 
+            // FileFieldFixedValue
+            // 
+            this.FileFieldFixedValue.HeaderText = "固定值";
+            this.FileFieldFixedValue.Name = "FileFieldFixedValue";
+            this.FileFieldFixedValue.ReadOnly = true;
+            // 
+            // FileFieldIsSummary
+            // 
+            this.FileFieldIsSummary.HeaderText = "是否汇总";
+            this.FileFieldIsSummary.Name = "FileFieldIsSummary";
+            this.FileFieldIsSummary.ReadOnly = true;
+            // 
+            // FileFieldIsComplementCharacter
+            // 
+            this.FileFieldIsComplementCharacter.HeaderText = "补齐字符";
+            this.FileFieldIsComplementCharacter.Name = "FileFieldIsComplementCharacter";
+            this.FileFieldIsComplementCharacter.ReadOnly = true;
+            // 
+            // FileFieldIsFiledIndex
+            // 
+            this.FileFieldIsFiledIndex.HeaderText = "字段索引";
+            this.FileFieldIsFiledIndex.Name = "FileFieldIsFiledIndex";
+            this.FileFieldIsFiledIndex.ReadOnly = true;
+            // 
+            // FileFieldIsDefaultValue
+            // 
+            this.FileFieldIsDefaultValue.HeaderText = "默认值";
+            this.FileFieldIsDefaultValue.Name = "FileFieldIsDefaultValue";
+            this.FileFieldIsDefaultValue.ReadOnly = true;
+            // 
+            // FileFieldIsAbsoluteValue
+            // 
+            this.FileFieldIsAbsoluteValue.HeaderText = "绝对值";
+            this.FileFieldIsAbsoluteValue.Name = "FileFieldIsAbsoluteValue";
+            this.FileFieldIsAbsoluteValue.ReadOnly = true;
+            // 
+            // FileFieldIsAbsoluteValueOut
+            // 
+            this.FileFieldIsAbsoluteValueOut.HeaderText = "绝对值输出";
+            this.FileFieldIsAbsoluteValueOut.Name = "FileFieldIsAbsoluteValueOut";
+            this.FileFieldIsAbsoluteValueOut.ReadOnly = true;
+            // 
+            // kryptonPanel4
+            // 
+            this.kryptonPanel4.Controls.Add(this.tableLayoutPanel16);
+            this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel4.Location = new System.Drawing.Point(990, 3);
+            this.kryptonPanel4.Name = "kryptonPanel4";
+            this.kryptonPanel4.Size = new System.Drawing.Size(54, 157);
+            this.kryptonPanel4.TabIndex = 2;
+            // 
+            // tableLayoutPanel16
+            // 
+            this.tableLayoutPanel16.ColumnCount = 1;
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel16.Controls.Add(this.btnDelFileField, 0, 2);
+            this.tableLayoutPanel16.Controls.Add(this.btnUpdateFileField, 0, 1);
+            this.tableLayoutPanel16.Controls.Add(this.btnAddFileField, 0, 0);
+            this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
+            this.tableLayoutPanel16.RowCount = 3;
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(54, 157);
+            this.tableLayoutPanel16.TabIndex = 1;
+            // 
+            // btnDelFileField
+            // 
+            this.btnDelFileField.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelFileField.Location = new System.Drawing.Point(1, 105);
+            this.btnDelFileField.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelFileField.Name = "btnDelFileField";
+            this.btnDelFileField.Size = new System.Drawing.Size(52, 51);
+            this.btnDelFileField.TabIndex = 4;
+            this.btnDelFileField.Values.Text = "删除";
+            // 
+            // btnUpdateFileField
+            // 
+            this.btnUpdateFileField.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdateFileField.Location = new System.Drawing.Point(1, 53);
+            this.btnUpdateFileField.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateFileField.Name = "btnUpdateFileField";
+            this.btnUpdateFileField.Size = new System.Drawing.Size(52, 50);
+            this.btnUpdateFileField.TabIndex = 3;
+            this.btnUpdateFileField.Values.Text = "修改";
+            // 
+            // btnAddFileField
+            // 
+            this.btnAddFileField.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddFileField.Location = new System.Drawing.Point(1, 1);
+            this.btnAddFileField.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddFileField.Name = "btnAddFileField";
+            this.btnAddFileField.Size = new System.Drawing.Size(52, 50);
+            this.btnAddFileField.TabIndex = 2;
+            this.btnAddFileField.Values.Text = "增加";
+            // 
+            // FilterConditionsNo
+            // 
+            this.FilterConditionsNo.HeaderText = "序号";
+            this.FilterConditionsNo.Name = "FilterConditionsNo";
+            this.FilterConditionsNo.ReadOnly = true;
+            // 
+            // FilterConditionsColumnName
+            // 
+            this.FilterConditionsColumnName.HeaderText = "列名称";
+            this.FilterConditionsColumnName.Name = "FilterConditionsColumnName";
+            this.FilterConditionsColumnName.ReadOnly = true;
+            // 
+            // FilterConditionsColumnIndex
+            // 
+            this.FilterConditionsColumnIndex.HeaderText = "列索引";
+            this.FilterConditionsColumnIndex.Name = "FilterConditionsColumnIndex";
+            this.FilterConditionsColumnIndex.ReadOnly = true;
+            // 
+            // FilterConditionseConditionvalue
+            // 
+            this.FilterConditionseConditionvalue.HeaderText = "条件值";
+            this.FilterConditionseConditionvalue.Name = "FilterConditionseConditionvalue";
+            this.FilterConditionseConditionvalue.ReadOnly = true;
+            // 
+            // FilterConditionseConditionalSymbol
+            // 
+            this.FilterConditionseConditionalSymbol.HeaderText = "条件符号";
+            this.FilterConditionseConditionalSymbol.Name = "FilterConditionseConditionalSymbol";
+            this.FilterConditionseConditionalSymbol.ReadOnly = true;
+            // 
+            // kryptonPanel5
+            // 
+            this.kryptonPanel5.Controls.Add(this.tableLayoutPanel17);
+            this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel5.Location = new System.Drawing.Point(462, 3);
+            this.kryptonPanel5.Name = "kryptonPanel5";
+            this.kryptonPanel5.Size = new System.Drawing.Size(54, 86);
+            this.kryptonPanel5.TabIndex = 2;
+            // 
+            // tableLayoutPanel17
+            // 
+            this.tableLayoutPanel17.ColumnCount = 1;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.Controls.Add(this.btnDelFilterConditions, 0, 2);
+            this.tableLayoutPanel17.Controls.Add(this.btnUpdateFilterConditions, 0, 1);
+            this.tableLayoutPanel17.Controls.Add(this.btnAddFilterConditions, 0, 0);
+            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 3;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(54, 86);
+            this.tableLayoutPanel17.TabIndex = 1;
+            // 
+            // btnDelFilterConditions
+            // 
+            this.btnDelFilterConditions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelFilterConditions.Location = new System.Drawing.Point(1, 57);
+            this.btnDelFilterConditions.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelFilterConditions.Name = "btnDelFilterConditions";
+            this.btnDelFilterConditions.Size = new System.Drawing.Size(52, 28);
+            this.btnDelFilterConditions.TabIndex = 4;
+            this.btnDelFilterConditions.Values.Text = "删除";
+            // 
+            // btnUpdateFilterConditions
+            // 
+            this.btnUpdateFilterConditions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdateFilterConditions.Location = new System.Drawing.Point(1, 29);
+            this.btnUpdateFilterConditions.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateFilterConditions.Name = "btnUpdateFilterConditions";
+            this.btnUpdateFilterConditions.Size = new System.Drawing.Size(52, 26);
+            this.btnUpdateFilterConditions.TabIndex = 3;
+            this.btnUpdateFilterConditions.Values.Text = "修改";
+            // 
+            // btnAddFilterConditions
+            // 
+            this.btnAddFilterConditions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddFilterConditions.Location = new System.Drawing.Point(1, 1);
+            this.btnAddFilterConditions.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddFilterConditions.Name = "btnAddFilterConditions";
+            this.btnAddFilterConditions.Size = new System.Drawing.Size(52, 26);
+            this.btnAddFilterConditions.TabIndex = 2;
+            this.btnAddFilterConditions.Values.Text = "增加";
+            // 
+            // kryptonPanel6
+            // 
+            this.kryptonPanel6.Controls.Add(this.tableLayoutPanel18);
+            this.kryptonPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel6.Location = new System.Drawing.Point(478, 3);
+            this.kryptonPanel6.Name = "kryptonPanel6";
+            this.kryptonPanel6.Size = new System.Drawing.Size(54, 86);
+            this.kryptonPanel6.TabIndex = 3;
+            // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.ColumnCount = 1;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel18.Controls.Add(this.btnDelDataDictionary, 0, 2);
+            this.tableLayoutPanel18.Controls.Add(this.btnUpdateDataDictionary, 0, 1);
+            this.tableLayoutPanel18.Controls.Add(this.btnAddDataDictionary, 0, 0);
+            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 3;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(54, 86);
+            this.tableLayoutPanel18.TabIndex = 1;
+            // 
+            // btnDelDataDictionary
+            // 
+            this.btnDelDataDictionary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelDataDictionary.Location = new System.Drawing.Point(1, 57);
+            this.btnDelDataDictionary.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelDataDictionary.Name = "btnDelDataDictionary";
+            this.btnDelDataDictionary.Size = new System.Drawing.Size(52, 28);
+            this.btnDelDataDictionary.TabIndex = 4;
+            this.btnDelDataDictionary.Values.Text = "删除";
+            // 
+            // btnUpdateDataDictionary
+            // 
+            this.btnUpdateDataDictionary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdateDataDictionary.Location = new System.Drawing.Point(1, 29);
+            this.btnUpdateDataDictionary.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateDataDictionary.Name = "btnUpdateDataDictionary";
+            this.btnUpdateDataDictionary.Size = new System.Drawing.Size(52, 26);
+            this.btnUpdateDataDictionary.TabIndex = 3;
+            this.btnUpdateDataDictionary.Values.Text = "修改";
+            // 
+            // btnAddDataDictionary
+            // 
+            this.btnAddDataDictionary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddDataDictionary.Location = new System.Drawing.Point(1, 1);
+            this.btnAddDataDictionary.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddDataDictionary.Name = "btnAddDataDictionary";
+            this.btnAddDataDictionary.Size = new System.Drawing.Size(52, 26);
+            this.btnAddDataDictionary.TabIndex = 2;
+            this.btnAddDataDictionary.Values.Text = "增加";
+            // 
+            // DataDictionaryNo
+            // 
+            this.DataDictionaryNo.HeaderText = "序号";
+            this.DataDictionaryNo.Name = "DataDictionaryNo";
+            this.DataDictionaryNo.ReadOnly = true;
+            // 
+            // DataDictionarySourceValue
+            // 
+            this.DataDictionarySourceValue.HeaderText = "原始值";
+            this.DataDictionarySourceValue.Name = "DataDictionarySourceValue";
+            this.DataDictionarySourceValue.ReadOnly = true;
+            // 
+            // DataDictionaryTargetValue
+            // 
+            this.DataDictionaryTargetValue.HeaderText = "目标值";
+            this.DataDictionaryTargetValue.Name = "DataDictionaryTargetValue";
+            this.DataDictionaryTargetValue.ReadOnly = true;
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 1;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.Controls.Add(this.btnDelTargetFile, 0, 2);
+            this.tableLayoutPanel13.Controls.Add(this.btnUpdateTargetFile, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.btnAddTargetFile, 0, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 3;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(54, 129);
+            this.tableLayoutPanel13.TabIndex = 2;
+            // 
+            // btnDelTargetFile
+            // 
+            this.btnDelTargetFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelTargetFile.Location = new System.Drawing.Point(1, 85);
+            this.btnDelTargetFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelTargetFile.Name = "btnDelTargetFile";
+            this.btnDelTargetFile.Size = new System.Drawing.Size(52, 43);
+            this.btnDelTargetFile.TabIndex = 4;
+            this.btnDelTargetFile.Values.Text = "删除";
+            // 
+            // btnUpdateTargetFile
+            // 
+            this.btnUpdateTargetFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdateTargetFile.Location = new System.Drawing.Point(1, 43);
+            this.btnUpdateTargetFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateTargetFile.Name = "btnUpdateTargetFile";
+            this.btnUpdateTargetFile.Size = new System.Drawing.Size(52, 40);
+            this.btnUpdateTargetFile.TabIndex = 3;
+            this.btnUpdateTargetFile.Values.Text = "修改";
+            // 
+            // btnAddTargetFile
+            // 
+            this.btnAddTargetFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddTargetFile.Location = new System.Drawing.Point(1, 1);
+            this.btnAddTargetFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddTargetFile.Name = "btnAddTargetFile";
+            this.btnAddTargetFile.Size = new System.Drawing.Size(52, 40);
+            this.btnAddTargetFile.TabIndex = 2;
+            this.btnAddTargetFile.Values.Text = "增加";
             // 
             // UC_DataSetting
             // 
@@ -1210,6 +1845,24 @@
             this.kGBDict.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kDGVDict)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
+            this.kryptonPanel3.ResumeLayout(false);
+            this.tableLayoutPanel15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).EndInit();
+            this.kryptonPanel4.ResumeLayout(false);
+            this.tableLayoutPanel16.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
+            this.kryptonPanel5.ResumeLayout(false);
+            this.tableLayoutPanel17.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).EndInit();
+            this.kryptonPanel6.ResumeLayout(false);
+            this.tableLayoutPanel18.ResumeLayout(false);
+            this.tableLayoutPanel13.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1236,28 +1889,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVFileList;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVSourceFileList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVKeyWords;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVFileWordsList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVFilter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVDict;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColIndex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColIndexNo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kGBTradeID;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
@@ -1291,5 +1926,82 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox kCombAccount;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kBtnFresh;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TargetFileOrganizationName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileFormat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileTXTEqueDBF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileColumnDirection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsOutTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsOutColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsConnector;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsIsSummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsIsShowFundAccountNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsIEachAccountOutTitle;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileNameFunfAccountNoIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileFrom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileSeparator;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileMergeType;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelSourceFile;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnUpdateSourceFile;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddSourceFile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GenerateFileKeywordNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GenerateFileKeywordName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GenerateFileKeywordIndex;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelGenerateFileKeyword;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnUpdateGenerateFileKeyword;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddGenerateFileKeyword;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelFileField;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnUpdateFileField;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddFileField;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldTXTColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldDBFColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldColumnNameDigit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldColumnValueDigit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldColumnValueAccuracy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldAlignment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldIsOut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldNotNull;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldCalculationSymbols;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldFixedValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldIsSummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldIsComplementCharacter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldIsFiledIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldIsDefaultValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldIsAbsoluteValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldIsAbsoluteValueOut;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelFilterConditions;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnUpdateFilterConditions;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddFilterConditions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionsNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionsColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionsColumnIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionseConditionvalue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionseConditionalSymbol;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelDataDictionary;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnUpdateDataDictionary;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddDataDictionary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataDictionaryNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataDictionarySourceValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataDictionaryTargetValue;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelTargetFile;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnUpdateTargetFile;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddTargetFile;
     }
 }
