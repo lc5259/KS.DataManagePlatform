@@ -47,9 +47,9 @@
             this.kryPanelBottom.Controls.Add(this.kryPanelSave);
             this.kryPanelBottom.Controls.Add(this.kryPanelCancle);
             this.kryPanelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryPanelBottom.Location = new System.Drawing.Point(0, 435);
+            this.kryPanelBottom.Location = new System.Drawing.Point(0, 439);
             this.kryPanelBottom.Name = "kryPanelBottom";
-            this.kryPanelBottom.Size = new System.Drawing.Size(445, 49);
+            this.kryPanelBottom.Size = new System.Drawing.Size(445, 45);
             this.kryPanelBottom.TabIndex = 0;
             // 
             // kryPanelSave
@@ -58,13 +58,13 @@
             this.kryPanelSave.Dock = System.Windows.Forms.DockStyle.Right;
             this.kryPanelSave.Location = new System.Drawing.Point(205, 0);
             this.kryPanelSave.Name = "kryPanelSave";
-            this.kryPanelSave.Size = new System.Drawing.Size(120, 49);
+            this.kryPanelSave.Size = new System.Drawing.Size(120, 45);
             this.kryPanelSave.TabIndex = 1;
             // 
             // kbtnSave
             // 
             this.kbtnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.kbtnSave.Location = new System.Drawing.Point(6, 9);
+            this.kbtnSave.Location = new System.Drawing.Point(9, 7);
             this.kbtnSave.Name = "kbtnSave";
             this.kbtnSave.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
             this.kbtnSave.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
@@ -122,13 +122,13 @@
             this.kryPanelCancle.Dock = System.Windows.Forms.DockStyle.Right;
             this.kryPanelCancle.Location = new System.Drawing.Point(325, 0);
             this.kryPanelCancle.Name = "kryPanelCancle";
-            this.kryPanelCancle.Size = new System.Drawing.Size(120, 49);
+            this.kryPanelCancle.Size = new System.Drawing.Size(120, 45);
             this.kryPanelCancle.TabIndex = 0;
             // 
             // kbtnCancle
             // 
             this.kbtnCancle.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.kbtnCancle.Location = new System.Drawing.Point(6, 9);
+            this.kbtnCancle.Location = new System.Drawing.Point(8, 7);
             this.kbtnCancle.Name = "kbtnCancle";
             this.kbtnCancle.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
             this.kbtnCancle.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
@@ -187,13 +187,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 484);
             this.Controls.Add(this.kryPanelBottom);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSaveBase";
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StateActive.Border.Color1 = System.Drawing.Color.Black;
+            this.StateActive.Border.Color2 = System.Drawing.Color.Black;
+            this.StateActive.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateActive.Border.Width = 2;
+            this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Text = "FrmSaveBase";
             ((System.ComponentModel.ISupportInitialize)(this.kryPanelBottom)).EndInit();
             this.kryPanelBottom.ResumeLayout(false);

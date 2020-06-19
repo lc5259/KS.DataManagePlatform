@@ -78,11 +78,7 @@ namespace KS.Zero.Controls
                 cNode.Name = i.ToString() + i + i + i + i;
                 kryptonTreeView.Nodes.Add(cNode);//节点加到treeview
             }
-            TreeNode param = new TreeNode();
-            param.Text = "参数设置";
-            param.Tag = "KS.DataManage.Client.UC_DataSetting,KS.DataManage.Client";
-            param.Name = "参数设置";
-            kryptonTreeView.Nodes.Add(param);//节点加到treeview
+
         }
         public void AddTreeNode(string  NodeName)
         {

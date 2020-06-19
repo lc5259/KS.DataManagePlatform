@@ -539,12 +539,12 @@ namespace KS.DataManage.Client
             Log.Error("1111");
         }
 
-        private void SetTSMItem_Click(object sender, EventArgs e)
-        {
-            this.MainFormNodeChaned(new NodeInfo("参数1", "1设置", "KS.DataManage.Client.UC_FutureContractInfo,KS.DataManage.Client"));
-        }
-        /////////////////////////////////没什么用////////////////////////////////////////////////////
-        ///
+        //private void SetTSMItem_Click(object sender, EventArgs e)
+        //{
+        //    this.MainFormNodeChaned(new NodeInfo("参数1", "1设置", "KS.DataManage.Client.UC_FutureContractInfo,KS.DataManage.Client"));
+        //}
+        ///////////////////////////////////没什么用////////////////////////////////////////////////////
+        /////
        
 
         private void AddTSMItem_Click(object sender, EventArgs e)
@@ -578,6 +578,18 @@ namespace KS.DataManage.Client
         {
             BatchFileGeneration _batchFileGeneration = new BatchFileGeneration();
             _batchFileGeneration.ShowDialog();
+        }
+
+        private void SetTSMItem_Click(object sender, EventArgs e)
+        {
+
+            TreeNode param = new TreeNode();
+            param.Text = "参数设置";
+            param.Tag = "KS.DataManage.Client.UC_DataSetting,KS.DataManage.Client";
+            param.Name = "参数设置";
+
+            this.MainFormNodeChaned(new NodeInfo(param.Name, param.Text, param.Tag.ToString()));
+
         }
     }
 }
