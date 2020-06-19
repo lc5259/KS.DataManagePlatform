@@ -67,16 +67,16 @@
     <Compile Include="AppStartLogoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmFundOtherSet.cs">
+    <Compile Include="Setting\FrmFundOtherSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmFundOtherSet.Designer.cs">
+    <Compile Include="Setting\FrmFundOtherSet.Designer.cs">
       <DependentUpon>FrmFundOtherSet.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTradeAccountSet.cs">
+    <Compile Include="Setting\FrmTradeAccountSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmTradeAccountSet.Designer.cs">
+    <Compile Include="Setting\FrmTradeAccountSet.Designer.cs">
       <DependentUpon>FrmTradeAccountSet.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_AddGroupConfig.cs">
@@ -122,10 +122,10 @@
     <Compile Include="UC_CstmrInfoMgt.Designer.cs">
       <DependentUpon>UC_CstmrInfoMgt.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_DataSetting.cs">
+    <Compile Include="Setting\UC_DataSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_DataSetting.Designer.cs">
+    <Compile Include="Setting\UC_DataSetting.Designer.cs">
       <DependentUpon>UC_DataSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_FutureContractInfo.cs">
@@ -145,10 +145,10 @@
     <EmbeddedResource Include="AppStartLogoForm.resx">
       <DependentUpon>AppStartLogoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmFundOtherSet.resx">
+    <EmbeddedResource Include="Setting\FrmFundOtherSet.resx">
       <DependentUpon>FrmFundOtherSet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmTradeAccountSet.resx">
+    <EmbeddedResource Include="Setting\FrmTradeAccountSet.resx">
       <DependentUpon>FrmTradeAccountSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AddGroupConfig.resx">
@@ -173,7 +173,7 @@
     <EmbeddedResource Include="UC_CstmrInfoMgt.resx">
       <DependentUpon>UC_CstmrInfoMgt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_DataSetting.resx">
+    <EmbeddedResource Include="Setting\UC_DataSetting.resx">
       <DependentUpon>UC_DataSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_FutureContractInfo.resx">
