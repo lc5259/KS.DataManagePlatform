@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Navigator;
 using KS.DataManage.Utils;
+using System.IO;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace KS.Zero.Controls
 {
@@ -70,13 +73,43 @@ namespace KS.Zero.Controls
         TreeView treeView1;
         private void LoadData(TreeNode tn)
         {
-            for (int i = 0; i < 5; i++)
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    TreeNode cNode = new TreeNode();
+            //    cNode.Text = i.ToString() + i + i + i + i;
+            //    cNode.Tag = "KS.DataManage.Client.UC_GeneFile,KS.DataManage.Client";
+            //    cNode.Name = i.ToString() + i + i + i + i;
+            //    kryptonTreeView.Nodes.Add(cNode);//节点加到treeview
+            //}
+            string ConfigFileName = GloblaData.SysConfigPath;
+            if (!File.Exists(ConfigFileName))
             {
-                TreeNode cNode = new TreeNode();
-                cNode.Text = i.ToString() + i + i + i + i;
-                cNode.Tag = "KS.DataManage.Client.UC_GeneFile,KS.DataManage.Client";
-                cNode.Name = i.ToString() + i + i + i + i;
-                kryptonTreeView.Nodes.Add(cNode);//节点加到treeview
+                throw new Exception(string.Format("分组配置文件 {0} 不存在！", ConfigFileName));
+            }
+            try
+            {
+                XDocument configDocument = XDocument.Load(ConfigFileName);
+
+                //XmlNode node = configDocument.SelectSingleNode("/root/Broker/GROUPDATA");
+                XElement configRoot = configDocument.Root;
+
+                foreach (XElement book in configDocument.Descendants("TABNAME"))
+                {
+                    //XElement title = book.Element("TABNAME");
+
+                    ////textBox1.AppendText(string.Format("{0}:{1}", title.Value, author.Value) + Environment.NewLine);
+
+                    TreeNode cNode = new TreeNode();
+                    cNode.Text = book.Value;
+                    cNode.Tag = "KS.DataManage.Client.UC_GeneFile,KS.DataManage.Client";
+                    cNode.Name = book.Value;
+                    kryptonTreeView.Nodes.Add(cNode);//节点加到treeview
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
             }
 
         }

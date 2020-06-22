@@ -8,17 +8,132 @@ using System.Text;
 using System.Windows.Forms;
 using KS.DataManage.Utils;
 using ComponentFactory.Krypton.Toolkit;
+using System.IO;
+using System.Xml.Linq;
 
 namespace KS.DataManage.Client
 {
     public partial class UC_GeneFile : UserControl
     {
+        string _fileGroup = "";
         public UC_GeneFile()
         {
             InitializeComponent();
             //SetFont();//测试阶段暂时关闭
         }
 
+        public UC_GeneFile(string group)
+        {
+            InitializeComponent();
+            //SetFont();//测试阶段暂时关闭
+
+            //this.SuspendLayout();
+            _fileGroup = group;
+            //LoadConfigFile();
+            //this.ResumeLayout(false);
+        }
+        public void LoadConfigFile(string grp)
+        {
+            this.SuspendLayout();
+            string ConfigFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_UserConfig.xml", grp));
+            if (!File.Exists(ConfigFileName))
+            {
+                throw new Exception(string.Format("配置文件 {0} 不存在！", ConfigFileName));
+            }
+            XDocument configDocument = XDocument.Load(ConfigFileName);
+            try
+            {
+
+                XElement configRoot = configDocument.Root;
+
+                foreach (XElement xNode in configDocument.Descendants("genfile").Nodes())
+                {
+                    XElement s = xNode;
+
+                    if (xNode.Name.LocalName.Equals("srcpath"))
+                    {
+                        this.kryTextBoxOriginPath.Text =  xNode.Value;
+                    }
+                    else if (xNode.Name.LocalName.Equals("cffexpath1"))
+                    {
+                        kryTextBoxCffexOutPath1.Text = xNode.Value;
+                    }
+                    else if (xNode.Name.LocalName.Equals("cffexpath2"))
+                    {
+                        kryTextBoxCffexOutPath2.Text = xNode.Value;
+                    }
+                    else if (xNode.Name.LocalName.Equals("cfmmcpath1"))
+                    {
+                        kryTextBoxMonitorCenterOutPath1.Text = xNode.Value;
+                    }
+                    else if (xNode.Name.LocalName.Equals("cfmmcpath2"))
+                    {
+                        kryTextBoxMonitorCenterOutPath2.Text = xNode.Value;
+                    }
+                    else if (xNode.Name.LocalName.Equals("filetxt"))
+                    {
+
+                    }
+                    else if (xNode.Name.LocalName.Equals("filedbf"))
+                    {
+
+                    }
+                    else if (xNode.Name.LocalName.Equals("filehb"))
+                    {
+
+                    }
+                    else if (xNode.Name.LocalName.Equals("outPathType"))
+                    {
+
+                    }
+                    else if (xNode.Name.LocalName.Equals("dirPathType"))
+                    {
+
+                    }
+                    else if (xNode.Name.LocalName.Equals("dirPath"))
+                    {
+
+                    }
+                    else if (xNode.Name.LocalName.Equals("AccId"))
+                    {
+                        foreach (XText item in xNode.Descendants("CFFEX").Nodes())
+                        {
+                            kryCLBSingleCffexAccount.Items.Add(item.Value);
+                        }
+                        kryLbSingleCffexAccountCount.Text = "(" + kryCLBSingleCffexAccount.CheckedItems.Count + "/" + kryCLBSingleCffexAccount.Items.Count.ToString() + ")";
+
+                        foreach (XText item in xNode.Descendants("CFMMC").Nodes())
+                        {
+                            kryCLBSingleMotorCenterAccount.Items.Add(item.Value);
+                        }
+                        kryLbSingleMotorCenterAccountCount.Text = "(" + kryCLBSingleMotorCenterAccount.CheckedItems.Count + "/" + kryCLBSingleMotorCenterAccount.Items.Count.ToString() + ")";
+
+                        foreach (XText item in xNode.Descendants("CFFEXMERGE").Nodes())
+                        {
+                            kryCLBMoreCffexAccount.Items.Add(item.Value);
+                        }
+                        kryLbMoreCffexAccountCount.Text = "(" + kryCLBMoreCffexAccount.CheckedItems.Count + "/" + kryCLBMoreCffexAccount.Items.Count.ToString() + ")";
+
+                        foreach (XText item in xNode.Descendants("CFMMCMERGE").Nodes())
+                        {
+                            kryCLBMoreMotorCenterAccount.Items.Add(item.Value);
+                        }
+                        kryLbMoreMotorCenterAccountCount.Text = "(" + kryCLBMoreMotorCenterAccount.CheckedItems.Count + "/" + kryCLBMoreMotorCenterAccount.Items.Count.ToString() + ")";
+
+                    }
+                    else if (xNode.Name.LocalName.Equals("MailConfig"))
+                    {
+
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            this.ResumeLayout(false);
+        }
 
         bool _createVisible = true;
         bool IsSingleCffexCheckAll = true;
@@ -30,170 +145,6 @@ namespace KS.DataManage.Client
         bool IsMoreCffexCheck = true;
         bool IsMoreMotorCenterAll = true;
         bool IsMoreMotorCenter = true;
-
-        [DefaultValue((bool)true), Description("新增按钮是否可见")]
-        public virtual bool CreateVisible
-        {
-            get { return _createVisible; }
-            set
-            {
-                _createVisible = value;
-            }
-        }
-
-        bool _updateVisible = true;
-        [DefaultValue((bool)true), Description("修改按钮是否可见")]
-        public virtual bool UpdateVisible
-        {
-            get { return _updateVisible; }
-            set
-            {
-                _updateVisible = value;
-            }
-        }
-
-        bool _copyVisible = true;
-        [DefaultValue((bool)true), Description("复制按钮是否可见")]
-        public virtual bool CopyVisible
-        {
-            get { return _copyVisible; }
-            set
-            {
-                _copyVisible = value;
-            }
-        }
-
-        bool _deleteVisible = true;
-        [DefaultValue((bool)true), Description("删除按钮是否可见")]
-        public virtual bool DeleteVisible
-        {
-            get { return _deleteVisible; }
-            set
-            {
-                _deleteVisible = value;
-            }
-        }
-
-        bool _outpuVisible = true;
-        [DefaultValue((bool)true), Description("导出按钮是否可见")]
-        public virtual bool OutputVisible
-        {
-            get { return _outpuVisible; }
-            set
-            {
-                _outpuVisible = value;
-            }
-        }
-
-        bool _label1Visible = true;
-        [DefaultValue((bool)true), Description("Label1按钮是否可见")]
-        public virtual bool Label1Visible
-        {
-            get { return _label1Visible; }
-            set
-            {
-                _label1Visible = value;
-            }
-        }
-
-        bool _label2Visible = true;
-        [DefaultValue((bool)true), Description("Label2按钮是否可见")]
-        public virtual bool Label2Visible
-        {
-            get { return _label2Visible; }
-            set
-            {
-                _label2Visible = value;
-            }
-        }
-
-        bool _label3Visible = true;
-        [DefaultValue((bool)true), Description("Label3按钮是否可见")]
-        public virtual bool Label3Visible
-        {
-            get { return _label3Visible; }
-            set
-            {
-                _label3Visible = value;
-            }
-        }
-
-        bool _label4Visible = true;
-        [DefaultValue((bool)true), Description("Label4按钮是否可见")]
-        public virtual bool Label4Visible
-        {
-            get { return _label4Visible; }
-            set
-            {
-                _label4Visible = value;
-            }
-        }
-
-        bool _combBox1Visible = true;
-        [DefaultValue((bool)true), Description("comb1是否可见")]
-        public virtual bool Comb1Visible
-        {
-            get { return _combBox1Visible; }
-            set
-            {
-                _combBox1Visible = value;
-            }
-        }
-
-        bool _combBox2Visible = true;
-        [DefaultValue((bool)true), Description("comb2是否可见")]
-        public virtual bool Comb2Visible
-        {
-            get { return _combBox2Visible; }
-            set
-            {
-                _combBox2Visible = value;
-            }
-        }
-
-        bool _combBox3Visible = true;
-        [DefaultValue((bool)true), Description("comb3是否可见")]
-        public virtual bool Comb3Visible
-        {
-            get { return _combBox3Visible; }
-            set
-            {
-                _combBox3Visible = value;
-            }
-        }
-
-        bool _combBox4Visible = true;
-        [DefaultValue((bool)true), Description("comb4是否可见")]
-        public virtual bool Comb4Visible
-        {
-            get { return _combBox4Visible; }
-            set
-            {
-                _combBox4Visible = value;
-            }
-        }
-
-        bool _kdgvVisible = true;
-        [DefaultValue((bool)true), Description("Dgv是否可见")]
-        public virtual bool KryptonDGVVisible
-        {
-            get { return _kdgvVisible; }
-            set
-            {
-                _kdgvVisible = value;
-            }
-        }
-
-        bool _inputVisible = false;
-        [DefaultValue((bool)true), Description("导入按钮是否可见")]
-        public virtual bool InputVisible
-        {
-            get { return _inputVisible; }
-            set
-            {
-                _inputVisible = value;
-            }
-        }
 
         void SetFont()
         {
@@ -209,6 +160,18 @@ namespace KS.DataManage.Client
         private void UCShowData_Load(object sender, EventArgs e)
         {
             SetFont();
+            //if (this.InvokeRequired)
+            //{
+            //    this.Invoke(new Action(()=> {
+
+            //        LoadConfigFile();
+
+            //    }));
+            //}
+            //else
+            //{
+            //    LoadConfigFile();
+            //}
         }
 
         private void kryBtOpenOriginPathFile_Click(object sender, EventArgs e)
@@ -310,12 +273,12 @@ namespace KS.DataManage.Client
                 kryCLBSingleMotorCenterAccount.Items.Add(kryTBSingleFundAcconutNo.Text.ToString());
                 kryLbSingleMotorCenterAccountCount.Text = "(" + kryCLBSingleMotorCenterAccount.CheckedItems.Count + "/" + kryCLBSingleMotorCenterAccount.Items.Count.ToString() + ")";
             }
-            
+
         }
 
         private void kryBtSingleAccountAll_Click(object sender, EventArgs e)
         {
-            kryBtSingleAccountCffex_Click(null,null);
+            kryBtSingleAccountCffex_Click(null, null);
             krypBtSingleAccountMotorCenter_Click(null, null);
         }
 
@@ -340,7 +303,7 @@ namespace KS.DataManage.Client
                     }
                 }
             }
-            kryLbSingleMotorCenterAccountCount.Text = "("+ kryCLBSingleMotorCenterAccount.CheckedItems.Count + "/" + kryCLBSingleMotorCenterAccount.Items.Count.ToString() + ")";
+            kryLbSingleMotorCenterAccountCount.Text = "(" + kryCLBSingleMotorCenterAccount.CheckedItems.Count + "/" + kryCLBSingleMotorCenterAccount.Items.Count.ToString() + ")";
             IsSingleMotorCenter = true;
         }
 
@@ -359,12 +322,12 @@ namespace KS.DataManage.Client
                     {
                         this.kryCBSingleMotorCenterAccount.Checked = false;
                         IsSingleMotorCenterAll = true;
-                        kryLbSingleMotorCenterAccountCount.Text = "("+ kryCLBSingleMotorCenterAccount.CheckedItems.Count + "/" + kryCLBSingleMotorCenterAccount.Items.Count.ToString() +")";
+                        kryLbSingleMotorCenterAccountCount.Text = "(" + kryCLBSingleMotorCenterAccount.CheckedItems.Count + "/" + kryCLBSingleMotorCenterAccount.Items.Count.ToString() + ")";
                         return;
                     }
                 }
             }
-            kryLbSingleMotorCenterAccountCount.Text = "(" +kryCLBSingleMotorCenterAccount.CheckedItems.Count + "/" + kryCLBSingleMotorCenterAccount.Items.Count.ToString() + ")";
+            kryLbSingleMotorCenterAccountCount.Text = "(" + kryCLBSingleMotorCenterAccount.CheckedItems.Count + "/" + kryCLBSingleMotorCenterAccount.Items.Count.ToString() + ")";
             IsSingleMotorCenterAll = true;
         }
 
@@ -388,16 +351,16 @@ namespace KS.DataManage.Client
 
         private void kryBtSingleToMotorCenter_Click(object sender, EventArgs e)
         {
-            if ((kryCLBSingleCffexAccount.SelectedItem != null )&&   (!kryCLBSingleMotorCenterAccount.Items.Contains(kryCLBSingleCffexAccount.SelectedItem)))
+            if ((kryCLBSingleCffexAccount.SelectedItem != null) && (!kryCLBSingleMotorCenterAccount.Items.Contains(kryCLBSingleCffexAccount.SelectedItem)))
             {
                 kryCLBSingleMotorCenterAccount.Items.Add(kryCLBSingleCffexAccount.SelectedItem);
             }
-           
+
         }
 
         private void kryBtSingleToCffex_Click(object sender, EventArgs e)
         {
-            if (  (kryCLBSingleMotorCenterAccount.SelectedItem != null) && (!kryCLBSingleCffexAccount.Items.Contains(kryCLBSingleMotorCenterAccount.SelectedItem)))
+            if ((kryCLBSingleMotorCenterAccount.SelectedItem != null) && (!kryCLBSingleCffexAccount.Items.Contains(kryCLBSingleMotorCenterAccount.SelectedItem)))
             {
                 kryCLBSingleCffexAccount.Items.Add(kryCLBSingleMotorCenterAccount.SelectedItem);
             }
@@ -458,7 +421,7 @@ namespace KS.DataManage.Client
 
         private void kryBtMoreAccountAll_Click(object sender, EventArgs e)
         {
-            kryBtMoreAccountCffex_Click(null,null);
+            kryBtMoreAccountCffex_Click(null, null);
             krypBtMoreAccountMotorCenter_Click(null, null);
         }
 
@@ -562,7 +525,7 @@ namespace KS.DataManage.Client
 
         private void kryBtMoreToMotorCenter_Click(object sender, EventArgs e)
         {
-            if (  (kryCLBMoreCffexAccount.SelectedItem != null) &&(!kryCLBMoreMotorCenterAccount.Items.Contains(kryCLBMoreCffexAccount.SelectedItem)))
+            if ((kryCLBMoreCffexAccount.SelectedItem != null) && (!kryCLBMoreMotorCenterAccount.Items.Contains(kryCLBMoreCffexAccount.SelectedItem)))
             {
                 kryCLBMoreMotorCenterAccount.Items.Add(kryCLBMoreCffexAccount.SelectedItem);
             }
@@ -595,7 +558,7 @@ namespace KS.DataManage.Client
 
         private void kryBtMoreToCffex_Click(object sender, EventArgs e)
         {
-            if ( (kryCLBMoreMotorCenterAccount.SelectedItem != null) && (!kryCLBMoreCffexAccount.Items.Contains(kryCLBMoreMotorCenterAccount.SelectedItem)))
+            if ((kryCLBMoreMotorCenterAccount.SelectedItem != null) && (!kryCLBMoreCffexAccount.Items.Contains(kryCLBMoreMotorCenterAccount.SelectedItem)))
             {
                 kryCLBMoreCffexAccount.Items.Add(kryCLBMoreMotorCenterAccount.SelectedItem);
             }

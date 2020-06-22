@@ -336,19 +336,19 @@ namespace KS.DataManage.Client
                 MessageBox.Show(string.Format("菜单{0}尚未配置!", ninfo.NodeText), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return null;
             }
-            UserControl uc = new UserControl();
+            UC_GeneFile uc = new UC_GeneFile(ninfo.NodeName);
             KryptonPage pageTmp = new KryptonPage();
             if (true)
             {
-                uc = System.Activator.CreateInstance(Type.GetType(ninfo.NodeTag)) as UserControl;
+                uc = System.Activator.CreateInstance(Type.GetType(ninfo.NodeTag)) as UC_GeneFile;
             }
             pageTmp.SuspendLayout();
             pageTmp.ClearFlags(KryptonPageFlags.DockingAllowAutoHidden | KryptonPageFlags.DockingAllowDocked);
             pageTmp.TextTitle = ninfo.NodeText;
-            pageTmp.Text = ninfo.NodeText;
+            pageTmp.Text = "分组 " + ninfo.NodeText;
             pageTmp.TextDescription = ninfo.NodeText;
             pageTmp.UniqueName = ninfo.NodeName;
-
+            uc.LoadConfigFile(ninfo.NodeName);
             pageTmp.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
             pageTmp.ResumeLayout(false);
@@ -366,7 +366,7 @@ namespace KS.DataManage.Client
             kryptonDockingManager.ManageFloating(this);
 
             // Add docking pages
-            KryptonPage kp = NewMenu("文 件");
+            KryptonPage kp = NewMenu("分 组 ");
             kp.Width = 50;
             kp.UniqueName = "left";
             KryptonPage[] kpArr = new KryptonPage[] { kp };
@@ -384,7 +384,7 @@ namespace KS.DataManage.Client
         {
             // Create new page with title and image
             KryptonPage p = new KryptonPage();
-            p.Text = s + " 生 成 ";
+            p.Text = s + "信 息 ";
             p.TextTitle = p.Text;
             p.TextDescription = p.Text;
             p.UniqueName = p.Text;
