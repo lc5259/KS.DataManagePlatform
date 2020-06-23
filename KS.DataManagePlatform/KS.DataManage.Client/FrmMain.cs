@@ -20,11 +20,11 @@ namespace KS.DataManage.Client
             //Screen currentScreen = Screen.FromControl(this);
             ////记得加上这句  
             //this.MaximumSize = new Size(currentScreen.WorkingArea.Width, currentScreen.WorkingArea.Height);
-            
+
             //this.MaximizedBounds = Screen.PrimaryScreen.WorkingArea;
-           
+
             InitializeComponent();
-           
+
 
         }
         private delegate void BeforeLoad();
@@ -336,19 +336,26 @@ namespace KS.DataManage.Client
                 MessageBox.Show(string.Format("菜单{0}尚未配置!", ninfo.NodeText), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return null;
             }
-            UC_GeneFile uc = new UC_GeneFile(ninfo.NodeName);
+
+
+            UserControl uc = new UserControl();
             KryptonPage pageTmp = new KryptonPage();
-            if (true)
-            {
-                uc = System.Activator.CreateInstance(Type.GetType(ninfo.NodeTag)) as UC_GeneFile;
-            }
+            uc = System.Activator.CreateInstance(Type.GetType(ninfo.NodeTag)) as UserControl;
+
             pageTmp.SuspendLayout();
             pageTmp.ClearFlags(KryptonPageFlags.DockingAllowAutoHidden | KryptonPageFlags.DockingAllowDocked);
             pageTmp.TextTitle = ninfo.NodeText;
             pageTmp.Text = "分组 " + ninfo.NodeText;
             pageTmp.TextDescription = ninfo.NodeText;
             pageTmp.UniqueName = ninfo.NodeName;
-            uc.LoadConfigFile(ninfo.NodeName);
+            if (!ninfo.NodeName.Equals("参数设置"))
+            {
+                ((UC_GeneFile)uc).LoadConfigFile(ninfo.NodeName);
+            }
+            else
+            {
+                ((UC_DataSetting)uc).LoadConfigFile(ninfo.NodeName);
+            }
             pageTmp.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
             pageTmp.ResumeLayout(false);
@@ -545,7 +552,7 @@ namespace KS.DataManage.Client
         //}
         ///////////////////////////////////没什么用////////////////////////////////////////////////////
         /////
-       
+
 
         private void AddTSMItem_Click(object sender, EventArgs e)
         {
@@ -553,7 +560,7 @@ namespace KS.DataManage.Client
             addGroupConfig.ShowDialog();
         }
 
-        public static void AddGroup(string  GroupName)
+        public static void AddGroup(string GroupName)
         {
             ucMenu.AddTreeNode(GroupName);
         }
@@ -569,7 +576,7 @@ namespace KS.DataManage.Client
             foreach (TreeNode item in ucMenu.kryptonTreeView.Nodes)
             {
                 //delGroupConfig.kryCheckedListBox.Items.AddRange(new object[] { item.Name.ToString() });
-               delGroupConfig.kryCheckedListBox.Items.Add(new KryptonListItem(item.Name.ToString()));
+                delGroupConfig.kryCheckedListBox.Items.Add(new KryptonListItem(item.Name.ToString()));
             }
             delGroupConfig.ShowDialog();
         }

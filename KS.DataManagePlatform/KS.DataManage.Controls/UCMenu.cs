@@ -81,7 +81,7 @@ namespace KS.Zero.Controls
             //    cNode.Name = i.ToString() + i + i + i + i;
             //    kryptonTreeView.Nodes.Add(cNode);//节点加到treeview
             //}
-            string ConfigFileName = GloblaData.SysConfigPath;
+            string ConfigFileName = GlobalData.SysConfigPath;
             if (!File.Exists(ConfigFileName))
             {
                 throw new Exception(string.Format("分组配置文件 {0} 不存在！", ConfigFileName));
@@ -92,18 +92,19 @@ namespace KS.Zero.Controls
 
                 //XmlNode node = configDocument.SelectSingleNode("/root/Broker/GROUPDATA");
                 XElement configRoot = configDocument.Root;
-
-                foreach (XElement book in configDocument.Descendants("TABNAME"))
+                GlobalData.AccountGroup.Clear();
+                foreach (XElement accountinfo in configDocument.Descendants("TABNAME"))
                 {
                     //XElement title = book.Element("TABNAME");
 
                     ////textBox1.AppendText(string.Format("{0}:{1}", title.Value, author.Value) + Environment.NewLine);
 
                     TreeNode cNode = new TreeNode();
-                    cNode.Text = book.Value;
+                    cNode.Text = accountinfo.Value;
                     cNode.Tag = "KS.DataManage.Client.UC_GeneFile,KS.DataManage.Client";
-                    cNode.Name = book.Value;
+                    cNode.Name = accountinfo.Value;
                     kryptonTreeView.Nodes.Add(cNode);//节点加到treeview
+                    GlobalData.AccountGroup.Add(accountinfo.Value);
                 }
             }
             catch (Exception ex)

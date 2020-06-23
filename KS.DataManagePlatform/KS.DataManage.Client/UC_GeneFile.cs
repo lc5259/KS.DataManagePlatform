@@ -28,12 +28,13 @@ namespace KS.DataManage.Client
             //SetFont();//测试阶段暂时关闭
 
             //this.SuspendLayout();
-            _fileGroup = group;
+            
             //LoadConfigFile();
             //this.ResumeLayout(false);
         }
         public void LoadConfigFile(string grp)
         {
+            _fileGroup = grp;
             this.SuspendLayout();
             string ConfigFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_UserConfig.xml", grp));
             if (!File.Exists(ConfigFileName))

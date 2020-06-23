@@ -7,13 +7,26 @@ using System.Threading.Tasks;
 
 namespace KS.DataManage.Utils
 {
-    public static class GloblaData
+    public static class GlobalData
     {
         public static string SysConfigPath
         {
             get
             {
                 return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Config\SysConfig.xml"); 
+            }
+        }
+
+        private static List<string> _AccountGroup = new List<string>();
+        public static List<string> AccountGroup
+        {
+            get
+            {
+                return _AccountGroup;
+            }
+            set
+            {
+                _AccountGroup = value;
             }
         }
     }

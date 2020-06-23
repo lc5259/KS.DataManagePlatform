@@ -590,6 +590,7 @@
             this.kCombAccount.Size = new System.Drawing.Size(104, 21);
             this.kCombAccount.TabIndex = 3;
             this.kCombAccount.Text = "-请选择-";
+            this.kCombAccount.SelectedIndexChanged += new System.EventHandler(this.kCombAccount_SelectedIndexChanged);
             // 
             // kGBTradeID
             // 
