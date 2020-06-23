@@ -381,90 +381,91 @@
             this.TargetFileOrganizationName.ReadOnly = true;
             this.TargetFileOrganizationName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.TargetFileOrganizationName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.TargetFileOrganizationName.Width = 67;
+            this.TargetFileOrganizationName.Width = 70;
             // 
             // TargetFileNo
             // 
             this.TargetFileNo.HeaderText = "序号";
             this.TargetFileNo.Name = "TargetFileNo";
             this.TargetFileNo.ReadOnly = true;
-            this.TargetFileNo.Width = 56;
+            this.TargetFileNo.Width = 58;
             // 
             // TargetFileTitle
             // 
             this.TargetFileTitle.HeaderText = "文件标题";
             this.TargetFileTitle.Name = "TargetFileTitle";
             this.TargetFileTitle.ReadOnly = true;
-            this.TargetFileTitle.Width = 67;
+            this.TargetFileTitle.Width = 70;
             // 
             // TargetFileName
             // 
             this.TargetFileName.HeaderText = "文件名称";
             this.TargetFileName.Name = "TargetFileName";
             this.TargetFileName.ReadOnly = true;
-            this.TargetFileName.Width = 67;
+            this.TargetFileName.Width = 70;
             // 
             // TargetFileFormat
             // 
             this.TargetFileFormat.HeaderText = "文件格式";
             this.TargetFileFormat.Name = "TargetFileFormat";
             this.TargetFileFormat.ReadOnly = true;
-            this.TargetFileFormat.Width = 67;
+            this.TargetFileFormat.Width = 70;
             // 
             // TargetFileTXTEqueDBF
             // 
             this.TargetFileTXTEqueDBF.HeaderText = "TXT和DBF列相同";
             this.TargetFileTXTEqueDBF.Name = "TargetFileTXTEqueDBF";
             this.TargetFileTXTEqueDBF.ReadOnly = true;
-            this.TargetFileTXTEqueDBF.Width = 94;
+            this.TargetFileTXTEqueDBF.Width = 96;
             // 
             // TargetFileColumnDirection
             // 
             this.TargetFileColumnDirection.HeaderText = "列方向";
             this.TargetFileColumnDirection.Name = "TargetFileColumnDirection";
             this.TargetFileColumnDirection.ReadOnly = true;
-            this.TargetFileColumnDirection.Width = 67;
+            this.TargetFileColumnDirection.Width = 70;
             // 
             // TargetFileIsOutTitle
             // 
             this.TargetFileIsOutTitle.HeaderText = "输出标题";
             this.TargetFileIsOutTitle.Name = "TargetFileIsOutTitle";
             this.TargetFileIsOutTitle.ReadOnly = true;
-            this.TargetFileIsOutTitle.Width = 67;
+            this.TargetFileIsOutTitle.Width = 70;
             // 
             // TargetFileIsOutColumnName
             // 
             this.TargetFileIsOutColumnName.HeaderText = "输出列名";
             this.TargetFileIsOutColumnName.Name = "TargetFileIsOutColumnName";
             this.TargetFileIsOutColumnName.ReadOnly = true;
-            this.TargetFileIsOutColumnName.Width = 67;
+            this.TargetFileIsOutColumnName.Width = 70;
             // 
             // TargetFileIsConnector
             // 
             this.TargetFileIsConnector.HeaderText = "连接符";
             this.TargetFileIsConnector.Name = "TargetFileIsConnector";
             this.TargetFileIsConnector.ReadOnly = true;
-            this.TargetFileIsConnector.Width = 67;
+            this.TargetFileIsConnector.Width = 70;
             // 
             // TargetFileIsIsSummary
             // 
             this.TargetFileIsIsSummary.HeaderText = "是否汇总";
             this.TargetFileIsIsSummary.Name = "TargetFileIsIsSummary";
             this.TargetFileIsIsSummary.ReadOnly = true;
-            this.TargetFileIsIsSummary.Width = 67;
+            this.TargetFileIsIsSummary.Width = 70;
             // 
             // TargetFileIsIsShowFundAccountNo
             // 
             this.TargetFileIsIsShowFundAccountNo.HeaderText = "首列是否显示资金账号";
             this.TargetFileIsIsShowFundAccountNo.Name = "TargetFileIsIsShowFundAccountNo";
             this.TargetFileIsIsShowFundAccountNo.ReadOnly = true;
+            this.TargetFileIsIsShowFundAccountNo.Width = 105;
             // 
             // TargetFileIsIEachAccountOutTitle
             // 
             this.TargetFileIsIEachAccountOutTitle.HeaderText = "各账号输出标题";
             this.TargetFileIsIEachAccountOutTitle.Name = "TargetFileIsIEachAccountOutTitle";
             this.TargetFileIsIEachAccountOutTitle.ReadOnly = true;
-            this.TargetFileIsIEachAccountOutTitle.Width = 89;
+            this.TargetFileIsIEachAccountOutTitle.Width = 93;
             // 
             // kryptonPanel1
             // 
@@ -511,6 +512,7 @@
             this.btnUpdateTargetFile.Size = new System.Drawing.Size(52, 41);
             this.btnUpdateTargetFile.TabIndex = 3;
             this.btnUpdateTargetFile.Values.Text = "修改";
+            this.btnUpdateTargetFile.Click += new System.EventHandler(this.btnUpdateTargetFile_Click);
             // 
             // btnAddTargetFile
             // 
@@ -521,6 +523,7 @@
             this.btnAddTargetFile.Size = new System.Drawing.Size(52, 41);
             this.btnAddTargetFile.TabIndex = 2;
             this.btnAddTargetFile.Values.Text = "增加";
+            this.btnAddTargetFile.Click += new System.EventHandler(this.btnAddTargetFile_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -789,7 +792,7 @@
             // 
             this.kRBtnDate.Location = new System.Drawing.Point(3, 29);
             this.kRBtnDate.Name = "kRBtnDate";
-            this.kRBtnDate.Size = new System.Drawing.Size(60, 20);
+            this.kRBtnDate.Size = new System.Drawing.Size(61, 20);
             this.kRBtnDate.StateCommon.LongText.Color1 = System.Drawing.Color.Black;
             this.kRBtnDate.StateCommon.LongText.Color2 = System.Drawing.Color.Black;
             this.kRBtnDate.TabIndex = 3;
@@ -800,43 +803,43 @@
             this.kRBtnAccount.Checked = true;
             this.kRBtnAccount.Location = new System.Drawing.Point(3, 56);
             this.kRBtnAccount.Name = "kRBtnAccount";
-            this.kRBtnAccount.Size = new System.Drawing.Size(60, 20);
+            this.kRBtnAccount.Size = new System.Drawing.Size(61, 20);
             this.kRBtnAccount.TabIndex = 4;
             this.kRBtnAccount.Values.Text = "按账号";
             // 
             // kryptonLabel1
             // 
             this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel1.Location = new System.Drawing.Point(95, 29);
+            this.kryptonLabel1.Location = new System.Drawing.Point(91, 29);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(117, 21);
+            this.kryptonLabel1.Size = new System.Drawing.Size(121, 21);
             this.kryptonLabel1.TabIndex = 5;
             this.kryptonLabel1.Values.Text = "中金所输出路径1：";
             // 
             // kryptonLabel2
             // 
             this.kryptonLabel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel2.Location = new System.Drawing.Point(379, 29);
+            this.kryptonLabel2.Location = new System.Drawing.Point(375, 29);
             this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(117, 21);
+            this.kryptonLabel2.Size = new System.Drawing.Size(121, 21);
             this.kryptonLabel2.TabIndex = 6;
             this.kryptonLabel2.Values.Text = "中金所输出路径2：";
             // 
             // kryptonLabel3
             // 
             this.kryptonLabel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel3.Location = new System.Drawing.Point(83, 56);
+            this.kryptonLabel3.Location = new System.Drawing.Point(78, 56);
             this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(129, 21);
+            this.kryptonLabel3.Size = new System.Drawing.Size(134, 21);
             this.kryptonLabel3.TabIndex = 7;
             this.kryptonLabel3.Values.Text = "监控中心输出路径1：";
             // 
             // kryptonLabel4
             // 
             this.kryptonLabel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel4.Location = new System.Drawing.Point(367, 56);
+            this.kryptonLabel4.Location = new System.Drawing.Point(362, 56);
             this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(129, 21);
+            this.kryptonLabel4.Size = new System.Drawing.Size(134, 21);
             this.kryptonLabel4.TabIndex = 8;
             this.kryptonLabel4.Values.Text = "监控中心输出路径2：";
             // 
@@ -885,7 +888,7 @@
             this.kTxtZJPath1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kTxtZJPath1.Location = new System.Drawing.Point(218, 29);
             this.kTxtZJPath1.Name = "kTxtZJPath1";
-            this.kTxtZJPath1.Size = new System.Drawing.Size(108, 20);
+            this.kTxtZJPath1.Size = new System.Drawing.Size(108, 23);
             this.kTxtZJPath1.TabIndex = 13;
             this.kTxtZJPath1.Text = "-";
             // 
@@ -894,7 +897,7 @@
             this.kTxtJKZXPath1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kTxtJKZXPath1.Location = new System.Drawing.Point(218, 56);
             this.kTxtJKZXPath1.Name = "kTxtJKZXPath1";
-            this.kTxtJKZXPath1.Size = new System.Drawing.Size(108, 20);
+            this.kTxtJKZXPath1.Size = new System.Drawing.Size(108, 23);
             this.kTxtJKZXPath1.TabIndex = 14;
             this.kTxtJKZXPath1.Text = "-";
             // 
@@ -903,7 +906,7 @@
             this.kTxtZJPath2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kTxtZJPath2.Location = new System.Drawing.Point(502, 29);
             this.kTxtZJPath2.Name = "kTxtZJPath2";
-            this.kTxtZJPath2.Size = new System.Drawing.Size(108, 20);
+            this.kTxtZJPath2.Size = new System.Drawing.Size(108, 23);
             this.kTxtZJPath2.TabIndex = 15;
             this.kTxtZJPath2.Text = "-";
             // 
@@ -912,7 +915,7 @@
             this.kTxtJKZXPath2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kTxtJKZXPath2.Location = new System.Drawing.Point(502, 56);
             this.kTxtJKZXPath2.Name = "kTxtJKZXPath2";
-            this.kTxtJKZXPath2.Size = new System.Drawing.Size(108, 20);
+            this.kTxtJKZXPath2.Size = new System.Drawing.Size(108, 23);
             this.kTxtJKZXPath2.TabIndex = 16;
             this.kTxtJKZXPath2.Text = "-";
             // 
@@ -1109,6 +1112,7 @@
             this.btnAddSourceFile.Size = new System.Drawing.Size(52, 33);
             this.btnAddSourceFile.TabIndex = 2;
             this.btnAddSourceFile.Values.Text = "增加";
+            this.btnAddSourceFile.Click += new System.EventHandler(this.btnAddSourceFile_Click);
             // 
             // kGBKeyWords
             // 
@@ -1229,6 +1233,7 @@
             this.btnAddGenerateFileKeyword.Size = new System.Drawing.Size(52, 33);
             this.btnAddGenerateFileKeyword.TabIndex = 2;
             this.btnAddGenerateFileKeyword.Values.Text = "增加";
+            this.btnAddGenerateFileKeyword.Click += new System.EventHandler(this.btnAddGenerateFileKeyword_Click);
             // 
             // kSplitContainerL3
             // 

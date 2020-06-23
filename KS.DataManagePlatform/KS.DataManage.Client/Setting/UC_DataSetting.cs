@@ -45,5 +45,29 @@ namespace KS.DataManage.Client
             FrmFundOtherSet ffos = new FrmFundOtherSet();
             ffos.ShowDialog();
         }
+
+        private void btnAddTargetFile_Click(object sender, EventArgs e)
+        {
+            FrmTargetFileSet frmTargetFileSet = new FrmTargetFileSet();
+            frmTargetFileSet.ShowDialog();
+        }
+
+        private void btnUpdateTargetFile_Click(object sender, EventArgs e)
+        {
+            FrmTargetFileSet frmTargetFileSet = new FrmTargetFileSet();
+            frmTargetFileSet.ShowDialog();
+        }
+
+        private void btnAddSourceFile_Click(object sender, EventArgs e)
+        {
+            FrmSourceFileSet frmSourceFileSet = new FrmSourceFileSet();
+            frmSourceFileSet.ShowDialog();
+        }
+
+        private void btnAddGenerateFileKeyword_Click(object sender, EventArgs e)
+        {
+            FrmGenerateFileKeywordSet frmGenerateFileKeywordSet = new FrmGenerateFileKeywordSet();
+            frmGenerateFileKeywordSet.ShowDialog();
+        }
     }
 }

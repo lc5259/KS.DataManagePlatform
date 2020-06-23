@@ -73,6 +73,24 @@
     <Compile Include="Setting\FrmFundOtherSet.Designer.cs">
       <DependentUpon>FrmFundOtherSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Setting\FrmSourceFileSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmSourceFileSet.Designer.cs">
+      <DependentUpon>FrmSourceFileSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\FrmGenerateFileKeywordSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmGenerateFileKeywordSet.Designer.cs">
+      <DependentUpon>FrmGenerateFileKeywordSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\FrmTargetFileSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmTargetFileSet.Designer.cs">
+      <DependentUpon>FrmTargetFileSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setting\FrmTradeAccountSet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +165,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\FrmFundOtherSet.resx">
       <DependentUpon>FrmFundOtherSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\FrmSourceFileSet.resx">
+      <DependentUpon>FrmSourceFileSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\FrmGenerateFileKeywordSet.resx">
+      <DependentUpon>FrmGenerateFileKeywordSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\FrmTargetFileSet.resx">
+      <DependentUpon>FrmTargetFileSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\FrmTradeAccountSet.resx">
       <DependentUpon>FrmTradeAccountSet.cs</DependentUpon>
