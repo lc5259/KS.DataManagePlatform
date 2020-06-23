@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using KS.DataManage.Utils;
+using System.IO;
+using System.Xml.Linq;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace KS.DataManage.Client
 {
     public partial class UC_DataSetting : UserControl
     {
+        XDocument _configDocument;
+        List<string> _listModule = new List<string>();
         public UC_DataSetting()
         {
             InitializeComponent();
@@ -33,7 +38,13 @@ namespace KS.DataManage.Client
         {
             SetFont();
         }
-
+        public void LoadConfigFile(string name)
+        {
+            this.SuspendLayout();
+            kCombAccount.DataSource = GlobalData.AccountGroup;
+            
+            this.ResumeLayout(false);
+        }
         private void btnAddTradeID_Click(object sender, EventArgs e)
         {
             FrmTradeAccountSet ftas = new FrmTradeAccountSet();
@@ -68,6 +79,31 @@ namespace KS.DataManage.Client
         {
             FrmGenerateFileKeywordSet frmGenerateFileKeywordSet = new FrmGenerateFileKeywordSet();
             frmGenerateFileKeywordSet.ShowDialog();
+        }
+        private void kCombAccount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.SuspendLayout();
+            string ConfigFileName = GlobalData.GetDataConfigPath(kCombAccount.SelectedItem.ToString());
+            if (!File.Exists(ConfigFileName))
+            {
+                KryptonMessageBox.Show(string.Format("配置文件 {0} 不存在！", ConfigFileName),"错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                Log.Error(string.Format("配置文件 {0} 不存在！", ConfigFileName));
+                return;
+            }
+            _configDocument = XDocument.Load(ConfigFileName);
+            XElement configRoot = _configDocument.Root;
+            List<string> a = new List<string>();
+            //kCombTradeID.Items.Clear();
+            foreach (var xNode in configRoot.Nodes())
+            {
+                if (xNode is XElement)
+                {
+                    a.Add(((XElement)xNode).Attribute("value").Value);
+                }
+            }
+            kCombTradeID.DataSource = a;
+
+            this.ResumeLayout(false);
         }
     }
 }

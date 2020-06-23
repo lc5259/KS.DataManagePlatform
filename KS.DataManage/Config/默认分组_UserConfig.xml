@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<genfile>
+		<srcpath>D:\</srcpath>
+		<cffexpath1>F:\file-new\tag</cffexpath1>
+		<cffexpath2></cffexpath2>
+		<cfmmcpath1>F:\file-new\tag</cfmmcpath1>
+		<cfmmcpath2></cfmmcpath2>
+		<filetxt>1</filetxt>
+		<filedbf>1</filedbf>
+		<filehb>1</filehb>
+		<outPathType>0</outPathType>
+		<dirPathType>0</dirPathType>
+		<dirPath></dirPath>
+		<AccId>
+			<CFFEX>123</CFFEX>
+			<CFMMC>123</CFMMC>
+		</AccId>
+		<MailConfig>
+		<mailfrom></mailfrom>
+		<username></username>
+		<password></password>
+		<serveraddress></serveraddress>
+		<port>25</port>
+		</MailConfig>
+	</genfile>
+</root>

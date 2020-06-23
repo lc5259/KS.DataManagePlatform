@@ -73,6 +73,12 @@
     <Compile Include="Setting\FrmFundOtherSet.Designer.cs">
       <DependentUpon>FrmFundOtherSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Setting\FrmFilterConditionsSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmFilterConditionsSet.Designer.cs">
+      <DependentUpon>FrmFilterConditionsSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setting\FrmSourceFileSet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\FrmFundOtherSet.resx">
       <DependentUpon>FrmFundOtherSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\FrmFilterConditionsSet.resx">
+      <DependentUpon>FrmFilterConditionsSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\FrmSourceFileSet.resx">
       <DependentUpon>FrmSourceFileSet.cs</DependentUpon>

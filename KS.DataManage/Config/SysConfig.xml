@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<Broker>
+		<ID>0102</ID>
+		<ID2>0228</ID2>
+		<NAME>兴业期货有限公司</NAME>
+		<SHORTNAME>兴业期货</SHORTNAME>
+		<GROUPDATA>
+			<TABNAME>默认分组</TABNAME>
+			<TABNAME>123123</TABNAME>
+			<TABNAME>123</TABNAME>
+			<TABNAME>434</TABNAME>
+			<TABNAME>32424</TABNAME>
+			<TABNAME>111</TABNAME>
+			<TABNAME>454</TABNAME>
+			<TABNAME>6666666</TABNAME>
+		</GROUPDATA>
+	</Broker>
+</root>

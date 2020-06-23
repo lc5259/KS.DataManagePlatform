@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileListDataTable.cs" />
     <Compile Include="Fonts\FontClass.cs" />
+    <Compile Include="GloblaData.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="NodeInfo.cs" />
