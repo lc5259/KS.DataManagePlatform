@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using KS.DataManage.Utils;
 using System.IO;
 using System.Xml.Linq;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace KS.DataManage.Client
 {
@@ -41,22 +42,7 @@ namespace KS.DataManage.Client
         {
             this.SuspendLayout();
             kCombAccount.DataSource = GlobalData.AccountGroup;
-            //string ConfigFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_ListCfg.xml", kCombAccount.SelectedItem.ToString()));
-            //if (!File.Exists(ConfigFileName))
-            //{
-            //    throw new Exception(string.Format("配置文件 {0} 不存在！", ConfigFileName));
-            //}
-            //_configDocument = XDocument.Load(ConfigFileName);
-            //XElement configRoot = _configDocument.Root;
-            //_listModule.Clear();
-            //foreach (var xNode in configRoot.Nodes())
-            //{
-            //    if (xNode is XElement)
-            //    {
-            //        _listModule.Add(((XElement)xNode).Attribute("value").Value);
-            //    }
-            //}
-            //kCombTradeID.DataSource = _listModule;
+            
             this.ResumeLayout(false);
         }
         private void btnAddTradeID_Click(object sender, EventArgs e)
@@ -74,10 +60,12 @@ namespace KS.DataManage.Client
         private void kCombAccount_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SuspendLayout();
-            string ConfigFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_ListCfg.xml", kCombAccount.SelectedItem.ToString()));
+            string ConfigFileName = GlobalData.GetDataConfigPath(kCombAccount.SelectedItem.ToString());
             if (!File.Exists(ConfigFileName))
             {
-                throw new Exception(string.Format("配置文件 {0} 不存在！", ConfigFileName));
+                KryptonMessageBox.Show(string.Format("配置文件 {0} 不存在！", ConfigFileName),"错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                Log.Error(string.Format("配置文件 {0} 不存在！", ConfigFileName));
+                return;
             }
             _configDocument = XDocument.Load(ConfigFileName);
             XElement configRoot = _configDocument.Root;

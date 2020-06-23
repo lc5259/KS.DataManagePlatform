@@ -17,6 +17,16 @@ namespace KS.DataManage.Utils
             }
         }
 
+        public static string GetGeneConfigPath(string grp)
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_UserConfig.xml", grp));
+        }
+
+        public static string GetDataConfigPath(string account)
+        {
+             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_ListCfg.xml", account));
+        }
+
         private static List<string> _AccountGroup = new List<string>();
         public static List<string> AccountGroup
         {

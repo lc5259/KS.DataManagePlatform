@@ -39,7 +39,9 @@ namespace KS.DataManage.Client
             string ConfigFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_UserConfig.xml", grp));
             if (!File.Exists(ConfigFileName))
             {
-                throw new Exception(string.Format("配置文件 {0} 不存在！", ConfigFileName));
+                KryptonMessageBox.Show(string.Format("配置文件 {0} 不存在！", ConfigFileName), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(string.Format("配置文件 {0} 不存在！", ConfigFileName));
+                return;
             }
             XDocument configDocument = XDocument.Load(ConfigFileName);
             try
