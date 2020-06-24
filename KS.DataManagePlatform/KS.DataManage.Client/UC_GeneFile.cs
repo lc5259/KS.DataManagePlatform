@@ -10,6 +10,7 @@ using KS.DataManage.Utils;
 using ComponentFactory.Krypton.Toolkit;
 using System.IO;
 using System.Xml.Linq;
+using System.Xml;
 
 namespace KS.DataManage.Client
 {
@@ -581,6 +582,160 @@ namespace KS.DataManage.Client
         private void kryRadioButtonFolderCustomizeNO_CheckedChanged(object sender, EventArgs e)
         {
             krypTBFolderName.Enabled = false;
+            krypTBFolderName.Text = "";
+        }
+
+        private void kryBtSave_Click(object sender, EventArgs e)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            //创建Xml声明部分，即<?xml version="1.0" encoding="utf-8" ?>
+            XmlDeclaration Declaration = xmlDoc.CreateXmlDeclaration("1.0", "utf-8", null);
+
+            //创建根节点
+            XmlNode rootNode = xmlDoc.CreateElement("root");
+
+            //创建genfile节点
+            XmlNode genfileNode = xmlDoc.CreateElement("genfile");
+
+            //创建genfile的字节点
+            XmlNode srcpathNode = xmlDoc.CreateElement("srcpath");
+            srcpathNode.InnerText = kryTextBoxOriginPath.Text.ToString();
+
+            XmlNode cffexpath1Node = xmlDoc.CreateElement("cffexpath1");
+            cffexpath1Node.InnerText = kryTextBoxCffexOutPath1.Text.ToString();
+
+            XmlNode cffexpath2Node = xmlDoc.CreateElement("cffexpath2");
+            cffexpath2Node.InnerText = kryTextBoxCffexOutPath2.Text.ToString();
+
+            XmlNode cfmmcpath1Node = xmlDoc.CreateElement("cfmmcpath1");
+            cfmmcpath1Node.InnerText = kryTextBoxMonitorCenterOutPath1.Text.ToString();
+
+            XmlNode cfmmcpath2Node = xmlDoc.CreateElement("cfmmcpath2");
+            cfmmcpath2Node.InnerText = kryTextBoxMonitorCenterOutPath2.Text.ToString();
+
+            XmlNode filetxtNode = xmlDoc.CreateElement("filetxt");
+            if (kryCBTXT.Checked)
+            {
+                filetxtNode.InnerText = "1";
+            }
+            else
+            {
+                filetxtNode.InnerText = "0";
+            }
+
+            XmlNode filedbfNode = xmlDoc.CreateElement("filedbf");
+            if (kryCBDBF.Checked)
+            {
+                filedbfNode.InnerText = "1";
+            }
+            else
+            {
+                filedbfNode.InnerText = "0";
+            }
+
+            XmlNode filehbNode = xmlDoc.CreateElement("filehb");
+            filehbNode.InnerText = "0";
+
+            XmlNode outPathTypeNode = xmlDoc.CreateElement("outPathType");
+            if (krypRadioButtonByDate.Checked)
+            {
+                outPathTypeNode.InnerText = "1";
+            }
+            if (kryRadioButtonByAccount.Checked)
+            {
+                outPathTypeNode.InnerText = "0";
+            }
+
+            XmlNode dirPathTypeNode = xmlDoc.CreateElement("dirPathType");
+            if (kryRadioButtonFolderCustomizeYES.Checked)
+            {
+                dirPathTypeNode.InnerText = "1";
+            }
+            if (kryRadioButtonFolderCustomizeNO.Checked)
+            {
+                dirPathTypeNode.InnerText = "0";
+            }
+
+            XmlNode dirPathNode = xmlDoc.CreateElement("dirPath");
+            dirPathNode.InnerText = krypTBFolderName.Text.ToString();
+
+            XmlNode AccIdNode = xmlDoc.CreateElement("AccId");
+            XmlNode MailConfigNode = xmlDoc.CreateElement("MailConfig");
+
+            //AccId添加子字节点
+            // XmlNode CFFEXNode = xmlDoc.CreateElement("CFFEX");
+            foreach (var item in kryCLBSingleCffexAccount.Items)
+            {
+                XmlNode CFFEXNode = xmlDoc.CreateElement("CFFEX");
+                CFFEXNode.InnerText = item.ToString();
+                AccIdNode.AppendChild(CFFEXNode);
+            }
+            foreach (var item in kryCLBSingleMotorCenterAccount.Items)
+            {
+                XmlNode CFMMCNode = xmlDoc.CreateElement("CFMMC");
+                CFMMCNode.InnerText = item.ToString();
+                AccIdNode.AppendChild(CFMMCNode);
+            }
+            foreach (var item in kryCLBMoreCffexAccount.Items)
+            {
+                XmlNode CFFEXMERGEENode = xmlDoc.CreateElement("CFFEXMERGE");
+                CFFEXMERGEENode.InnerText = item.ToString();
+                AccIdNode.AppendChild(CFFEXMERGEENode);
+            }
+            foreach (var item in kryCLBMoreMotorCenterAccount.Items)
+            {
+                XmlNode CFMMCMERGECNode = xmlDoc.CreateElement("CFMMCMERGE");
+                CFMMCMERGECNode.InnerText = item.ToString();
+                AccIdNode.AppendChild(CFMMCMERGECNode);
+            }
+
+            //创建MailConfig的字节点
+            XmlNode mailfromNode = xmlDoc.CreateElement("mailfrom");
+            XmlNode usernameNode = xmlDoc.CreateElement("username");
+            XmlNode passwordNode = xmlDoc.CreateElement("password");
+            XmlNode serveraddressNode = xmlDoc.CreateElement("serveraddress");
+            XmlNode portNode = xmlDoc.CreateElement("port");
+            portNode.InnerText = "25";
+            ////AccId添加子字节点
+            //AccIdNode.AppendChild(CFFEXNode);
+
+            //MailConfig添加子字节点
+            MailConfigNode.AppendChild(mailfromNode);
+            MailConfigNode.AppendChild(usernameNode);
+            MailConfigNode.AppendChild(passwordNode);
+            MailConfigNode.AppendChild(serveraddressNode);
+            MailConfigNode.AppendChild(portNode);
+
+            //genfile添加子字节点
+            genfileNode.AppendChild(srcpathNode);
+            genfileNode.AppendChild(cffexpath1Node);
+            genfileNode.AppendChild(cffexpath2Node);
+            genfileNode.AppendChild(cfmmcpath1Node);
+            genfileNode.AppendChild(cfmmcpath2Node);
+            genfileNode.AppendChild(filetxtNode);
+            genfileNode.AppendChild(filedbfNode);
+            genfileNode.AppendChild(filehbNode);
+            genfileNode.AppendChild(outPathTypeNode);
+            genfileNode.AppendChild(dirPathTypeNode);
+            genfileNode.AppendChild(dirPathNode);
+            genfileNode.AppendChild(AccIdNode);
+            genfileNode.AppendChild(MailConfigNode);
+
+            //root根节点添加子字节点
+            rootNode.AppendChild(genfileNode);
+
+            //xml附加根节点
+            xmlDoc.AppendChild(rootNode);
+
+            xmlDoc.InsertBefore(Declaration,xmlDoc.DocumentElement);
+
+            //保存xml文档
+            string SavePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_ListCfg.xml", _fileGroup));
+            xmlDoc.Save(SavePath);
+            if (File.Exists(SavePath))
+            {
+                MessageBox.Show("保存设置成功");
+            }
         }
     }
 }

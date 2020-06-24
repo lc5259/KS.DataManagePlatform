@@ -95,12 +95,15 @@
             this.kryLbMoreFundAccountNo = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryLbFolderCustomize = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonSplitContainer3 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
+            this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPalette2 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.kryptonPanel6 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryDTPDate = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.kryBtCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryBtOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryBtSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryLbDate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonSplitContainer3 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel1)).BeginInit();
@@ -136,6 +139,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel2)).BeginInit();
             this.kryptonSplitContainer3.Panel2.SuspendLayout();
             this.kryptonSplitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).BeginInit();
+            this.kryptonPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonSplitContainer1
@@ -231,42 +237,42 @@
             // 
             this.kryTextBoxMonitorCenterOutPath2.Location = new System.Drawing.Point(251, 153);
             this.kryTextBoxMonitorCenterOutPath2.Name = "kryTextBoxMonitorCenterOutPath2";
-            this.kryTextBoxMonitorCenterOutPath2.Size = new System.Drawing.Size(311, 20);
+            this.kryTextBoxMonitorCenterOutPath2.Size = new System.Drawing.Size(311, 23);
             this.kryTextBoxMonitorCenterOutPath2.TabIndex = 44;
             // 
             // kryTextBoxMonitorCenterOutPath1
             // 
             this.kryTextBoxMonitorCenterOutPath1.Location = new System.Drawing.Point(251, 122);
             this.kryTextBoxMonitorCenterOutPath1.Name = "kryTextBoxMonitorCenterOutPath1";
-            this.kryTextBoxMonitorCenterOutPath1.Size = new System.Drawing.Size(311, 20);
+            this.kryTextBoxMonitorCenterOutPath1.Size = new System.Drawing.Size(311, 23);
             this.kryTextBoxMonitorCenterOutPath1.TabIndex = 43;
             // 
             // kryTextBoxCffexOutPath2
             // 
             this.kryTextBoxCffexOutPath2.Location = new System.Drawing.Point(251, 91);
             this.kryTextBoxCffexOutPath2.Name = "kryTextBoxCffexOutPath2";
-            this.kryTextBoxCffexOutPath2.Size = new System.Drawing.Size(311, 20);
+            this.kryTextBoxCffexOutPath2.Size = new System.Drawing.Size(311, 23);
             this.kryTextBoxCffexOutPath2.TabIndex = 42;
             // 
             // kryTextBoxCffexOutPath1
             // 
             this.kryTextBoxCffexOutPath1.Location = new System.Drawing.Point(251, 60);
             this.kryTextBoxCffexOutPath1.Name = "kryTextBoxCffexOutPath1";
-            this.kryTextBoxCffexOutPath1.Size = new System.Drawing.Size(311, 20);
+            this.kryTextBoxCffexOutPath1.Size = new System.Drawing.Size(311, 23);
             this.kryTextBoxCffexOutPath1.TabIndex = 41;
             // 
             // kryTextBoxOriginPath
             // 
             this.kryTextBoxOriginPath.Location = new System.Drawing.Point(251, 29);
             this.kryTextBoxOriginPath.Name = "kryTextBoxOriginPath";
-            this.kryTextBoxOriginPath.Size = new System.Drawing.Size(311, 20);
+            this.kryTextBoxOriginPath.Size = new System.Drawing.Size(311, 23);
             this.kryTextBoxOriginPath.TabIndex = 40;
             // 
             // krylbMonitorCenterOutPath2
             // 
             this.krylbMonitorCenterOutPath2.Location = new System.Drawing.Point(128, 153);
             this.krylbMonitorCenterOutPath2.Name = "krylbMonitorCenterOutPath2";
-            this.krylbMonitorCenterOutPath2.Size = new System.Drawing.Size(117, 20);
+            this.krylbMonitorCenterOutPath2.Size = new System.Drawing.Size(121, 20);
             this.krylbMonitorCenterOutPath2.TabIndex = 39;
             this.krylbMonitorCenterOutPath2.Values.Text = "监控中心输出路径2";
             // 
@@ -274,7 +280,7 @@
             // 
             this.krylbMonitorCenterOutPath1.Location = new System.Drawing.Point(128, 122);
             this.krylbMonitorCenterOutPath1.Name = "krylbMonitorCenterOutPath1";
-            this.krylbMonitorCenterOutPath1.Size = new System.Drawing.Size(117, 20);
+            this.krylbMonitorCenterOutPath1.Size = new System.Drawing.Size(121, 20);
             this.krylbMonitorCenterOutPath1.TabIndex = 38;
             this.krylbMonitorCenterOutPath1.Values.Text = "监控中心输出路径1";
             // 
@@ -282,7 +288,7 @@
             // 
             this.krylbCffexOutPath2.Location = new System.Drawing.Point(141, 91);
             this.krylbCffexOutPath2.Name = "krylbCffexOutPath2";
-            this.krylbCffexOutPath2.Size = new System.Drawing.Size(104, 20);
+            this.krylbCffexOutPath2.Size = new System.Drawing.Size(108, 20);
             this.krylbCffexOutPath2.TabIndex = 37;
             this.krylbCffexOutPath2.Values.Text = "中金所输出路径2";
             // 
@@ -290,7 +296,7 @@
             // 
             this.krylbCffexOutPath1.Location = new System.Drawing.Point(141, 60);
             this.krylbCffexOutPath1.Name = "krylbCffexOutPath1";
-            this.krylbCffexOutPath1.Size = new System.Drawing.Size(104, 20);
+            this.krylbCffexOutPath1.Size = new System.Drawing.Size(108, 20);
             this.krylbCffexOutPath1.TabIndex = 36;
             this.krylbCffexOutPath1.Values.Text = "中金所输出路径1";
             // 
@@ -298,7 +304,7 @@
             // 
             this.krylbOriginPath.Location = new System.Drawing.Point(160, 29);
             this.krylbOriginPath.Name = "krylbOriginPath";
-            this.krylbOriginPath.Size = new System.Drawing.Size(85, 20);
+            this.krylbOriginPath.Size = new System.Drawing.Size(88, 20);
             this.krylbOriginPath.TabIndex = 35;
             this.krylbOriginPath.Values.Text = "原始文件路径";
             // 
@@ -337,6 +343,7 @@
             // kryptonPanel1
             // 
             this.kryptonPanel1.AutoScroll = true;
+            this.kryptonPanel1.Controls.Add(this.kryptonPanel5);
             this.kryptonPanel1.Controls.Add(this.kryptonButton1);
             this.kryptonPanel1.Controls.Add(this.kryLbSingleMotorCenterAccountCount);
             this.kryptonPanel1.Controls.Add(this.kryLbSingleCffexAccountCount);
@@ -456,7 +463,7 @@
             // 
             this.kryCBSingleMotorCenterAccount.Location = new System.Drawing.Point(275, 169);
             this.kryCBSingleMotorCenterAccount.Name = "kryCBSingleMotorCenterAccount";
-            this.kryCBSingleMotorCenterAccount.Size = new System.Drawing.Size(111, 20);
+            this.kryCBSingleMotorCenterAccount.Size = new System.Drawing.Size(114, 20);
             this.kryCBSingleMotorCenterAccount.TabIndex = 30;
             this.kryCBSingleMotorCenterAccount.Values.Text = "监控中心账号：";
             this.kryCBSingleMotorCenterAccount.CheckedChanged += new System.EventHandler(this.kryCBSingleMotorCenterAccount_CheckedChanged);
@@ -465,7 +472,7 @@
             // 
             this.kryCBSingleCffexAccount.Location = new System.Drawing.Point(66, 169);
             this.kryCBSingleCffexAccount.Name = "kryCBSingleCffexAccount";
-            this.kryCBSingleCffexAccount.Size = new System.Drawing.Size(98, 20);
+            this.kryCBSingleCffexAccount.Size = new System.Drawing.Size(101, 20);
             this.kryCBSingleCffexAccount.TabIndex = 29;
             this.kryCBSingleCffexAccount.Values.Text = "中金所账号：";
             this.kryCBSingleCffexAccount.CheckedChanged += new System.EventHandler(this.kryCBSingleCffexAccount_CheckedChanged);
@@ -501,14 +508,14 @@
             // 
             this.kryTBSingleFundAcconutNo.Location = new System.Drawing.Point(135, 82);
             this.kryTBSingleFundAcconutNo.Name = "kryTBSingleFundAcconutNo";
-            this.kryTBSingleFundAcconutNo.Size = new System.Drawing.Size(260, 20);
+            this.kryTBSingleFundAcconutNo.Size = new System.Drawing.Size(260, 23);
             this.kryTBSingleFundAcconutNo.TabIndex = 25;
             // 
             // kryRadioButtonByAccount
             // 
             this.kryRadioButtonByAccount.Location = new System.Drawing.Point(134, 49);
             this.kryRadioButtonByAccount.Name = "kryRadioButtonByAccount";
-            this.kryRadioButtonByAccount.Size = new System.Drawing.Size(60, 20);
+            this.kryRadioButtonByAccount.Size = new System.Drawing.Size(61, 20);
             this.kryRadioButtonByAccount.TabIndex = 24;
             this.kryRadioButtonByAccount.Values.Text = "按账号";
             // 
@@ -516,7 +523,7 @@
             // 
             this.krypRadioButtonByDate.Location = new System.Drawing.Point(134, 23);
             this.krypRadioButtonByDate.Name = "krypRadioButtonByDate";
-            this.krypRadioButtonByDate.Size = new System.Drawing.Size(60, 20);
+            this.krypRadioButtonByDate.Size = new System.Drawing.Size(61, 20);
             this.krypRadioButtonByDate.TabIndex = 23;
             this.krypRadioButtonByDate.Values.Text = "按日期";
             // 
@@ -524,7 +531,7 @@
             // 
             this.kryLbSingleFundAccountNo.Location = new System.Drawing.Point(66, 85);
             this.kryLbSingleFundAccountNo.Name = "kryLbSingleFundAccountNo";
-            this.kryLbSingleFundAccountNo.Size = new System.Drawing.Size(73, 20);
+            this.kryLbSingleFundAccountNo.Size = new System.Drawing.Size(75, 20);
             this.kryLbSingleFundAccountNo.TabIndex = 22;
             this.kryLbSingleFundAccountNo.Values.Text = "资金账号：";
             // 
@@ -532,7 +539,7 @@
             // 
             this.kryLbOutFileFormat.Location = new System.Drawing.Point(256, 23);
             this.kryLbOutFileFormat.Name = "kryLbOutFileFormat";
-            this.kryLbOutFileFormat.Size = new System.Drawing.Size(98, 20);
+            this.kryLbOutFileFormat.Size = new System.Drawing.Size(101, 20);
             this.kryLbOutFileFormat.TabIndex = 21;
             this.kryLbOutFileFormat.Values.Text = "输出文件格式：";
             // 
@@ -540,7 +547,7 @@
             // 
             this.kryLbStorageMode.Location = new System.Drawing.Point(66, 23);
             this.kryLbStorageMode.Name = "kryLbStorageMode";
-            this.kryLbStorageMode.Size = new System.Drawing.Size(73, 20);
+            this.kryLbStorageMode.Size = new System.Drawing.Size(75, 20);
             this.kryLbStorageMode.TabIndex = 20;
             this.kryLbStorageMode.Values.Text = "存放方式：";
             // 
@@ -599,7 +606,7 @@
             this.krypTBFolderName.Enabled = false;
             this.krypTBFolderName.Location = new System.Drawing.Point(138, 47);
             this.krypTBFolderName.Name = "krypTBFolderName";
-            this.krypTBFolderName.Size = new System.Drawing.Size(220, 20);
+            this.krypTBFolderName.Size = new System.Drawing.Size(220, 23);
             this.krypTBFolderName.TabIndex = 58;
             // 
             // kryLbMoreMotorCenterAccountCount
@@ -667,7 +674,7 @@
             // 
             this.kryCBMoreMotorCenterAccount.Location = new System.Drawing.Point(241, 167);
             this.kryCBMoreMotorCenterAccount.Name = "kryCBMoreMotorCenterAccount";
-            this.kryCBMoreMotorCenterAccount.Size = new System.Drawing.Size(111, 20);
+            this.kryCBMoreMotorCenterAccount.Size = new System.Drawing.Size(114, 20);
             this.kryCBMoreMotorCenterAccount.TabIndex = 50;
             this.kryCBMoreMotorCenterAccount.Values.Text = "监控中心账号：";
             this.kryCBMoreMotorCenterAccount.CheckedChanged += new System.EventHandler(this.kryCBMoreMotorCenterAccount_CheckedChanged);
@@ -676,7 +683,7 @@
             // 
             this.kryCBMoreCffexAccount.Location = new System.Drawing.Point(31, 167);
             this.kryCBMoreCffexAccount.Name = "kryCBMoreCffexAccount";
-            this.kryCBMoreCffexAccount.Size = new System.Drawing.Size(98, 20);
+            this.kryCBMoreCffexAccount.Size = new System.Drawing.Size(101, 20);
             this.kryCBMoreCffexAccount.TabIndex = 49;
             this.kryCBMoreCffexAccount.Values.Text = "中金所账号：";
             this.kryCBMoreCffexAccount.CheckedChanged += new System.EventHandler(this.kryCBMoreCffexAccount_CheckedChanged);
@@ -712,7 +719,7 @@
             // 
             this.kryTBMoreFundAcconutNo.Location = new System.Drawing.Point(84, 80);
             this.kryTBMoreFundAcconutNo.Name = "kryTBMoreFundAcconutNo";
-            this.kryTBMoreFundAcconutNo.Size = new System.Drawing.Size(274, 20);
+            this.kryTBMoreFundAcconutNo.Size = new System.Drawing.Size(274, 23);
             this.kryTBMoreFundAcconutNo.TabIndex = 45;
             // 
             // kryRadioButtonFolderCustomizeNO
@@ -737,7 +744,7 @@
             // 
             this.kryLbMoreFundAccountNo.Location = new System.Drawing.Point(19, 83);
             this.kryLbMoreFundAccountNo.Name = "kryLbMoreFundAccountNo";
-            this.kryLbMoreFundAccountNo.Size = new System.Drawing.Size(73, 20);
+            this.kryLbMoreFundAccountNo.Size = new System.Drawing.Size(75, 20);
             this.kryLbMoreFundAccountNo.TabIndex = 42;
             this.kryLbMoreFundAccountNo.Values.Text = "资金账号：";
             // 
@@ -745,62 +752,18 @@
             // 
             this.kryLbFolderCustomize.Location = new System.Drawing.Point(18, 21);
             this.kryLbFolderCustomize.Name = "kryLbFolderCustomize";
-            this.kryLbFolderCustomize.Size = new System.Drawing.Size(110, 20);
+            this.kryLbFolderCustomize.Size = new System.Drawing.Size(114, 20);
             this.kryLbFolderCustomize.TabIndex = 41;
             this.kryLbFolderCustomize.Values.Text = "文件夹名自定义：";
             // 
             // kryptonPanel2
             // 
-            this.kryptonPanel2.Controls.Add(this.kryDTPDate);
-            this.kryptonPanel2.Controls.Add(this.kryBtCancel);
-            this.kryptonPanel2.Controls.Add(this.kryBtOK);
-            this.kryptonPanel2.Controls.Add(this.kryBtSave);
-            this.kryptonPanel2.Controls.Add(this.kryLbDate);
+            this.kryptonPanel2.Controls.Add(this.kryptonPanel6);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(932, 49);
             this.kryptonPanel2.TabIndex = 5;
-            // 
-            // kryDTPDate
-            // 
-            this.kryDTPDate.CalendarTodayDate = new System.DateTime(2020, 6, 15, 0, 0, 0, 0);
-            this.kryDTPDate.Location = new System.Drawing.Point(421, 12);
-            this.kryDTPDate.Name = "kryDTPDate";
-            this.kryDTPDate.Size = new System.Drawing.Size(117, 21);
-            this.kryDTPDate.TabIndex = 4;
-            // 
-            // kryBtCancel
-            // 
-            this.kryBtCancel.Location = new System.Drawing.Point(783, 10);
-            this.kryBtCancel.Name = "kryBtCancel";
-            this.kryBtCancel.Size = new System.Drawing.Size(90, 25);
-            this.kryBtCancel.TabIndex = 3;
-            this.kryBtCancel.Values.Text = "取消";
-            // 
-            // kryBtOK
-            // 
-            this.kryBtOK.Location = new System.Drawing.Point(669, 10);
-            this.kryBtOK.Name = "kryBtOK";
-            this.kryBtOK.Size = new System.Drawing.Size(90, 25);
-            this.kryBtOK.TabIndex = 2;
-            this.kryBtOK.Values.Text = "确定";
-            // 
-            // kryBtSave
-            // 
-            this.kryBtSave.Location = new System.Drawing.Point(559, 10);
-            this.kryBtSave.Name = "kryBtSave";
-            this.kryBtSave.Size = new System.Drawing.Size(90, 25);
-            this.kryBtSave.TabIndex = 1;
-            this.kryBtSave.Values.Text = "保存设置";
-            // 
-            // kryLbDate
-            // 
-            this.kryLbDate.Location = new System.Drawing.Point(381, 13);
-            this.kryLbDate.Name = "kryLbDate";
-            this.kryLbDate.Size = new System.Drawing.Size(48, 20);
-            this.kryLbDate.TabIndex = 0;
-            this.kryLbDate.Values.Text = "日期：";
             // 
             // kryptonSplitContainer3
             // 
@@ -821,6 +784,67 @@
             this.kryptonSplitContainer3.Size = new System.Drawing.Size(932, 699);
             this.kryptonSplitContainer3.SplitterDistance = 645;
             this.kryptonSplitContainer3.TabIndex = 6;
+            // 
+            // kryptonPanel5
+            // 
+            this.kryptonPanel5.Location = new System.Drawing.Point(1, 413);
+            this.kryptonPanel5.Name = "kryptonPanel5";
+            this.kryptonPanel5.Size = new System.Drawing.Size(206, 32);
+            this.kryptonPanel5.TabIndex = 5;
+            // 
+            // kryptonPanel6
+            // 
+            this.kryptonPanel6.Controls.Add(this.kryDTPDate);
+            this.kryptonPanel6.Controls.Add(this.kryBtCancel);
+            this.kryptonPanel6.Controls.Add(this.kryBtOK);
+            this.kryptonPanel6.Controls.Add(this.kryBtSave);
+            this.kryptonPanel6.Controls.Add(this.kryLbDate);
+            this.kryptonPanel6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.kryptonPanel6.Location = new System.Drawing.Point(378, 0);
+            this.kryptonPanel6.Name = "kryptonPanel6";
+            this.kryptonPanel6.Size = new System.Drawing.Size(554, 49);
+            this.kryptonPanel6.TabIndex = 5;
+            // 
+            // kryDTPDate
+            // 
+            this.kryDTPDate.CalendarTodayDate = new System.DateTime(2020, 6, 15, 0, 0, 0, 0);
+            this.kryDTPDate.Location = new System.Drawing.Point(71, 14);
+            this.kryDTPDate.Name = "kryDTPDate";
+            this.kryDTPDate.Size = new System.Drawing.Size(117, 21);
+            this.kryDTPDate.TabIndex = 9;
+            // 
+            // kryBtCancel
+            // 
+            this.kryBtCancel.Location = new System.Drawing.Point(433, 12);
+            this.kryBtCancel.Name = "kryBtCancel";
+            this.kryBtCancel.Size = new System.Drawing.Size(90, 25);
+            this.kryBtCancel.TabIndex = 8;
+            this.kryBtCancel.Values.Text = "取消";
+            // 
+            // kryBtOK
+            // 
+            this.kryBtOK.Location = new System.Drawing.Point(319, 12);
+            this.kryBtOK.Name = "kryBtOK";
+            this.kryBtOK.Size = new System.Drawing.Size(90, 25);
+            this.kryBtOK.TabIndex = 7;
+            this.kryBtOK.Values.Text = "确定";
+            // 
+            // kryBtSave
+            // 
+            this.kryBtSave.Location = new System.Drawing.Point(209, 12);
+            this.kryBtSave.Name = "kryBtSave";
+            this.kryBtSave.Size = new System.Drawing.Size(90, 25);
+            this.kryBtSave.TabIndex = 6;
+            this.kryBtSave.Values.Text = "保存设置";
+            this.kryBtSave.Click += new System.EventHandler(this.kryBtSave_Click);
+            // 
+            // kryLbDate
+            // 
+            this.kryLbDate.Location = new System.Drawing.Point(31, 15);
+            this.kryLbDate.Name = "kryLbDate";
+            this.kryLbDate.Size = new System.Drawing.Size(49, 20);
+            this.kryLbDate.TabIndex = 5;
+            this.kryLbDate.Values.Text = "日期：";
             // 
             // UC_GeneFile
             // 
@@ -862,13 +886,16 @@
             this.kryptonPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            this.kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel1)).EndInit();
             this.kryptonSplitContainer3.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel2)).EndInit();
             this.kryptonSplitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3)).EndInit();
             this.kryptonSplitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).EndInit();
+            this.kryptonPanel6.ResumeLayout(false);
+            this.kryptonPanel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -938,13 +965,16 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryLbMoreFundAccountNo;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryLbFolderCustomize;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
+        private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer kryptonSplitContainer3;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel5;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel6;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryDTPDate;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryBtCancel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryBtOK;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryBtSave;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryLbDate;
-        private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer kryptonSplitContainer3;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
+        private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette2;
     }
 }
