@@ -32,7 +32,6 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.kGBFileList = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.kDGVFileList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelTargetFile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -149,20 +148,9 @@
             this.FileFieldIsDefaultValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileFieldIsAbsoluteValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileFieldIsAbsoluteValueOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileOrganizationName = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileFormat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileTXTEqueDBF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileColumnDirection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileIsOutTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileIsOutColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileIsConnector = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileIsIsSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileIsIsShowFundAccountNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TargetFileIsIEachAccountOutTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1.Panel1)).BeginInit();
             this.kSplitContainerL1.Panel1.SuspendLayout();
@@ -175,7 +163,6 @@
             this.kGBFileList.Panel.SuspendLayout();
             this.kGBFileList.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kDGVFileList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
@@ -264,6 +251,7 @@
             this.kryptonPanel4.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kDGVFileWordsList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // kSplitContainerL1
@@ -329,8 +317,8 @@
             this.tableLayoutPanel7.ColumnCount = 2;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel7.Controls.Add(this.kDGVFileList, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.kryptonPanel1, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.dataGridView1, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -340,128 +328,6 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(1073, 115);
             this.tableLayoutPanel7.TabIndex = 1;
-            // 
-            // kDGVFileList
-            // 
-            this.kDGVFileList.AllowUserToAddRows = false;
-            this.kDGVFileList.AllowUserToDeleteRows = false;
-            this.kDGVFileList.AllowUserToResizeRows = false;
-            this.kDGVFileList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.kDGVFileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TargetFileOrganizationName,
-            this.TName,
-            this.TargetFileNo,
-            this.TargetFileTitle,
-            this.TargetFileName,
-            this.TargetFileFormat,
-            this.TargetFileTXTEqueDBF,
-            this.TargetFileColumnDirection,
-            this.TargetFileIsOutTitle,
-            this.TargetFileIsOutColumnName,
-            this.TargetFileIsConnector,
-            this.TargetFileIsIsSummary,
-            this.TargetFileIsIsShowFundAccountNo,
-            this.TargetFileIsIEachAccountOutTitle});
-            this.kDGVFileList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kDGVFileList.Location = new System.Drawing.Point(3, 3);
-            this.kDGVFileList.Name = "kDGVFileList";
-            this.kDGVFileList.ReadOnly = true;
-            this.kDGVFileList.RowTemplate.Height = 23;
-            this.kDGVFileList.Size = new System.Drawing.Size(1007, 109);
-            this.kDGVFileList.TabIndex = 1;
-            // 
-            // TargetFileOrganizationName
-            // 
-            this.TargetFileOrganizationName.HeaderText = "机构名称";
-            this.TargetFileOrganizationName.Name = "TargetFileOrganizationName";
-            this.TargetFileOrganizationName.ReadOnly = true;
-            this.TargetFileOrganizationName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TargetFileOrganizationName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.TargetFileOrganizationName.Width = 70;
-            // 
-            // TargetFileNo
-            // 
-            this.TargetFileNo.HeaderText = "序号";
-            this.TargetFileNo.Name = "TargetFileNo";
-            this.TargetFileNo.ReadOnly = true;
-            this.TargetFileNo.Width = 58;
-            // 
-            // TargetFileTitle
-            // 
-            this.TargetFileTitle.HeaderText = "文件标题";
-            this.TargetFileTitle.Name = "TargetFileTitle";
-            this.TargetFileTitle.ReadOnly = true;
-            this.TargetFileTitle.Width = 70;
-            // 
-            // TargetFileName
-            // 
-            this.TargetFileName.HeaderText = "文件名称";
-            this.TargetFileName.Name = "TargetFileName";
-            this.TargetFileName.ReadOnly = true;
-            this.TargetFileName.Width = 70;
-            // 
-            // TargetFileFormat
-            // 
-            this.TargetFileFormat.HeaderText = "文件格式";
-            this.TargetFileFormat.Name = "TargetFileFormat";
-            this.TargetFileFormat.ReadOnly = true;
-            this.TargetFileFormat.Width = 70;
-            // 
-            // TargetFileTXTEqueDBF
-            // 
-            this.TargetFileTXTEqueDBF.HeaderText = "TXT和DBF列相同";
-            this.TargetFileTXTEqueDBF.Name = "TargetFileTXTEqueDBF";
-            this.TargetFileTXTEqueDBF.ReadOnly = true;
-            this.TargetFileTXTEqueDBF.Width = 96;
-            // 
-            // TargetFileColumnDirection
-            // 
-            this.TargetFileColumnDirection.HeaderText = "列方向";
-            this.TargetFileColumnDirection.Name = "TargetFileColumnDirection";
-            this.TargetFileColumnDirection.ReadOnly = true;
-            this.TargetFileColumnDirection.Width = 70;
-            // 
-            // TargetFileIsOutTitle
-            // 
-            this.TargetFileIsOutTitle.HeaderText = "输出标题";
-            this.TargetFileIsOutTitle.Name = "TargetFileIsOutTitle";
-            this.TargetFileIsOutTitle.ReadOnly = true;
-            this.TargetFileIsOutTitle.Width = 70;
-            // 
-            // TargetFileIsOutColumnName
-            // 
-            this.TargetFileIsOutColumnName.HeaderText = "输出列名";
-            this.TargetFileIsOutColumnName.Name = "TargetFileIsOutColumnName";
-            this.TargetFileIsOutColumnName.ReadOnly = true;
-            this.TargetFileIsOutColumnName.Width = 70;
-            // 
-            // TargetFileIsConnector
-            // 
-            this.TargetFileIsConnector.HeaderText = "连接符";
-            this.TargetFileIsConnector.Name = "TargetFileIsConnector";
-            this.TargetFileIsConnector.ReadOnly = true;
-            this.TargetFileIsConnector.Width = 70;
-            // 
-            // TargetFileIsIsSummary
-            // 
-            this.TargetFileIsIsSummary.HeaderText = "是否汇总";
-            this.TargetFileIsIsSummary.Name = "TargetFileIsIsSummary";
-            this.TargetFileIsIsSummary.ReadOnly = true;
-            this.TargetFileIsIsSummary.Width = 70;
-            // 
-            // TargetFileIsIsShowFundAccountNo
-            // 
-            this.TargetFileIsIsShowFundAccountNo.HeaderText = "首列是否显示资金账号";
-            this.TargetFileIsIsShowFundAccountNo.Name = "TargetFileIsIsShowFundAccountNo";
-            this.TargetFileIsIsShowFundAccountNo.ReadOnly = true;
-            this.TargetFileIsIsShowFundAccountNo.Width = 105;
-            // 
-            // TargetFileIsIEachAccountOutTitle
-            // 
-            this.TargetFileIsIEachAccountOutTitle.HeaderText = "各账号输出标题";
-            this.TargetFileIsIEachAccountOutTitle.Name = "TargetFileIsIEachAccountOutTitle";
-            this.TargetFileIsIEachAccountOutTitle.ReadOnly = true;
-            this.TargetFileIsIEachAccountOutTitle.Width = 93;
             // 
             // kryptonPanel1
             // 
@@ -702,6 +568,7 @@
             this.kCombTradeID.Size = new System.Drawing.Size(126, 21);
             this.kCombTradeID.TabIndex = 1;
             this.kCombTradeID.Text = "-请选择资金账号-";
+            this.kCombTradeID.SelectedIndexChanged += new System.EventHandler(this.kCombTradeID_SelectedIndexChanged);
             // 
             // kBtnOtherSet
             // 
@@ -789,7 +656,7 @@
             // 
             this.kRBtnDate.Location = new System.Drawing.Point(3, 29);
             this.kRBtnDate.Name = "kRBtnDate";
-            this.kRBtnDate.Size = new System.Drawing.Size(61, 20);
+            this.kRBtnDate.Size = new System.Drawing.Size(60, 20);
             this.kRBtnDate.StateCommon.LongText.Color1 = System.Drawing.Color.Black;
             this.kRBtnDate.StateCommon.LongText.Color2 = System.Drawing.Color.Black;
             this.kRBtnDate.TabIndex = 3;
@@ -800,16 +667,16 @@
             this.kRBtnAccount.Checked = true;
             this.kRBtnAccount.Location = new System.Drawing.Point(3, 56);
             this.kRBtnAccount.Name = "kRBtnAccount";
-            this.kRBtnAccount.Size = new System.Drawing.Size(61, 20);
+            this.kRBtnAccount.Size = new System.Drawing.Size(60, 20);
             this.kRBtnAccount.TabIndex = 4;
             this.kRBtnAccount.Values.Text = "按账号";
             // 
             // kryptonLabel1
             // 
             this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel1.Location = new System.Drawing.Point(91, 29);
+            this.kryptonLabel1.Location = new System.Drawing.Point(95, 29);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(121, 21);
+            this.kryptonLabel1.Size = new System.Drawing.Size(117, 21);
             this.kryptonLabel1.TabIndex = 5;
             this.kryptonLabel1.Values.Text = "中金所输出路径1：";
             // 
@@ -818,16 +685,16 @@
             this.kryptonLabel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.kryptonLabel2.Location = new System.Drawing.Point(383, 29);
             this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(121, 21);
+            this.kryptonLabel2.Size = new System.Drawing.Size(117, 21);
             this.kryptonLabel2.TabIndex = 6;
             this.kryptonLabel2.Values.Text = "中金所输出路径2：";
             // 
             // kryptonLabel3
             // 
             this.kryptonLabel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel3.Location = new System.Drawing.Point(78, 56);
+            this.kryptonLabel3.Location = new System.Drawing.Point(83, 56);
             this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(134, 21);
+            this.kryptonLabel3.Size = new System.Drawing.Size(129, 21);
             this.kryptonLabel3.TabIndex = 7;
             this.kryptonLabel3.Values.Text = "监控中心输出路径1：";
             // 
@@ -836,7 +703,7 @@
             this.kryptonLabel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.kryptonLabel4.Location = new System.Drawing.Point(371, 56);
             this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(134, 21);
+            this.kryptonLabel4.Size = new System.Drawing.Size(129, 21);
             this.kryptonLabel4.TabIndex = 8;
             this.kryptonLabel4.Values.Text = "监控中心输出路径2：";
             // 
@@ -1740,105 +1607,29 @@
             this.FileFieldIsAbsoluteValueOut.Name = "FileFieldIsAbsoluteValueOut";
             this.FileFieldIsAbsoluteValueOut.ReadOnly = true;
             // 
-            // TargetFileOrganizationName
+            // dataGridView1
             // 
-            this.TargetFileOrganizationName.HeaderText = "";
-            this.TargetFileOrganizationName.Name = "TargetFileOrganizationName";
-            this.TargetFileOrganizationName.ReadOnly = true;
-            this.TargetFileOrganizationName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TargetFileOrganizationName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.TargetFileOrganizationName.Width = 23;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckBox,
+            this.TName});
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(783, 109);
+            this.dataGridView1.TabIndex = 3;
+            // 
+            // CheckBox
+            // 
+            this.CheckBox.HeaderText = "";
+            this.CheckBox.Name = "CheckBox";
+            this.CheckBox.ReadOnly = true;
             // 
             // TName
             // 
             this.TName.HeaderText = "机构名称";
             this.TName.Name = "TName";
             this.TName.ReadOnly = true;
-            this.TName.Width = 84;
-            // 
-            // TargetFileNo
-            // 
-            this.TargetFileNo.HeaderText = "序号";
-            this.TargetFileNo.Name = "TargetFileNo";
-            this.TargetFileNo.ReadOnly = true;
-            this.TargetFileNo.Width = 60;
-            // 
-            // TargetFileTitle
-            // 
-            this.TargetFileTitle.HeaderText = "文件标题";
-            this.TargetFileTitle.Name = "TargetFileTitle";
-            this.TargetFileTitle.ReadOnly = true;
-            this.TargetFileTitle.Width = 84;
-            // 
-            // TargetFileName
-            // 
-            this.TargetFileName.HeaderText = "文件名称";
-            this.TargetFileName.Name = "TargetFileName";
-            this.TargetFileName.ReadOnly = true;
-            this.TargetFileName.Width = 84;
-            // 
-            // TargetFileFormat
-            // 
-            this.TargetFileFormat.HeaderText = "文件格式";
-            this.TargetFileFormat.Name = "TargetFileFormat";
-            this.TargetFileFormat.ReadOnly = true;
-            this.TargetFileFormat.Width = 84;
-            // 
-            // TargetFileTXTEqueDBF
-            // 
-            this.TargetFileTXTEqueDBF.HeaderText = "TXT和DBF列相同";
-            this.TargetFileTXTEqueDBF.Name = "TargetFileTXTEqueDBF";
-            this.TargetFileTXTEqueDBF.ReadOnly = true;
-            this.TargetFileTXTEqueDBF.Width = 126;
-            // 
-            // TargetFileColumnDirection
-            // 
-            this.TargetFileColumnDirection.HeaderText = "列方向";
-            this.TargetFileColumnDirection.Name = "TargetFileColumnDirection";
-            this.TargetFileColumnDirection.ReadOnly = true;
-            this.TargetFileColumnDirection.Width = 72;
-            // 
-            // TargetFileIsOutTitle
-            // 
-            this.TargetFileIsOutTitle.HeaderText = "输出标题";
-            this.TargetFileIsOutTitle.Name = "TargetFileIsOutTitle";
-            this.TargetFileIsOutTitle.ReadOnly = true;
-            this.TargetFileIsOutTitle.Width = 84;
-            // 
-            // TargetFileIsOutColumnName
-            // 
-            this.TargetFileIsOutColumnName.HeaderText = "输出列名";
-            this.TargetFileIsOutColumnName.Name = "TargetFileIsOutColumnName";
-            this.TargetFileIsOutColumnName.ReadOnly = true;
-            this.TargetFileIsOutColumnName.Width = 84;
-            // 
-            // TargetFileIsConnector
-            // 
-            this.TargetFileIsConnector.HeaderText = "连接符";
-            this.TargetFileIsConnector.Name = "TargetFileIsConnector";
-            this.TargetFileIsConnector.ReadOnly = true;
-            this.TargetFileIsConnector.Width = 72;
-            // 
-            // TargetFileIsIsSummary
-            // 
-            this.TargetFileIsIsSummary.HeaderText = "是否汇总";
-            this.TargetFileIsIsSummary.Name = "TargetFileIsIsSummary";
-            this.TargetFileIsIsSummary.ReadOnly = true;
-            this.TargetFileIsIsSummary.Width = 84;
-            // 
-            // TargetFileIsIsShowFundAccountNo
-            // 
-            this.TargetFileIsIsShowFundAccountNo.HeaderText = "首列是否显示资金账号";
-            this.TargetFileIsIsShowFundAccountNo.Name = "TargetFileIsIsShowFundAccountNo";
-            this.TargetFileIsIsShowFundAccountNo.ReadOnly = true;
-            this.TargetFileIsIsShowFundAccountNo.Width = 156;
-            // 
-            // TargetFileIsIEachAccountOutTitle
-            // 
-            this.TargetFileIsIEachAccountOutTitle.HeaderText = "各账号输出标题";
-            this.TargetFileIsIEachAccountOutTitle.Name = "TargetFileIsIEachAccountOutTitle";
-            this.TargetFileIsIEachAccountOutTitle.ReadOnly = true;
-            this.TargetFileIsIEachAccountOutTitle.Width = 120;
             // 
             // UC_DataSetting
             // 
@@ -1860,7 +1651,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kGBFileList)).EndInit();
             this.kGBFileList.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kDGVFileList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
@@ -1950,6 +1740,7 @@
             this.kryptonPanel4.ResumeLayout(false);
             this.tableLayoutPanel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kDGVFileWordsList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1970,7 +1761,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kGBFileList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVFileList;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVSourceFileList;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVKeyWords;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVFilter;
@@ -2077,19 +1867,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DataDictionaryNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataDictionarySourceValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataDictionaryTargetValue;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn TargetFileOrganizationName;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn TName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileFormat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileTXTEqueDBF;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileColumnDirection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsOutTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsOutColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsConnector;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsIsSummary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsIsShowFundAccountNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsIEachAccountOutTitle;
     }
 }

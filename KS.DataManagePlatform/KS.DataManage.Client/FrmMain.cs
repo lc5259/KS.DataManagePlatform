@@ -598,5 +598,15 @@ namespace KS.DataManage.Client
             this.MainFormNodeChaned(new NodeInfo(param.Name, param.Text, param.Tag.ToString()));
 
         }
+
+        private void UsTSMItem_Click(object sender, EventArgs e)
+        {
+            KryptonMessageBox.Show("上海金仕达软件科技有限公司。", "信息", MessageBoxButtons.OK,  MessageBoxIcon.Information);
+        }
+
+        private void VersionTSMItem_Click(object sender, EventArgs e)
+        {
+            KryptonMessageBox.Show("内部版本：0.0.2.0 ", "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

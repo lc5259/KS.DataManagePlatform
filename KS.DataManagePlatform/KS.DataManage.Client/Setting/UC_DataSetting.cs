@@ -42,7 +42,7 @@ namespace KS.DataManage.Client
         {
             this.SuspendLayout();
             kCombAccount.DataSource = GlobalData.AccountGroup;
-            
+
             this.ResumeLayout(false);
         }
         private void btnAddTradeID_Click(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace KS.DataManage.Client
             string ConfigFileName = GlobalData.GetDataConfigPath(kCombAccount.SelectedItem.ToString());
             if (!File.Exists(ConfigFileName))
             {
-                KryptonMessageBox.Show(string.Format("配置文件 {0} 不存在！", ConfigFileName),"错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                KryptonMessageBox.Show(string.Format("配置文件 {0} 不存在！", ConfigFileName), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Error(string.Format("配置文件 {0} 不存在！", ConfigFileName));
                 return;
             }
@@ -104,6 +104,27 @@ namespace KS.DataManage.Client
             kCombTradeID.DataSource = a;
 
             this.ResumeLayout(false);
+        }
+
+        private void kCombTradeID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (XElement xNode in _configDocument.Descendants("AccountId"))
+                {
+                    if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
+                    {
+                        this.dataGridView1.DataSource = FileDataTable.FildListDT(xNode);
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
     }
 }

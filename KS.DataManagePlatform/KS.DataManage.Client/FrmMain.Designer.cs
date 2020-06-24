@@ -207,26 +207,26 @@
             // SetTSMItem
             // 
             this.SetTSMItem.Name = "SetTSMItem";
-            this.SetTSMItem.Size = new System.Drawing.Size(180, 22);
+            this.SetTSMItem.Size = new System.Drawing.Size(146, 22);
             this.SetTSMItem.Text = "账户详情设置";
             this.SetTSMItem.Click += new System.EventHandler(this.SetTSMItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
             // 
             // InputTSMItem
             // 
             this.InputTSMItem.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.InputTSMItem.Name = "InputTSMItem";
-            this.InputTSMItem.Size = new System.Drawing.Size(180, 22);
+            this.InputTSMItem.Size = new System.Drawing.Size(146, 22);
             this.InputTSMItem.Text = "账号配置导出";
             // 
             // OutputTSMItem
             // 
             this.OutputTSMItem.Name = "OutputTSMItem";
-            this.OutputTSMItem.Size = new System.Drawing.Size(180, 22);
+            this.OutputTSMItem.Size = new System.Drawing.Size(146, 22);
             this.OutputTSMItem.Text = "账号配置导出";
             // 
             // AccountTSMItem
@@ -277,14 +277,16 @@
             // UsTSMItem
             // 
             this.UsTSMItem.Name = "UsTSMItem";
-            this.UsTSMItem.Size = new System.Drawing.Size(122, 22);
+            this.UsTSMItem.Size = new System.Drawing.Size(180, 22);
             this.UsTSMItem.Text = "关于我们";
+            this.UsTSMItem.Click += new System.EventHandler(this.UsTSMItem_Click);
             // 
             // VersionTSMItem
             // 
             this.VersionTSMItem.Name = "VersionTSMItem";
-            this.VersionTSMItem.Size = new System.Drawing.Size(122, 22);
+            this.VersionTSMItem.Size = new System.Drawing.Size(180, 22);
             this.VersionTSMItem.Text = "版本信息";
+            this.VersionTSMItem.Click += new System.EventHandler(this.VersionTSMItem_Click);
             // 
             // kryptonButton1
             // 
@@ -351,8 +353,8 @@
             this.kbtnMax.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
             this.kbtnMax.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
             this.kbtnMax.StatePressed.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
-            this.kbtnMax.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
-            this.kbtnMax.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(219)))), ((int)(((byte)(219)))));
+            this.kbtnMax.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
+            this.kbtnMax.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(200)))), ((int)(((byte)(210)))));
             this.kbtnMax.StateTracking.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
             this.kbtnMax.TabIndex = 19;
             this.kbtnMax.Values.Image = global::KS.DataManage.Client.Properties.Resources.screenexpand16px;
