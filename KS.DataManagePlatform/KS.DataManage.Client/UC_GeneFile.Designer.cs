@@ -931,8 +931,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryBtSingleToCffex;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryBtSingleToSync;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryBtSingleToMotorCenter;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckedListBox kryCLBSingleMotorCenterAccount;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckedListBox kryCLBSingleCffexAccount;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryCBSingleMotorCenterAccount;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryCBSingleCffexAccount;
         private ComponentFactory.Krypton.Toolkit.KryptonButton krypBtSingleAccountMotorCenter;
@@ -976,5 +974,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryBtSave;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryLbDate;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette2;
+        public ComponentFactory.Krypton.Toolkit.KryptonCheckedListBox kryCLBSingleMotorCenterAccount;
+        protected ComponentFactory.Krypton.Toolkit.KryptonCheckedListBox kryCLBSingleCffexAccount;
     }
 }

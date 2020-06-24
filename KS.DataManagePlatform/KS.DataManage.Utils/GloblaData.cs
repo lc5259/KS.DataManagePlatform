@@ -39,5 +39,6 @@ namespace KS.DataManage.Utils
                 _AccountGroup = value;
             }
         }
+       
     }
 }

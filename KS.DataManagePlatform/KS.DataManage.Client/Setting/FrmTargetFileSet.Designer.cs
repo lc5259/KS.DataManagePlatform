@@ -139,6 +139,7 @@
             this.kbtnSave.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.kbtnSave.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnSave.Values.Text = "保存";
+            this.kbtnSave.Click += new System.EventHandler(this.kbtnSave_Click);
             // 
             // kbtnCancle
             // 
@@ -484,6 +485,7 @@
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateCommon.Border.Width = 1;
             this.Text = "文件列表设置";
             this.Controls.SetChildIndex(this.kryPanelBottom, 0);
             this.Controls.SetChildIndex(this.kryptonPanel1, 0);

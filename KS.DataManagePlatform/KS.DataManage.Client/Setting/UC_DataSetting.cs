@@ -49,6 +49,31 @@ namespace KS.DataManage.Client
         {
             FrmTradeAccountSet ftas = new FrmTradeAccountSet();
             ftas.ShowDialog();
+            if (ftas.IsSave)
+            {
+                this.SuspendLayout();
+                string FundAccountNo = ftas.kryTextBoxFundAccountNo.Text.ToString();
+
+
+                List<string> CombTradeID = new List<string>();
+                CombTradeID = this.kCombTradeID.DataSource as List<string>;
+                CombTradeID.Add(FundAccountNo);
+
+                this.kCombTradeID.DataSource = null;
+                this.kCombTradeID.Items.Clear();
+                //foreach (var item in CombTradeID)
+                //{
+                //    this.kCombTradeID.Items.Add(item);
+                //}
+                this.kCombTradeID.DataSource = CombTradeID ;
+                this.kCombTradeID.Text = FundAccountNo;
+
+                this.kCombTradeID.Refresh();
+                this.ResumeLayout(false);
+                
+                //kCombTradeID.Items.Add(FundAccountNo);
+            }
+            
         }
 
         private void kBtnOtherSet_Click(object sender, EventArgs e)
@@ -114,7 +139,7 @@ namespace KS.DataManage.Client
                 {
                     if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
                     {
-                        this.dataGridView1.DataSource = FileDataTable.FildListDT(xNode);
+                        this.kDGVFileList.DataSource = FileDataTable.FildListDT(xNode);
                         break;
                     }
                 }
@@ -125,6 +150,17 @@ namespace KS.DataManage.Client
                 throw;
             }
 
+        }
+
+        private void kDGVFileList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                //int sdg = this.kDGVDict.CurrentCell.RowIndex;
+
+                //DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)this.kDGVDict.Rows[sdg].Cells["TargetFilecheckAll"];
+                //cell.Value = "1";
+            }
         }
     }
 }

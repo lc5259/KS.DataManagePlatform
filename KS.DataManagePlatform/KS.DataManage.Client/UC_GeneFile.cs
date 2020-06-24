@@ -14,14 +14,16 @@ using System.Xml;
 
 namespace KS.DataManage.Client
 {
-    public partial class UC_GeneFile : UserControl
+    public  partial class UC_GeneFile : UserControl
     {
         string _fileGroup = "";
         public UC_GeneFile()
         {
             InitializeComponent();
             //SetFont();//测试阶段暂时关闭
+            
         }
+ 
 
         public UC_GeneFile(string group)
         {
@@ -736,6 +738,10 @@ namespace KS.DataManage.Client
             {
                 MessageBox.Show("保存设置成功");
             }
+
+           
         }
+
     }
+  
 }

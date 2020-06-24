@@ -31,11 +31,12 @@
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonCheckBox1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonCheckBox2 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
+            this.kryCheckBoxCffex = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
+            this.kryCheckBoxMotorCenter = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.kryptonCheckBox3 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.kryptonCheckBox4 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.kryptonCheckBox5 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
+            this.kryTextBoxFundAccountNo = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryPanelBottom)).BeginInit();
             this.kryPanelBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryPanelCancle)).BeginInit();
@@ -52,13 +53,16 @@
             // kryPanelCancle
             // 
             this.kryPanelCancle.Location = new System.Drawing.Point(305, 0);
+            this.kryPanelCancle.Size = new System.Drawing.Size(120, 49);
             // 
             // kryPanelSave
             // 
             this.kryPanelSave.Location = new System.Drawing.Point(185, 0);
+            this.kryPanelSave.Size = new System.Drawing.Size(120, 49);
             // 
             // kbtnSave
             // 
+            this.kbtnSave.Location = new System.Drawing.Point(9, 11);
             this.kbtnSave.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
             this.kbtnSave.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
             this.kbtnSave.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -106,9 +110,11 @@
             this.kbtnSave.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.kbtnSave.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnSave.Values.Text = "保存";
+            this.kbtnSave.Click += new System.EventHandler(this.kbtnSave_Click);
             // 
             // kbtnCancle
             // 
+            this.kbtnCancle.Location = new System.Drawing.Point(8, 11);
             this.kbtnCancle.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
             this.kbtnCancle.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
             this.kbtnCancle.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -156,20 +162,21 @@
             this.kbtnCancle.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.kbtnCancle.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnCancle.Values.Text = "取消";
+            this.kbtnCancle.Click += new System.EventHandler(this.kbtnCancle_Click);
             // 
             // kryptonLabel1
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(69, 58);
+            this.kryptonLabel1.Location = new System.Drawing.Point(95, 58);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(51, 20);
+            this.kryptonLabel1.Size = new System.Drawing.Size(75, 20);
             this.kryptonLabel1.TabIndex = 1;
-            this.kryptonLabel1.Values.Text = "模板4.1";
+            this.kryptonLabel1.Values.Text = "资金账号：";
             // 
             // kryptonLabel2
             // 
             this.kryptonLabel2.Location = new System.Drawing.Point(145, 113);
             this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(48, 20);
+            this.kryptonLabel2.Size = new System.Drawing.Size(49, 20);
             this.kryptonLabel2.TabIndex = 2;
             this.kryptonLabel2.Values.Text = "文件：";
             // 
@@ -177,31 +184,31 @@
             // 
             this.kryptonLabel3.Location = new System.Drawing.Point(95, 206);
             this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(98, 20);
+            this.kryptonLabel3.Size = new System.Drawing.Size(101, 20);
             this.kryptonLabel3.TabIndex = 3;
             this.kryptonLabel3.Values.Text = "生成文件格式：";
             // 
-            // kryptonCheckBox1
+            // kryCheckBoxCffex
             // 
-            this.kryptonCheckBox1.Location = new System.Drawing.Point(166, 139);
-            this.kryptonCheckBox1.Name = "kryptonCheckBox1";
-            this.kryptonCheckBox1.Size = new System.Drawing.Size(61, 20);
-            this.kryptonCheckBox1.TabIndex = 4;
-            this.kryptonCheckBox1.Values.Text = "中金所";
+            this.kryCheckBoxCffex.Location = new System.Drawing.Point(166, 139);
+            this.kryCheckBoxCffex.Name = "kryCheckBoxCffex";
+            this.kryCheckBoxCffex.Size = new System.Drawing.Size(62, 20);
+            this.kryCheckBoxCffex.TabIndex = 4;
+            this.kryCheckBoxCffex.Values.Text = "中金所";
             // 
-            // kryptonCheckBox2
+            // kryCheckBoxMotorCenter
             // 
-            this.kryptonCheckBox2.Location = new System.Drawing.Point(166, 165);
-            this.kryptonCheckBox2.Name = "kryptonCheckBox2";
-            this.kryptonCheckBox2.Size = new System.Drawing.Size(73, 20);
-            this.kryptonCheckBox2.TabIndex = 5;
-            this.kryptonCheckBox2.Values.Text = "监控中心";
+            this.kryCheckBoxMotorCenter.Location = new System.Drawing.Point(166, 165);
+            this.kryCheckBoxMotorCenter.Name = "kryCheckBoxMotorCenter";
+            this.kryCheckBoxMotorCenter.Size = new System.Drawing.Size(75, 20);
+            this.kryCheckBoxMotorCenter.TabIndex = 5;
+            this.kryCheckBoxMotorCenter.Values.Text = "监控中心";
             // 
             // kryptonCheckBox3
             // 
             this.kryptonCheckBox3.Location = new System.Drawing.Point(166, 232);
             this.kryptonCheckBox3.Name = "kryptonCheckBox3";
-            this.kryptonCheckBox3.Size = new System.Drawing.Size(93, 20);
+            this.kryptonCheckBox3.Size = new System.Drawing.Size(94, 20);
             this.kryptonCheckBox3.TabIndex = 6;
             this.kryptonCheckBox3.Values.Text = "中金所 - TXT";
             // 
@@ -209,7 +216,7 @@
             // 
             this.kryptonCheckBox4.Location = new System.Drawing.Point(166, 284);
             this.kryptonCheckBox4.Name = "kryptonCheckBox4";
-            this.kryptonCheckBox4.Size = new System.Drawing.Size(105, 20);
+            this.kryptonCheckBox4.Size = new System.Drawing.Size(107, 20);
             this.kryptonCheckBox4.TabIndex = 8;
             this.kryptonCheckBox4.Values.Text = "监控中心 - TXT";
             // 
@@ -217,34 +224,58 @@
             // 
             this.kryptonCheckBox5.Location = new System.Drawing.Point(166, 258);
             this.kryptonCheckBox5.Name = "kryptonCheckBox5";
-            this.kryptonCheckBox5.Size = new System.Drawing.Size(94, 20);
+            this.kryptonCheckBox5.Size = new System.Drawing.Size(96, 20);
             this.kryptonCheckBox5.TabIndex = 7;
             this.kryptonCheckBox5.Values.Text = "中金所 - DBF";
+            // 
+            // kryTextBoxFundAccountNo
+            // 
+            this.kryTextBoxFundAccountNo.Location = new System.Drawing.Point(166, 55);
+            this.kryTextBoxFundAccountNo.Name = "kryTextBoxFundAccountNo";
+            this.kryTextBoxFundAccountNo.Size = new System.Drawing.Size(128, 23);
+            this.kryTextBoxFundAccountNo.TabIndex = 9;
             // 
             // FrmTradeAccountSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 449);
+            this.Controls.Add(this.kryTextBoxFundAccountNo);
             this.Controls.Add(this.kryptonCheckBox4);
             this.Controls.Add(this.kryptonCheckBox5);
             this.Controls.Add(this.kryptonCheckBox3);
-            this.Controls.Add(this.kryptonCheckBox2);
-            this.Controls.Add(this.kryptonCheckBox1);
+            this.Controls.Add(this.kryCheckBoxMotorCenter);
+            this.Controls.Add(this.kryCheckBoxCffex);
             this.Controls.Add(this.kryptonLabel3);
             this.Controls.Add(this.kryptonLabel2);
             this.Controls.Add(this.kryptonLabel1);
             this.Name = "FrmTradeAccountSet";
+            this.StateActive.Border.Color1 = System.Drawing.Color.Black;
+            this.StateActive.Border.Color2 = System.Drawing.Color.Black;
+            this.StateActive.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
+            this.StateActive.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateActive.Border.Width = 1;
+            this.StateActive.Header.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
+            this.StateActive.Header.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateCommon.Border.Width = 1;
             this.Text = "资金账户";
             this.Controls.SetChildIndex(this.kryptonLabel1, 0);
             this.Controls.SetChildIndex(this.kryptonLabel2, 0);
             this.Controls.SetChildIndex(this.kryptonLabel3, 0);
             this.Controls.SetChildIndex(this.kryPanelBottom, 0);
-            this.Controls.SetChildIndex(this.kryptonCheckBox1, 0);
-            this.Controls.SetChildIndex(this.kryptonCheckBox2, 0);
+            this.Controls.SetChildIndex(this.kryCheckBoxCffex, 0);
+            this.Controls.SetChildIndex(this.kryCheckBoxMotorCenter, 0);
             this.Controls.SetChildIndex(this.kryptonCheckBox3, 0);
             this.Controls.SetChildIndex(this.kryptonCheckBox5, 0);
             this.Controls.SetChildIndex(this.kryptonCheckBox4, 0);
+            this.Controls.SetChildIndex(this.kryTextBoxFundAccountNo, 0);
             ((System.ComponentModel.ISupportInitialize)(this.kryPanelBottom)).EndInit();
             this.kryPanelBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryPanelCancle)).EndInit();
@@ -261,10 +292,11 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel3;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox2;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryCheckBoxCffex;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryCheckBoxMotorCenter;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox3;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox4;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox5;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox kryTextBoxFundAccountNo;
     }
 }

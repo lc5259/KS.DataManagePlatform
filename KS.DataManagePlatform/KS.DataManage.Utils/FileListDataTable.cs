@@ -56,9 +56,9 @@ namespace KS.DataManage.Utils
             //    }
             //}TargetFileOrganizationName
             DataTable dt = new DataTable();
-            DataColumn TName = new DataColumn(); TName.Caption = "TName"; TName.ColumnName = "机构名称";
-            DataColumn CheckBox = new DataColumn(); CheckBox.Caption = "CheckBox"; CheckBox.ColumnName = ""; CheckBox.DataType = typeof(bool);
-            dt.Columns.AddRange(new DataColumn[] { CheckBox, TName });
+            //DataColumn TName = new DataColumn(); TName.Caption = "TName"; TName.ColumnName = "机构名称";
+            //DataColumn CheckBox = new DataColumn(); CheckBox.Caption = "CheckBox"; CheckBox.ColumnName = ""; CheckBox.DataType = typeof(bool);
+            //dt.Columns.AddRange(new DataColumn[] { CheckBox, TName });
             //DataColumn TName = new DataColumn(); TName.Caption = "机构名称"; TName.ColumnName = "TName";
             //DataColumn TName = new DataColumn(); TName.Caption = "机构名称"; TName.ColumnName = "TName";
             //DataColumn TName = new DataColumn(); TName.Caption = "机构名称"; TName.ColumnName = "TName";
@@ -91,13 +91,27 @@ namespace KS.DataManage.Utils
             //dt.Columns.Add("TargetFileIsConnector", typeof(System.String));
             //dt.Columns.Add("TargetFileIsIsSummary", typeof(System.String));
             //dt.Columns.Add("TargetFileIsIsShowFundAccountNo", typeof(System.String));
-            //dt.Columns.Add("TargetFileIsIEachAccountOutTitle", typeof(System.String));
+            //dt.Columns.Add("TargetFileIsIEachAccountOutTitle", typeof(System.String)); TargetOrganizationName
             //xml;
+
+            dt.Columns.Add("DataTargetOrganizationName", typeof(System.String)); //var s = new DataColumn(); s.
+            dt.Columns.Add("DataTargetFileNo", typeof(System.String));
+            dt.Columns.Add("DataTargetFileTitle", typeof(System.String));
+            dt.Columns.Add("DataTargetFileName", typeof(System.String));
+            dt.Columns.Add("DataTargetFileFormat", typeof(System.String));
+            dt.Columns.Add("DataTargetFileTXTEqueDBF", typeof(System.String));
+            dt.Columns.Add("DataTargetFileColumnDirection", typeof(System.String));
+            dt.Columns.Add("DataTargetFileIsOutTitle", typeof(System.String));
+            dt.Columns.Add("DataTargetFileIsOutColumnName", typeof(System.String));
+            dt.Columns.Add("DataTargetFileIsConnector", typeof(System.String));
+            dt.Columns.Add("DataTargetFileIsIsSummary", typeof(System.String));
+            dt.Columns.Add("DataTargetFileIsIsShowFundAccountNo", typeof(System.String));
+            dt.Columns.Add("DataTargetFileIsIEachAccountOutTitle", typeof(System.String)); 
             foreach (XElement item in xml.Descendants("OrganCode"))
             {
                 foreach (XElement file in item.Nodes())
                 {
-                    //DataRow dr = dt.NewRow();
+                    DataRow dr = dt.NewRow();
                     //dr["机构名称"] = item.Attribute("name").Value;
                     //dr["TargetFileNo"] = file.Attribute("fid").Value;
                     //dr["TargetFileTitle"] = file.Attribute("filetitle").Value;
@@ -111,24 +125,41 @@ namespace KS.DataManage.Utils
                     //dr["TargetFileIsIsSummary"] = file.Attribute("IsSum").Value;
                     //dr["TargetFileIsIsShowFundAccountNo"] = file.Attribute("IsDispAccId").Value;
                     //dr["TargetFileIsIEachAccountOutTitle"] = file.Attribute("IsDispAccId").Value;
+
+                    dr["DataTargetOrganizationName"] = item.Attribute("name").Value;
+                    dr["DataTargetFileNo"] = file.Attribute("fid").Value;
+                    dr["DataTargetFileTitle"] = file.Attribute("filetitle").Value;
+                    dr["DataTargetFileName"] = file.Attribute("filename").Value;
+                    dr["DataTargetFileFormat"] = file.Attribute("fileext").Value;
+                    dr["DataTargetFileTXTEqueDBF"] = file.Attribute("isallsame").Value;
+                    dr["DataTargetFileColumnDirection"] = file.Attribute("arrangeType").Value;
+                    dr["DataTargetFileIsOutTitle"] = file.Attribute("IsOutTitle").Value;
+                    dr["DataTargetFileIsOutColumnName"] = file.Attribute("IsOutColName").Value;
+                    dr["DataTargetFileIsConnector"] = file.Attribute("splitc").Value;
+                    dr["DataTargetFileIsIsSummary"] = file.Attribute("IsSum").Value;
+                    dr["DataTargetFileIsIsShowFundAccountNo"] = file.Attribute("IsDispAccId").Value;
+                    dr["DataTargetFileIsIEachAccountOutTitle"] = file.Attribute("IsDispAccId").Value;
+
                     //fid="1" filetitle="成交单" filename="{accountid}_SG01_{tradingday}_1_Trade" fileext="TXT" isallsame="是" 
                     //arrangeType ="纵向" IsOutTitle="是" IsOutColName="是" splitc=" " IsSum="否" IsOutPut="是" IsDispAccId="否" IsOutLineTitle="否">
-                    dt.Rows.Add(file.Attribute("IsDispAccId").Value.Equals("是") ? true : false, item.Attribute("name").Value);
-                        //,
-                        //item.Attribute("name").Value,
-                        //file.Attribute("fid").Value,
-                        //file.Attribute("filetitle").Value,
-                        //file.Attribute("filename").Value,
-                        //file.Attribute("fileext").Value,
-                        //file.Attribute("isallsame").Value,
-                        //file.Attribute("arrangeType").Value,
-                        //file.Attribute("IsOutTitle").Value,
-                        //file.Attribute("IsOutColName").Value,
-                        //file.Attribute("splitc").Value,
-                        //file.Attribute("IsSum").Value,
-                        //file.Attribute("IsDispAccId").Value,
-                        //file.Attribute("IsDispAccId").Value
-                        //);
+                    //dt.Rows.Add(file.Attribute(//"IsDispAccId").Value.Equals("是") ? true : false, 
+                    //    item.Attribute("name").Value//);
+                    //    ,
+                    //    item.Attribute("name").Value,
+                    //    file.Attribute("fid").Value,
+                    //    file.Attribute("filetitle").Value,
+                    //    file.Attribute("filename").Value,
+                    //    file.Attribute("fileext").Value,
+                    //    file.Attribute("isallsame").Value,
+                    //    file.Attribute("arrangeType").Value,
+                    //    file.Attribute("IsOutTitle").Value,
+                    //    file.Attribute("IsOutColName").Value,
+                    //    file.Attribute("splitc").Value,
+                    //    file.Attribute("IsSum").Value,
+                    //    file.Attribute("IsDispAccId").Value,
+                    //    file.Attribute("IsDispAccId").Value
+                    //    ));
+                    dt.Rows.Add(dr);
                 }
             }
 
