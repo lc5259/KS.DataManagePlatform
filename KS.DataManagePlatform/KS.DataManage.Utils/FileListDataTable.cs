@@ -106,7 +106,7 @@ namespace KS.DataManage.Utils
             dt.Columns.Add("DataTargetFileIsConnector", typeof(System.String));
             dt.Columns.Add("DataTargetFileIsIsSummary", typeof(System.String));
             dt.Columns.Add("DataTargetFileIsIsShowFundAccountNo", typeof(System.String));
-            dt.Columns.Add("DataTargetFileIsIEachAccountOutTitle", typeof(System.String)); 
+            dt.Columns.Add("DataTargetFileIsIEachAccountOutTitle", typeof(System.String));
             foreach (XElement item in xml.Descendants("OrganCode"))
             {
                 foreach (XElement file in item.Nodes())
@@ -196,13 +196,26 @@ namespace KS.DataManage.Utils
         public static DataTable SourceFileListDT(XElement xml)
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("SourceFileNo", typeof(System.String));
-            dt.Columns.Add("SourceFileName", typeof(System.String));
-            dt.Columns.Add("SourceFileNameFunfAccountNoIndex", typeof(System.String));
-            dt.Columns.Add("SourceFileFrom", typeof(System.String));
-            dt.Columns.Add("SourceFileSeparator", typeof(System.String));
-            dt.Columns.Add("SourceFileMergeType", typeof(System.String));
+            dt.Columns.Add("DataSourceFileNo", typeof(System.String));
+            dt.Columns.Add("DataSourceFileName", typeof(System.String));
+            dt.Columns.Add("DataSourceFileFunfAccountNoIndex", typeof(System.String));
+            dt.Columns.Add("DataSourceFileFrom", typeof(System.String));
+            dt.Columns.Add("DataSourceFileSeparator", typeof(System.String));
+            dt.Columns.Add("DataSourceFileMergeType", typeof(System.String));
 
+            foreach (XElement item in xml.Descendants("fileSrc"))
+            {
+                DataRow dr = dt.NewRow();
+
+                dr["DataSourceFileNo"] = item.Attribute("srcid").Value;
+                dr["DataSourceFileName"] = item.Attribute("srcfile").Value;
+                dr["DataSourceFileFunfAccountNoIndex"] = item.Attribute("AccIdIndex").Value;
+                dr["DataSourceFileFrom"] = item.Attribute("srcfileType").Value;
+                dr["DataSourceFileSeparator"] = item.Attribute("splitc").Value;
+                dr["DataSourceFileMergeType"] = item.Attribute("combtype").Value;
+
+                dt.Rows.Add(dr);
+            }
             return dt;
         }
         /// <summary>
@@ -213,10 +226,20 @@ namespace KS.DataManage.Utils
         public static DataTable KeyWordstDT(XElement xml)
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("GenerateFileKeywordNo", typeof(System.String));
-            dt.Columns.Add("GenerateFileKeywordName", typeof(System.String));
-            dt.Columns.Add("GenerateFileKeywordIndex", typeof(System.String));
+            dt.Columns.Add("DataGenerateFileKeywordNo", typeof(System.String));
+            dt.Columns.Add("DataGenerateFileKeywordName", typeof(System.String));
+            dt.Columns.Add("DataGenerateFileKeywordIndex", typeof(System.String));
 
+            foreach (XElement item in xml.Descendants("filepkg"))
+            {
+                DataRow dr = dt.NewRow();
+
+                dr["DataGenerateFileKeywordNo"] = item.Attribute("pkid").Value;
+                dr["DataGenerateFileKeywordName"] = item.Attribute("name").Value;
+                dr["DataGenerateFileKeywordIndex"] = item.Attribute("pkgColIndex").Value;
+
+                dt.Rows.Add(dr);
+            }
             return dt;
         }
         /// <summary>

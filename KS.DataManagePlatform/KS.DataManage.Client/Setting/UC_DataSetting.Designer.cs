@@ -76,12 +76,6 @@
             this.kGBSourceFileList = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kDGVSourceFileList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.SourceFileNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SourceFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SourceFileNameFunfAccountNoIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SourceFileFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SourceFileSeparator = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SourceFileMergeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelSourceFile = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -90,9 +84,6 @@
             this.kGBKeyWords = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.kDGVKeyWords = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.GenerateFileKeywordNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GenerateFileKeywordName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GenerateFileKeywordIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelGenerateFileKeyword = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -150,7 +141,7 @@
             this.FileFieldIsAbsoluteValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileFieldIsAbsoluteValueOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TargetFilecheckAll = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.TargetOrganizationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TargetFileOrganizationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TargetFileNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TargetFileTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TargetFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -163,6 +154,15 @@
             this.TargetFileIsIsSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TargetFileIsIsShowFundAccountNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TargetFileIsIEachAccountOutTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileFunfAccountNoIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileSeparator = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceFileMergeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenerateFileKeywordNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenerateFileKeywordName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenerateFileKeywordIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1.Panel1)).BeginInit();
             this.kSplitContainerL1.Panel1.SuspendLayout();
@@ -349,7 +349,7 @@
             this.kDGVFileList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.kDGVFileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TargetFilecheckAll,
-            this.TargetOrganizationName,
+            this.TargetFileOrganizationName,
             this.TargetFileNo,
             this.TargetFileTitle,
             this.TargetFileName,
@@ -407,6 +407,7 @@
             this.btnDelTargetFile.Size = new System.Drawing.Size(52, 35);
             this.btnDelTargetFile.TabIndex = 4;
             this.btnDelTargetFile.Values.Text = "删除";
+            this.btnDelTargetFile.Click += new System.EventHandler(this.btnDelTargetFile_Click);
             // 
             // btnUpdateTargetFile
             // 
@@ -915,7 +916,7 @@
             this.kDGVSourceFileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SourceFileNo,
             this.SourceFileName,
-            this.SourceFileNameFunfAccountNoIndex,
+            this.SourceFileFunfAccountNoIndex,
             this.SourceFileFrom,
             this.SourceFileSeparator,
             this.SourceFileMergeType});
@@ -924,44 +925,9 @@
             this.kDGVSourceFileList.Name = "kDGVSourceFileList";
             this.kDGVSourceFileList.ReadOnly = true;
             this.kDGVSourceFileList.RowTemplate.Height = 23;
+            this.kDGVSourceFileList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kDGVSourceFileList.Size = new System.Drawing.Size(538, 95);
             this.kDGVSourceFileList.TabIndex = 1;
-            // 
-            // SourceFileNo
-            // 
-            this.SourceFileNo.HeaderText = "序号";
-            this.SourceFileNo.Name = "SourceFileNo";
-            this.SourceFileNo.ReadOnly = true;
-            // 
-            // SourceFileName
-            // 
-            this.SourceFileName.HeaderText = "文件名";
-            this.SourceFileName.Name = "SourceFileName";
-            this.SourceFileName.ReadOnly = true;
-            // 
-            // SourceFileNameFunfAccountNoIndex
-            // 
-            this.SourceFileNameFunfAccountNoIndex.HeaderText = "资金账号索引";
-            this.SourceFileNameFunfAccountNoIndex.Name = "SourceFileNameFunfAccountNoIndex";
-            this.SourceFileNameFunfAccountNoIndex.ReadOnly = true;
-            // 
-            // SourceFileFrom
-            // 
-            this.SourceFileFrom.HeaderText = "文件来源";
-            this.SourceFileFrom.Name = "SourceFileFrom";
-            this.SourceFileFrom.ReadOnly = true;
-            // 
-            // SourceFileSeparator
-            // 
-            this.SourceFileSeparator.HeaderText = "分隔符";
-            this.SourceFileSeparator.Name = "SourceFileSeparator";
-            this.SourceFileSeparator.ReadOnly = true;
-            // 
-            // SourceFileMergeType
-            // 
-            this.SourceFileMergeType.HeaderText = "合并方式";
-            this.SourceFileMergeType.Name = "SourceFileMergeType";
-            this.SourceFileMergeType.ReadOnly = true;
             // 
             // kryptonPanel2
             // 
@@ -998,6 +964,7 @@
             this.btnDelSourceFile.Size = new System.Drawing.Size(52, 31);
             this.btnDelSourceFile.TabIndex = 4;
             this.btnDelSourceFile.Values.Text = "删除";
+            this.btnDelSourceFile.Click += new System.EventHandler(this.btnDelSourceFile_Click);
             // 
             // btnUpdateSourceFile
             // 
@@ -1008,6 +975,7 @@
             this.btnUpdateSourceFile.Size = new System.Drawing.Size(52, 29);
             this.btnUpdateSourceFile.TabIndex = 3;
             this.btnUpdateSourceFile.Values.Text = "修改";
+            this.btnUpdateSourceFile.Click += new System.EventHandler(this.btnUpdateSourceFile_Click);
             // 
             // btnAddSourceFile
             // 
@@ -1062,27 +1030,9 @@
             this.kDGVKeyWords.Name = "kDGVKeyWords";
             this.kDGVKeyWords.ReadOnly = true;
             this.kDGVKeyWords.RowTemplate.Height = 23;
+            this.kDGVKeyWords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kDGVKeyWords.Size = new System.Drawing.Size(394, 95);
             this.kDGVKeyWords.TabIndex = 0;
-            // 
-            // GenerateFileKeywordNo
-            // 
-            this.GenerateFileKeywordNo.HeaderText = "序号";
-            this.GenerateFileKeywordNo.Name = "GenerateFileKeywordNo";
-            this.GenerateFileKeywordNo.ReadOnly = true;
-            this.GenerateFileKeywordNo.Width = 70;
-            // 
-            // GenerateFileKeywordName
-            // 
-            this.GenerateFileKeywordName.HeaderText = "名称";
-            this.GenerateFileKeywordName.Name = "GenerateFileKeywordName";
-            this.GenerateFileKeywordName.ReadOnly = true;
-            // 
-            // GenerateFileKeywordIndex
-            // 
-            this.GenerateFileKeywordIndex.HeaderText = "索引号";
-            this.GenerateFileKeywordIndex.Name = "GenerateFileKeywordIndex";
-            this.GenerateFileKeywordIndex.ReadOnly = true;
             // 
             // kryptonPanel3
             // 
@@ -1280,6 +1230,7 @@
             this.kDGVFilter.Name = "kDGVFilter";
             this.kDGVFilter.ReadOnly = true;
             this.kDGVFilter.RowTemplate.Height = 23;
+            this.kDGVFilter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kDGVFilter.Size = new System.Drawing.Size(448, 79);
             this.kDGVFilter.TabIndex = 1;
             // 
@@ -1411,6 +1362,7 @@
             this.kDGVDict.Name = "kDGVDict";
             this.kDGVDict.ReadOnly = true;
             this.kDGVDict.RowTemplate.Height = 23;
+            this.kDGVDict.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kDGVDict.Size = new System.Drawing.Size(478, 79);
             this.kDGVDict.TabIndex = 1;
             // 
@@ -1545,6 +1497,7 @@
             this.kDGVFileWordsList.Name = "kDGVFileWordsList";
             this.kDGVFileWordsList.ReadOnly = true;
             this.kDGVFileWordsList.RowTemplate.Height = 23;
+            this.kDGVFileWordsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kDGVFileWordsList.Size = new System.Drawing.Size(985, 138);
             this.kDGVFileWordsList.TabIndex = 1;
             // 
@@ -1659,13 +1612,13 @@
             this.TargetFilecheckAll.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.TargetFilecheckAll.Width = 23;
             // 
-            // TargetOrganizationName
+            // TargetFileOrganizationName
             // 
-            this.TargetOrganizationName.DataPropertyName = "DataTargetOrganizationName";
-            this.TargetOrganizationName.HeaderText = "机构名称";
-            this.TargetOrganizationName.Name = "TargetOrganizationName";
-            this.TargetOrganizationName.ReadOnly = true;
-            this.TargetOrganizationName.Width = 88;
+            this.TargetFileOrganizationName.DataPropertyName = "DataTargetOrganizationName";
+            this.TargetFileOrganizationName.HeaderText = "机构名称";
+            this.TargetFileOrganizationName.Name = "TargetFileOrganizationName";
+            this.TargetFileOrganizationName.ReadOnly = true;
+            this.TargetFileOrganizationName.Width = 88;
             // 
             // TargetFileNo
             // 
@@ -1762,6 +1715,70 @@
             this.TargetFileIsIEachAccountOutTitle.Name = "TargetFileIsIEachAccountOutTitle";
             this.TargetFileIsIEachAccountOutTitle.ReadOnly = true;
             this.TargetFileIsIEachAccountOutTitle.Width = 127;
+            // 
+            // SourceFileNo
+            // 
+            this.SourceFileNo.DataPropertyName = "DataSourceFileNo";
+            this.SourceFileNo.HeaderText = "序号";
+            this.SourceFileNo.Name = "SourceFileNo";
+            this.SourceFileNo.ReadOnly = true;
+            // 
+            // SourceFileName
+            // 
+            this.SourceFileName.DataPropertyName = "DataSourceFileName";
+            this.SourceFileName.HeaderText = "文件名";
+            this.SourceFileName.Name = "SourceFileName";
+            this.SourceFileName.ReadOnly = true;
+            // 
+            // SourceFileFunfAccountNoIndex
+            // 
+            this.SourceFileFunfAccountNoIndex.DataPropertyName = "DataSourceFileFunfAccountNoIndex";
+            this.SourceFileFunfAccountNoIndex.HeaderText = "资金账号索引";
+            this.SourceFileFunfAccountNoIndex.Name = "SourceFileFunfAccountNoIndex";
+            this.SourceFileFunfAccountNoIndex.ReadOnly = true;
+            // 
+            // SourceFileFrom
+            // 
+            this.SourceFileFrom.DataPropertyName = "DataSourceFileFrom";
+            this.SourceFileFrom.HeaderText = "文件来源";
+            this.SourceFileFrom.Name = "SourceFileFrom";
+            this.SourceFileFrom.ReadOnly = true;
+            // 
+            // SourceFileSeparator
+            // 
+            this.SourceFileSeparator.DataPropertyName = "DataSourceFileSeparator";
+            this.SourceFileSeparator.HeaderText = "分隔符";
+            this.SourceFileSeparator.Name = "SourceFileSeparator";
+            this.SourceFileSeparator.ReadOnly = true;
+            // 
+            // SourceFileMergeType
+            // 
+            this.SourceFileMergeType.DataPropertyName = "DataSourceFileMergeType";
+            this.SourceFileMergeType.HeaderText = "合并方式";
+            this.SourceFileMergeType.Name = "SourceFileMergeType";
+            this.SourceFileMergeType.ReadOnly = true;
+            // 
+            // GenerateFileKeywordNo
+            // 
+            this.GenerateFileKeywordNo.DataPropertyName = "DataGenerateFileKeywordNo";
+            this.GenerateFileKeywordNo.HeaderText = "序号";
+            this.GenerateFileKeywordNo.Name = "GenerateFileKeywordNo";
+            this.GenerateFileKeywordNo.ReadOnly = true;
+            this.GenerateFileKeywordNo.Width = 70;
+            // 
+            // GenerateFileKeywordName
+            // 
+            this.GenerateFileKeywordName.DataPropertyName = "DataGenerateFileKeywordName";
+            this.GenerateFileKeywordName.HeaderText = "名称";
+            this.GenerateFileKeywordName.Name = "GenerateFileKeywordName";
+            this.GenerateFileKeywordName.ReadOnly = true;
+            // 
+            // GenerateFileKeywordIndex
+            // 
+            this.GenerateFileKeywordIndex.DataPropertyName = "DataGenerateFileKeywordIndex";
+            this.GenerateFileKeywordIndex.HeaderText = "索引号";
+            this.GenerateFileKeywordIndex.Name = "GenerateFileKeywordIndex";
+            this.GenerateFileKeywordIndex.ReadOnly = true;
             // 
             // UC_DataSetting
             // 
@@ -1893,7 +1910,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kGBFileList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVFileList;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVSourceFileList;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVKeyWords;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVFilter;
@@ -1930,20 +1946,11 @@
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox kCombAccount;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kBtnFresh;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileNameFunfAccountNoIndex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileFrom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileSeparator;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileMergeType;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelSourceFile;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnUpdateSourceFile;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddSourceFile;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GenerateFileKeywordNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GenerateFileKeywordName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GenerateFileKeywordIndex;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelGenerateFileKeyword;
@@ -2001,7 +2008,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DataDictionaryTargetValue;
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox kCombTradeID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TargetFilecheckAll;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TargetOrganizationName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileOrganizationName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileName;
@@ -2014,5 +2021,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsIsSummary;
         private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsIsShowFundAccountNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileIsIEachAccountOutTitle;
+        public ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVFileList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileFunfAccountNoIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileFrom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileSeparator;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceFileMergeType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GenerateFileKeywordNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GenerateFileKeywordName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GenerateFileKeywordIndex;
     }
 }
