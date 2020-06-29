@@ -250,23 +250,51 @@ namespace KS.DataManage.Utils
         public static DataTable FildWordsListDT(XElement xml)
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("FileFieldNo", typeof(System.String));
-            dt.Columns.Add("FileFieldTXTColumnName", typeof(System.String));
-            dt.Columns.Add("FileFieldDBFColumnName", typeof(System.String));
-            dt.Columns.Add("FileFieldColumnNameDigit", typeof(System.String));
-            dt.Columns.Add("FileFieldColumnValueDigit", typeof(System.String));
-            dt.Columns.Add("FileFieldColumnValueAccuracy", typeof(System.String));
-            dt.Columns.Add("FileFieldAlignment", typeof(System.String));
-            dt.Columns.Add("FileFieldIsOut", typeof(System.String));
-            dt.Columns.Add("FileFieldNotNull", typeof(System.String));
-            dt.Columns.Add("FileFieldCalculationSymbols", typeof(System.String));
-            dt.Columns.Add("FileFieldFixedValue", typeof(System.String));
-            dt.Columns.Add("FileFieldIsSummary", typeof(System.String));
-            dt.Columns.Add("FileFieldIsComplementCharacter", typeof(System.String));
-            dt.Columns.Add("FileFieldIsFiledIndex", typeof(System.String));
-            dt.Columns.Add("FileFieldIsDefaultValue", typeof(System.String));
-            dt.Columns.Add("FileFieldIsAbsoluteValue", typeof(System.String));
-            dt.Columns.Add("FileFieldIsAbsoluteValueOut", typeof(System.String));
+            dt.Columns.Add("DataFileFieldNo", typeof(System.String));
+            dt.Columns.Add("DataFileFieldTXTColumnName", typeof(System.String));
+            dt.Columns.Add("DataFileFieldDBFColumnName", typeof(System.String));
+            dt.Columns.Add("DataFileFieldColumnNameDigit", typeof(System.String));
+            dt.Columns.Add("DataFileFieldColumnValueDigit", typeof(System.String));
+            dt.Columns.Add("DataFileFieldColumnValueAccuracy", typeof(System.String));
+            dt.Columns.Add("DataFileFieldAlignment", typeof(System.String));
+            dt.Columns.Add("DataFileFieldIsOut", typeof(System.String));
+            dt.Columns.Add("DataFileFieldNotNull", typeof(System.String));
+            dt.Columns.Add("DataFileFieldCalculationSymbols", typeof(System.String));
+            dt.Columns.Add("DataFileFieldFixedValue", typeof(System.String));
+            dt.Columns.Add("DataFileFieldIsSummary", typeof(System.String));
+            dt.Columns.Add("DataFileFieldIsComplementCharacter", typeof(System.String));
+            dt.Columns.Add("DataFileFieldIsFiledIndex", typeof(System.String));
+            dt.Columns.Add("DataFileFieldIsDefaultValue", typeof(System.String));
+            dt.Columns.Add("DataFileFieldIsAbsoluteValue", typeof(System.String));
+            dt.Columns.Add("DataFileFieldIsAbsoluteValueOut", typeof(System.String));
+
+            foreach (XElement item in xml.Descendants("filecols"))
+            {
+                DataRow dr = dt.NewRow();
+
+                dr["DataFileFieldNo"] = item.Attribute("cid").Value;
+                dr["DataFileFieldTXTColumnName"] = item.Attribute("label").Value;
+                dr["DataFileFieldDBFColumnName"] = item.Attribute("code").Value;
+                dr["DataFileFieldColumnNameDigit"] = item.Attribute("tlength").Value;
+                dr["DataFileFieldColumnValueDigit"] = item.Attribute("vlength").Value;
+                dr["DataFileFieldColumnValueAccuracy"] = item.Attribute("precision").Value;
+                dr["DataFileFieldAlignment"] = item.Attribute("align").Value;
+                dr["DataFileFieldIsOut"] = item.Attribute("isout").Value;
+                dr["DataFileFieldNotNull"] = item.Attribute("notnull").Value;
+                dr["DataFileFieldCalculationSymbols"] = item.Attribute("express").Value;
+                dr["DataFileFieldFixedValue"] = item.Attribute("FixValue").Value;
+                dr["DataFileFieldIsSummary"] = item.Attribute("IsSum").Value;
+                dr["DataFileFieldIsComplementCharacter"] = item.Attribute("padstr").Value;
+                dr["DataFileFieldIsFiledIndex"] = item.Attribute("colIndex").Value;
+                dr["DataFileFieldIsDefaultValue"] = item.Attribute("default").Value;
+                dr["DataFileFieldIsAbsoluteValue"] = item.Attribute("isAbs").Value;
+  
+                dr["DataFileFieldIsAbsoluteValueOut"] = (item.LastAttribute.Name.Equals("isAbs_output")) ? (item.Attribute("isAbs_output").Value) : ("");
+                //dr["DataFileFieldIsAbsoluteValueOut"] = item.Attribute("isAbs_output").Value;
+
+
+                dt.Rows.Add(dr);
+            }
 
             return dt;
         }

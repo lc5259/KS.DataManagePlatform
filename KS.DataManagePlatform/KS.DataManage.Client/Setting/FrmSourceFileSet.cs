@@ -39,6 +39,8 @@ namespace KS.DataManage.Client
         }
         private void kbtnCancle_Click(object sender, EventArgs e)
         {
+            UC_DataSetting.ReturnDt = dtOrigin;
+           // System.Threading.Thread.Sleep(200);
             this.Close();
         }
 

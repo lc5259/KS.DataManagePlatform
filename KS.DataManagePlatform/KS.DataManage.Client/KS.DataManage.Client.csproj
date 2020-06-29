@@ -91,6 +91,12 @@
     <Compile Include="Setting\FrmGenerateFileKeywordSet.Designer.cs">
       <DependentUpon>FrmGenerateFileKeywordSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Setting\FrmFileWordsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmFileWordsList.Designer.cs">
+      <DependentUpon>FrmFileWordsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setting\FrmTargetFileSet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\FrmGenerateFileKeywordSet.resx">
       <DependentUpon>FrmGenerateFileKeywordSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\FrmFileWordsList.resx">
+      <DependentUpon>FrmFileWordsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\FrmTargetFileSet.resx">
       <DependentUpon>FrmTargetFileSet.cs</DependentUpon>
