@@ -608,5 +608,7 @@ namespace KS.DataManage.Client
         {
             KryptonMessageBox.Show("内部版本：0.0.2.0 ", "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+       
     }
 }

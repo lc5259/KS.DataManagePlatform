@@ -135,9 +135,6 @@
             this.btnUpdateDataDictionary = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnAddDataDictionary = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kDGVDict = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.DataDictionaryNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataDictionarySourceValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataDictionaryTargetValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kGBFileWordsList = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -163,6 +160,9 @@
             this.FileFieldIsDefaultValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileFieldIsAbsoluteValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileFieldIsAbsoluteValueOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DictionaryNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DictionarySourceValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DictionaryTargetValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1.Panel1)).BeginInit();
             this.kSplitContainerL1.Panel1.SuspendLayout();
@@ -1373,6 +1373,7 @@
             this.btnDelFilterConditions.Size = new System.Drawing.Size(52, 25);
             this.btnDelFilterConditions.TabIndex = 4;
             this.btnDelFilterConditions.Values.Text = "删除";
+            this.btnDelFilterConditions.Click += new System.EventHandler(this.btnDelFilterConditions_Click);
             // 
             // btnUpdateFilterConditions
             // 
@@ -1383,6 +1384,7 @@
             this.btnUpdateFilterConditions.Size = new System.Drawing.Size(52, 24);
             this.btnUpdateFilterConditions.TabIndex = 3;
             this.btnUpdateFilterConditions.Values.Text = "修改";
+            this.btnUpdateFilterConditions.Click += new System.EventHandler(this.btnUpdateFilterConditions_Click);
             // 
             // btnAddFilterConditions
             // 
@@ -1393,6 +1395,7 @@
             this.btnAddFilterConditions.Size = new System.Drawing.Size(52, 24);
             this.btnAddFilterConditions.TabIndex = 2;
             this.btnAddFilterConditions.Values.Text = "增加";
+            this.btnAddFilterConditions.Click += new System.EventHandler(this.btnAddFilterConditions_Click);
             // 
             // kDGVFilter
             // 
@@ -1416,30 +1419,35 @@
             // 
             // FilterConditionsNo
             // 
+            this.FilterConditionsNo.DataPropertyName = "DataFilterConditionsNo";
             this.FilterConditionsNo.HeaderText = "序号";
             this.FilterConditionsNo.Name = "FilterConditionsNo";
             this.FilterConditionsNo.ReadOnly = true;
             // 
             // FilterConditionsColumnName
             // 
+            this.FilterConditionsColumnName.DataPropertyName = "DataFilterConditionsColumnName";
             this.FilterConditionsColumnName.HeaderText = "列名称";
             this.FilterConditionsColumnName.Name = "FilterConditionsColumnName";
             this.FilterConditionsColumnName.ReadOnly = true;
             // 
             // FilterConditionsColumnIndex
             // 
+            this.FilterConditionsColumnIndex.DataPropertyName = "DataFilterConditionsColumnIndex";
             this.FilterConditionsColumnIndex.HeaderText = "列索引";
             this.FilterConditionsColumnIndex.Name = "FilterConditionsColumnIndex";
             this.FilterConditionsColumnIndex.ReadOnly = true;
             // 
             // FilterConditionseConditionvalue
             // 
+            this.FilterConditionseConditionvalue.DataPropertyName = "DataFilterConditionseConditionvalue";
             this.FilterConditionseConditionvalue.HeaderText = "条件值";
             this.FilterConditionseConditionvalue.Name = "FilterConditionseConditionvalue";
             this.FilterConditionseConditionvalue.ReadOnly = true;
             // 
             // FilterConditionseConditionalSymbol
             // 
+            this.FilterConditionseConditionalSymbol.DataPropertyName = "DataFilterConditionseConditionalSymbol";
             this.FilterConditionseConditionalSymbol.HeaderText = "条件符号";
             this.FilterConditionseConditionalSymbol.Name = "FilterConditionseConditionalSymbol";
             this.FilterConditionseConditionalSymbol.ReadOnly = true;
@@ -1507,6 +1515,7 @@
             this.btnDelDataDictionary.Size = new System.Drawing.Size(52, 25);
             this.btnDelDataDictionary.TabIndex = 4;
             this.btnDelDataDictionary.Values.Text = "删除";
+            this.btnDelDataDictionary.Click += new System.EventHandler(this.btnDelDataDictionary_Click);
             // 
             // btnUpdateDataDictionary
             // 
@@ -1517,6 +1526,7 @@
             this.btnUpdateDataDictionary.Size = new System.Drawing.Size(52, 24);
             this.btnUpdateDataDictionary.TabIndex = 3;
             this.btnUpdateDataDictionary.Values.Text = "修改";
+            this.btnUpdateDataDictionary.Click += new System.EventHandler(this.btnUpdateDataDictionary_Click);
             // 
             // btnAddDataDictionary
             // 
@@ -1527,6 +1537,7 @@
             this.btnAddDataDictionary.Size = new System.Drawing.Size(52, 24);
             this.btnAddDataDictionary.TabIndex = 2;
             this.btnAddDataDictionary.Values.Text = "增加";
+            this.btnAddDataDictionary.Click += new System.EventHandler(this.btnAddDataDictionary_Click);
             // 
             // kDGVDict
             // 
@@ -1534,9 +1545,9 @@
             this.kDGVDict.AllowUserToDeleteRows = false;
             this.kDGVDict.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.kDGVDict.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.DataDictionaryNo,
-            this.DataDictionarySourceValue,
-            this.DataDictionaryTargetValue});
+            this.DictionaryNo,
+            this.DictionarySourceValue,
+            this.DictionaryTargetValue});
             this.kDGVDict.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kDGVDict.Location = new System.Drawing.Point(3, 3);
             this.kDGVDict.Name = "kDGVDict";
@@ -1545,24 +1556,6 @@
             this.kDGVDict.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.kDGVDict.Size = new System.Drawing.Size(478, 79);
             this.kDGVDict.TabIndex = 1;
-            // 
-            // DataDictionaryNo
-            // 
-            this.DataDictionaryNo.HeaderText = "序号";
-            this.DataDictionaryNo.Name = "DataDictionaryNo";
-            this.DataDictionaryNo.ReadOnly = true;
-            // 
-            // DataDictionarySourceValue
-            // 
-            this.DataDictionarySourceValue.HeaderText = "原始值";
-            this.DataDictionarySourceValue.Name = "DataDictionarySourceValue";
-            this.DataDictionarySourceValue.ReadOnly = true;
-            // 
-            // DataDictionaryTargetValue
-            // 
-            this.DataDictionaryTargetValue.HeaderText = "目标值";
-            this.DataDictionaryTargetValue.Name = "DataDictionaryTargetValue";
-            this.DataDictionaryTargetValue.ReadOnly = true;
             // 
             // kGBFileWordsList
             // 
@@ -1804,6 +1797,27 @@
             this.FileFieldIsAbsoluteValueOut.Name = "FileFieldIsAbsoluteValueOut";
             this.FileFieldIsAbsoluteValueOut.ReadOnly = true;
             // 
+            // DictionaryNo
+            // 
+            this.DictionaryNo.DataPropertyName = "DataDictionaryNo";
+            this.DictionaryNo.HeaderText = "序号";
+            this.DictionaryNo.Name = "DictionaryNo";
+            this.DictionaryNo.ReadOnly = true;
+            // 
+            // DictionarySourceValue
+            // 
+            this.DictionarySourceValue.DataPropertyName = "DataDictionarySourceValue";
+            this.DictionarySourceValue.HeaderText = "原始值";
+            this.DictionarySourceValue.Name = "DictionarySourceValue";
+            this.DictionarySourceValue.ReadOnly = true;
+            // 
+            // DictionaryTargetValue
+            // 
+            this.DictionaryTargetValue.DataPropertyName = "DataDictionaryTargetValue";
+            this.DictionaryTargetValue.HeaderText = "目标值";
+            this.DictionaryTargetValue.Name = "DictionaryTargetValue";
+            this.DictionaryTargetValue.ReadOnly = true;
+            // 
             // UC_DataSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1985,11 +1999,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelFilterConditions;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnUpdateFilterConditions;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddFilterConditions;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionsNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionsColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionsColumnIndex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionseConditionvalue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionseConditionalSymbol;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelTargetFile;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnUpdateTargetFile;
@@ -2010,9 +2019,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnUpdateDataDictionary;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddDataDictionary;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kDGVDict;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataDictionaryNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataDictionarySourceValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataDictionaryTargetValue;
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox kCombTradeID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TargetFilecheckAll;
         private System.Windows.Forms.DataGridViewTextBoxColumn TargetFileOrganizationName;
@@ -2055,5 +2061,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldIsDefaultValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldIsAbsoluteValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileFieldIsAbsoluteValueOut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionsNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionsColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionsColumnIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionseConditionvalue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilterConditionseConditionalSymbol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DictionaryNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DictionarySourceValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DictionaryTargetValue;
     }
 }

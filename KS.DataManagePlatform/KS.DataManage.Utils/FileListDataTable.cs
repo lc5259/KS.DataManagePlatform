@@ -288,7 +288,7 @@ namespace KS.DataManage.Utils
                 dr["DataFileFieldIsFiledIndex"] = item.Attribute("colIndex").Value;
                 dr["DataFileFieldIsDefaultValue"] = item.Attribute("default").Value;
                 dr["DataFileFieldIsAbsoluteValue"] = item.Attribute("isAbs").Value;
-  
+
                 dr["DataFileFieldIsAbsoluteValueOut"] = (item.LastAttribute.Name.Equals("isAbs_output")) ? (item.Attribute("isAbs_output").Value) : ("");
                 //dr["DataFileFieldIsAbsoluteValueOut"] = item.Attribute("isAbs_output").Value;
 
@@ -306,13 +306,27 @@ namespace KS.DataManage.Utils
         public static DataTable FilterDT(XElement xml)
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("FilterConditionsNo", typeof(System.String));
-            dt.Columns.Add("FilterConditionsColumnName", typeof(System.String));
-            dt.Columns.Add("FilterConditionsColumnIndex", typeof(System.String));
-            dt.Columns.Add("FilterConditionseConditionvalue", typeof(System.String));
-            dt.Columns.Add("FilterConditionseConditionalSymbol", typeof(System.String));
+            dt.Columns.Add("DataFilterConditionsNo", typeof(System.String));
+            dt.Columns.Add("DataFilterConditionsColumnName", typeof(System.String));
+            dt.Columns.Add("DataFilterConditionsColumnIndex", typeof(System.String));
+            dt.Columns.Add("DataFilterConditionseConditionvalue", typeof(System.String));
+            dt.Columns.Add("DataFilterConditionseConditionalSymbol", typeof(System.String));
 
+            foreach (XElement item in xml.Nodes())
+            {
+                DataRow dr = dt.NewRow();
+                if (item.Name == "filter")
+                {
+                    dr["DataFilterConditionsNo"] = item.Attribute("filtId").Value;
+                    dr["DataFilterConditionsColumnName"] = item.Attribute("colname").Value;
+                    dr["DataFilterConditionsColumnIndex"] = item.Attribute("colIndex").Value;
+                    dr["DataFilterConditionseConditionvalue"] = item.Attribute("value").Value;
+                    dr["DataFilterConditionseConditionalSymbol"] = item.Attribute("andor").Value;
 
+                    dt.Rows.Add(dr);
+                }
+                
+            }
             return dt;
         }
         /// <summary>
@@ -327,6 +341,19 @@ namespace KS.DataManage.Utils
             dt.Columns.Add("DataDictionarySourceValue", typeof(System.String));
             dt.Columns.Add("DataDictionaryTargetValue", typeof(System.String));
 
+            foreach (XElement item in xml.Nodes())
+            {
+                DataRow dr = dt.NewRow();
+                if (item.Name == "dict")
+                {
+                    dr["DataDictionaryNo"] = item.Attribute("dictid").Value;
+                    dr["DataDictionarySourceValue"] = item.Attribute("src").Value;
+                    dr["DataDictionaryTargetValue"] = item.Attribute("tag").Value;
+                  
+                    dt.Rows.Add(dr);
+                }
+
+            }
             return dt;
         }
 

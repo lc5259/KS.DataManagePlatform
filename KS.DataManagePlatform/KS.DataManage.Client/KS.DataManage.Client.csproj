@@ -67,6 +67,12 @@
     <Compile Include="AppStartLogoForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Setting\FrmDict.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\FrmDict.Designer.cs">
+      <DependentUpon>FrmDict.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setting\FrmFundOtherSet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AppStartLogoForm.resx">
       <DependentUpon>AppStartLogoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\FrmDict.resx">
+      <DependentUpon>FrmDict.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\FrmFundOtherSet.resx">
       <DependentUpon>FrmFundOtherSet.cs</DependentUpon>
