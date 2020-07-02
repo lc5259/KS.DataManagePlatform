@@ -135,6 +135,9 @@
             this.btnUpdateDataDictionary = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnAddDataDictionary = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kDGVDict = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.DictionaryNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DictionarySourceValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DictionaryTargetValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kGBFileWordsList = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -160,9 +163,6 @@
             this.FileFieldIsDefaultValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileFieldIsAbsoluteValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileFieldIsAbsoluteValueOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DictionaryNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DictionarySourceValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DictionaryTargetValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1.Panel1)).BeginInit();
             this.kSplitContainerL1.Panel1.SuspendLayout();
@@ -698,6 +698,7 @@
             this.btnUpdateTradeID.Size = new System.Drawing.Size(58, 24);
             this.btnUpdateTradeID.TabIndex = 1;
             this.btnUpdateTradeID.Values.Text = "修改";
+            this.btnUpdateTradeID.Click += new System.EventHandler(this.btnUpdateTradeID_Click);
             // 
             // btnAddTradeID
             // 
@@ -873,6 +874,7 @@
             this.kBtnZJPath1.Size = new System.Drawing.Size(28, 25);
             this.kBtnZJPath1.TabIndex = 9;
             this.kBtnZJPath1.Values.Text = "··· ";
+            this.kBtnZJPath1.Click += new System.EventHandler(this.kBtnZJPath1_Click);
             // 
             // kBtnJKZXPath1
             // 
@@ -883,6 +885,7 @@
             this.kBtnJKZXPath1.Size = new System.Drawing.Size(28, 25);
             this.kBtnJKZXPath1.TabIndex = 10;
             this.kBtnJKZXPath1.Values.Text = "··· ";
+            this.kBtnJKZXPath1.Click += new System.EventHandler(this.kBtnJKZXPath1_Click);
             // 
             // kBtnZJPath2
             // 
@@ -893,6 +896,7 @@
             this.kBtnZJPath2.Size = new System.Drawing.Size(29, 25);
             this.kBtnZJPath2.TabIndex = 11;
             this.kBtnZJPath2.Values.Text = "··· ";
+            this.kBtnZJPath2.Click += new System.EventHandler(this.kBtnZJPath2_Click);
             // 
             // kBtnJKZXPath2
             // 
@@ -903,6 +907,7 @@
             this.kBtnJKZXPath2.Size = new System.Drawing.Size(29, 25);
             this.kBtnJKZXPath2.TabIndex = 12;
             this.kBtnJKZXPath2.Values.Text = "··· ";
+            this.kBtnJKZXPath2.Click += new System.EventHandler(this.kBtnJKZXPath2_Click);
             // 
             // kTxtZJPath1
             // 
@@ -1557,6 +1562,27 @@
             this.kDGVDict.Size = new System.Drawing.Size(478, 79);
             this.kDGVDict.TabIndex = 1;
             // 
+            // DictionaryNo
+            // 
+            this.DictionaryNo.DataPropertyName = "DataDictionaryNo";
+            this.DictionaryNo.HeaderText = "序号";
+            this.DictionaryNo.Name = "DictionaryNo";
+            this.DictionaryNo.ReadOnly = true;
+            // 
+            // DictionarySourceValue
+            // 
+            this.DictionarySourceValue.DataPropertyName = "DataDictionarySourceValue";
+            this.DictionarySourceValue.HeaderText = "原始值";
+            this.DictionarySourceValue.Name = "DictionarySourceValue";
+            this.DictionarySourceValue.ReadOnly = true;
+            // 
+            // DictionaryTargetValue
+            // 
+            this.DictionaryTargetValue.DataPropertyName = "DataDictionaryTargetValue";
+            this.DictionaryTargetValue.HeaderText = "目标值";
+            this.DictionaryTargetValue.Name = "DictionaryTargetValue";
+            this.DictionaryTargetValue.ReadOnly = true;
+            // 
             // kGBFileWordsList
             // 
             this.kGBFileWordsList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1796,27 +1822,6 @@
             this.FileFieldIsAbsoluteValueOut.HeaderText = "绝对值输出";
             this.FileFieldIsAbsoluteValueOut.Name = "FileFieldIsAbsoluteValueOut";
             this.FileFieldIsAbsoluteValueOut.ReadOnly = true;
-            // 
-            // DictionaryNo
-            // 
-            this.DictionaryNo.DataPropertyName = "DataDictionaryNo";
-            this.DictionaryNo.HeaderText = "序号";
-            this.DictionaryNo.Name = "DictionaryNo";
-            this.DictionaryNo.ReadOnly = true;
-            // 
-            // DictionarySourceValue
-            // 
-            this.DictionarySourceValue.DataPropertyName = "DataDictionarySourceValue";
-            this.DictionarySourceValue.HeaderText = "原始值";
-            this.DictionarySourceValue.Name = "DictionarySourceValue";
-            this.DictionarySourceValue.ReadOnly = true;
-            // 
-            // DictionaryTargetValue
-            // 
-            this.DictionaryTargetValue.DataPropertyName = "DataDictionaryTargetValue";
-            this.DictionaryTargetValue.HeaderText = "目标值";
-            this.DictionaryTargetValue.Name = "DictionaryTargetValue";
-            this.DictionaryTargetValue.ReadOnly = true;
             // 
             // UC_DataSetting
             // 

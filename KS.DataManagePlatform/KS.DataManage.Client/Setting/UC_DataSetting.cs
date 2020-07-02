@@ -16,6 +16,8 @@ namespace KS.DataManage.Client
     public partial class UC_DataSetting : UserControl
     {
         public static DataTable ReturnDt;
+        public static XElement ReturnXElement;
+        public static string ReturnOrganCode;
         XDocument _configDocument;
         List<string> _listModule = new List<string>();
 
@@ -52,6 +54,11 @@ namespace KS.DataManage.Client
 
             this.ResumeLayout(false);
         }
+        /// <summary>
+        /// 资金账户增删改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddTradeID_Click(object sender, EventArgs e)
         {
             FrmTradeAccountSet ftas = new FrmTradeAccountSet();
@@ -78,6 +85,17 @@ namespace KS.DataManage.Client
                 this.kCombTradeID.Refresh();
                 this.ResumeLayout(false);
 
+                GlobalData.TemplateConfigInfo.SetAttributeValue("value", FundAccountNo);
+                foreach (XElement item in GlobalData.TemplateConfigInfo.Nodes())
+                {
+                    if (item.Name == "DlgConfigSettings")
+                    {
+                        item.Attribute("account").Value = FundAccountNo;
+                        break;
+                    }
+                }
+
+                //GlobalData.TemplateConfigInfo.Descendants().Where( x=> x.Element("DlgConfigSettings").Attribute("account").Value == "34"  ).
                 //kCombTradeID.Items.Add(FundAccountNo);
             }
 
@@ -96,6 +114,23 @@ namespace KS.DataManage.Client
             FrmTargetFileSet frmTargetFileSet = new FrmTargetFileSet(drIndex, dt, "文件列表增加");
             frmTargetFileSet.ShowDialog();
             this.kDGVFileList.DataSource = ReturnDt;
+
+            foreach (XElement item in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
+            {
+                if (item.Attribute("name").Value == ReturnOrganCode)
+                {
+                    item.Add(ReturnXElement);
+                    break;
+                }
+            }
+
+            //GlobalData.TemplateConfigInfo.Add(ReturnXElement);
+
+
+            //IEnumerable<DataRow> query2  = ReturnDt.AsEnumerable().Except(dt.AsEnumerable());
+
+            //var esdf213 = dt.AsEnumerable().Except(ReturnDt.AsEnumerable(),DataRowComparer.Default).ToList();
+            //var esgadhdf = ReturnDt.AsEnumerable().Intersect(dt.AsEnumerable(), DataRowComparer.Default).ToList();
         }
 
         private void btnUpdateTargetFile_Click(object sender, EventArgs e)
@@ -105,6 +140,22 @@ namespace KS.DataManage.Client
             FrmTargetFileSet frmTargetFileSet = new FrmTargetFileSet(drIndex, dt, "文件列表修改");
             frmTargetFileSet.ShowDialog();
             this.kDGVFileList.DataSource = ReturnDt;
+
+            //foreach (XElement itemFile in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
+            //{
+            //    if (itemFile.Attribute("name").Value == ReturnOrganCode)
+            //    {
+            //        foreach (var item in itemFile.Nodes())
+            //        {
+            //            if (item.)
+            //            {
+            //                item.ReplaceWith();
+            //            }
+            //        }
+            //        itemFile.Add(ReturnXElement);
+            //        break;
+            //    }
+            //}
         }
         private void btnDelTargetFile_Click(object sender, EventArgs e)
         {
@@ -112,6 +163,22 @@ namespace KS.DataManage.Client
             {
                 foreach (DataGridViewRow item in kDGVFileList.SelectedRows)
                 {
+
+                    foreach (XElement itemOrganCode in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
+                    {
+                        if (itemOrganCode.Attribute("name").Value == item.Cells[1].Value.ToString())
+                        //if (itemOrganCode.Attribute("name").Value == item.Cells[1].Value.ToString())
+                        {
+                            foreach (XElement itemfile in itemOrganCode.Nodes())
+                            {
+                                if (itemfile.Attribute("filetitle").Value == item.Cells[3].Value.ToString())
+                                {
+                                    itemfile.Remove();
+                                    break;
+                                }
+                            }
+                        }
+                    }
                     kDGVFileList.Rows.Remove(item);
                 }
             }
@@ -314,6 +381,7 @@ namespace KS.DataManage.Client
                 {
                     if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
                     {
+                        GlobalData.TemplateConfigInfo = xNode;
                         this.kDGVFileList.DataSource = FileDataTable.FildListDT(xNode);
                         break;
                     }
@@ -349,7 +417,7 @@ namespace KS.DataManage.Client
                     dtFilter.Rows.Clear();
                     kDGVFilter.DataSource = dtFilter;
                 }
-                
+
 
                 DataTable dtDict = (DataTable)kDGVDict.DataSource;
                 if (dtDict != null)
@@ -535,6 +603,38 @@ namespace KS.DataManage.Client
             }
         }
 
+        private void kBtnZJPath1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog path = new FolderBrowserDialog();
+            path.ShowDialog();
+            this.kTxtZJPath1.Text = this.kTxtJKZXPath1.Text = path.SelectedPath;
+        }
 
+        private void kBtnJKZXPath1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog path = new FolderBrowserDialog();
+            path.ShowDialog();
+            this.kTxtJKZXPath1.Text = path.SelectedPath;
+        }
+
+        private void kBtnZJPath2_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog path = new FolderBrowserDialog();
+            path.ShowDialog();
+            this.kTxtZJPath2.Text = this.kTxtJKZXPath2.Text = path.SelectedPath;
+
+        }
+
+        private void kBtnJKZXPath2_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog path = new FolderBrowserDialog();
+            path.ShowDialog();
+            this.kTxtJKZXPath2.Text = path.SelectedPath;
+        }
+
+        private void btnUpdateTradeID_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
