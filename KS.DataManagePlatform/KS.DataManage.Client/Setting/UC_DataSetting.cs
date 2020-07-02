@@ -349,7 +349,7 @@ namespace KS.DataManage.Client
                     dtFilter.Rows.Clear();
                     kDGVFilter.DataSource = dtFilter;
                 }
-                
+
 
                 DataTable dtDict = (DataTable)kDGVDict.DataSource;
                 if (dtDict != null)
@@ -357,6 +357,27 @@ namespace KS.DataManage.Client
                     dtDict.Rows.Clear();
                     kDGVDict.DataSource = dtDict;
                 }
+                try
+                {
+                    if (e.ColumnIndex == 0)
+                    {
+                        if (kDGVFileList.Rows[e.RowIndex].Cells[0].Value == null || (!kDGVFileList.Rows[e.RowIndex].Cells[0].Value.ToString().ToLower().Equals("true")))
+                        {
+                            kDGVFileList.Rows[e.RowIndex].Cells[0].Value = true;
+                        }
+                        else
+                        {
+                            kDGVFileList.Rows[e.RowIndex].Cells[0].Value = false;
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
+
 
                 string TargetFileNo = this.kDGVFileList.Rows[e.RowIndex].Cells["TargetFileNo"].Value.ToString();
                 string TargetFileTitle = this.kDGVFileList.Rows[e.RowIndex].Cells["TargetFileTitle"].Value.ToString();
@@ -535,6 +556,41 @@ namespace KS.DataManage.Client
             }
         }
 
+        private void kDGVFileList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == 0)
+                {
+                    bool checkAll = true;
+                    foreach (DataGridViewRow item in kDGVFileList.Rows)
+                    {
+                        if (item.Cells[0].Value == null || !(bool)item.Cells[0].Value)
+                        {
+                            checkAll = false;
+                        }
+                    }
+                    if (!checkAll)
+                    {
+                        foreach (DataGridViewRow item in kDGVFileList.Rows)
+                        {
+                            item.Cells[0].Value = true; // item[0] = true;
+                        }
+                    }
+                    else 
+                    {
+                        foreach (DataGridViewRow item in kDGVFileList.Rows)
+                        {
+                            item.Cells[0].Value = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
+                throw;
+            }
+        }
     }
 }
