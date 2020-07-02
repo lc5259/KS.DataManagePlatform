@@ -699,6 +699,7 @@
             this.btnUpdateTradeID.Size = new System.Drawing.Size(58, 24);
             this.btnUpdateTradeID.TabIndex = 1;
             this.btnUpdateTradeID.Values.Text = "修改";
+            this.btnUpdateTradeID.Click += new System.EventHandler(this.btnUpdateTradeID_Click);
             // 
             // btnAddTradeID
             // 
@@ -874,6 +875,7 @@
             this.kBtnZJPath1.Size = new System.Drawing.Size(28, 25);
             this.kBtnZJPath1.TabIndex = 9;
             this.kBtnZJPath1.Values.Text = "··· ";
+            this.kBtnZJPath1.Click += new System.EventHandler(this.kBtnZJPath1_Click);
             // 
             // kBtnJKZXPath1
             // 
@@ -884,6 +886,7 @@
             this.kBtnJKZXPath1.Size = new System.Drawing.Size(28, 25);
             this.kBtnJKZXPath1.TabIndex = 10;
             this.kBtnJKZXPath1.Values.Text = "··· ";
+            this.kBtnJKZXPath1.Click += new System.EventHandler(this.kBtnJKZXPath1_Click);
             // 
             // kBtnZJPath2
             // 
@@ -894,6 +897,7 @@
             this.kBtnZJPath2.Size = new System.Drawing.Size(29, 25);
             this.kBtnZJPath2.TabIndex = 11;
             this.kBtnZJPath2.Values.Text = "··· ";
+            this.kBtnZJPath2.Click += new System.EventHandler(this.kBtnZJPath2_Click);
             // 
             // kBtnJKZXPath2
             // 
@@ -904,6 +908,7 @@
             this.kBtnJKZXPath2.Size = new System.Drawing.Size(29, 25);
             this.kBtnJKZXPath2.TabIndex = 12;
             this.kBtnJKZXPath2.Values.Text = "··· ";
+            this.kBtnJKZXPath2.Click += new System.EventHandler(this.kBtnJKZXPath2_Click);
             // 
             // kTxtZJPath1
             // 

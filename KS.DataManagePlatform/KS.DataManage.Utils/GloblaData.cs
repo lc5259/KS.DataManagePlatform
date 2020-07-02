@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace KS.DataManage.Utils
 {
@@ -39,6 +40,18 @@ namespace KS.DataManage.Utils
                 _AccountGroup = value;
             }
         }
-       
+        private static XElement _TemplateConfigInfo;
+        public static XElement TemplateConfigInfo
+        {
+            get
+            {
+                return _TemplateConfigInfo;
+            }
+            set
+            {
+                _TemplateConfigInfo = value;
+            }
+        }
+      
     }
 }

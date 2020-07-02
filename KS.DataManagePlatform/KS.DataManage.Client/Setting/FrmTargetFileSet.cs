@@ -1,5 +1,6 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using KS.DataManage.Templete;
+using KS.DataManage.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace KS.DataManage.Client
 {
@@ -21,19 +23,19 @@ namespace KS.DataManage.Client
         {
             InitializeComponent();
         }
-        public FrmTargetFileSet(int drIndex, DataTable dt,string title)
+        public FrmTargetFileSet(int drIndex, DataTable dt, string title)
         {
             InitializeComponent();
 
             this.Text = title;
-            this.dr = dt.Rows[drIndex] ;
+            this.dr = dt.Rows[drIndex];
             this.dtOrigin = dt;
             this.drIndex = drIndex;
-         
+
 
             kryCBBTargetFileOrganizationName.Text = this.dr["DataTargetOrganizationName"].ToString();
             kryCBBTargetFileTitle.Text = this.dr["DataTargetFileTitle"].ToString();
-            kryCBBTargetFileNo.Text =  this.dr["DataTargetFileNo"].ToString();
+            kryCBBTargetFileNo.Text = this.dr["DataTargetFileNo"].ToString();
             kryCBBTargetFileName.Text = this.dr["DataTargetFileName"].ToString();
             kryCBBTargetFileFormat.Text = this.dr["DataTargetFileFormat"].ToString();
             kryCBBTargetFileColumnDirection.Text = this.dr["DataTargetFileColumnDirection"].ToString();
@@ -81,7 +83,7 @@ namespace KS.DataManage.Client
 
         private void kbtnCancle_Click(object sender, EventArgs e)
         {
-            UC_DataSetting.ReturnDt = dtOrigin; 
+            UC_DataSetting.ReturnDt = dtOrigin;
             this.Close();
         }
 
@@ -89,7 +91,7 @@ namespace KS.DataManage.Client
         {
             DataTable dt = dtOrigin.Copy();
 
-           // DataTable dt = new DataTable();
+            // DataTable dt = new DataTable();
             //dt.Columns.Add("DataTargetOrganizationName", typeof(System.String)); //var s = new DataColumn(); s.
             //dt.Columns.Add("DataTargetFileNo", typeof(System.String));
             //dt.Columns.Add("DataTargetFileTitle", typeof(System.String));
@@ -122,10 +124,71 @@ namespace KS.DataManage.Client
             if (this.Text == "文件列表修改")
             {
                 dt.Rows.RemoveAt(this.drIndex);
+
             }
             dt.Rows.InsertAt(dr, this.drIndex);
 
             UC_DataSetting.ReturnDt = dt;
+
+            if (this.Text == "文件列表增加")
+            {
+
+                XElement _xElement = new XElement("file");
+                _xElement.Add(new XAttribute("fid", dr["DataTargetFileNo"]),
+                              new XAttribute("filetitle", dr["DataTargetFileTitle"]),
+                              new XAttribute("filename", dr["DataTargetFileName"]),
+                              new XAttribute("fileext", dr["DataTargetFileFormat"]),
+                              new XAttribute("isallsame", dr["DataTargetFileTXTEqueDBF"]),
+                              new XAttribute("arrangeType", dr["DataTargetFileColumnDirection"]),
+                              new XAttribute("IsOutTitle", dr["DataTargetFileIsOutTitle"]),
+                              new XAttribute("IsOutColName", dr["DataTargetFileIsOutColumnName"]),
+                              new XAttribute("splitc", dr["DataTargetFileIsConnector"]),
+                              new XAttribute("IsSum", dr["DataTargetFileIsIsSummary"]),
+                              new XAttribute("IsOutPut", "不确定"),
+                              new XAttribute("IsDispAccId", dr["DataTargetFileIsIsShowFundAccountNo"]),
+                              new XAttribute("IsOutLineTitle", dr["DataTargetFileIsIEachAccountOutTitle"]));
+
+                UC_DataSetting.ReturnXElement = _xElement;
+                UC_DataSetting.ReturnOrganCode = dr["DataTargetOrganizationName"].ToString();
+            }
+
+
+            if (this.Text == "文件列表修改")
+            {
+                foreach (XElement itemfile in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
+                {
+                    if (itemfile.Attribute("name").Value == dr["DataTargetOrganizationName"].ToString())
+                    {
+                        foreach (XElement item in itemfile.Nodes())
+                        {
+                            if (item.Attribute("filetitle").Value == dr["DataTargetFileTitle"].ToString())
+                            {
+                                item.Attribute("fid").Value = dr["DataTargetFileNo"].ToString();
+                                item.Attribute("filetitle").Value = dr["DataTargetFileTitle"].ToString();
+                                item.Attribute("filename").Value = dr["DataTargetFileName"].ToString();
+                                item.Attribute("fileext").Value = dr["DataTargetFileFormat"].ToString();
+                                item.Attribute("isallsame").Value = dr["DataTargetFileTXTEqueDBF"].ToString();
+                                item.Attribute("arrangeType").Value = dr["DataTargetFileColumnDirection"].ToString();
+                                item.Attribute("IsOutTitle").Value = dr["DataTargetFileIsOutTitle"].ToString();
+                                item.Attribute("IsOutColName").Value = dr["DataTargetFileIsOutColumnName"].ToString();
+                                item.Attribute("splitc").Value = dr["DataTargetFileIsConnector"].ToString();
+                                item.Attribute("IsSum").Value = dr["DataTargetFileIsIsSummary"].ToString();
+                                item.Attribute("IsOutPut").Value = "不确定";
+                                item.Attribute("IsDispAccId").Value = dr["DataTargetFileIsIsShowFundAccountNo"].ToString();
+                                if (item.LastAttribute.Name == "IsOutLineTitle")
+                                {
+                                    item.Attribute("IsOutLineTitle").Value = dr["DataTargetFileIsIEachAccountOutTitle"].ToString();
+                                }
+
+
+                                break;
+                                //item.ReplaceNodes(_xElement);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
             this.Close();
         }
     }
