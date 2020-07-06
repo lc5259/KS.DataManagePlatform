@@ -191,7 +191,6 @@
             this.kbtnCancle.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.kbtnCancle.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kbtnCancle.Values.Text = "取消";
-            this.kbtnCancle.Click += new System.EventHandler(this.kbtnCancle_Click);
             // 
             // kryptonPanel1
             // 

@@ -52,6 +52,30 @@ namespace KS.DataManage.Utils
                 _TemplateConfigInfo = value;
             }
         }
-      
+        private static string _TargetFileTitle;
+        public static string GlobaTargetFileTitle
+        {
+            get
+            {
+                return _TargetFileTitle;
+            }
+            set
+            {
+                _TargetFileTitle = value;
+            }
+        }
+        private static string _TSourceFileName;
+        public static string GlobaSourceFileName
+        {
+            get
+            {
+                return _TSourceFileName;
+            }
+            set
+            {
+                _TSourceFileName = value;
+            }
+        }
+       
     }
 }

@@ -16,7 +16,7 @@ namespace KS.DataManage.Client
 {
     public partial class FrmTargetFileSet : FrmSaveBase
     {
-        DataRow dr;
+        DataRow drOrigin;
         DataTable dtOrigin;
         int drIndex;
         public FrmTargetFileSet()
@@ -27,39 +27,44 @@ namespace KS.DataManage.Client
         {
             InitializeComponent();
 
+            if (title == "文件列表修改")
+            {
+                kryCBBTargetFileNo.Enabled = false;
+            }
+
             this.Text = title;
-            this.dr = dt.Rows[drIndex];
+            this.drOrigin = dt.Rows[drIndex];
             this.dtOrigin = dt;
             this.drIndex = drIndex;
 
 
-            kryCBBTargetFileOrganizationName.Text = this.dr["DataTargetOrganizationName"].ToString();
-            kryCBBTargetFileTitle.Text = this.dr["DataTargetFileTitle"].ToString();
-            kryCBBTargetFileNo.Text = this.dr["DataTargetFileNo"].ToString();
-            kryCBBTargetFileName.Text = this.dr["DataTargetFileName"].ToString();
-            kryCBBTargetFileFormat.Text = this.dr["DataTargetFileFormat"].ToString();
-            kryCBBTargetFileColumnDirection.Text = this.dr["DataTargetFileColumnDirection"].ToString();
-            kryCBBTargetFileIsOutTitle.Text = this.dr["DataTargetFileIsOutTitle"].ToString();
-            kryCBBTargetFileIsOutColumnName.Text = this.dr["DataTargetFileIsOutColumnName"].ToString();
-            kryCBBTargetFileIsConnector.Text = this.dr["DataTargetFileIsConnector"].ToString();
-            kryCBBTargetFileIsIsSummary.Text = this.dr["DataTargetFileIsIsSummary"].ToString();
-            kryCBBTargetFileIsIsShowFundAccountNo.Text = this.dr["DataTargetFileIsIsShowFundAccountNo"].ToString();
-            kryCBBTargetFileIsIEachAccountOutTitle.Text = this.dr["DataTargetFileIsIEachAccountOutTitle"].ToString();
-            kryCBBTargetFileTXTEqueDBF.Text = this.dr["DataTargetFileTXTEqueDBF"].ToString();
+            kryCBBTargetFileOrganizationName.Text = this.drOrigin["DataTargetOrganizationName"].ToString();
+            kryCBBTargetFileTitle.Text = this.drOrigin["DataTargetFileTitle"].ToString();
+            kryCBBTargetFileNo.Text = this.drOrigin["DataTargetFileNo"].ToString();
+            kryCBBTargetFileName.Text = this.drOrigin["DataTargetFileName"].ToString();
+            kryCBBTargetFileFormat.Text = this.drOrigin["DataTargetFileFormat"].ToString();
+            kryCBBTargetFileColumnDirection.Text = this.drOrigin["DataTargetFileColumnDirection"].ToString();
+            kryCBBTargetFileIsOutTitle.Text = this.drOrigin["DataTargetFileIsOutTitle"].ToString();
+            kryCBBTargetFileIsOutColumnName.Text = this.drOrigin["DataTargetFileIsOutColumnName"].ToString();
+            kryCBBTargetFileIsConnector.Text = this.drOrigin["DataTargetFileIsConnector"].ToString();
+            kryCBBTargetFileIsIsSummary.Text = this.drOrigin["DataTargetFileIsIsSummary"].ToString();
+            kryCBBTargetFileIsIsShowFundAccountNo.Text = this.drOrigin["DataTargetFileIsIsShowFundAccountNo"].ToString();
+            kryCBBTargetFileIsIEachAccountOutTitle.Text = this.drOrigin["DataTargetFileIsIEachAccountOutTitle"].ToString();
+            kryCBBTargetFileTXTEqueDBF.Text = this.drOrigin["DataTargetFileTXTEqueDBF"].ToString();
             // DisplayData(dr);
-            //kryCBBTargetFileOrganizationName.Text = this.dr.Cells["TargetFileOrganizationName"].Value.ToString();
-            //kryCBBTargetFileTitle.Text = this.dr.Cells["TargetFileTitle"].Value.ToString();
-            //kryCBBTargetFileNo.Text = this.dr.Cells["TargetFileNo"].Value.ToString();
-            //kryCBBTargetFileName.Text = this.dr.Cells["TargetFileName"].Value.ToString();
-            //kryCBBTargetFileFormat.Text = this.dr.Cells["TargetFileFormat"].Value.ToString();
-            //kryCBBTargetFileColumnDirection.Text = this.dr.Cells["TargetFileColumnDirection"].Value.ToString();
-            //kryCBBTargetFileIsOutTitle.Text = this.dr.Cells["TargetFileIsOutTitle"].Value.ToString();
-            //kryCBBTargetFileIsOutColumnName.Text = this.dr.Cells["TargetFileIsOutColumnName"].Value.ToString();
-            //kryCBBTargetFileIsConnector.Text = this.dr.Cells["TargetFileIsConnector"].Value.ToString();
-            //kryCBBTargetFileIsIsSummary.Text = this.dr.Cells["TargetFileIsIsSummary"].Value.ToString();
-            //kryCBBTargetFileIsIsShowFundAccountNo.Text = this.dr.Cells["TargetFileIsIsShowFundAccountNo"].Value.ToString();
-            //kryCBBTargetFileIsIEachAccountOutTitle.Text = this.dr.Cells["TargetFileIsIEachAccountOutTitle"].Value.ToString();
-            //kryCBBTargetFileTXTEqueDBF.Text = this.dr.Cells["TargetFileTXTEqueDBF"].Value.ToString();
+            //kryCBBTargetFileOrganizationName.Text = this.drOrigin.Cells["TargetFileOrganizationName"].Value.ToString();
+            //kryCBBTargetFileTitle.Text = this.drOrigin.Cells["TargetFileTitle"].Value.ToString();
+            //kryCBBTargetFileNo.Text = this.drOrigin.Cells["TargetFileNo"].Value.ToString();
+            //kryCBBTargetFileName.Text = this.drOrigin.Cells["TargetFileName"].Value.ToString();
+            //kryCBBTargetFileFormat.Text = this.drOrigin.Cells["TargetFileFormat"].Value.ToString();
+            //kryCBBTargetFileColumnDirection.Text = this.drOrigin.Cells["TargetFileColumnDirection"].Value.ToString();
+            //kryCBBTargetFileIsOutTitle.Text = this.drOrigin.Cells["TargetFileIsOutTitle"].Value.ToString();
+            //kryCBBTargetFileIsOutColumnName.Text = this.drOrigin.Cells["TargetFileIsOutColumnName"].Value.ToString();
+            //kryCBBTargetFileIsConnector.Text = this.drOrigin.Cells["TargetFileIsConnector"].Value.ToString();
+            //kryCBBTargetFileIsIsSummary.Text = this.drOrigin.Cells["TargetFileIsIsSummary"].Value.ToString();
+            //kryCBBTargetFileIsIsShowFundAccountNo.Text = this.drOrigin.Cells["TargetFileIsIsShowFundAccountNo"].Value.ToString();
+            //kryCBBTargetFileIsIEachAccountOutTitle.Text = this.drOrigin.Cells["TargetFileIsIEachAccountOutTitle"].Value.ToString();
+            //kryCBBTargetFileTXTEqueDBF.Text = this.drOrigin.Cells["TargetFileTXTEqueDBF"].Value.ToString();
         }
 
         //protected virtual void DisplayData(DataRow dr)
@@ -86,7 +91,10 @@ namespace KS.DataManage.Client
             UC_DataSetting.ReturnDt = dtOrigin;
             this.Close();
         }
-
+         public  override void OnClose()
+        {
+            UC_DataSetting.ReturnDt = dtOrigin;
+        }
         private void kbtnSave_Click(object sender, EventArgs e)
         {
             DataTable dt = dtOrigin.Copy();
@@ -144,12 +152,12 @@ namespace KS.DataManage.Client
                               new XAttribute("IsOutColName", dr["DataTargetFileIsOutColumnName"]),
                               new XAttribute("splitc", dr["DataTargetFileIsConnector"]),
                               new XAttribute("IsSum", dr["DataTargetFileIsIsSummary"]),
-                              new XAttribute("IsOutPut", "不确定"),
+                              new XAttribute("IsOutPut", "是"),   //默认是
                               new XAttribute("IsDispAccId", dr["DataTargetFileIsIsShowFundAccountNo"]),
                               new XAttribute("IsOutLineTitle", dr["DataTargetFileIsIEachAccountOutTitle"]));
 
                 UC_DataSetting.ReturnXElement = _xElement;
-                UC_DataSetting.ReturnOrganCode = dr["DataTargetOrganizationName"].ToString();
+                //UC_DataSetting.ReturnOrganCode = dr["DataTargetOrganizationName"].ToString();
             }
 
 
@@ -157,11 +165,11 @@ namespace KS.DataManage.Client
             {
                 foreach (XElement itemfile in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
                 {
-                    if (itemfile.Attribute("name").Value == dr["DataTargetOrganizationName"].ToString())
+                    if (itemfile.Attribute("name").Value == this.drOrigin["DataTargetOrganizationName"].ToString())
                     {
                         foreach (XElement item in itemfile.Nodes())
                         {
-                            if (item.Attribute("filetitle").Value == dr["DataTargetFileTitle"].ToString())
+                            if (item.Attribute("filetitle").Value == this.drOrigin["DataTargetFileTitle"].ToString() && item.Attribute("fid").Value == this.drOrigin["DataTargetFileNo"].ToString())
                             {
                                 item.Attribute("fid").Value = dr["DataTargetFileNo"].ToString();
                                 item.Attribute("filetitle").Value = dr["DataTargetFileTitle"].ToString();
@@ -189,6 +197,8 @@ namespace KS.DataManage.Client
                     }
                 }
             }
+            UC_DataSetting.ReturnOrganCode = dr["DataTargetOrganizationName"].ToString();
+            //GlobalData.GlobaTargetFileTitle = dr["DataTargetFileTitle"].ToString();
             this.Close();
         }
     }

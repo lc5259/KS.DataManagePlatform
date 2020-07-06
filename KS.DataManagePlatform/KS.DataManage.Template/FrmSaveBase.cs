@@ -23,8 +23,14 @@ namespace KS.DataManage.Templete
 
         private void kbtnCancle_Click(object sender, EventArgs e)
         {
+            OnClose();
             this.Close();
-            this.Dispose(true);
+            //this.Dispose(true);
+        }
+
+        public virtual void OnClose()
+        {
+            //throw new NotImplementedException();
         }
 
         //public FrmSaveBase(string title, CURDFlags insert)

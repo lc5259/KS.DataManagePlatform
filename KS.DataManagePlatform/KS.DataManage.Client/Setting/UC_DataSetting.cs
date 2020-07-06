@@ -21,10 +21,12 @@ namespace KS.DataManage.Client
         XDocument _configDocument;
         List<string> _listModule = new List<string>();
 
-        string SelectedTargetFileTitle = string.Empty;
-        string SelectedTargetFileName = string.Empty;
-        string SelectedSourceFileName = string.Empty;
-
+        public static string SelectedTargetFileTitle = string.Empty;
+        public static string SelectedTargetFileName = string.Empty;
+        public static string SelectedSourceFileNo = string.Empty;
+        public static string SelectedSourceFileName = string.Empty;
+        public static string SelectedTXTColumnName = string.Empty;
+        public static string SelectedFileFieldNo = string.Empty;
         public UC_DataSetting()
         {
             InitializeComponent();
@@ -61,7 +63,7 @@ namespace KS.DataManage.Client
         /// <param name="e"></param>
         private void btnAddTradeID_Click(object sender, EventArgs e)
         {
-            FrmTradeAccountSet ftas = new FrmTradeAccountSet();
+            FrmTradeAccountSet ftas = new FrmTradeAccountSet(true);
             ftas.ShowDialog();
             if (ftas.IsSave)
             {
@@ -74,7 +76,6 @@ namespace KS.DataManage.Client
                 CombTradeID.Add(FundAccountNo);
 
                 this.kCombTradeID.DataSource = null;
-                this.kCombTradeID.Items.Clear();
                 //foreach (var item in CombTradeID)
                 //{
                 //    this.kCombTradeID.Items.Add(item);
@@ -100,7 +101,68 @@ namespace KS.DataManage.Client
             }
 
         }
+        private void btnUpdateTradeID_Click(object sender, EventArgs e)
+        {
+            FrmTradeAccountSet ftas = new FrmTradeAccountSet(false);
+            ftas.ShowDialog();
 
+            if (!ftas.IsSave)
+            {
+                this.SuspendLayout();
+                string FundAccountNo = ftas.kryTextBoxFundAccountNo.Text.ToString();
+
+
+                List<string> CombTradeID = new List<string>();
+                CombTradeID = this.kCombTradeID.DataSource as List<string>;
+                for (int i = 0; i < CombTradeID.Count; i++)
+                {
+                    if (CombTradeID[i] == kCombTradeID.Text)
+                    {
+                        CombTradeID[i] = FundAccountNo;
+                        break;
+                    }
+                }
+
+                this.kCombTradeID.DataSource = null;
+              
+                this.kCombTradeID.DataSource = CombTradeID;
+                this.kCombTradeID.Text = FundAccountNo;
+
+                this.kCombTradeID.Refresh();
+                this.ResumeLayout(false);
+
+                GlobalData.TemplateConfigInfo.SetAttributeValue("value", FundAccountNo);
+                foreach (XElement item in GlobalData.TemplateConfigInfo.Nodes())
+                {
+                    if (item.Name == "DlgConfigSettings")
+                    {
+                        item.Attribute("account").Value = FundAccountNo;
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void btnDelTradeID_Click(object sender, EventArgs e)
+        {
+            List<string> CombTradeID = new List<string>();
+            CombTradeID = this.kCombTradeID.DataSource as List<string>;
+            for (int i = 0; i < CombTradeID.Count; i++)
+            {
+                if (CombTradeID[i] == kCombTradeID.Text)
+                {
+                    CombTradeID.RemoveAt(i);
+                    break;
+                }
+            }
+            this.kCombTradeID.DataSource = null;
+
+            this.kCombTradeID.DataSource = CombTradeID;
+            this.kCombTradeID.Text = "";
+
+            this.kCombTradeID.Refresh();
+
+        }
         private void kBtnOtherSet_Click(object sender, EventArgs e)
         {
             FrmFundOtherSet ffos = new FrmFundOtherSet();
@@ -171,7 +233,7 @@ namespace KS.DataManage.Client
                         {
                             foreach (XElement itemfile in itemOrganCode.Nodes())
                             {
-                                if (itemfile.Attribute("filetitle").Value == item.Cells[3].Value.ToString())
+                                if (itemfile.Attribute("filetitle").Value == item.Cells[3].Value.ToString() && itemfile.Attribute("fid").Value == item.Cells[2].Value.ToString())
                                 {
                                     itemfile.Remove();
                                     break;
@@ -189,17 +251,45 @@ namespace KS.DataManage.Client
         #region 源文件列表增删改
         private void btnAddSourceFile_Click(object sender, EventArgs e)
         {
-            int drIndex = kDGVSourceFileList.CurrentRow.Index;
-            DataTable dt = kDGVSourceFileList.DataSource as DataTable;
-            FrmSourceFileSet frmSourceFileSet = new FrmSourceFileSet(drIndex, dt, "源文件列表增加");
-            frmSourceFileSet.ShowDialog();
-            this.kDGVSourceFileList.DataSource = ReturnDt;
+            if (kDGVSourceFileList.CurrentRow != null)
+            {
+                int drIndex = kDGVSourceFileList.CurrentRow.Index;
+                DataTable dt = kDGVSourceFileList.DataSource as DataTable;
+                FrmSourceFileSet frmSourceFileSet = new FrmSourceFileSet(drIndex, dt, "源文件列表增加");
+                frmSourceFileSet.ShowDialog();
+                this.kDGVSourceFileList.DataSource = ReturnDt;
+            }
 
+            else
+            {
+                FrmSourceFileSet frmSourceFileSet = new FrmSourceFileSet();
+                frmSourceFileSet.ShowDialog();
+                this.kDGVSourceFileList.DataSource = ReturnDt;
+            }
+            
+            foreach (XElement itemOrganCode in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
+            {
+
+                foreach (XElement itemfile in itemOrganCode.Nodes())
+                {
+                    if (itemfile.Attribute("filetitle").Value == SelectedTargetFileTitle)
+                    {
+                        itemfile.Add(ReturnXElement);
+                        break;
+                    }
+                }
+
+            }
             //FrmSourceFileSet frmSourceFileSet = new FrmSourceFileSet();
             //frmSourceFileSet.ShowDialog();
         }
         private void btnUpdateSourceFile_Click(object sender, EventArgs e)
         {
+            if (kDGVSourceFileList.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             int drIndex = kDGVSourceFileList.CurrentRow.Index;
             DataTable dt = kDGVSourceFileList.DataSource as DataTable;
             FrmSourceFileSet frmSourceFileSet = new FrmSourceFileSet(drIndex, dt, "源文件列表修改");
@@ -208,10 +298,31 @@ namespace KS.DataManage.Client
         }
         private void btnDelSourceFile_Click(object sender, EventArgs e)
         {
+            if (kDGVSourceFileList.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (MessageBox.Show("确认删除？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (DataGridViewRow item in kDGVSourceFileList.SelectedRows)
                 {
+                    foreach (XElement itemfile in GlobalData.TemplateConfigInfo.Descendants("file"))
+                    {
+                        if (itemfile.Attribute("filetitle").Value == SelectedTargetFileTitle)
+                        {
+                            foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                            {
+                                if (itemfileSrc.Attribute("srcfile").Value == item.Cells[1].Value.ToString() && itemfileSrc.Attribute("srcid").Value == item.Cells[0].Value.ToString())
+                                {
+                                    itemfileSrc.Remove();
+                                    break;
+                                }
+                            }
+
+                        }
+                    }
+
                     kDGVSourceFileList.Rows.Remove(item);
                 }
             }
@@ -221,15 +332,44 @@ namespace KS.DataManage.Client
         # region 生成文件关键字增删改
         private void btnAddGenerateFileKeyword_Click(object sender, EventArgs e)
         {
-            int drIndex = kDGVKeyWords.CurrentRow.Index;
-            DataTable dt = kDGVKeyWords.DataSource as DataTable;
-            FrmGenerateFileKeywordSet frmGenerateFileKeywordSet = new FrmGenerateFileKeywordSet(drIndex, dt, "生成文件关键字增加");
-            frmGenerateFileKeywordSet.ShowDialog();
-            this.kDGVKeyWords.DataSource = ReturnDt;
 
+            if (kDGVKeyWords.CurrentRow != null)
+            {
+                int drIndex = kDGVKeyWords.CurrentRow.Index;
+                DataTable dt = kDGVKeyWords.DataSource as DataTable;
+                FrmGenerateFileKeywordSet frmGenerateFileKeywordSet = new FrmGenerateFileKeywordSet(drIndex, dt, "生成文件关键字增加");
+                frmGenerateFileKeywordSet.ShowDialog();
+                this.kDGVKeyWords.DataSource = ReturnDt;
+            }
+            else
+            {
+                FrmGenerateFileKeywordSet frmGenerateFileKeywordSet = new FrmGenerateFileKeywordSet();
+                frmGenerateFileKeywordSet.ShowDialog();
+                this.kDGVKeyWords.DataSource = ReturnDt;
+            }
+            
+
+            foreach (XElement itemOrganCode in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
+            {
+
+                foreach (XElement itemfile in itemOrganCode.Nodes())
+                {
+                    if (itemfile.Attribute("filetitle").Value == SelectedTargetFileTitle)
+                    {
+                        itemfile.Add(ReturnXElement);
+                        break;
+                    }
+                }
+
+            }
         }
         private void btnUpdateGenerateFileKeyword_Click(object sender, EventArgs e)
         {
+            if (kDGVKeyWords.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             int drIndex = kDGVKeyWords.CurrentRow.Index;
             DataTable dt = kDGVKeyWords.DataSource as DataTable;
             FrmGenerateFileKeywordSet frmGenerateFileKeywordSet = new FrmGenerateFileKeywordSet(drIndex, dt, "生成文件关键字修改");
@@ -238,10 +378,31 @@ namespace KS.DataManage.Client
         }
         private void btnDelGenerateFileKeyword_Click(object sender, EventArgs e)
         {
+            if (kDGVKeyWords.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (MessageBox.Show("确认删除？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (DataGridViewRow item in kDGVKeyWords.SelectedRows)
                 {
+                    foreach (XElement itemfile in GlobalData.TemplateConfigInfo.Descendants("file"))
+                    {
+                        if (itemfile.Attribute("filetitle").Value == SelectedTargetFileTitle)
+                        {
+                            foreach (XElement itemfilepkg in itemfile.Descendants("filepkg"))
+                            {
+                                if (itemfilepkg.Attribute("pkid").Value == item.Cells[0].Value.ToString() && itemfilepkg.Attribute("name").Value == item.Cells[1].Value.ToString())
+                                {
+                                    itemfilepkg.Remove();
+                                    break;
+                                }
+                            }
+
+                        }
+                    }
+
                     kDGVKeyWords.Rows.Remove(item);
                 }
             }
@@ -251,14 +412,46 @@ namespace KS.DataManage.Client
         #region 文件字段列表增删改
         private void btnAddFileField_Click(object sender, EventArgs e)
         {
-            int drIndex = kDGVFileWordsList.CurrentRow.Index;
-            DataTable dt = kDGVFileWordsList.DataSource as DataTable;
-            FrmFileWordsList frmFileWordsList = new FrmFileWordsList(drIndex, dt, "文件字段列表增加");
-            frmFileWordsList.ShowDialog();
-            this.kDGVFileWordsList.DataSource = ReturnDt;
+            if (kDGVFileWordsList.CurrentRow != null)
+            {
+                int drIndex = kDGVFileWordsList.CurrentRow.Index;
+                DataTable dt = kDGVFileWordsList.DataSource as DataTable;
+                FrmFileWordsList frmFileWordsList = new FrmFileWordsList(drIndex, dt, "文件字段列表增加");
+                frmFileWordsList.ShowDialog();
+                this.kDGVFileWordsList.DataSource = ReturnDt;
+            }
+            else
+            {
+                FrmFileWordsList frmFileWordsList = new FrmFileWordsList();
+                frmFileWordsList.ShowDialog();
+                this.kDGVFileWordsList.DataSource = ReturnDt;
+            }
+            foreach (XElement itemOrganCode in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
+            {
+                foreach (XElement itemfile in itemOrganCode.Nodes())
+                {
+                    if (itemfile.Attribute("filetitle").Value == SelectedTargetFileTitle)
+                    {
+                        foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                        {
+                            if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo)  
+                            {
+                                itemfileSrc.Add(ReturnXElement);
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
         }
         private void btnUpdateFileField_Click(object sender, EventArgs e)
         {
+            if (kDGVFileWordsList.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             int drIndex = kDGVFileWordsList.CurrentRow.Index;
             DataTable dt = kDGVFileWordsList.DataSource as DataTable;
             FrmFileWordsList frmFileWordsList = new FrmFileWordsList(drIndex, dt, "文件字段列表修改");
@@ -267,10 +460,35 @@ namespace KS.DataManage.Client
         }
         private void btnDelFileField_Click(object sender, EventArgs e)
         {
+            if (kDGVFileWordsList.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (MessageBox.Show("确认删除？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (DataGridViewRow item in kDGVFileWordsList.SelectedRows)
                 {
+                    foreach (XElement itemfile in GlobalData.TemplateConfigInfo.Descendants("file"))
+                    {
+                        if (itemfile.Attribute("filetitle").Value == SelectedTargetFileTitle)
+                        {
+                            foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                            {
+                                if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo) 
+                                {
+                                    foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                    {
+                                        if (itemfilecols.Attribute("cid").Value == item.Cells[0].Value.ToString() && itemfilecols.Attribute("label").Value == item.Cells[1].Value.ToString())
+                                        {
+                                            itemfilecols.Remove();
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     kDGVFileWordsList.Rows.Remove(item);
                 }
             }
@@ -280,15 +498,53 @@ namespace KS.DataManage.Client
         #region 过滤条件增删改
         private void btnAddFilterConditions_Click(object sender, EventArgs e)
         {
-            int drIndex = kDGVFilter.CurrentRow.Index;
-            DataTable dt = kDGVFilter.DataSource as DataTable;
-            FrmFilterConditionsSet frmFilterConditionsSet = new FrmFilterConditionsSet(drIndex, dt, "过滤条件增加");
-            frmFilterConditionsSet.ShowDialog();
-            this.kDGVFilter.DataSource = ReturnDt;
+            if (kDGVFilter.CurrentRow != null)
+            {
+                int drIndex = kDGVFilter.CurrentRow.Index;
+                DataTable dt = kDGVFilter.DataSource as DataTable;
+                FrmFilterConditionsSet frmFilterConditionsSet = new FrmFilterConditionsSet(drIndex, dt, "过滤条件增加");
+                frmFilterConditionsSet.ShowDialog();
+                this.kDGVFilter.DataSource = ReturnDt;
+            }
+            else
+            {
+                FrmFilterConditionsSet frmFilterConditionsSet = new FrmFilterConditionsSet();
+                frmFilterConditionsSet.ShowDialog();
+                this.kDGVFilter.DataSource = ReturnDt;
+            }
+            foreach (XElement itemOrganCode in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
+            {
+                foreach (XElement itemfile in itemOrganCode.Nodes())
+                {
+                    if (itemfile.Attribute("filetitle").Value == SelectedTargetFileTitle)
+                    {
+                        foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                        {
+                            if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo) 
+                            {
+                                foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                {
+                                    if (itemfilecols.Attribute("label").Value == SelectedTXTColumnName && itemfilecols.Attribute("cid").Value == SelectedFileFieldNo)
+                                    {
+                                        itemfilecols.Add(ReturnXElement);
+                                        break;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void btnUpdateFilterConditions_Click(object sender, EventArgs e)
         {
+            if (kDGVFilter.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             int drIndex = kDGVFilter.CurrentRow.Index;
             DataTable dt = kDGVFilter.DataSource as DataTable;
             FrmFilterConditionsSet frmFilterConditionsSet = new FrmFilterConditionsSet(drIndex, dt, "过滤条件修改");
@@ -297,10 +553,41 @@ namespace KS.DataManage.Client
         }
         private void btnDelFilterConditions_Click(object sender, EventArgs e)
         {
+            if (kDGVFilter.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (MessageBox.Show("确认删除？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (DataGridViewRow item in kDGVFilter.SelectedRows)
                 {
+                    foreach (XElement itemfile in GlobalData.TemplateConfigInfo.Descendants("file"))
+                    {
+                        if (itemfile.Attribute("filetitle").Value == SelectedTargetFileTitle)
+                        {
+                            foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                            {
+                                if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo)
+                                {
+                                    foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                    {
+                                        if (itemfilecols.Attribute("cid").Value == UC_DataSetting.SelectedFileFieldNo && itemfilecols.Attribute("label").Value == UC_DataSetting.SelectedTXTColumnName)
+                                        {
+                                            foreach (XElement itemfilter in itemfilecols.Descendants("filter"))
+                                            {
+                                                if (itemfilter.Attribute("filtId").Value == item.Cells[0].Value.ToString())
+                                                {
+                                                    itemfilter.Remove();
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     kDGVFilter.Rows.Remove(item);
                 }
             }
@@ -310,15 +597,53 @@ namespace KS.DataManage.Client
         #region 数据字典增删改
         private void btnAddDataDictionary_Click(object sender, EventArgs e)
         {
-            int drIndex = kDGVDict.CurrentRow.Index;
-            DataTable dt = kDGVDict.DataSource as DataTable;
-            FrmDict frmDict = new FrmDict(drIndex, dt, "数据字典增加");
-            frmDict.ShowDialog();
-            this.kDGVDict.DataSource = ReturnDt;
+            if (kDGVDict.CurrentRow != null)
+            {
+                int drIndex = kDGVDict.CurrentRow.Index;
+                DataTable dt = kDGVDict.DataSource as DataTable;
+                FrmDict frmDict = new FrmDict(drIndex, dt, "数据字典增加");
+                frmDict.ShowDialog();
+                this.kDGVDict.DataSource = ReturnDt;
+            }
+            else
+            {
+                FrmDict frmDict = new FrmDict();
+                frmDict.ShowDialog();
+                this.kDGVDict.DataSource = ReturnDt;
+            }
+            foreach (XElement itemOrganCode in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
+            {
+                foreach (XElement itemfile in itemOrganCode.Nodes())
+                {
+                    if (itemfile.Attribute("filetitle").Value == SelectedTargetFileTitle)
+                    {
+                        foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                        {
+                            if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo)
+                            {
+                                foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                {
+                                    if (itemfilecols.Attribute("label").Value == SelectedTXTColumnName && itemfilecols.Attribute("cid").Value == SelectedFileFieldNo)
+                                    {
+                                        itemfilecols.Add(ReturnXElement);
+                                        break;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void btnUpdateDataDictionary_Click(object sender, EventArgs e)
         {
+            if (kDGVDict.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             int drIndex = kDGVDict.CurrentRow.Index;
             DataTable dt = kDGVDict.DataSource as DataTable;
             FrmDict frmDict = new FrmDict(drIndex, dt, "数据字典修改");
@@ -327,10 +652,41 @@ namespace KS.DataManage.Client
         }
         private void btnDelDataDictionary_Click(object sender, EventArgs e)
         {
+            if (kDGVDict.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (MessageBox.Show("确认删除？", "请确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (DataGridViewRow item in kDGVDict.SelectedRows)
                 {
+                    foreach (XElement itemfile in GlobalData.TemplateConfigInfo.Descendants("file"))
+                    {
+                        if (itemfile.Attribute("filetitle").Value == SelectedTargetFileTitle)
+                        {
+                            foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                            {
+                                if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo)
+                                {
+                                    foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                    {
+                                        if (itemfilecols.Attribute("cid").Value == UC_DataSetting.SelectedFileFieldNo && itemfilecols.Attribute("label").Value == UC_DataSetting.SelectedTXTColumnName)
+                                        {
+                                            foreach (XElement itemdict in itemfilecols.Descendants("dict"))
+                                            {
+                                                if (itemdict.Attribute("dictid").Value == item.Cells[0].Value.ToString())
+                                                {
+                                                    itemdict.Remove();
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     kDGVDict.Rows.Remove(item);
                 }
             }
@@ -367,7 +723,7 @@ namespace KS.DataManage.Client
 
             this.ResumeLayout(false);
         }
-
+       
         /// <summary>
         /// 文件列表datagridview显示
         /// </summary>
@@ -404,6 +760,8 @@ namespace KS.DataManage.Client
         {
             if (e.RowIndex > -1)
             {
+                tableLayoutPanelTargetFile.Enabled = true;
+                tableLayoutPanelKeyWords.Enabled = true;
                 DataTable dtFileWordsList = (DataTable)kDGVFileWordsList.DataSource;
                 if (dtFileWordsList != null)
                 {
@@ -425,6 +783,8 @@ namespace KS.DataManage.Client
                     dtDict.Rows.Clear();
                     kDGVDict.DataSource = dtDict;
                 }
+
+
                 try
                 {
                     if (e.ColumnIndex == 0)
@@ -505,6 +865,7 @@ namespace KS.DataManage.Client
         {
             try
             {
+                tableLayoutPanelFileField.Enabled = true;
                 DataTable dtFilter = (DataTable)kDGVFilter.DataSource;
                 if (dtFilter != null)
                 {
@@ -520,7 +881,9 @@ namespace KS.DataManage.Client
                 }
 
                 string SourceFileName = this.kDGVSourceFileList.Rows[e.RowIndex].Cells["SourceFileName"].Value.ToString();
+                string SourceFileNo = this.kDGVSourceFileList.Rows[e.RowIndex].Cells["SourceFileNo"].Value.ToString();
                 SelectedSourceFileName = SourceFileName;
+                SelectedSourceFileNo = SourceFileNo;
                 //string TargetFileNo = this.kDGVFileList.Rows[e.RowIndex].Cells["TargetFileNo"].Value.ToString();
                 string TargetFileTitle = SelectedTargetFileTitle;
                 string TargetFileName = SelectedTargetFileName;
@@ -537,7 +900,7 @@ namespace KS.DataManage.Client
                                 {
                                     foreach (XElement itemFilecols in fileSrc.Descendants("fileSrc"))
                                     {
-                                        if (itemFilecols.Attribute("srcfile").Value.Equals(SourceFileName))
+                                        if (itemFilecols.Attribute("srcfile").Value.Equals(SourceFileName )&& itemFilecols.Attribute("srcid").Value.Equals(SelectedSourceFileNo))
                                         {
                                             this.kDGVFileWordsList.DataSource = FileDataTable.FildWordsListDT(itemFilecols);
 
@@ -568,6 +931,8 @@ namespace KS.DataManage.Client
         /// <param name="e"></param>
         private void kDGVFileWordsList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            tableLayoutPanelFilter.Enabled = true;
+            tableLayoutPanelDict.Enabled = true;
             DataTable dtFilter = (DataTable)kDGVFilter.DataSource;
             if (dtFilter != null)
             {
@@ -586,8 +951,13 @@ namespace KS.DataManage.Client
             string TargetFileTitle = SelectedTargetFileTitle;
             string TargetFileName = SelectedTargetFileName;
             string SourceFileName = SelectedSourceFileName;
+            string SourceFileNo = SelectedSourceFileNo;
 
             string TXTColumnName = this.kDGVFileWordsList.Rows[e.RowIndex].Cells["FileFieldTXTColumnName"].Value.ToString();
+            string FileFieldNo = this.kDGVFileWordsList.Rows[e.RowIndex].Cells["FileFieldNo"].Value.ToString();
+            SelectedTXTColumnName = TXTColumnName;
+            SelectedFileFieldNo = FileFieldNo;
+
             foreach (XElement xNode in _configDocument.Descendants("AccountId"))
             {
                 if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
@@ -600,11 +970,11 @@ namespace KS.DataManage.Client
                             {
                                 foreach (XElement itemFilecols in fileSrc.Descendants("fileSrc"))
                                 {
-                                    if (itemFilecols.Attribute("srcfile").Value.Equals(SourceFileName))
+                                    if (itemFilecols.Attribute("srcfile").Value.Equals(SourceFileName) && itemFilecols.Attribute("srcid").Value.Equals(SourceFileNo))
                                     {
                                         foreach (XElement item in itemFilecols.Nodes())
                                         {
-                                            if (item.Attribute("label").Value.Equals(TXTColumnName))
+                                            if (item.Attribute("label").Value.Equals(TXTColumnName) && item.Attribute("cid").Value.Equals(FileFieldNo))
                                             {
                                                 this.kDGVFilter.DataSource = FileDataTable.FilterDT(item);
                                                 this.kDGVDict.DataSource = FileDataTable.DictDT(item);
@@ -623,7 +993,10 @@ namespace KS.DataManage.Client
                 }
             }
         }
+        private void kDGVFilter_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
         private void kDGVFileList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
@@ -689,10 +1062,6 @@ namespace KS.DataManage.Client
             this.kTxtJKZXPath2.Text = path.SelectedPath;
         }
 
-        private void btnUpdateTradeID_Click(object sender, EventArgs e)
-        {
-
-        }
-
+       
     }
 }

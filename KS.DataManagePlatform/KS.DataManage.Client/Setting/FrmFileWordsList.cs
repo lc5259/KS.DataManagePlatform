@@ -1,5 +1,6 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using KS.DataManage.Templete;
+using KS.DataManage.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,12 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace KS.DataManage.Client
 {
     public partial class FrmFileWordsList : FrmSaveBase
     {
-        DataRow dr;
+        DataRow drOrigin;
         DataTable dtOrigin;
         int drIndex;
         public FrmFileWordsList()
@@ -25,41 +27,76 @@ namespace KS.DataManage.Client
         {
             InitializeComponent();
 
+            if (title == "文件字段列表修改")
+            {
+                kryCBBFileFieldNo.Enabled = false;
+            }
+           
+
             this.Text = title;
-            this.dr = dt.Rows[drIndex] ;
+            this.drOrigin = dt.Rows[drIndex] ;
             this.dtOrigin = dt;
             this.drIndex = drIndex;
 
-            kryCBBFileFieldNo.Text = dr["DataFileFieldNo"].ToString();
-            kryCBBFileFieldTXTColumnName.Text = dr["DataFileFieldTXTColumnName"].ToString();
-            kryCBBFileFieldDBFColumnName.Text = dr["DataFileFieldDBFColumnName"].ToString();
-            kryCBBFileFieldColumnNameDigit.Text = dr["DataFileFieldColumnNameDigit"].ToString();
-            kryCBBFileFieldColumnValueDigit.Text = dr["DataFileFieldColumnValueDigit"].ToString();
-            kryCBBFileFieldColumnValueAccuracy.Text = dr["DataFileFieldColumnValueAccuracy"].ToString();
-            kryCBBFileFieldAlignment.Text = dr["DataFileFieldAlignment"].ToString();
-            kryCBBFileFieldIsOut.Text = dr["DataFileFieldIsOut"].ToString();
-            kryCBBFileFieldNotNull.Text = dr["DataFileFieldNotNull"].ToString();
-            kryCBBFileFieldCalculationSymbols.Text = dr["DataFileFieldCalculationSymbols"].ToString();
-            kryCBBFileFieldFixedValue.Text = dr["DataFileFieldFixedValue"].ToString();
-            kryCBBFileFieldIsSummary.Text = dr["DataFileFieldIsSummary"].ToString();
-            kryCBBFileFieldIsComplementCharacter.Text = dr["DataFileFieldIsComplementCharacter"].ToString();
-            kryCBBFileFieldIsFiledIndex.Text = dr["DataFileFieldIsFiledIndex"].ToString();
-            kryCBBFileFieldIsDefaultValue.Text = dr["DataFileFieldIsDefaultValue"].ToString();
-            kryCBBFileFieldIsAbsoluteValue.Text = dr["DataFileFieldIsAbsoluteValue"].ToString();
-            kryCBBFileFieldIsAbsoluteValueOut.Text = dr["DataFileFieldIsAbsoluteValueOut"].ToString();
+            kryCBBFileFieldNo.Text = this.drOrigin["DataFileFieldNo"].ToString();
+            kryCBBFileFieldTXTColumnName.Text = this.drOrigin["DataFileFieldTXTColumnName"].ToString();
+            kryCBBFileFieldDBFColumnName.Text = this.drOrigin["DataFileFieldDBFColumnName"].ToString();
+            kryCBBFileFieldColumnNameDigit.Text = this.drOrigin["DataFileFieldColumnNameDigit"].ToString();
+            kryCBBFileFieldColumnValueDigit.Text = this.drOrigin["DataFileFieldColumnValueDigit"].ToString();
+            kryCBBFileFieldColumnValueAccuracy.Text = this.drOrigin["DataFileFieldColumnValueAccuracy"].ToString();
+            kryCBBFileFieldAlignment.Text = this.drOrigin["DataFileFieldAlignment"].ToString();
+            kryCBBFileFieldIsOut.Text = this.drOrigin["DataFileFieldIsOut"].ToString();
+            kryCBBFileFieldNotNull.Text = this.drOrigin["DataFileFieldNotNull"].ToString();
+            kryCBBFileFieldCalculationSymbols.Text = this.drOrigin["DataFileFieldCalculationSymbols"].ToString();
+            kryCBBFileFieldFixedValue.Text = this.drOrigin["DataFileFieldFixedValue"].ToString();
+            kryCBBFileFieldIsSummary.Text = this.drOrigin["DataFileFieldIsSummary"].ToString();
+            kryCBBFileFieldIsComplementCharacter.Text = this.drOrigin["DataFileFieldIsComplementCharacter"].ToString();
+            kryCBBFileFieldIsFiledIndex.Text = this.drOrigin["DataFileFieldIsFiledIndex"].ToString();
+            kryCBBFileFieldIsDefaultValue.Text = this.drOrigin["DataFileFieldIsDefaultValue"].ToString();
+            kryCBBFileFieldIsAbsoluteValue.Text = this.drOrigin["DataFileFieldIsAbsoluteValue"].ToString();
+            kryCBBFileFieldIsAbsoluteValueOut.Text = this.drOrigin["DataFileFieldIsAbsoluteValueOut"].ToString();
 
         }
 
 
-        private void kbtnCancle_Click(object sender, EventArgs e)
+        //private void kbtnCancle_Click(object sender, EventArgs e)
+        //{
+        //    UC_DataSetting.ReturnDt = dtOrigin; 
+        //    this.Close();
+        //}
+        public override void OnClose()
         {
-            UC_DataSetting.ReturnDt = dtOrigin; 
-            this.Close();
+            UC_DataSetting.ReturnDt = dtOrigin;
         }
 
         private void kbtnSave_Click(object sender, EventArgs e)
         {
-            DataTable dt = dtOrigin.Copy();
+            DataTable dt = new DataTable();
+            if (dtOrigin == null)
+            {
+                dt.Columns.Add("DataFileFieldNo", typeof(System.String));
+                dt.Columns.Add("DataFileFieldTXTColumnName", typeof(System.String));
+                dt.Columns.Add("DataFileFieldDBFColumnName", typeof(System.String));
+                dt.Columns.Add("DataFileFieldColumnNameDigit", typeof(System.String));
+                dt.Columns.Add("DataFileFieldColumnValueDigit", typeof(System.String));
+                dt.Columns.Add("DataFileFieldColumnValueAccuracy", typeof(System.String));
+                dt.Columns.Add("DataFileFieldAlignment", typeof(System.String));
+                dt.Columns.Add("DataFileFieldIsOut", typeof(System.String));
+                dt.Columns.Add("DataFileFieldNotNull", typeof(System.String));
+                dt.Columns.Add("DataFileFieldCalculationSymbols", typeof(System.String));
+                dt.Columns.Add("DataFileFieldFixedValue", typeof(System.String));
+                dt.Columns.Add("DataFileFieldIsSummary", typeof(System.String));
+                dt.Columns.Add("DataFileFieldIsComplementCharacter", typeof(System.String));
+                dt.Columns.Add("DataFileFieldIsFiledIndex", typeof(System.String));
+                dt.Columns.Add("DataFileFieldIsDefaultValue", typeof(System.String));
+                dt.Columns.Add("DataFileFieldIsAbsoluteValue", typeof(System.String));
+                dt.Columns.Add("DataFileFieldIsAbsoluteValueOut", typeof(System.String));
+            }
+            else
+            {
+                dt = dtOrigin.Copy();
+            }
+            //DataTable dt = dtOrigin.Copy();
 
             DataRow dr = dt.NewRow();
             dr["DataFileFieldNo"] = kryCBBFileFieldNo.Text;
@@ -87,6 +124,106 @@ namespace KS.DataManage.Client
             dt.Rows.InsertAt(dr, this.drIndex);
 
             UC_DataSetting.ReturnDt = dt;
+            //if (this.Text == "文件字段列表增加")
+            //{
+
+            //    XElement _xElement = new XElement("filecols");
+            //    _xElement.Add(new XAttribute("cid", dr["DataFileFieldNo"]),
+            //                  new XAttribute("label", dr["DataFileFieldTXTColumnName"]),
+            //                  new XAttribute("code", dr["DataFileFieldDBFColumnName"]),
+            //                  new XAttribute("tlength", dr["DataFileFieldColumnNameDigit"]),
+            //                  new XAttribute("vlength", dr["DataFileFieldColumnValueDigit"]),
+            //                  new XAttribute("align", dr["DataFileFieldAlignment"]),
+            //                  new XAttribute("precision", dr["DataFileFieldColumnValueAccuracy"]),
+            //                  new XAttribute("isout", dr["DataFileFieldIsOut"]),
+            //                  new XAttribute("notnull", dr["DataFileFieldNotNull"]),
+            //                  new XAttribute("IsCal", "不确定"),
+            //                  new XAttribute("express", dr["DataFileFieldCalculationSymbols"]),
+            //                  new XAttribute("FixValue", dr["DataFileFieldFixedValue"]), 
+            //                  new XAttribute("IsSum", dr["DataFileFieldIsSummary"]),
+            //                  new XAttribute("padstr", dr["DataFileFieldIsComplementCharacter"]),
+            //                  new XAttribute("colIndex", dr["DataFileFieldIsFiledIndex"]), 
+            //                  new XAttribute("default", dr["DataFileFieldIsDefaultValue"]),
+            //                  new XAttribute("isAbs", dr["DataFileFieldIsAbsoluteValue"]),
+            //                  new XAttribute("isAbs_output", dr["DataFileFieldIsAbsoluteValueOut"])
+            //                 );
+
+            //    UC_DataSetting.ReturnXElement = _xElement;
+            //    //UC_DataSetting.ReturnOrganCode = dr["DataTargetOrganizationName"].ToString();
+            //}
+
+            if (this.Text == "文件字段列表修改")
+            {
+                foreach (XElement itemfile in GlobalData.TemplateConfigInfo.Descendants("file"))
+                {
+                    //foreach (XElement item in itemOrganCode.Nodes())
+                    //{
+                    if (itemfile.Attribute("filetitle").Value == UC_DataSetting.SelectedTargetFileTitle)
+                    {
+                        foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                        {
+                            if (itemfileSrc.Attribute("srcfile").Value == UC_DataSetting.SelectedSourceFileName)
+                            {
+                                foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                {
+                                    if (itemfilecols.Attribute("cid").Value == this.drOrigin["DataFileFieldNo"].ToString())
+                                    {
+                                        itemfilecols.Attribute("cid").Value = dr["DataFileFieldNo"].ToString();
+                                        itemfilecols.Attribute("label").Value = dr["DataFileFieldTXTColumnName"].ToString();
+                                        itemfilecols.Attribute("code").Value = dr["DataFileFieldDBFColumnName"].ToString();
+                                        itemfilecols.Attribute("tlength").Value = dr["DataFileFieldColumnNameDigit"].ToString();
+                                        itemfilecols.Attribute("vlength").Value = dr["DataFileFieldColumnValueDigit"].ToString();
+                                        itemfilecols.Attribute("align").Value = dr["DataFileFieldAlignment"].ToString();
+                                        itemfilecols.Attribute("precision").Value = dr["DataFileFieldColumnValueAccuracy"].ToString();
+                                        itemfilecols.Attribute("isout").Value = dr["DataFileFieldIsOut"].ToString();
+                                        itemfilecols.Attribute("notnull").Value = dr["DataFileFieldNotNull"].ToString();
+                                        itemfilecols.Attribute("IsCal").Value = itemfilecols.Attribute("IsCal").Value;
+                                        itemfilecols.Attribute("express").Value = dr["DataFileFieldCalculationSymbols"].ToString();
+                                        itemfilecols.Attribute("FixValue").Value = dr["DataFileFieldFixedValue"].ToString();
+                                        itemfilecols.Attribute("IsSum").Value = dr["DataFileFieldIsSummary"].ToString();
+                                        itemfilecols.Attribute("padstr").Value = dr["DataFileFieldIsComplementCharacter"].ToString();
+                                        itemfilecols.Attribute("colIndex").Value = dr["DataFileFieldIsFiledIndex"].ToString();
+                                        itemfilecols.Attribute("default").Value = dr["DataFileFieldIsDefaultValue"].ToString();
+                                        itemfilecols.Attribute("isAbs").Value = dr["DataFileFieldIsAbsoluteValue"].ToString();
+                                        if (itemfilecols.Attribute("isAbs_output") != null)
+                                        {
+                                            itemfilecols.Attribute("isAbs_output").Value = dr["DataFileFieldIsAbsoluteValueOut"].ToString();
+                                        }
+
+
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                XElement _xElement = new XElement("filecols");
+                _xElement.Add(new XAttribute("cid", dr["DataFileFieldNo"]),
+                              new XAttribute("label", dr["DataFileFieldTXTColumnName"]),
+                              new XAttribute("code", dr["DataFileFieldDBFColumnName"]),
+                              new XAttribute("tlength", dr["DataFileFieldColumnNameDigit"]),
+                              new XAttribute("vlength", dr["DataFileFieldColumnValueDigit"]),
+                              new XAttribute("align", dr["DataFileFieldAlignment"]),
+                              new XAttribute("precision", dr["DataFileFieldColumnValueAccuracy"]),
+                              new XAttribute("isout", dr["DataFileFieldIsOut"]),
+                              new XAttribute("notnull", dr["DataFileFieldNotNull"]),
+                              new XAttribute("IsCal", "不确定"),
+                              new XAttribute("express", dr["DataFileFieldCalculationSymbols"]),
+                              new XAttribute("FixValue", dr["DataFileFieldFixedValue"]),
+                              new XAttribute("IsSum", dr["DataFileFieldIsSummary"]),
+                              new XAttribute("padstr", dr["DataFileFieldIsComplementCharacter"]),
+                              new XAttribute("colIndex", dr["DataFileFieldIsFiledIndex"]),
+                              new XAttribute("default", dr["DataFileFieldIsDefaultValue"]),
+                              new XAttribute("isAbs", dr["DataFileFieldIsAbsoluteValue"]),
+                              new XAttribute("isAbs_output", dr["DataFileFieldIsAbsoluteValueOut"])
+                             );
+
+                UC_DataSetting.ReturnXElement = _xElement;
+            }
             this.Close();
         }
 

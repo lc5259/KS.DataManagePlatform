@@ -15,14 +15,19 @@ namespace KS.DataManage.Client
     public delegate void setTextValue(string textValue);
     public partial class FrmTradeAccountSet : FrmSaveBase
     {
-        
 
+        public bool IsSave = false;
         public event setTextValue setFormTextValue;
         public FrmTradeAccountSet()
         {
             InitializeComponent();
         }
-        public bool IsSave = false;
+        public FrmTradeAccountSet(bool _IsSave)
+        {
+            InitializeComponent();
+            this.IsSave = _IsSave;
+        }
+        
         private void kbtnSave_Click(object sender, EventArgs e)
         {
             //List<string> CombTradeID = new List<string>();
@@ -31,7 +36,7 @@ namespace KS.DataManage.Client
             //CombTradeID.Add(kryTextBoxFundAccountNo.Text.ToString());
             //_uC_DataSetting.kCombTradeID.DataSource = CombTradeID;
 
-            IsSave = true;
+            //IsSave = true;
 
             //setFormTextValue(kryTextBoxFundAccountNo.Text.ToString());
 
