@@ -765,19 +765,42 @@ namespace KS.DataManage.Client
             try
             {
                 XElement configRoot = configDocument.Root;
-            }
-            catch
-            {
+
+                string targetFileName = string.Empty;
+                string SourceFileName = string.Empty;
+
+
+                //临时测试用
+                FileStream fs = new FileStream();
                 //生成中金所
-                foreach (var itemSingleCffexAccount in kryCLBSingleCffexAccount.Items)
+                foreach (string itemSingleCffexAccount in kryCLBSingleCffexAccount.Items)
                 {
 
                 }
                 //生成监控中心
-                foreach (var itemSingleCffexAccount in kryCLBSingleCffexAccount.Items)
+                foreach (string itemSingleMotorCenterAccount in kryCLBSingleMotorCenterAccount.Items)
                 {
-
+                    foreach (XElement itemAccountId in configDocument.Descendants("AccountId"))
+                    {
+                        if (itemAccountId.Attribute("value").Value == itemSingleMotorCenterAccount)
+                        {
+                            foreach (XElement itemOrganCode in itemAccountId.Descendants("OrganCode"))
+                            {
+                                if (itemOrganCode.Attribute("name").Value == "监控中心")
+                                {
+                                    foreach (XElement itemfile in itemOrganCode.Nodes())
+                                    {
+                                        SourceFileName = Path.Combine(kryTextBoxOriginPath + kryDTPDate.Value.ToString() + $"{0}{1}{2}.txt",);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
+            }
+            catch
+            {
+               
             }
 
         }
