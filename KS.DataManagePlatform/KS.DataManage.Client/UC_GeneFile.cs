@@ -14,16 +14,16 @@ using System.Xml;
 
 namespace KS.DataManage.Client
 {
-    public  partial class UC_GeneFile : UserControl
+    public partial class UC_GeneFile : UserControl
     {
         string _fileGroup = "";
         public UC_GeneFile()
         {
             InitializeComponent();
             //SetFont();//测试阶段暂时关闭
-            
+
         }
- 
+
 
         public UC_GeneFile(string group)
         {
@@ -31,7 +31,7 @@ namespace KS.DataManage.Client
             //SetFont();//测试阶段暂时关闭
 
             //this.SuspendLayout();
-            
+
             //LoadConfigFile();
             //this.ResumeLayout(false);
         }
@@ -58,7 +58,7 @@ namespace KS.DataManage.Client
 
                     if (xNode.Name.LocalName.Equals("srcpath"))
                     {
-                        this.kryTextBoxOriginPath.Text =  xNode.Value;
+                        this.kryTextBoxOriginPath.Text = xNode.Value;
                     }
                     else if (xNode.Name.LocalName.Equals("cffexpath1"))
                     {
@@ -131,7 +131,7 @@ namespace KS.DataManage.Client
                     {
 
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -729,7 +729,7 @@ namespace KS.DataManage.Client
             //xml附加根节点
             xmlDoc.AppendChild(rootNode);
 
-            xmlDoc.InsertBefore(Declaration,xmlDoc.DocumentElement);
+            xmlDoc.InsertBefore(Declaration, xmlDoc.DocumentElement);
 
             //保存xml文档
             string SavePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_ListCfg.xml", _fileGroup));
@@ -739,9 +739,48 @@ namespace KS.DataManage.Client
                 MessageBox.Show("保存设置成功");
             }
 
-           
+
         }
 
+        private void kryBtOK_Click(object sender, EventArgs e)
+        {
+            string OriginPath = Path.Combine(kryTextBoxOriginPath.Text);
+            string CffexOutPath1 = Path.Combine(kryTextBoxCffexOutPath1.Text);
+            string CffexOutPath2 = Path.Combine(kryTextBoxCffexOutPath2.Text);
+            string MonitorCenterOutPath1 = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text);
+            string MonitorCenterOutPath2 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text);
+
+            //string ConfigFileName = GlobalData.GetDataConfigPath(kCombAccount.SelectedItem.ToString());
+
+            this.SuspendLayout();
+            string ConfigFileName = GlobalData.GetGeneConfigPath(_fileGroup);
+            //string ConfigFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_UserConfig.xml", _fileGroup));
+            if (!File.Exists(ConfigFileName))
+            {
+                KryptonMessageBox.Show(string.Format("配置文件 {0} 不存在！", ConfigFileName), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(string.Format("配置文件 {0} 不存在！", ConfigFileName));
+                return;
+            }
+            XDocument configDocument = XDocument.Load(ConfigFileName);
+            try
+            {
+                XElement configRoot = configDocument.Root;
+            }
+            catch
+            {
+                //生成中金所
+                foreach (var itemSingleCffexAccount in kryCLBSingleCffexAccount.Items)
+                {
+
+                }
+                //生成监控中心
+                foreach (var itemSingleCffexAccount in kryCLBSingleCffexAccount.Items)
+                {
+
+                }
+            }
+
+        }
     }
-  
+
 }

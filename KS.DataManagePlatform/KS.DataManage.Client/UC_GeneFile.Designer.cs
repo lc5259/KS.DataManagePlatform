@@ -52,6 +52,7 @@
             this.kryptonSplitContainer2 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kryGroupBoxSingleAccountGenerate = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryLbSingleMotorCenterAccountCount = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryLbSingleCffexAccountCount = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -95,15 +96,14 @@
             this.kryLbMoreFundAccountNo = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryLbFolderCustomize = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonSplitContainer3 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
-            this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonPalette2 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.kryptonPanel6 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryDTPDate = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.kryBtCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryBtOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryBtSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryLbDate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonSplitContainer3 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
+            this.kryptonPalette2 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel1)).BeginInit();
@@ -125,6 +125,7 @@
             this.kryGroupBoxSingleAccountGenerate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryGroupBoxMoreAccountGenerate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryGroupBoxMoreAccountGenerate.Panel)).BeginInit();
             this.kryGroupBoxMoreAccountGenerate.Panel.SuspendLayout();
@@ -133,15 +134,14 @@
             this.kryptonPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).BeginInit();
+            this.kryptonPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel1)).BeginInit();
             this.kryptonSplitContainer3.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel2)).BeginInit();
             this.kryptonSplitContainer3.Panel2.SuspendLayout();
             this.kryptonSplitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).BeginInit();
-            this.kryptonPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonSplitContainer1
@@ -370,6 +370,13 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(443, 403);
             this.kryptonPanel1.TabIndex = 20;
+            // 
+            // kryptonPanel5
+            // 
+            this.kryptonPanel5.Location = new System.Drawing.Point(1, 413);
+            this.kryptonPanel5.Name = "kryptonPanel5";
+            this.kryptonPanel5.Size = new System.Drawing.Size(206, 32);
+            this.kryptonPanel5.TabIndex = 5;
             // 
             // kryptonButton1
             // 
@@ -765,33 +772,6 @@
             this.kryptonPanel2.Size = new System.Drawing.Size(932, 49);
             this.kryptonPanel2.TabIndex = 5;
             // 
-            // kryptonSplitContainer3
-            // 
-            this.kryptonSplitContainer3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.kryptonSplitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonSplitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.kryptonSplitContainer3.Name = "kryptonSplitContainer3";
-            this.kryptonSplitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // kryptonSplitContainer3.Panel1
-            // 
-            this.kryptonSplitContainer3.Panel1.Controls.Add(this.kryptonSplitContainer1);
-            // 
-            // kryptonSplitContainer3.Panel2
-            // 
-            this.kryptonSplitContainer3.Panel2.Controls.Add(this.kryptonPanel2);
-            this.kryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kryptonSplitContainer3.Size = new System.Drawing.Size(932, 699);
-            this.kryptonSplitContainer3.SplitterDistance = 645;
-            this.kryptonSplitContainer3.TabIndex = 6;
-            // 
-            // kryptonPanel5
-            // 
-            this.kryptonPanel5.Location = new System.Drawing.Point(1, 413);
-            this.kryptonPanel5.Name = "kryptonPanel5";
-            this.kryptonPanel5.Size = new System.Drawing.Size(206, 32);
-            this.kryptonPanel5.TabIndex = 5;
-            // 
             // kryptonPanel6
             // 
             this.kryptonPanel6.Controls.Add(this.kryDTPDate);
@@ -828,6 +808,7 @@
             this.kryBtOK.Size = new System.Drawing.Size(90, 25);
             this.kryBtOK.TabIndex = 7;
             this.kryBtOK.Values.Text = "确定";
+            this.kryBtOK.Click += new System.EventHandler(this.kryBtOK_Click);
             // 
             // kryBtSave
             // 
@@ -845,6 +826,26 @@
             this.kryLbDate.Size = new System.Drawing.Size(49, 20);
             this.kryLbDate.TabIndex = 5;
             this.kryLbDate.Values.Text = "日期：";
+            // 
+            // kryptonSplitContainer3
+            // 
+            this.kryptonSplitContainer3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.kryptonSplitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonSplitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.kryptonSplitContainer3.Name = "kryptonSplitContainer3";
+            this.kryptonSplitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // kryptonSplitContainer3.Panel1
+            // 
+            this.kryptonSplitContainer3.Panel1.Controls.Add(this.kryptonSplitContainer1);
+            // 
+            // kryptonSplitContainer3.Panel2
+            // 
+            this.kryptonSplitContainer3.Panel2.Controls.Add(this.kryptonPanel2);
+            this.kryptonSplitContainer3.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
+            this.kryptonSplitContainer3.Size = new System.Drawing.Size(932, 699);
+            this.kryptonSplitContainer3.SplitterDistance = 645;
+            this.kryptonSplitContainer3.TabIndex = 6;
             // 
             // UC_GeneFile
             // 
@@ -877,6 +878,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryGroupBoxMoreAccountGenerate.Panel)).EndInit();
             this.kryGroupBoxMoreAccountGenerate.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryGroupBoxMoreAccountGenerate)).EndInit();
@@ -886,16 +888,15 @@
             this.kryptonPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).EndInit();
+            this.kryptonPanel6.ResumeLayout(false);
+            this.kryptonPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel1)).EndInit();
             this.kryptonSplitContainer3.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel2)).EndInit();
             this.kryptonSplitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3)).EndInit();
             this.kryptonSplitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).EndInit();
-            this.kryptonPanel6.ResumeLayout(false);
-            this.kryptonPanel6.PerformLayout();
             this.ResumeLayout(false);
 
         }

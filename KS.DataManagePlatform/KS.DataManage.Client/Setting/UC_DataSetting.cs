@@ -1085,7 +1085,7 @@ namespace KS.DataManage.Client
         {
             string ConfigFileName = GlobalData.GetDataConfigPath(kCombAccount.SelectedItem.ToString());
             _configDocument.Save(ConfigFileName);
-
+            MessageBox.Show("保存成功", "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //bool Exist = false;
             //foreach (XElement xNode in _configDocument.Descendants("AccountId"))
             //{
