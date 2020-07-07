@@ -955,6 +955,7 @@
             this.kryptonButtonSaveConfig.Size = new System.Drawing.Size(94, 98);
             this.kryptonButtonSaveConfig.TabIndex = 3;
             this.kryptonButtonSaveConfig.Values.Text = "保存配置";
+            this.kryptonButtonSaveConfig.Click += new System.EventHandler(this.kryptonButtonSaveConfig_Click);
             // 
             // kSplitContainerL2
             // 

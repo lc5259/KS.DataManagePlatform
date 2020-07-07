@@ -70,12 +70,25 @@ namespace KS.DataManage.Client
                 this.SuspendLayout();
                 string FundAccountNo = ftas.kryTextBoxFundAccountNo.Text.ToString();
 
+                XElement AddNode = new XElement(GlobalData.TemplateConfigInfo);
+
+                AddNode.SetAttributeValue("value", FundAccountNo);
+                foreach (XElement item in AddNode.Nodes())
+                {
+                    if (item.Name == "DlgConfigSettings")
+                    {
+                        item.Attribute("account").Value = FundAccountNo;
+                        break;
+                    }
+                }
+
+                _configDocument.Root.Add(AddNode);
 
                 List<string> CombTradeID = new List<string>();
                 CombTradeID = this.kCombTradeID.DataSource as List<string>;
                 CombTradeID.Add(FundAccountNo);
 
-                this.kCombTradeID.DataSource = null;
+                this.kCombTradeID.DataSource = new List<string>();
                 //foreach (var item in CombTradeID)
                 //{
                 //    this.kCombTradeID.Items.Add(item);
@@ -86,16 +99,9 @@ namespace KS.DataManage.Client
                 this.kCombTradeID.Refresh();
                 this.ResumeLayout(false);
 
-                GlobalData.TemplateConfigInfo.SetAttributeValue("value", FundAccountNo);
-                foreach (XElement item in GlobalData.TemplateConfigInfo.Nodes())
-                {
-                    if (item.Name == "DlgConfigSettings")
-                    {
-                        item.Attribute("account").Value = FundAccountNo;
-                        break;
-                    }
-                }
 
+                
+               
                 //GlobalData.TemplateConfigInfo.Descendants().Where( x=> x.Element("DlgConfigSettings").Attribute("account").Value == "34"  ).
                 //kCombTradeID.Items.Add(FundAccountNo);
             }
@@ -124,7 +130,7 @@ namespace KS.DataManage.Client
                 }
 
                 this.kCombTradeID.DataSource = null;
-              
+
                 this.kCombTradeID.DataSource = CombTradeID;
                 this.kCombTradeID.Text = FundAccountNo;
 
@@ -140,6 +146,7 @@ namespace KS.DataManage.Client
                         break;
                     }
                 }
+               
             }
         }
 
@@ -155,13 +162,23 @@ namespace KS.DataManage.Client
                     break;
                 }
             }
+            foreach (XElement item in _configDocument.Descendants("AccountId"))
+            {
+                if (item.Attribute("value").Value == kCombTradeID.Text)
+                {
+                    item.Remove();
+                    break;
+                }
+            }
+
             this.kCombTradeID.DataSource = null;
 
             this.kCombTradeID.DataSource = CombTradeID;
-            this.kCombTradeID.Text = "";
+            //this.kCombTradeID.Text = "";
 
             this.kCombTradeID.Refresh();
 
+           
         }
         private void kBtnOtherSet_Click(object sender, EventArgs e)
         {
@@ -266,7 +283,7 @@ namespace KS.DataManage.Client
                 frmSourceFileSet.ShowDialog();
                 this.kDGVSourceFileList.DataSource = ReturnDt;
             }
-            
+
             foreach (XElement itemOrganCode in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
             {
 
@@ -347,7 +364,7 @@ namespace KS.DataManage.Client
                 frmGenerateFileKeywordSet.ShowDialog();
                 this.kDGVKeyWords.DataSource = ReturnDt;
             }
-            
+
 
             foreach (XElement itemOrganCode in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
             {
@@ -434,7 +451,7 @@ namespace KS.DataManage.Client
                     {
                         foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
                         {
-                            if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo)  
+                            if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo)
                             {
                                 itemfileSrc.Add(ReturnXElement);
                                 break;
@@ -475,7 +492,7 @@ namespace KS.DataManage.Client
                         {
                             foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
                             {
-                                if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo) 
+                                if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo)
                                 {
                                     foreach (XElement itemfilecols in itemfileSrc.Nodes())
                                     {
@@ -520,7 +537,7 @@ namespace KS.DataManage.Client
                     {
                         foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
                         {
-                            if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo) 
+                            if (itemfileSrc.Attribute("srcfile").Value == SelectedSourceFileName && itemfileSrc.Attribute("srcid").Value == SelectedSourceFileNo)
                             {
                                 foreach (XElement itemfilecols in itemfileSrc.Nodes())
                                 {
@@ -723,7 +740,7 @@ namespace KS.DataManage.Client
 
             this.ResumeLayout(false);
         }
-       
+
         /// <summary>
         /// 文件列表datagridview显示
         /// </summary>
@@ -735,8 +752,10 @@ namespace KS.DataManage.Client
             {
                 foreach (XElement xNode in _configDocument.Descendants("AccountId"))
                 {
-                    if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
+                    if (xNode.Attribute("value").Value.Equals(kCombTradeID.Text.ToString()))
+                    //if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
                     {
+                        //GlobalData.TemplateConfigInfo = new XElement(xNode);
                         GlobalData.TemplateConfigInfo = xNode;
                         this.kDGVFileList.DataSource = FileDataTable.FildListDT(xNode);
                         break;
@@ -900,7 +919,7 @@ namespace KS.DataManage.Client
                                 {
                                     foreach (XElement itemFilecols in fileSrc.Descendants("fileSrc"))
                                     {
-                                        if (itemFilecols.Attribute("srcfile").Value.Equals(SourceFileName )&& itemFilecols.Attribute("srcid").Value.Equals(SelectedSourceFileNo))
+                                        if (itemFilecols.Attribute("srcfile").Value.Equals(SourceFileName) && itemFilecols.Attribute("srcid").Value.Equals(SelectedSourceFileNo))
                                         {
                                             this.kDGVFileWordsList.DataSource = FileDataTable.FildWordsListDT(itemFilecols);
 
@@ -1062,6 +1081,25 @@ namespace KS.DataManage.Client
             this.kTxtJKZXPath2.Text = path.SelectedPath;
         }
 
-       
+        private void kryptonButtonSaveConfig_Click(object sender, EventArgs e)
+        {
+            string ConfigFileName = GlobalData.GetDataConfigPath(kCombAccount.SelectedItem.ToString());
+            _configDocument.Save(ConfigFileName);
+
+            //bool Exist = false;
+            //foreach (XElement xNode in _configDocument.Descendants("AccountId"))
+            //{
+            //    if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
+            //    {
+            //        Exist = true;
+            //        xNode.ReplaceAll(GlobalData.TemplateConfigInfo);
+            //        break;
+            //    }
+            //}
+            //if (!Exist)
+            //{
+            //    _configDocument.Root.Add(GlobalData.TemplateConfigInfo);
+            //}
+        }
     }
 }
