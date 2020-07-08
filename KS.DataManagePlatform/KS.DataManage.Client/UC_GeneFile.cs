@@ -732,7 +732,7 @@ namespace KS.DataManage.Client
             xmlDoc.InsertBefore(Declaration, xmlDoc.DocumentElement);
 
             //保存xml文档
-            string SavePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_ListCfg.xml", _fileGroup));
+            string SavePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_UserConfig.xml", _fileGroup));
             xmlDoc.Save(SavePath);
             if (File.Exists(SavePath))
             {
@@ -753,7 +753,7 @@ namespace KS.DataManage.Client
             //string ConfigFileName = GlobalData.GetDataConfigPath(kCombAccount.SelectedItem.ToString());
 
             this.SuspendLayout();
-            string ConfigFileName = GlobalData.GetGeneConfigPath(_fileGroup);
+            string ConfigFileName = GlobalData.GetDataConfigPath(_fileGroup);
             //string ConfigFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_UserConfig.xml", _fileGroup));
             if (!File.Exists(ConfigFileName))
             {
@@ -767,11 +767,12 @@ namespace KS.DataManage.Client
                 XElement configRoot = configDocument.Root;
 
                 string targetFileName = string.Empty;
+                string targetDirectoryName = string.Empty;
                 string SourceFileName = string.Empty;
 
 
                 //临时测试用
-                FileStream fs = new FileStream();
+                
                 //生成中金所
                 foreach (string itemSingleCffexAccount in kryCLBSingleCffexAccount.Items)
                 {
@@ -790,7 +791,70 @@ namespace KS.DataManage.Client
                                 {
                                     foreach (XElement itemfile in itemOrganCode.Nodes())
                                     {
-                                        SourceFileName = Path.Combine(kryTextBoxOriginPath + kryDTPDate.Value.ToString() + $"{0}{1}{2}.txt",);
+                                        foreach (XElement itemfileSrc in itemfile.Nodes())
+                                        {
+                                            SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\0228{0}20200515.txt", itemfileSrc.Attribute("srcfile").Value));
+                                            targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString()+ "\\" + string.Format(@"{0}\监控中心格式\TXT文件\20200515\{1}{2}20200515.txt", itemSingleMotorCenterAccount, itemSingleMotorCenterAccount, itemfileSrc.Attribute("srcfile").Value.ToString().ToUpper()));
+                                            targetDirectoryName  = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\监控中心格式\TXT文件\20200515", itemSingleMotorCenterAccount));
+
+                                            if (!Directory.Exists(targetDirectoryName))
+                                            {
+                                                Directory.CreateDirectory(targetDirectoryName);
+                                            }
+                                            if (File.Exists(targetFileName))
+                                            {
+                                                File.Delete(targetFileName);
+                                            }
+                                            if (!File.Exists(SourceFileName))
+                                            {
+                                                MessageBox.Show(string.Format("{0}文件不存在", itemfile.Attribute("filetitle").Value), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                continue;
+                                            }
+                                            using (FileStream fsSourceFile = new FileStream(SourceFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                                            {
+                                                using (StreamReader swSourceFile = new StreamReader(fsSourceFile))
+                                                {
+                                                    string line = string.Empty;
+                                                    while ((line = swSourceFile.ReadLine()) != null)
+                                                    {
+                                                        string[] sArray = line.Split('@');
+                                                        if (sArray[0] == kryDTPDate.Value.ToString("yyyy-MM-dd") && sArray[1] == itemSingleMotorCenterAccount)
+                                                        {
+                                                            //using (StreamWriter swTargetFile = File.AppendText(targetFileName))
+                                                            //{
+                                                            //    swTargetFile.WriteLine(line);
+
+                                                            //}
+                                                            if (File.Exists(targetFileName))
+                                                            {
+                                                                using (StreamWriter swTargetFile = File.AppendText(targetFileName))
+                                                                {
+                                                                    swTargetFile.WriteLine(line);
+
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                using (FileStream fsTargetFile = new FileStream(targetFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                                                                {
+                                                                    using (StreamWriter swTargetFile = new StreamWriter(fsTargetFile))
+                                                                    {
+                                                                        swTargetFile.WriteLine(line);
+
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        }
+                                                       
+                                                    }
+                                                    if (!File.Exists(targetFileName))
+                                                    {
+                                                        File.Create(targetFileName);
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -798,7 +862,7 @@ namespace KS.DataManage.Client
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
                
             }

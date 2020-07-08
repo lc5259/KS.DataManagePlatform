@@ -788,6 +788,8 @@
             // kryDTPDate
             // 
             this.kryDTPDate.CalendarTodayDate = new System.DateTime(2020, 6, 15, 0, 0, 0, 0);
+            this.kryDTPDate.CustomFormat = "yyyy-MM-dd";
+            this.kryDTPDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.kryDTPDate.Location = new System.Drawing.Point(71, 14);
             this.kryDTPDate.Name = "kryDTPDate";
             this.kryDTPDate.Size = new System.Drawing.Size(117, 21);
