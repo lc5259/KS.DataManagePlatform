@@ -741,9 +741,24 @@ namespace KS.DataManage.Client
 
 
         }
-
         private void kryBtOK_Click(object sender, EventArgs e)
         {
+            string dsg = kryDTPDate.Value.ToString("yyyyMMdd");
+
+            decimal a = 2355.1m;
+            a = Math.Round(a,3);
+            string gfdsg = string.Empty;
+
+            //string dsg = a.ToString("#0.00");
+            string sd = dsg.PadRight(dsg.Length + 3, '0');
+
+            string dsgdd = "#0." ;
+            for (int i = 0; i < 4; i++)
+            {
+                dsgdd = dsgdd + "0";
+            }
+
+
             string OriginPath = Path.Combine(kryTextBoxOriginPath.Text);
             string CffexOutPath1 = Path.Combine(kryTextBoxCffexOutPath1.Text);
             string CffexOutPath2 = Path.Combine(kryTextBoxCffexOutPath2.Text);
@@ -768,6 +783,7 @@ namespace KS.DataManage.Client
 
                 string targetFileName = string.Empty;
                 string targetDirectoryName = string.Empty;
+                string targetDirectoryName1 = string.Empty;
                 string SourceFileName = string.Empty;
 
 
@@ -779,7 +795,7 @@ namespace KS.DataManage.Client
 
                 }
                 //生成监控中心
-                foreach (string itemSingleMotorCenterAccount in kryCLBSingleMotorCenterAccount.Items)
+                foreach (string itemSingleMotorCenterAccount in kryCLBSingleMotorCenterAccount.CheckedItems)
                 {
                     foreach (XElement itemAccountId in configDocument.Descendants("AccountId"))
                     {
@@ -793,9 +809,12 @@ namespace KS.DataManage.Client
                                     {
                                         foreach (XElement itemfileSrc in itemfile.Nodes())
                                         {
-                                            SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\0228{0}20200515.txt", itemfileSrc.Attribute("srcfile").Value));
-                                            targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString()+ "\\" + string.Format(@"{0}\监控中心格式\TXT文件\20200515\{1}{2}20200515.txt", itemSingleMotorCenterAccount, itemSingleMotorCenterAccount, itemfileSrc.Attribute("srcfile").Value.ToString().ToUpper()));
-                                            targetDirectoryName  = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\监控中心格式\TXT文件\20200515", itemSingleMotorCenterAccount));
+
+
+                                            SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\0228{0}{1}.txt", itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                            targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString()+ "\\" + string.Format(@"{0}\监控中心格式\TXT文件\{1}\{2}{3}{4}.txt", itemSingleMotorCenterAccount, kryDTPDate.Value.ToString("yyyyMMdd"),itemSingleMotorCenterAccount, itemfileSrc.Attribute("srcfile").Value.ToString().ToUpper(), kryDTPDate.Value.ToString("yyyyMMdd")));
+                                            targetDirectoryName  = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\监控中心格式\TXT文件\{1}", itemSingleMotorCenterAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                            targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\监控中心格式\TXT文件\{1}", itemSingleMotorCenterAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
 
                                             if (!Directory.Exists(targetDirectoryName))
                                             {
@@ -825,6 +844,73 @@ namespace KS.DataManage.Client
                                                             //    swTargetFile.WriteLine(line);
 
                                                             //}
+                                                            try
+                                                            {
+                                                                foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                {
+                                                                    string Datafilecols = sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1];
+
+                                                                    sArray = DealData(itemfilecols, Datafilecols, sArray);
+                                                                    if (sArray[0] == "数据处理出错")
+                                                                    {
+                                                                        MessageBox.Show(sArray[0], "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                                        return;
+                                                                    }
+                                                                    #region
+                                                                    //if (!string.IsNullOrEmpty(itemfilecols.Attribute("precision").Value.Trim()) && (int.Parse(itemfilecols.Attribute("precision").Value.Trim()) > 0))   //列值精度处理
+                                                                    //{
+                                                                    //    string _format = "#0.";
+                                                                    //    for (int i = 0; i < int.Parse(itemfilecols.Attribute("precision").Value.Trim()); i++)
+                                                                    //    {
+                                                                    //        _format = _format + "0";
+                                                                    //    }
+
+                                                                    //    Datafilecols = decimal.Parse(sArray[int.Parse(itemfilecols.Attribute("colIndex").Value.ToString()) - 1]).ToString(_format);
+
+                                                                    //    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+
+                                                                    //}
+                                                                    //if(!string.IsNullOrEmpty(itemfilecols.Attribute("vlength").Value.Trim()) && (int.Parse(itemfilecols.Attribute("vlength").Value.Trim()) > 0)) //列值位数
+                                                                    //{
+                                                                    //    string MakeUpField = string.IsNullOrEmpty(itemfilecols.Attribute("padstr").Value.Trim()) ? ("0"): (itemfilecols.Attribute("padstr").Value.Trim());
+                                                                    //    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1].PadLeft( int.Parse( itemfilecols.Attribute("vlength").Value.Trim()),MakeUpField.ToCharArray()[0]);
+                                                                    //}
+
+                                                                    //if (!string.IsNullOrEmpty(itemfilecols.Attribute("isAbs").Value.Trim())) //绝对值
+                                                                    //{
+                                                                    //    if (itemfilecols.Attribute("isAbs").Value.Trim() == "是")
+                                                                    //    {
+                                                                    //        Datafilecols = System.Math.Abs(decimal.Parse(Datafilecols)).ToString();
+                                                                    //    }
+
+                                                                    //    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+                                                                    //}
+
+                                                                    //if (!string.IsNullOrEmpty(itemfilecols.Attribute("isout").Value.Trim()))   //是否输出
+                                                                    //{
+                                                                    //    if (itemfilecols.Attribute("isout").Value.Trim() == "否")
+                                                                    //    {
+                                                                    //        Datafilecols = "";
+                                                                    //    }
+
+                                                                    //    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+                                                                    //}
+                                                                    //if (!string.IsNullOrEmpty(itemfilecols.Attribute("FixValue").Value.Trim()))   //固定值
+                                                                    //{
+                                                                    //    Datafilecols = itemfilecols.Attribute("FixValue").Value.Trim();
+
+                                                                    //    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+                                                                    //}
+                                                                    #endregion
+                                                                }
+                                                            }
+                                                            catch (Exception ex)
+                                                            {
+                                                                MessageBox.Show(itemfile.Attribute("filetitle") + ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                                return;
+                                                            }
+                                                           
+                                                            line = string.Join("@", sArray);
                                                             if (File.Exists(targetFileName))
                                                             {
                                                                 using (StreamWriter swTargetFile = File.AppendText(targetFileName))
@@ -850,10 +936,16 @@ namespace KS.DataManage.Client
                                                     }
                                                     if (!File.Exists(targetFileName))
                                                     {
-                                                        File.Create(targetFileName);
+                                                        using (File.Create(targetFileName))
+                                                        {
+                                                            ;
+                                                        }
+                                                            
                                                     }
+                                                    
                                                 }
                                             }
+                                            
                                         }
                                     }
                                 }
@@ -861,12 +953,84 @@ namespace KS.DataManage.Client
                         }
                     }
                 }
+                if (!Directory.Exists(targetDirectoryName1))
+                {
+                    Directory.CreateDirectory(targetDirectoryName1);
+                }
+                foreach (string file in Directory.GetFiles(targetDirectoryName))
+                {
+                    string name = System.IO.Path.GetFileName(file);
+                    string dest = System.IO.Path.Combine(targetDirectoryName1, name);
+                    if (File.Exists(dest))
+                    {
+                        File.Delete(dest);
+                    }
+                    System.IO.File.Copy(file, dest);//复制文件
+                }
             }
             catch(Exception ex)
             {
-               
+                MessageBox.Show(ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            MessageBox.Show("文件生成成功", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private string[] DealData(XElement itemfilecols,string Datafilecols,string[] sArray)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("precision").Value.Trim()) && (int.Parse(itemfilecols.Attribute("precision").Value.Trim()) > 0))   //列值精度处理
+                {
+                    string _format = "#0.";
+                    for (int i = 0; i < int.Parse(itemfilecols.Attribute("precision").Value.Trim()); i++)
+                    {
+                        _format = _format + "0";
+                    }
 
+                    Datafilecols = decimal.Parse(sArray[int.Parse(itemfilecols.Attribute("colIndex").Value.ToString()) - 1]).ToString(_format);
+
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+
+                }
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("vlength").Value.Trim()) && (int.Parse(itemfilecols.Attribute("vlength").Value.Trim()) > 0)) //列值位数
+                {
+                    string MakeUpField = string.IsNullOrEmpty(itemfilecols.Attribute("padstr").Value.Trim()) ? ("0") : (itemfilecols.Attribute("padstr").Value.Trim());
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1].PadLeft(int.Parse(itemfilecols.Attribute("vlength").Value.Trim()), MakeUpField.ToCharArray()[0]);
+                }
+
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("isAbs").Value.Trim())) //绝对值
+                {
+                    if (itemfilecols.Attribute("isAbs").Value.Trim() == "是")
+                    {
+                        Datafilecols = System.Math.Abs(decimal.Parse(Datafilecols)).ToString();
+                    }
+
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+                }
+
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("isout").Value.Trim()))   //是否输出
+                {
+                    if (itemfilecols.Attribute("isout").Value.Trim() == "否")
+                    {
+                        Datafilecols = "";
+                    }
+
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+                }
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("FixValue").Value.Trim()))   //固定值
+                {
+                    Datafilecols = itemfilecols.Attribute("FixValue").Value.Trim();
+
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new string []{ "数据处理出错"};
+            }
+            return sArray;
         }
     }
 

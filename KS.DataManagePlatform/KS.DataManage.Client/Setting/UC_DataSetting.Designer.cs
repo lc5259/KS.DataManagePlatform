@@ -277,15 +277,15 @@
             // kSplitContainerL1.Panel1
             // 
             this.kSplitContainerL1.Panel1.Controls.Add(this.tableLayoutPanel6);
-            this.kSplitContainerL1.Panel1.Padding = new System.Windows.Forms.Padding(1);
+            this.kSplitContainerL1.Panel1.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
             // 
             // kSplitContainerL1.Panel2
             // 
             this.kSplitContainerL1.Panel2.Controls.Add(this.kSplitContainerL2);
-            this.kSplitContainerL1.Panel2.Padding = new System.Windows.Forms.Padding(1);
+            this.kSplitContainerL1.Panel2.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.kSplitContainerL1.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kSplitContainerL1.Size = new System.Drawing.Size(1083, 679);
-            this.kSplitContainerL1.SplitterDistance = 249;
+            this.kSplitContainerL1.Size = new System.Drawing.Size(927, 607);
+            this.kSplitContainerL1.SplitterDistance = 221;
             this.kSplitContainerL1.StateCommon.Separator.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kSplitContainerL1.StateCommon.Separator.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kSplitContainerL1.TabIndex = 0;
@@ -306,7 +306,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1081, 247);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(925, 219);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // kGBFileList
@@ -314,13 +314,13 @@
             this.tableLayoutPanel6.SetColumnSpan(this.kGBFileList, 2);
             this.kGBFileList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kGBFileList.Location = new System.Drawing.Point(2, 106);
-            this.kGBFileList.Margin = new System.Windows.Forms.Padding(2);
+            this.kGBFileList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kGBFileList.Name = "kGBFileList";
             // 
             // kGBFileList.Panel
             // 
             this.kGBFileList.Panel.Controls.Add(this.tableLayoutPanel7);
-            this.kGBFileList.Size = new System.Drawing.Size(1077, 139);
+            this.kGBFileList.Size = new System.Drawing.Size(921, 111);
             this.kGBFileList.TabIndex = 1;
             this.kGBFileList.Values.Heading = "文件列表";
             // 
@@ -336,9 +336,9 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1073, 115);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(917, 87);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
             // kDGVFileList
@@ -368,7 +368,7 @@
             this.kDGVFileList.ReadOnly = true;
             this.kDGVFileList.RowTemplate.Height = 23;
             this.kDGVFileList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kDGVFileList.Size = new System.Drawing.Size(1007, 109);
+            this.kDGVFileList.Size = new System.Drawing.Size(851, 81);
             this.kDGVFileList.TabIndex = 1;
             this.kDGVFileList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.kDGVFileList_CellClick);
             this.kDGVFileList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.kDGVFileList_ColumnHeaderMouseClick);
@@ -428,7 +428,7 @@
             this.TargetFileTXTEqueDBF.HeaderText = "TXT和DBF列相同";
             this.TargetFileTXTEqueDBF.Name = "TargetFileTXTEqueDBF";
             this.TargetFileTXTEqueDBF.ReadOnly = true;
-            this.TargetFileTXTEqueDBF.Width = 130;
+            this.TargetFileTXTEqueDBF.Width = 128;
             // 
             // TargetFileColumnDirection
             // 
@@ -490,9 +490,9 @@
             // 
             this.kryptonPanel1.Controls.Add(this.tableLayoutPanel13);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(1016, 3);
+            this.kryptonPanel1.Location = new System.Drawing.Point(860, 3);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(54, 109);
+            this.kryptonPanel1.Size = new System.Drawing.Size(54, 81);
             this.kryptonPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel13
@@ -509,16 +509,16 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(54, 109);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(54, 81);
             this.tableLayoutPanel13.TabIndex = 2;
             // 
             // btnDelTargetFile
             // 
             this.btnDelTargetFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDelTargetFile.Location = new System.Drawing.Point(1, 73);
-            this.btnDelTargetFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelTargetFile.Location = new System.Drawing.Point(1, 55);
+            this.btnDelTargetFile.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnDelTargetFile.Name = "btnDelTargetFile";
-            this.btnDelTargetFile.Size = new System.Drawing.Size(52, 35);
+            this.btnDelTargetFile.Size = new System.Drawing.Size(52, 25);
             this.btnDelTargetFile.TabIndex = 4;
             this.btnDelTargetFile.Values.Text = "删除";
             this.btnDelTargetFile.Click += new System.EventHandler(this.btnDelTargetFile_Click);
@@ -526,10 +526,10 @@
             // btnUpdateTargetFile
             // 
             this.btnUpdateTargetFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUpdateTargetFile.Location = new System.Drawing.Point(1, 37);
-            this.btnUpdateTargetFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateTargetFile.Location = new System.Drawing.Point(1, 28);
+            this.btnUpdateTargetFile.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnUpdateTargetFile.Name = "btnUpdateTargetFile";
-            this.btnUpdateTargetFile.Size = new System.Drawing.Size(52, 34);
+            this.btnUpdateTargetFile.Size = new System.Drawing.Size(52, 25);
             this.btnUpdateTargetFile.TabIndex = 3;
             this.btnUpdateTargetFile.Values.Text = "修改";
             this.btnUpdateTargetFile.Click += new System.EventHandler(this.btnUpdateTargetFile_Click);
@@ -538,9 +538,9 @@
             // 
             this.btnAddTargetFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAddTargetFile.Location = new System.Drawing.Point(1, 1);
-            this.btnAddTargetFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddTargetFile.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnAddTargetFile.Name = "btnAddTargetFile";
-            this.btnAddTargetFile.Size = new System.Drawing.Size(52, 34);
+            this.btnAddTargetFile.Size = new System.Drawing.Size(52, 25);
             this.btnAddTargetFile.TabIndex = 2;
             this.btnAddTargetFile.Values.Text = "增加";
             this.btnAddTargetFile.Click += new System.EventHandler(this.btnAddTargetFile_Click);
@@ -561,7 +561,7 @@
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(981, 104);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(825, 104);
             this.tableLayoutPanel8.TabIndex = 2;
             // 
             // kryptonGroupBox1
@@ -656,6 +656,7 @@
             // kPnlTreadIDCUD
             // 
             this.kPnlTreadIDCUD.Controls.Add(this.tableLayoutPanel11);
+            this.kPnlTreadIDCUD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kPnlTreadIDCUD.Location = new System.Drawing.Point(132, 0);
             this.kPnlTreadIDCUD.Margin = new System.Windows.Forms.Padding(0);
             this.kPnlTreadIDCUD.Name = "kPnlTreadIDCUD";
@@ -684,7 +685,7 @@
             // 
             this.btnDelTradeID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDelTradeID.Location = new System.Drawing.Point(1, 53);
-            this.btnDelTradeID.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelTradeID.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnDelTradeID.Name = "btnDelTradeID";
             this.btnDelTradeID.Size = new System.Drawing.Size(58, 24);
             this.btnDelTradeID.TabIndex = 2;
@@ -695,7 +696,7 @@
             // 
             this.btnUpdateTradeID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnUpdateTradeID.Location = new System.Drawing.Point(1, 27);
-            this.btnUpdateTradeID.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateTradeID.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnUpdateTradeID.Name = "btnUpdateTradeID";
             this.btnUpdateTradeID.Size = new System.Drawing.Size(58, 24);
             this.btnUpdateTradeID.TabIndex = 1;
@@ -706,7 +707,7 @@
             // 
             this.btnAddTradeID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAddTradeID.Location = new System.Drawing.Point(1, 1);
-            this.btnAddTradeID.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddTradeID.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnAddTradeID.Name = "btnAddTradeID";
             this.btnAddTradeID.Size = new System.Drawing.Size(58, 24);
             this.btnAddTradeID.TabIndex = 0;
@@ -750,7 +751,7 @@
             // kGBOutput.Panel
             // 
             this.kGBOutput.Panel.Controls.Add(this.tableLayoutPanel9);
-            this.kGBOutput.Size = new System.Drawing.Size(656, 104);
+            this.kGBOutput.Size = new System.Drawing.Size(500, 104);
             this.kGBOutput.TabIndex = 6;
             this.kGBOutput.Values.Heading = "输出配置";
             // 
@@ -789,7 +790,7 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(652, 80);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(496, 80);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
             // label1
@@ -843,7 +844,7 @@
             // kryptonLabel2
             // 
             this.kryptonLabel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel2.Location = new System.Drawing.Point(379, 29);
+            this.kryptonLabel2.Location = new System.Drawing.Point(301, 29);
             this.kryptonLabel2.Name = "kryptonLabel2";
             this.kryptonLabel2.Size = new System.Drawing.Size(121, 21);
             this.kryptonLabel2.TabIndex = 6;
@@ -861,7 +862,7 @@
             // kryptonLabel4
             // 
             this.kryptonLabel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonLabel4.Location = new System.Drawing.Point(366, 56);
+            this.kryptonLabel4.Location = new System.Drawing.Point(288, 56);
             this.kryptonLabel4.Name = "kryptonLabel4";
             this.kryptonLabel4.Size = new System.Drawing.Size(134, 21);
             this.kryptonLabel4.TabIndex = 8;
@@ -870,8 +871,8 @@
             // kBtnZJPath1
             // 
             this.kBtnZJPath1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kBtnZJPath1.Location = new System.Drawing.Point(334, 27);
-            this.kBtnZJPath1.Margin = new System.Windows.Forms.Padding(1);
+            this.kBtnZJPath1.Location = new System.Drawing.Point(256, 27);
+            this.kBtnZJPath1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.kBtnZJPath1.Name = "kBtnZJPath1";
             this.kBtnZJPath1.Size = new System.Drawing.Size(28, 25);
             this.kBtnZJPath1.TabIndex = 9;
@@ -881,8 +882,8 @@
             // kBtnJKZXPath1
             // 
             this.kBtnJKZXPath1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kBtnJKZXPath1.Location = new System.Drawing.Point(334, 54);
-            this.kBtnJKZXPath1.Margin = new System.Windows.Forms.Padding(1);
+            this.kBtnJKZXPath1.Location = new System.Drawing.Point(256, 54);
+            this.kBtnJKZXPath1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.kBtnJKZXPath1.Name = "kBtnJKZXPath1";
             this.kBtnJKZXPath1.Size = new System.Drawing.Size(28, 25);
             this.kBtnJKZXPath1.TabIndex = 10;
@@ -892,8 +893,8 @@
             // kBtnZJPath2
             // 
             this.kBtnZJPath2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kBtnZJPath2.Location = new System.Drawing.Point(622, 27);
-            this.kBtnZJPath2.Margin = new System.Windows.Forms.Padding(1);
+            this.kBtnZJPath2.Location = new System.Drawing.Point(466, 27);
+            this.kBtnZJPath2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.kBtnZJPath2.Name = "kBtnZJPath2";
             this.kBtnZJPath2.Size = new System.Drawing.Size(29, 25);
             this.kBtnZJPath2.TabIndex = 11;
@@ -903,8 +904,8 @@
             // kBtnJKZXPath2
             // 
             this.kBtnJKZXPath2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kBtnJKZXPath2.Location = new System.Drawing.Point(622, 54);
-            this.kBtnJKZXPath2.Margin = new System.Windows.Forms.Padding(1);
+            this.kBtnJKZXPath2.Location = new System.Drawing.Point(466, 54);
+            this.kBtnJKZXPath2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.kBtnJKZXPath2.Name = "kBtnJKZXPath2";
             this.kBtnJKZXPath2.Size = new System.Drawing.Size(29, 25);
             this.kBtnJKZXPath2.TabIndex = 12;
@@ -916,7 +917,7 @@
             this.kTxtZJPath1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kTxtZJPath1.Location = new System.Drawing.Point(218, 29);
             this.kTxtZJPath1.Name = "kTxtZJPath1";
-            this.kTxtZJPath1.Size = new System.Drawing.Size(112, 23);
+            this.kTxtZJPath1.Size = new System.Drawing.Size(34, 23);
             this.kTxtZJPath1.TabIndex = 13;
             this.kTxtZJPath1.Text = "-";
             // 
@@ -925,32 +926,32 @@
             this.kTxtJKZXPath1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kTxtJKZXPath1.Location = new System.Drawing.Point(218, 56);
             this.kTxtJKZXPath1.Name = "kTxtJKZXPath1";
-            this.kTxtJKZXPath1.Size = new System.Drawing.Size(112, 23);
+            this.kTxtJKZXPath1.Size = new System.Drawing.Size(34, 23);
             this.kTxtJKZXPath1.TabIndex = 14;
             this.kTxtJKZXPath1.Text = "-";
             // 
             // kTxtZJPath2
             // 
             this.kTxtZJPath2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kTxtZJPath2.Location = new System.Drawing.Point(506, 29);
+            this.kTxtZJPath2.Location = new System.Drawing.Point(428, 29);
             this.kTxtZJPath2.Name = "kTxtZJPath2";
-            this.kTxtZJPath2.Size = new System.Drawing.Size(112, 23);
+            this.kTxtZJPath2.Size = new System.Drawing.Size(34, 23);
             this.kTxtZJPath2.TabIndex = 15;
             this.kTxtZJPath2.Text = "-";
             // 
             // kTxtJKZXPath2
             // 
             this.kTxtJKZXPath2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kTxtJKZXPath2.Location = new System.Drawing.Point(506, 56);
+            this.kTxtJKZXPath2.Location = new System.Drawing.Point(428, 56);
             this.kTxtJKZXPath2.Name = "kTxtJKZXPath2";
-            this.kTxtJKZXPath2.Size = new System.Drawing.Size(112, 23);
+            this.kTxtJKZXPath2.Size = new System.Drawing.Size(34, 23);
             this.kTxtJKZXPath2.TabIndex = 16;
             this.kTxtJKZXPath2.Text = "-";
             // 
             // kryptonButtonSaveConfig
             // 
             this.kryptonButtonSaveConfig.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonButtonSaveConfig.Location = new System.Drawing.Point(984, 3);
+            this.kryptonButtonSaveConfig.Location = new System.Drawing.Point(828, 3);
             this.kryptonButtonSaveConfig.Name = "kryptonButtonSaveConfig";
             this.kryptonButtonSaveConfig.Size = new System.Drawing.Size(94, 98);
             this.kryptonButtonSaveConfig.TabIndex = 3;
@@ -973,8 +974,8 @@
             // 
             this.kSplitContainerL2.Panel2.Controls.Add(this.tableLayoutPanelL3);
             this.kSplitContainerL2.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kSplitContainerL2.Size = new System.Drawing.Size(1081, 423);
-            this.kSplitContainerL2.SplitterDistance = 127;
+            this.kSplitContainerL2.Size = new System.Drawing.Size(925, 379);
+            this.kSplitContainerL2.SplitterDistance = 112;
             this.kSplitContainerL2.StateCommon.Separator.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kSplitContainerL2.StateCommon.Separator.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kSplitContainerL2.TabIndex = 0;
@@ -989,15 +990,15 @@
             // kryptonSplitContainer1.Panel1
             // 
             this.kryptonSplitContainer1.Panel1.Controls.Add(this.kGBSourceFileList);
-            this.kryptonSplitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(1);
+            this.kryptonSplitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
             // 
             // kryptonSplitContainer1.Panel2
             // 
             this.kryptonSplitContainer1.Panel2.Controls.Add(this.kGBKeyWords);
-            this.kryptonSplitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(1);
+            this.kryptonSplitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.kryptonSplitContainer1.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kryptonSplitContainer1.Size = new System.Drawing.Size(1081, 127);
-            this.kryptonSplitContainer1.SplitterDistance = 610;
+            this.kryptonSplitContainer1.Size = new System.Drawing.Size(925, 112);
+            this.kryptonSplitContainer1.SplitterDistance = 521;
             this.kryptonSplitContainer1.StateCommon.Separator.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kryptonSplitContainer1.StateCommon.Separator.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kryptonSplitContainer1.TabIndex = 0;
@@ -1011,7 +1012,7 @@
             // kGBSourceFileList.Panel
             // 
             this.kGBSourceFileList.Panel.Controls.Add(this.tableLayoutPanel1);
-            this.kGBSourceFileList.Size = new System.Drawing.Size(608, 125);
+            this.kGBSourceFileList.Size = new System.Drawing.Size(519, 110);
             this.kGBSourceFileList.TabIndex = 1;
             this.kGBSourceFileList.Values.Heading = "原文件列表";
             // 
@@ -1027,7 +1028,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(604, 101);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(515, 86);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // kDGVSourceFileList
@@ -1047,7 +1048,7 @@
             this.kDGVSourceFileList.ReadOnly = true;
             this.kDGVSourceFileList.RowTemplate.Height = 23;
             this.kDGVSourceFileList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kDGVSourceFileList.Size = new System.Drawing.Size(538, 95);
+            this.kDGVSourceFileList.Size = new System.Drawing.Size(449, 80);
             this.kDGVSourceFileList.TabIndex = 1;
             this.kDGVSourceFileList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.kDGVSourceFileList_CellClick);
             // 
@@ -1097,9 +1098,9 @@
             // 
             this.kryptonPanel2.Controls.Add(this.tableLayoutPanelTargetFile);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(547, 3);
+            this.kryptonPanel2.Location = new System.Drawing.Point(458, 3);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(54, 95);
+            this.kryptonPanel2.Size = new System.Drawing.Size(54, 80);
             this.kryptonPanel2.TabIndex = 2;
             // 
             // tableLayoutPanelTargetFile
@@ -1117,16 +1118,16 @@
             this.tableLayoutPanelTargetFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelTargetFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelTargetFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelTargetFile.Size = new System.Drawing.Size(54, 95);
+            this.tableLayoutPanelTargetFile.Size = new System.Drawing.Size(54, 80);
             this.tableLayoutPanelTargetFile.TabIndex = 0;
             // 
             // btnDelSourceFile
             // 
             this.btnDelSourceFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDelSourceFile.Location = new System.Drawing.Point(1, 63);
-            this.btnDelSourceFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelSourceFile.Location = new System.Drawing.Point(1, 53);
+            this.btnDelSourceFile.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnDelSourceFile.Name = "btnDelSourceFile";
-            this.btnDelSourceFile.Size = new System.Drawing.Size(52, 31);
+            this.btnDelSourceFile.Size = new System.Drawing.Size(52, 26);
             this.btnDelSourceFile.TabIndex = 4;
             this.btnDelSourceFile.Values.Text = "删除";
             this.btnDelSourceFile.Click += new System.EventHandler(this.btnDelSourceFile_Click);
@@ -1134,10 +1135,10 @@
             // btnUpdateSourceFile
             // 
             this.btnUpdateSourceFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUpdateSourceFile.Location = new System.Drawing.Point(1, 32);
-            this.btnUpdateSourceFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateSourceFile.Location = new System.Drawing.Point(1, 27);
+            this.btnUpdateSourceFile.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnUpdateSourceFile.Name = "btnUpdateSourceFile";
-            this.btnUpdateSourceFile.Size = new System.Drawing.Size(52, 29);
+            this.btnUpdateSourceFile.Size = new System.Drawing.Size(52, 24);
             this.btnUpdateSourceFile.TabIndex = 3;
             this.btnUpdateSourceFile.Values.Text = "修改";
             this.btnUpdateSourceFile.Click += new System.EventHandler(this.btnUpdateSourceFile_Click);
@@ -1146,9 +1147,9 @@
             // 
             this.btnAddSourceFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAddSourceFile.Location = new System.Drawing.Point(1, 1);
-            this.btnAddSourceFile.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddSourceFile.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnAddSourceFile.Name = "btnAddSourceFile";
-            this.btnAddSourceFile.Size = new System.Drawing.Size(52, 29);
+            this.btnAddSourceFile.Size = new System.Drawing.Size(52, 24);
             this.btnAddSourceFile.TabIndex = 2;
             this.btnAddSourceFile.Values.Text = "增加";
             this.btnAddSourceFile.Click += new System.EventHandler(this.btnAddSourceFile_Click);
@@ -1162,7 +1163,7 @@
             // kGBKeyWords.Panel
             // 
             this.kGBKeyWords.Panel.Controls.Add(this.tableLayoutPanel2);
-            this.kGBKeyWords.Size = new System.Drawing.Size(464, 125);
+            this.kGBKeyWords.Size = new System.Drawing.Size(397, 110);
             this.kGBKeyWords.TabIndex = 0;
             this.kGBKeyWords.Values.Heading = "生成文件关键字";
             // 
@@ -1178,7 +1179,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(460, 101);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(393, 86);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // kDGVKeyWords
@@ -1196,7 +1197,7 @@
             this.kDGVKeyWords.ReadOnly = true;
             this.kDGVKeyWords.RowTemplate.Height = 23;
             this.kDGVKeyWords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kDGVKeyWords.Size = new System.Drawing.Size(394, 95);
+            this.kDGVKeyWords.Size = new System.Drawing.Size(327, 80);
             this.kDGVKeyWords.TabIndex = 0;
             // 
             // GenerateFileKeywordNo
@@ -1225,9 +1226,9 @@
             // 
             this.kryptonPanel3.Controls.Add(this.tableLayoutPanelKeyWords);
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel3.Location = new System.Drawing.Point(403, 3);
+            this.kryptonPanel3.Location = new System.Drawing.Point(336, 3);
             this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.Size = new System.Drawing.Size(54, 95);
+            this.kryptonPanel3.Size = new System.Drawing.Size(54, 80);
             this.kryptonPanel3.TabIndex = 1;
             // 
             // tableLayoutPanelKeyWords
@@ -1245,16 +1246,16 @@
             this.tableLayoutPanelKeyWords.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelKeyWords.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelKeyWords.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelKeyWords.Size = new System.Drawing.Size(54, 95);
+            this.tableLayoutPanelKeyWords.Size = new System.Drawing.Size(54, 80);
             this.tableLayoutPanelKeyWords.TabIndex = 1;
             // 
             // btnDelGenerateFileKeyword
             // 
             this.btnDelGenerateFileKeyword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDelGenerateFileKeyword.Location = new System.Drawing.Point(1, 63);
-            this.btnDelGenerateFileKeyword.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelGenerateFileKeyword.Location = new System.Drawing.Point(1, 53);
+            this.btnDelGenerateFileKeyword.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnDelGenerateFileKeyword.Name = "btnDelGenerateFileKeyword";
-            this.btnDelGenerateFileKeyword.Size = new System.Drawing.Size(52, 31);
+            this.btnDelGenerateFileKeyword.Size = new System.Drawing.Size(52, 26);
             this.btnDelGenerateFileKeyword.TabIndex = 4;
             this.btnDelGenerateFileKeyword.Values.Text = "删除";
             this.btnDelGenerateFileKeyword.Click += new System.EventHandler(this.btnDelGenerateFileKeyword_Click);
@@ -1262,10 +1263,10 @@
             // btnUpdateGenerateFileKeyword
             // 
             this.btnUpdateGenerateFileKeyword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUpdateGenerateFileKeyword.Location = new System.Drawing.Point(1, 32);
-            this.btnUpdateGenerateFileKeyword.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateGenerateFileKeyword.Location = new System.Drawing.Point(1, 27);
+            this.btnUpdateGenerateFileKeyword.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnUpdateGenerateFileKeyword.Name = "btnUpdateGenerateFileKeyword";
-            this.btnUpdateGenerateFileKeyword.Size = new System.Drawing.Size(52, 29);
+            this.btnUpdateGenerateFileKeyword.Size = new System.Drawing.Size(52, 24);
             this.btnUpdateGenerateFileKeyword.TabIndex = 3;
             this.btnUpdateGenerateFileKeyword.Values.Text = "修改";
             this.btnUpdateGenerateFileKeyword.Click += new System.EventHandler(this.btnUpdateGenerateFileKeyword_Click);
@@ -1274,9 +1275,9 @@
             // 
             this.btnAddGenerateFileKeyword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAddGenerateFileKeyword.Location = new System.Drawing.Point(1, 1);
-            this.btnAddGenerateFileKeyword.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddGenerateFileKeyword.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnAddGenerateFileKeyword.Name = "btnAddGenerateFileKeyword";
-            this.btnAddGenerateFileKeyword.Size = new System.Drawing.Size(52, 29);
+            this.btnAddGenerateFileKeyword.Size = new System.Drawing.Size(52, 24);
             this.btnAddGenerateFileKeyword.TabIndex = 2;
             this.btnAddGenerateFileKeyword.Values.Text = "增加";
             this.btnAddGenerateFileKeyword.Click += new System.EventHandler(this.btnAddGenerateFileKeyword_Click);
@@ -1292,30 +1293,30 @@
             this.tableLayoutPanelL3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelL3.Name = "tableLayoutPanelL3";
             this.tableLayoutPanelL3.RowCount = 2;
-            this.tableLayoutPanelL3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanelL3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanelL3.Size = new System.Drawing.Size(1081, 291);
+            this.tableLayoutPanelL3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.10687F));
+            this.tableLayoutPanelL3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.89313F));
+            this.tableLayoutPanelL3.Size = new System.Drawing.Size(925, 262);
             this.tableLayoutPanelL3.TabIndex = 1;
             // 
             // kryptonSplitContainer2
             // 
             this.kryptonSplitContainer2.Cursor = System.Windows.Forms.Cursors.Default;
             this.kryptonSplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonSplitContainer2.Location = new System.Drawing.Point(3, 177);
+            this.kryptonSplitContainer2.Location = new System.Drawing.Point(3, 149);
             this.kryptonSplitContainer2.Name = "kryptonSplitContainer2";
             // 
             // kryptonSplitContainer2.Panel1
             // 
             this.kryptonSplitContainer2.Panel1.Controls.Add(this.kGBFilter);
-            this.kryptonSplitContainer2.Panel1.Padding = new System.Windows.Forms.Padding(1);
+            this.kryptonSplitContainer2.Panel1.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
             // 
             // kryptonSplitContainer2.Panel2
             // 
             this.kryptonSplitContainer2.Panel2.Controls.Add(this.kGBDict);
-            this.kryptonSplitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(1);
+            this.kryptonSplitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.kryptonSplitContainer2.SeparatorStyle = ComponentFactory.Krypton.Toolkit.SeparatorStyle.HighProfile;
-            this.kryptonSplitContainer2.Size = new System.Drawing.Size(1075, 111);
-            this.kryptonSplitContainer2.SplitterDistance = 520;
+            this.kryptonSplitContainer2.Size = new System.Drawing.Size(919, 110);
+            this.kryptonSplitContainer2.SplitterDistance = 443;
             this.kryptonSplitContainer2.StateCommon.Separator.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kryptonSplitContainer2.StateCommon.Separator.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.kryptonSplitContainer2.TabIndex = 0;
@@ -1329,7 +1330,7 @@
             // kGBFilter.Panel
             // 
             this.kGBFilter.Panel.Controls.Add(this.tableLayoutPanel4);
-            this.kGBFilter.Size = new System.Drawing.Size(518, 109);
+            this.kGBFilter.Size = new System.Drawing.Size(441, 108);
             this.kGBFilter.TabIndex = 1;
             this.kGBFilter.Values.Heading = "过滤条件";
             // 
@@ -1345,16 +1346,16 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(514, 85);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(437, 84);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // kryptonPanel5
             // 
             this.kryptonPanel5.Controls.Add(this.tableLayoutPanelFilter);
             this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel5.Location = new System.Drawing.Point(457, 3);
+            this.kryptonPanel5.Location = new System.Drawing.Point(380, 3);
             this.kryptonPanel5.Name = "kryptonPanel5";
-            this.kryptonPanel5.Size = new System.Drawing.Size(54, 79);
+            this.kryptonPanel5.Size = new System.Drawing.Size(54, 78);
             this.kryptonPanel5.TabIndex = 2;
             // 
             // tableLayoutPanelFilter
@@ -1372,16 +1373,16 @@
             this.tableLayoutPanelFilter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelFilter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelFilter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelFilter.Size = new System.Drawing.Size(54, 79);
+            this.tableLayoutPanelFilter.Size = new System.Drawing.Size(54, 78);
             this.tableLayoutPanelFilter.TabIndex = 1;
             // 
             // btnDelFilterConditions
             // 
             this.btnDelFilterConditions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDelFilterConditions.Location = new System.Drawing.Point(1, 53);
-            this.btnDelFilterConditions.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelFilterConditions.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnDelFilterConditions.Name = "btnDelFilterConditions";
-            this.btnDelFilterConditions.Size = new System.Drawing.Size(52, 25);
+            this.btnDelFilterConditions.Size = new System.Drawing.Size(52, 24);
             this.btnDelFilterConditions.TabIndex = 4;
             this.btnDelFilterConditions.Values.Text = "删除";
             this.btnDelFilterConditions.Click += new System.EventHandler(this.btnDelFilterConditions_Click);
@@ -1390,7 +1391,7 @@
             // 
             this.btnUpdateFilterConditions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnUpdateFilterConditions.Location = new System.Drawing.Point(1, 27);
-            this.btnUpdateFilterConditions.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateFilterConditions.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnUpdateFilterConditions.Name = "btnUpdateFilterConditions";
             this.btnUpdateFilterConditions.Size = new System.Drawing.Size(52, 24);
             this.btnUpdateFilterConditions.TabIndex = 3;
@@ -1401,7 +1402,7 @@
             // 
             this.btnAddFilterConditions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAddFilterConditions.Location = new System.Drawing.Point(1, 1);
-            this.btnAddFilterConditions.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddFilterConditions.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnAddFilterConditions.Name = "btnAddFilterConditions";
             this.btnAddFilterConditions.Size = new System.Drawing.Size(52, 24);
             this.btnAddFilterConditions.TabIndex = 2;
@@ -1425,7 +1426,7 @@
             this.kDGVFilter.ReadOnly = true;
             this.kDGVFilter.RowTemplate.Height = 23;
             this.kDGVFilter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kDGVFilter.Size = new System.Drawing.Size(448, 79);
+            this.kDGVFilter.Size = new System.Drawing.Size(371, 78);
             this.kDGVFilter.TabIndex = 1;
             this.kDGVFilter.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.kDGVFilter_CellClick);
             // 
@@ -1473,7 +1474,7 @@
             // kGBDict.Panel
             // 
             this.kGBDict.Panel.Controls.Add(this.tableLayoutPanel5);
-            this.kGBDict.Size = new System.Drawing.Size(548, 109);
+            this.kGBDict.Size = new System.Drawing.Size(469, 108);
             this.kGBDict.TabIndex = 1;
             this.kGBDict.Values.Heading = "数据字典";
             // 
@@ -1489,16 +1490,16 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(544, 85);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(465, 84);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // kryptonPanel6
             // 
             this.kryptonPanel6.Controls.Add(this.tableLayoutPanelDict);
             this.kryptonPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel6.Location = new System.Drawing.Point(487, 3);
+            this.kryptonPanel6.Location = new System.Drawing.Point(408, 3);
             this.kryptonPanel6.Name = "kryptonPanel6";
-            this.kryptonPanel6.Size = new System.Drawing.Size(54, 79);
+            this.kryptonPanel6.Size = new System.Drawing.Size(54, 78);
             this.kryptonPanel6.TabIndex = 3;
             // 
             // tableLayoutPanelDict
@@ -1516,16 +1517,16 @@
             this.tableLayoutPanelDict.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelDict.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelDict.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelDict.Size = new System.Drawing.Size(54, 79);
+            this.tableLayoutPanelDict.Size = new System.Drawing.Size(54, 78);
             this.tableLayoutPanelDict.TabIndex = 1;
             // 
             // btnDelDataDictionary
             // 
             this.btnDelDataDictionary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDelDataDictionary.Location = new System.Drawing.Point(1, 53);
-            this.btnDelDataDictionary.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelDataDictionary.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnDelDataDictionary.Name = "btnDelDataDictionary";
-            this.btnDelDataDictionary.Size = new System.Drawing.Size(52, 25);
+            this.btnDelDataDictionary.Size = new System.Drawing.Size(52, 24);
             this.btnDelDataDictionary.TabIndex = 4;
             this.btnDelDataDictionary.Values.Text = "删除";
             this.btnDelDataDictionary.Click += new System.EventHandler(this.btnDelDataDictionary_Click);
@@ -1534,7 +1535,7 @@
             // 
             this.btnUpdateDataDictionary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnUpdateDataDictionary.Location = new System.Drawing.Point(1, 27);
-            this.btnUpdateDataDictionary.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateDataDictionary.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnUpdateDataDictionary.Name = "btnUpdateDataDictionary";
             this.btnUpdateDataDictionary.Size = new System.Drawing.Size(52, 24);
             this.btnUpdateDataDictionary.TabIndex = 3;
@@ -1545,7 +1546,7 @@
             // 
             this.btnAddDataDictionary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAddDataDictionary.Location = new System.Drawing.Point(1, 1);
-            this.btnAddDataDictionary.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddDataDictionary.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnAddDataDictionary.Name = "btnAddDataDictionary";
             this.btnAddDataDictionary.Size = new System.Drawing.Size(52, 24);
             this.btnAddDataDictionary.TabIndex = 2;
@@ -1567,7 +1568,7 @@
             this.kDGVDict.ReadOnly = true;
             this.kDGVDict.RowTemplate.Height = 23;
             this.kDGVDict.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kDGVDict.Size = new System.Drawing.Size(478, 79);
+            this.kDGVDict.Size = new System.Drawing.Size(399, 78);
             this.kDGVDict.TabIndex = 1;
             // 
             // DictionaryNo
@@ -1600,7 +1601,7 @@
             // kGBFileWordsList.Panel
             // 
             this.kGBFileWordsList.Panel.Controls.Add(this.tableLayoutPanel3);
-            this.kGBFileWordsList.Size = new System.Drawing.Size(1075, 168);
+            this.kGBFileWordsList.Size = new System.Drawing.Size(919, 140);
             this.kGBFileWordsList.TabIndex = 1;
             this.kGBFileWordsList.Values.Heading = "文件字段列表";
             // 
@@ -1617,16 +1618,16 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1071, 144);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(915, 116);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // kryptonPanel4
             // 
             this.kryptonPanel4.Controls.Add(this.tableLayoutPanelFileField);
             this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel4.Location = new System.Drawing.Point(994, 3);
+            this.kryptonPanel4.Location = new System.Drawing.Point(838, 3);
             this.kryptonPanel4.Name = "kryptonPanel4";
-            this.kryptonPanel4.Size = new System.Drawing.Size(54, 138);
+            this.kryptonPanel4.Size = new System.Drawing.Size(54, 110);
             this.kryptonPanel4.TabIndex = 2;
             // 
             // tableLayoutPanelFileField
@@ -1644,16 +1645,16 @@
             this.tableLayoutPanelFileField.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelFileField.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelFileField.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelFileField.Size = new System.Drawing.Size(54, 138);
+            this.tableLayoutPanelFileField.Size = new System.Drawing.Size(54, 110);
             this.tableLayoutPanelFileField.TabIndex = 1;
             // 
             // btnDelFileField
             // 
             this.btnDelFileField.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDelFileField.Location = new System.Drawing.Point(1, 93);
-            this.btnDelFileField.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDelFileField.Location = new System.Drawing.Point(1, 73);
+            this.btnDelFileField.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnDelFileField.Name = "btnDelFileField";
-            this.btnDelFileField.Size = new System.Drawing.Size(52, 44);
+            this.btnDelFileField.Size = new System.Drawing.Size(52, 36);
             this.btnDelFileField.TabIndex = 4;
             this.btnDelFileField.Values.Text = "删除";
             this.btnDelFileField.Click += new System.EventHandler(this.btnDelFileField_Click);
@@ -1661,10 +1662,10 @@
             // btnUpdateFileField
             // 
             this.btnUpdateFileField.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUpdateFileField.Location = new System.Drawing.Point(1, 47);
-            this.btnUpdateFileField.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUpdateFileField.Location = new System.Drawing.Point(1, 37);
+            this.btnUpdateFileField.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnUpdateFileField.Name = "btnUpdateFileField";
-            this.btnUpdateFileField.Size = new System.Drawing.Size(52, 44);
+            this.btnUpdateFileField.Size = new System.Drawing.Size(52, 34);
             this.btnUpdateFileField.TabIndex = 3;
             this.btnUpdateFileField.Values.Text = "修改";
             this.btnUpdateFileField.Click += new System.EventHandler(this.btnUpdateFileField_Click);
@@ -1673,9 +1674,9 @@
             // 
             this.btnAddFileField.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAddFileField.Location = new System.Drawing.Point(1, 1);
-            this.btnAddFileField.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAddFileField.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnAddFileField.Name = "btnAddFileField";
-            this.btnAddFileField.Size = new System.Drawing.Size(52, 44);
+            this.btnAddFileField.Size = new System.Drawing.Size(52, 34);
             this.btnAddFileField.TabIndex = 2;
             this.btnAddFileField.Values.Text = "增加";
             this.btnAddFileField.Click += new System.EventHandler(this.btnAddFileField_Click);
@@ -1709,7 +1710,7 @@
             this.kDGVFileWordsList.ReadOnly = true;
             this.kDGVFileWordsList.RowTemplate.Height = 23;
             this.kDGVFileWordsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.kDGVFileWordsList.Size = new System.Drawing.Size(985, 138);
+            this.kDGVFileWordsList.Size = new System.Drawing.Size(829, 110);
             this.kDGVFileWordsList.TabIndex = 1;
             this.kDGVFileWordsList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.kDGVFileWordsList_CellClick);
             // 
@@ -1838,7 +1839,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.kSplitContainerL1);
             this.Name = "UC_DataSetting";
-            this.Size = new System.Drawing.Size(1083, 679);
+            this.Size = new System.Drawing.Size(927, 607);
             this.Load += new System.EventHandler(this.UC_DataSetting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kSplitContainerL1.Panel1)).EndInit();
             this.kSplitContainerL1.Panel1.ResumeLayout(false);
