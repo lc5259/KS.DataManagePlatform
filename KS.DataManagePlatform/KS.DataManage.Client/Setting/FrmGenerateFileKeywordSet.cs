@@ -21,10 +21,12 @@ namespace KS.DataManage.Client
         public FrmGenerateFileKeywordSet()
         {
             InitializeComponent();
+            UC_DataSetting.ReturnDt = null;
         }
         public FrmGenerateFileKeywordSet(int drIndex, DataTable dt, string title)
         {
             InitializeComponent();
+            UC_DataSetting.ReturnDt = null;
             if (title == "生成文件关键字修改")
             {
                 kryCBBGenerateFileKeywordNo.Enabled = false;

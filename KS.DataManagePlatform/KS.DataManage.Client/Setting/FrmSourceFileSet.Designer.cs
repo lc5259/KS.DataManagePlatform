@@ -312,6 +312,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.StateCommon.Border.Width = 1;
             this.Text = "原文件列表";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSourceFileSet_FormClosing);
             this.Controls.SetChildIndex(this.kryPanelBottom, 0);
             this.Controls.SetChildIndex(this.kryptonPanel1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.kryPanelBottom)).EndInit();

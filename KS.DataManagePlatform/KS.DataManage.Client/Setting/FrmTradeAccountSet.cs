@@ -22,10 +22,11 @@ namespace KS.DataManage.Client
         {
             InitializeComponent();
         }
-        public FrmTradeAccountSet(bool _IsSave)
+        public FrmTradeAccountSet(bool _IsSave,string FundAccountNo)
         {
             InitializeComponent();
             this.IsSave = _IsSave;
+            this.kryTextBoxFundAccountNo.Text = FundAccountNo;
         }
         
         private void kbtnSave_Click(object sender, EventArgs e)
@@ -40,16 +41,23 @@ namespace KS.DataManage.Client
 
             //setFormTextValue(kryTextBoxFundAccountNo.Text.ToString());
 
-           
+
 
             //UC_GeneFile _uC_GeneFile = (UC_GeneFile)this.Owner;
             //UC_GeneFile.AddFunfList(kryCheckBoxCffex.Checked, kryCheckBoxMotorCenter.Checked, GlobalData.AddFundAccountNO);
+            if (string.IsNullOrEmpty(kryTextBoxFundAccountNo.Text.ToString().Trim()))
+            {
+                MessageBox.Show("资金账号不能为空", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            this.IsSave = true;
             this.Close();
 
         }
 
         private void kbtnCancle_Click(object sender, EventArgs e)
         {
+            this.IsSave = false;
             this.Close();
         }
     }

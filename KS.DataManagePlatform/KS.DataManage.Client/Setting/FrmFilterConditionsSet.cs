@@ -21,12 +21,13 @@ namespace KS.DataManage.Client
         public FrmFilterConditionsSet()
         {
             InitializeComponent();
-
+            UC_DataSetting.ReturnDt = null;
 
         }
         public FrmFilterConditionsSet(int drIndex, DataTable dt, string title)
         {
             InitializeComponent();
+            UC_DataSetting.ReturnDt = null;
             if (title == "过滤条件修改")
             {
                 kryCBBFilterConditionsNo.Enabled = false;

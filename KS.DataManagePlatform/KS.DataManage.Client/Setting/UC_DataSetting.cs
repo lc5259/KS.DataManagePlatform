@@ -63,12 +63,20 @@ namespace KS.DataManage.Client
         /// <param name="e"></param>
         private void btnAddTradeID_Click(object sender, EventArgs e)
         {
-            FrmTradeAccountSet ftas = new FrmTradeAccountSet(true);
+            FrmTradeAccountSet ftas = new FrmTradeAccountSet(true, kCombTradeID.Text);
             ftas.ShowDialog();
             if (ftas.IsSave)
             {
                 this.SuspendLayout();
                 string FundAccountNo = ftas.kryTextBoxFundAccountNo.Text.ToString();
+
+                List<string> CombTradeID = new List<string>();
+                CombTradeID = this.kCombTradeID.DataSource as List<string>;
+                if (CombTradeID.Contains(FundAccountNo))
+                {
+                    MessageBox.Show("资金账号已存在", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 XElement AddNode = new XElement(GlobalData.TemplateConfigInfo);
 
@@ -84,8 +92,7 @@ namespace KS.DataManage.Client
 
                 _configDocument.Root.Add(AddNode);
 
-                List<string> CombTradeID = new List<string>();
-                CombTradeID = this.kCombTradeID.DataSource as List<string>;
+               
                 CombTradeID.Add(FundAccountNo);
 
                 this.kCombTradeID.DataSource = new List<string>();
@@ -109,7 +116,7 @@ namespace KS.DataManage.Client
         }
         private void btnUpdateTradeID_Click(object sender, EventArgs e)
         {
-            FrmTradeAccountSet ftas = new FrmTradeAccountSet(false);
+            FrmTradeAccountSet ftas = new FrmTradeAccountSet(false, kCombTradeID.Text);
             ftas.ShowDialog();
 
             if (!ftas.IsSave)
@@ -274,6 +281,10 @@ namespace KS.DataManage.Client
                 DataTable dt = kDGVSourceFileList.DataSource as DataTable;
                 FrmSourceFileSet frmSourceFileSet = new FrmSourceFileSet(drIndex, dt, "源文件列表增加");
                 frmSourceFileSet.ShowDialog();
+                if (ReturnDt == null)
+                {
+                    ReturnDt = dt;
+                }
                 this.kDGVSourceFileList.DataSource = ReturnDt;
             }
 
@@ -281,6 +292,7 @@ namespace KS.DataManage.Client
             {
                 FrmSourceFileSet frmSourceFileSet = new FrmSourceFileSet();
                 frmSourceFileSet.ShowDialog();
+
                 this.kDGVSourceFileList.DataSource = ReturnDt;
             }
 
@@ -311,6 +323,10 @@ namespace KS.DataManage.Client
             DataTable dt = kDGVSourceFileList.DataSource as DataTable;
             FrmSourceFileSet frmSourceFileSet = new FrmSourceFileSet(drIndex, dt, "源文件列表修改");
             frmSourceFileSet.ShowDialog();
+            if (ReturnDt == null)
+            {
+                ReturnDt = dt;
+            }
             this.kDGVSourceFileList.DataSource = ReturnDt;
         }
         private void btnDelSourceFile_Click(object sender, EventArgs e)
@@ -356,12 +372,21 @@ namespace KS.DataManage.Client
                 DataTable dt = kDGVKeyWords.DataSource as DataTable;
                 FrmGenerateFileKeywordSet frmGenerateFileKeywordSet = new FrmGenerateFileKeywordSet(drIndex, dt, "生成文件关键字增加");
                 frmGenerateFileKeywordSet.ShowDialog();
+                if (ReturnDt == null)
+                {
+                    ReturnDt = dt;
+                }
                 this.kDGVKeyWords.DataSource = ReturnDt;
             }
             else
             {
+                DataTable dt = kDGVKeyWords.DataSource as DataTable;
                 FrmGenerateFileKeywordSet frmGenerateFileKeywordSet = new FrmGenerateFileKeywordSet();
                 frmGenerateFileKeywordSet.ShowDialog();
+                if (ReturnDt == null)
+                {
+                    ReturnDt = dt;
+                }
                 this.kDGVKeyWords.DataSource = ReturnDt;
             }
 
@@ -391,6 +416,10 @@ namespace KS.DataManage.Client
             DataTable dt = kDGVKeyWords.DataSource as DataTable;
             FrmGenerateFileKeywordSet frmGenerateFileKeywordSet = new FrmGenerateFileKeywordSet(drIndex, dt, "生成文件关键字修改");
             frmGenerateFileKeywordSet.ShowDialog();
+            if (ReturnDt == null)
+            {
+                ReturnDt = dt;
+            }
             this.kDGVKeyWords.DataSource = ReturnDt;
         }
         private void btnDelGenerateFileKeyword_Click(object sender, EventArgs e)
@@ -435,6 +464,10 @@ namespace KS.DataManage.Client
                 DataTable dt = kDGVFileWordsList.DataSource as DataTable;
                 FrmFileWordsList frmFileWordsList = new FrmFileWordsList(drIndex, dt, "文件字段列表增加");
                 frmFileWordsList.ShowDialog();
+                if (ReturnDt == null)
+                {
+                    ReturnDt = dt;
+                }
                 this.kDGVFileWordsList.DataSource = ReturnDt;
             }
             else
@@ -473,6 +506,10 @@ namespace KS.DataManage.Client
             DataTable dt = kDGVFileWordsList.DataSource as DataTable;
             FrmFileWordsList frmFileWordsList = new FrmFileWordsList(drIndex, dt, "文件字段列表修改");
             frmFileWordsList.ShowDialog();
+            if (ReturnDt == null)
+            {
+                ReturnDt = dt;
+            }
             this.kDGVFileWordsList.DataSource = ReturnDt;
         }
         private void btnDelFileField_Click(object sender, EventArgs e)
@@ -521,12 +558,21 @@ namespace KS.DataManage.Client
                 DataTable dt = kDGVFilter.DataSource as DataTable;
                 FrmFilterConditionsSet frmFilterConditionsSet = new FrmFilterConditionsSet(drIndex, dt, "过滤条件增加");
                 frmFilterConditionsSet.ShowDialog();
+                if (ReturnDt == null)
+                {
+                    ReturnDt = dt;
+                }
                 this.kDGVFilter.DataSource = ReturnDt;
             }
             else
             {
+                DataTable dt = kDGVFilter.DataSource as DataTable;
                 FrmFilterConditionsSet frmFilterConditionsSet = new FrmFilterConditionsSet();
                 frmFilterConditionsSet.ShowDialog();
+                if (ReturnDt == null)
+                {
+                    ReturnDt = dt;
+                }
                 this.kDGVFilter.DataSource = ReturnDt;
             }
             foreach (XElement itemOrganCode in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
@@ -566,6 +612,10 @@ namespace KS.DataManage.Client
             DataTable dt = kDGVFilter.DataSource as DataTable;
             FrmFilterConditionsSet frmFilterConditionsSet = new FrmFilterConditionsSet(drIndex, dt, "过滤条件修改");
             frmFilterConditionsSet.ShowDialog();
+            if (ReturnDt == null)
+            {
+                ReturnDt = dt;
+            }
             this.kDGVFilter.DataSource = ReturnDt;
         }
         private void btnDelFilterConditions_Click(object sender, EventArgs e)
@@ -620,12 +670,21 @@ namespace KS.DataManage.Client
                 DataTable dt = kDGVDict.DataSource as DataTable;
                 FrmDict frmDict = new FrmDict(drIndex, dt, "数据字典增加");
                 frmDict.ShowDialog();
+                if (ReturnDt == null)
+                {
+                    ReturnDt = dt;
+                }
                 this.kDGVDict.DataSource = ReturnDt;
             }
             else
             {
+                DataTable dt = kDGVDict.DataSource as DataTable;
                 FrmDict frmDict = new FrmDict();
                 frmDict.ShowDialog();
+                if (ReturnDt == null)
+                {
+                    ReturnDt = dt;
+                }
                 this.kDGVDict.DataSource = ReturnDt;
             }
             foreach (XElement itemOrganCode in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
@@ -665,6 +724,10 @@ namespace KS.DataManage.Client
             DataTable dt = kDGVDict.DataSource as DataTable;
             FrmDict frmDict = new FrmDict(drIndex, dt, "数据字典修改");
             frmDict.ShowDialog();
+            if (ReturnDt == null)
+            {
+                ReturnDt = dt;
+            }
             this.kDGVDict.DataSource = ReturnDt;
         }
         private void btnDelDataDictionary_Click(object sender, EventArgs e)
@@ -779,8 +842,13 @@ namespace KS.DataManage.Client
         {
             if (e.RowIndex > -1)
             {
-                tableLayoutPanelTargetFile.Enabled = true;
+                tableLayoutPanelSourceFile.Enabled = true;
                 tableLayoutPanelKeyWords.Enabled = true;
+
+                tableLayoutPanelFileField.Enabled = false;
+                tableLayoutPanelFilter.Enabled = false;
+                tableLayoutPanelDict.Enabled = false;
+
                 DataTable dtFileWordsList = (DataTable)kDGVFileWordsList.DataSource;
                 if (dtFileWordsList != null)
                 {
@@ -808,15 +876,37 @@ namespace KS.DataManage.Client
                 {
                     if (e.ColumnIndex == 0)
                     {
+                        string IsOutPut = string.Empty;
                         if (kDGVFileList.Rows[e.RowIndex].Cells[0].Value == null || (!kDGVFileList.Rows[e.RowIndex].Cells[0].Value.ToString().ToLower().Equals("true")))
                         {
                             kDGVFileList.Rows[e.RowIndex].Cells[0].Value = true;
+                            IsOutPut = "是";
                         }
                         else
                         {
                             kDGVFileList.Rows[e.RowIndex].Cells[0].Value = false;
+                            IsOutPut = "否";
                         }
-
+                        
+                       // string OrganizationName = kDGVFileList.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        string FileNo = kDGVFileList.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        foreach (XElement xNode in _configDocument.Descendants("AccountId"))
+                        {
+                            if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
+                            {
+                                foreach (XElement itemFileNode in xNode.Descendants("OrganCode"))
+                                {
+                                    foreach (XElement file in itemFileNode.Nodes())
+                                    {
+                                        if (file.Attribute("fid").Value.ToString().Equals(FileNo))
+                                        {
+                                            file.SetAttributeValue("IsOutPut", IsOutPut);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -884,58 +974,65 @@ namespace KS.DataManage.Client
         {
             try
             {
-                tableLayoutPanelFileField.Enabled = true;
-                DataTable dtFilter = (DataTable)kDGVFilter.DataSource;
-                if (dtFilter != null)
+                if (e.RowIndex > -1)
                 {
-                    dtFilter.Rows.Clear();
-                    kDGVFilter.DataSource = dtFilter;
-                }
+                    tableLayoutPanelFileField.Enabled = true;
 
-                DataTable dtDict = (DataTable)kDGVDict.DataSource;
-                if (dtDict != null)
-                {
-                    dtDict.Rows.Clear();
-                    kDGVDict.DataSource = dtDict;
-                }
-
-                string SourceFileName = this.kDGVSourceFileList.Rows[e.RowIndex].Cells["SourceFileName"].Value.ToString();
-                string SourceFileNo = this.kDGVSourceFileList.Rows[e.RowIndex].Cells["SourceFileNo"].Value.ToString();
-                SelectedSourceFileName = SourceFileName;
-                SelectedSourceFileNo = SourceFileNo;
-                //string TargetFileNo = this.kDGVFileList.Rows[e.RowIndex].Cells["TargetFileNo"].Value.ToString();
-                string TargetFileTitle = SelectedTargetFileTitle;
-                string TargetFileName = SelectedTargetFileName;
-
-                foreach (XElement xNode in _configDocument.Descendants("AccountId"))
-                {
-                    if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
+                    tableLayoutPanelFilter.Enabled = false;
+                    tableLayoutPanelDict.Enabled = false;
+                    DataTable dtFilter = (DataTable)kDGVFilter.DataSource;
+                    if (dtFilter != null)
                     {
-                        foreach (XElement itemFileNode in xNode.Descendants("OrganCode"))
+                        dtFilter.Rows.Clear();
+                        kDGVFilter.DataSource = dtFilter;
+                    }
+
+                    DataTable dtDict = (DataTable)kDGVDict.DataSource;
+                    if (dtDict != null)
+                    {
+                        dtDict.Rows.Clear();
+                        kDGVDict.DataSource = dtDict;
+                    }
+
+                    string SourceFileName = this.kDGVSourceFileList.Rows[e.RowIndex].Cells["SourceFileName"].Value.ToString();
+                    string SourceFileNo = this.kDGVSourceFileList.Rows[e.RowIndex].Cells["SourceFileNo"].Value.ToString();
+                    SelectedSourceFileName = SourceFileName;
+                    SelectedSourceFileNo = SourceFileNo;
+                    //string TargetFileNo = this.kDGVFileList.Rows[e.RowIndex].Cells["TargetFileNo"].Value.ToString();
+                    string TargetFileTitle = SelectedTargetFileTitle;
+                    string TargetFileName = SelectedTargetFileName;
+
+                    foreach (XElement xNode in _configDocument.Descendants("AccountId"))
+                    {
+                        if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
                         {
-                            foreach (XElement fileSrc in itemFileNode.Nodes())
+                            foreach (XElement itemFileNode in xNode.Descendants("OrganCode"))
                             {
-                                if (fileSrc.Attribute("filetitle").Value.Equals(TargetFileTitle) && fileSrc.Attribute("filename").Value.ToString().Equals(TargetFileName))
+                                foreach (XElement fileSrc in itemFileNode.Nodes())
                                 {
-                                    foreach (XElement itemFilecols in fileSrc.Descendants("fileSrc"))
+                                    if (fileSrc.Attribute("filetitle").Value.Equals(TargetFileTitle) && fileSrc.Attribute("filename").Value.ToString().Equals(TargetFileName))
                                     {
-                                        if (itemFilecols.Attribute("srcfile").Value.Equals(SourceFileName) && itemFilecols.Attribute("srcid").Value.Equals(SelectedSourceFileNo))
+                                        foreach (XElement itemFilecols in fileSrc.Descendants("fileSrc"))
                                         {
-                                            this.kDGVFileWordsList.DataSource = FileDataTable.FildWordsListDT(itemFilecols);
+                                            if (itemFilecols.Attribute("srcfile").Value.Equals(SourceFileName) && itemFilecols.Attribute("srcid").Value.Equals(SelectedSourceFileNo))
+                                            {
+                                                this.kDGVFileWordsList.DataSource = FileDataTable.FildWordsListDT(itemFilecols);
 
-                                            break;
+                                                break;
+                                            }
                                         }
-                                    }
 
+                                    }
                                 }
+
                             }
 
                         }
-
                     }
-                }
 
+                }
             }
+               
             catch (Exception ex)
             {
                 throw;
@@ -950,54 +1047,61 @@ namespace KS.DataManage.Client
         /// <param name="e"></param>
         private void kDGVFileWordsList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            tableLayoutPanelFilter.Enabled = true;
-            tableLayoutPanelDict.Enabled = true;
-            DataTable dtFilter = (DataTable)kDGVFilter.DataSource;
-            if (dtFilter != null)
+            try
             {
-                dtFilter.Rows.Clear();
-                kDGVFilter.DataSource = dtFilter;
-            }
-
-            DataTable dtDict = (DataTable)kDGVDict.DataSource;
-            if (dtDict != null)
-            {
-                dtDict.Rows.Clear();
-                kDGVDict.DataSource = dtDict;
-            }
-
-
-            string TargetFileTitle = SelectedTargetFileTitle;
-            string TargetFileName = SelectedTargetFileName;
-            string SourceFileName = SelectedSourceFileName;
-            string SourceFileNo = SelectedSourceFileNo;
-
-            string TXTColumnName = this.kDGVFileWordsList.Rows[e.RowIndex].Cells["FileFieldTXTColumnName"].Value.ToString();
-            string FileFieldNo = this.kDGVFileWordsList.Rows[e.RowIndex].Cells["FileFieldNo"].Value.ToString();
-            SelectedTXTColumnName = TXTColumnName;
-            SelectedFileFieldNo = FileFieldNo;
-
-            foreach (XElement xNode in _configDocument.Descendants("AccountId"))
-            {
-                if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
+                if (e.RowIndex > -1)
                 {
-                    foreach (XElement itemFileNode in xNode.Descendants("OrganCode"))
+                    tableLayoutPanelFilter.Enabled = true;
+                    tableLayoutPanelDict.Enabled = true;
+                    DataTable dtFilter = (DataTable)kDGVFilter.DataSource;
+                    if (dtFilter != null)
                     {
-                        foreach (XElement fileSrc in itemFileNode.Nodes())
+                        dtFilter.Rows.Clear();
+                        kDGVFilter.DataSource = dtFilter;
+                    }
+
+                    DataTable dtDict = (DataTable)kDGVDict.DataSource;
+                    if (dtDict != null)
+                    {
+                        dtDict.Rows.Clear();
+                        kDGVDict.DataSource = dtDict;
+                    }
+
+
+                    string TargetFileTitle = SelectedTargetFileTitle;
+                    string TargetFileName = SelectedTargetFileName;
+                    string SourceFileName = SelectedSourceFileName;
+                    string SourceFileNo = SelectedSourceFileNo;
+
+                    string TXTColumnName = this.kDGVFileWordsList.Rows[e.RowIndex].Cells["FileFieldTXTColumnName"].Value.ToString();
+                    string FileFieldNo = this.kDGVFileWordsList.Rows[e.RowIndex].Cells["FileFieldNo"].Value.ToString();
+                    SelectedTXTColumnName = TXTColumnName;
+                    SelectedFileFieldNo = FileFieldNo;
+
+                    foreach (XElement xNode in _configDocument.Descendants("AccountId"))
+                    {
+                        if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
                         {
-                            if (fileSrc.Attribute("filetitle").Value.Equals(TargetFileTitle) && fileSrc.Attribute("filename").Value.ToString().Equals(TargetFileName))
+                            foreach (XElement itemFileNode in xNode.Descendants("OrganCode"))
                             {
-                                foreach (XElement itemFilecols in fileSrc.Descendants("fileSrc"))
+                                foreach (XElement fileSrc in itemFileNode.Nodes())
                                 {
-                                    if (itemFilecols.Attribute("srcfile").Value.Equals(SourceFileName) && itemFilecols.Attribute("srcid").Value.Equals(SourceFileNo))
+                                    if (fileSrc.Attribute("filetitle").Value.Equals(TargetFileTitle) && fileSrc.Attribute("filename").Value.ToString().Equals(TargetFileName))
                                     {
-                                        foreach (XElement item in itemFilecols.Nodes())
+                                        foreach (XElement itemFilecols in fileSrc.Descendants("fileSrc"))
                                         {
-                                            if (item.Attribute("label").Value.Equals(TXTColumnName) && item.Attribute("cid").Value.Equals(FileFieldNo))
+                                            if (itemFilecols.Attribute("srcfile").Value.Equals(SourceFileName) && itemFilecols.Attribute("srcid").Value.Equals(SourceFileNo))
                                             {
-                                                this.kDGVFilter.DataSource = FileDataTable.FilterDT(item);
-                                                this.kDGVDict.DataSource = FileDataTable.DictDT(item);
-                                                break;
+                                                foreach (XElement item in itemFilecols.Nodes())
+                                                {
+                                                    if (item.Attribute("label").Value.Equals(TXTColumnName) && item.Attribute("cid").Value.Equals(FileFieldNo))
+                                                    {
+                                                        this.kDGVFilter.DataSource = FileDataTable.FilterDT(item);
+                                                        this.kDGVDict.DataSource = FileDataTable.DictDT(item);
+                                                        break;
+                                                    }
+                                                }
+
                                             }
                                         }
 
@@ -1005,12 +1109,16 @@ namespace KS.DataManage.Client
                                 }
 
                             }
+
                         }
-
                     }
-
                 }
             }
+            catch(Exception ex)
+            {
+                throw;
+            }
+            
         }
         private void kDGVFilter_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1100,6 +1208,25 @@ namespace KS.DataManage.Client
             //{
             //    _configDocument.Root.Add(GlobalData.TemplateConfigInfo);
             //}
+        }
+
+        private void kRBtnDate_Click(object sender, EventArgs e)
+        {
+            //点击按日期的时候，界面就自动选择按账号了
+            //GlobalData.TemplateConfigInfo.Attribute("outType").Value = "1";
+        }
+
+        private void kRBtnAccount_CheckedChanged(object sender, EventArgs e)
+        {
+            bool ByAccount = kRBtnAccount.Checked;  //资金账号被勾选
+            if (ByAccount)
+            {
+                GlobalData.TemplateConfigInfo.Attribute("outType").Value = "2";
+            }
+            else
+            {
+                GlobalData.TemplateConfigInfo.Attribute("outType").Value = "1";
+            }
         }
     }
 }

@@ -22,11 +22,12 @@ namespace KS.DataManage.Client
         {
             InitializeComponent();
 
-
+            UC_DataSetting.ReturnDt = null;
         }
         public FrmDict(int drIndex, DataTable dt, string title)
         {
             InitializeComponent();
+            UC_DataSetting.ReturnDt = null;
             if (title == "数据字典修改")
             {
                 kryCBBDictionaryNo.Enabled = false;

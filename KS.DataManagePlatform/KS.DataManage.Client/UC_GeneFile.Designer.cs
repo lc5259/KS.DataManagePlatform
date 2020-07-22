@@ -104,6 +104,7 @@
             this.kryLbDate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonSplitContainer3 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kryptonPalette2 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.krypLbFlag = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel1)).BeginInit();
@@ -765,6 +766,7 @@
             // 
             // kryptonPanel2
             // 
+            this.kryptonPanel2.Controls.Add(this.krypLbFlag);
             this.kryptonPanel2.Controls.Add(this.kryptonPanel6);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
@@ -849,6 +851,15 @@
             this.kryptonSplitContainer3.SplitterDistance = 645;
             this.kryptonSplitContainer3.TabIndex = 6;
             // 
+            // krypLbFlag
+            // 
+            this.krypLbFlag.Location = new System.Drawing.Point(20, 14);
+            this.krypLbFlag.Name = "krypLbFlag";
+            this.krypLbFlag.Size = new System.Drawing.Size(109, 20);
+            this.krypLbFlag.TabIndex = 6;
+            this.krypLbFlag.Values.Text = "读入原文件开始...";
+            this.krypLbFlag.Visible = false;
+            // 
             // UC_GeneFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -890,6 +901,7 @@
             this.kryptonPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
+            this.kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).EndInit();
             this.kryptonPanel6.ResumeLayout(false);
             this.kryptonPanel6.PerformLayout();
@@ -979,5 +991,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette2;
         public ComponentFactory.Krypton.Toolkit.KryptonCheckedListBox kryCLBSingleMotorCenterAccount;
         protected ComponentFactory.Krypton.Toolkit.KryptonCheckedListBox kryCLBSingleCffexAccount;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel krypLbFlag;
     }
 }

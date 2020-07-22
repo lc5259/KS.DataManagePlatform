@@ -22,11 +22,12 @@ namespace KS.DataManage.Client
         public FrmFileWordsList()
         {
             InitializeComponent();
+            UC_DataSetting.ReturnDt = null;
         }
         public FrmFileWordsList(int drIndex, DataTable dt,string title)
         {
             InitializeComponent();
-
+            UC_DataSetting.ReturnDt = null;
             if (title == "文件字段列表修改")
             {
                 kryCBBFileFieldNo.Enabled = false;

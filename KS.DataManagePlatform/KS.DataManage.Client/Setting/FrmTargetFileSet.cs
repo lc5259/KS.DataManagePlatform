@@ -22,11 +22,12 @@ namespace KS.DataManage.Client
         public FrmTargetFileSet()
         {
             InitializeComponent();
+            UC_DataSetting.ReturnDt = null;
         }
         public FrmTargetFileSet(int drIndex, DataTable dt, string title)
         {
             InitializeComponent();
-
+            UC_DataSetting.ReturnDt = null;
             if (title == "文件列表修改")
             {
                 kryCBBTargetFileNo.Enabled = false;

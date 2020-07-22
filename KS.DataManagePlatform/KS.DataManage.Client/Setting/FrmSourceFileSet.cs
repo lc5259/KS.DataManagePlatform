@@ -21,10 +21,12 @@ namespace KS.DataManage.Client
         public FrmSourceFileSet()
         {
             InitializeComponent();
+            UC_DataSetting.ReturnDt = null;
         }
         public FrmSourceFileSet(int drIndex, DataTable dt, string title)
         {
             InitializeComponent();
+            UC_DataSetting.ReturnDt = null;
             if (title == "源文件列表修改")
             {
                 kryCBBSourceFileNo.Enabled = false;
@@ -142,6 +144,11 @@ namespace KS.DataManage.Client
                 //UC_DataSetting.ReturnOrganCode = dr["DataTargetOrganizationName"].ToString();
             }
             this.Close();
+        }
+
+        private void FrmSourceFileSet_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //UC_DataSetting.ReturnDt = dtOrigin;
         }
     }
 }

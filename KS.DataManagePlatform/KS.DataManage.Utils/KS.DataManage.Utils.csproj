@@ -64,7 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBFReader.cs" />
+    <Compile Include="DispatchFileConfig.cs" />
     <Compile Include="FileListDataTable.cs" />
+    <Compile Include="FileReader.cs" />
     <Compile Include="Fonts\FontClass.cs" />
     <Compile Include="GloblaData.cs" />
     <Compile Include="Log.cs" />

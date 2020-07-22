@@ -65,7 +65,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWait.Designer.cs">
+      <DependentUpon>FrmWait.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UCMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -77,6 +88,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmWait.resx">
+      <DependentUpon>FrmWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCMenu.resx">
       <DependentUpon>UCMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +104,9 @@
       <Project>{2303AC03-8E93-4AF2-8681-51AC3E66194D}</Project>
       <Name>KS.DataManage.Utils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\timg.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -93,7 +93,8 @@ namespace KS.DataManage.Utils
             //dt.Columns.Add("TargetFileIsIsShowFundAccountNo", typeof(System.String));
             //dt.Columns.Add("TargetFileIsIEachAccountOutTitle", typeof(System.String)); TargetOrganizationName
             //xml;
-
+            
+            dt.Columns.Add("DataTargetFilecheck", typeof(System.Boolean));
             dt.Columns.Add("DataTargetOrganizationName", typeof(System.String)); //var s = new DataColumn(); s.
             dt.Columns.Add("DataTargetFileNo", typeof(System.String));
             dt.Columns.Add("DataTargetFileTitle", typeof(System.String));
@@ -126,6 +127,15 @@ namespace KS.DataManage.Utils
                     //dr["TargetFileIsIsShowFundAccountNo"] = file.Attribute("IsDispAccId").Value;
                     //dr["TargetFileIsIEachAccountOutTitle"] = file.Attribute("IsDispAccId").Value;
 
+                    if (!string.IsNullOrEmpty(file.Attribute("IsOutPut").Value) && file.Attribute("IsOutPut").Value == "是")
+                    {
+                        dr["DataTargetFilecheck"] = true;
+                    }
+                    else
+                    {
+                        dr["DataTargetFilecheck"] = false;
+                    }
+                    //dr["DataTargetFilecheck"] = item.Attribute("IsOutPut").Value;
                     dr["DataTargetOrganizationName"] = item.Attribute("name").Value;
                     dr["DataTargetFileNo"] = file.Attribute("fid").Value;
                     dr["DataTargetFileTitle"] = file.Attribute("filetitle").Value;
