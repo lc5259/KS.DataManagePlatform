@@ -364,6 +364,7 @@ namespace KS.DataManage.Utils
                 fs.Close();
             }
         }
+   
         /// <summary>
         /// 
         /// </summary>
