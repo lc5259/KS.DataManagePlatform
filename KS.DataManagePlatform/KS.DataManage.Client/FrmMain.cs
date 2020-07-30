@@ -575,6 +575,10 @@ namespace KS.DataManage.Client
             DelGroupConfig delGroupConfig = new DelGroupConfig();
             foreach (TreeNode item in ucMenu.kryptonTreeView.Nodes)
             {
+                if (item.Name.ToString() == "默认分组")
+                {
+                    continue;
+                }
                 //delGroupConfig.kryCheckedListBox.Items.AddRange(new object[] { item.Name.ToString() });
                 delGroupConfig.kryCheckedListBox.Items.Add(new KryptonListItem(item.Name.ToString()));
             }

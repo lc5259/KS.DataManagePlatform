@@ -40,7 +40,7 @@ namespace KS.DataManagePlatform
                 if (!string.IsNullOrEmpty(GroupName))
                 {
                     FrmMain.AddGroup(GroupName);
-
+                   
                     #region 创建UserConfig.xml
                     XmlDocument xmlDoc = new XmlDocument();
                     //创建Xml声明部分，即<?xml version="1.0" encoding="utf-8" ?>

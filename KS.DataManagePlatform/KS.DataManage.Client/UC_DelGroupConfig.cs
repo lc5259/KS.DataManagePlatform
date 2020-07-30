@@ -1,14 +1,17 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using KS.DataManage.Client;
+using KS.DataManage.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.CheckedListBox;
 
 namespace KS.DataManagePlatform
@@ -88,15 +91,40 @@ namespace KS.DataManagePlatform
 
         private void kryButtonOK_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < kryCheckedListBox.Items.Count; i++)
+            try
             {
-                if (kryCheckedListBox.GetItemCheckState(i) == CheckState.Checked)
+                string ConfigFileName = GlobalData.SysConfigPath;
+                if (!File.Exists(ConfigFileName))
                 {
-                    FrmMain.RemoveGroup(kryCheckedListBox.Items[i].ToString());
+                    throw new Exception(string.Format("分组配置文件 {0} 不存在！", ConfigFileName));
                 }
+                XDocument configDocument = XDocument.Load(ConfigFileName);
+                for (int i = 0; i < kryCheckedListBox.Items.Count; i++)
+                {
+                    if (kryCheckedListBox.GetItemCheckState(i) == CheckState.Checked)
+                    {
+                        FrmMain.RemoveGroup(kryCheckedListBox.Items[i].ToString());
+                        foreach (XElement accountinfo in configDocument.Descendants("TABNAME"))
+                        {
+                            if (accountinfo.Value == kryCheckedListBox.Items[i].ToString())
+                            {
+                                accountinfo.Remove();
+                                break;
+                            }
+                            
+                        }
+                    }
+                }
+                configDocument.Save(ConfigFileName);
+
+                this.Close();
             }
-            this.Close();
+            catch (Exception ex)
+            {
+                throw;
+            }
             
+
         }
     }
 }

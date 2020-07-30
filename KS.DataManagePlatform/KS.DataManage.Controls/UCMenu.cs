@@ -89,10 +89,18 @@ namespace KS.Zero.Controls
             try
             {
                 XDocument configDocument = XDocument.Load(ConfigFileName);
+                //GlobalData.SGMemberID = configDocument.Element("ID").Value;
+                //GlobalData.SeatNo = configDocument.Element("ID2").Value;
+                //GlobalData.CompanyName = configDocument.Element("NAME").Value;
 
                 //XmlNode node = configDocument.SelectSingleNode("/root/Broker/GROUPDATA");
                 XElement configRoot = configDocument.Root;
                 GlobalData.AccountGroup.Clear();
+
+                GlobalData.SGMemberID = configRoot.Descendants().FirstOrDefault(a => a.Name.LocalName == "ID").Value;
+                GlobalData.SeatNo = configRoot.Descendants().FirstOrDefault(a => a.Name.LocalName == "ID2").Value;
+                GlobalData.CompanyName = configRoot.Descendants().FirstOrDefault(a => a.Name.LocalName == "NAME").Value;
+
                 foreach (XElement accountinfo in configDocument.Descendants("TABNAME"))
                 {
                     //XElement title = book.Element("TABNAME");

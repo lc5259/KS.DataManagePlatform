@@ -76,6 +76,41 @@ namespace KS.DataManage.Utils
                 _TSourceFileName = value;
             }
         }
-       
+        private static string _SeatNo;
+        public static string SeatNo
+        {
+            get
+            {
+                return _SeatNo;
+            }
+            set
+            {
+                _SeatNo = value;
+            }
+        }
+        private static string _CompanyName;
+        public static string CompanyName
+        {
+            get
+            {
+                return _CompanyName;
+            }
+            set
+            {
+                _CompanyName = value;
+            }
+        }
+        private static string _SGMemberID;  //中金所会员号
+        public static string SGMemberID
+        {
+            get
+            {
+                return _SGMemberID;
+            }
+            set
+            {
+                _SGMemberID = value;
+            }
+        }
     }
 }

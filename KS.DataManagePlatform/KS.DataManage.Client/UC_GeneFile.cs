@@ -26,7 +26,7 @@ namespace KS.DataManage.Client
         {
             InitializeComponent();
             //SetFont();//测试阶段暂时关闭
-
+            
         }
 
 
@@ -749,9 +749,37 @@ namespace KS.DataManage.Client
 
 
         }
+
+        private static void Test()
+        {
+            string testPath = AppDomain.CurrentDomain.BaseDirectory;
+            var odbf = new DbfFile(Encoding.GetEncoding(936));
+            odbf.Open(Path.Combine(testPath, "test.dbf"), FileMode.Create);
+
+            //创建列头
+            odbf.Header.AddColumn(new DbfColumn("编号", DbfColumn.DbfColumnType.Character, 20, 0));
+            odbf.Header.AddColumn(new DbfColumn("名称", DbfColumn.DbfColumnType.Character, 20, 0));
+            odbf.Header.AddColumn(new DbfColumn("地址", DbfColumn.DbfColumnType.Character, 20, 0));
+            odbf.Header.AddColumn(new DbfColumn("时间", DbfColumn.DbfColumnType.Date));
+            odbf.Header.AddColumn(new DbfColumn("余额", DbfColumn.DbfColumnType.Number, 15, 3));
+
+            var orec = new DbfRecord(odbf.Header) { AllowDecimalTruncate = true };
+            List<User> list = User.GetList();
+            foreach (var item in list)
+            {
+                orec[0] = item.UserCode;
+                orec[1] = item.UserName;
+                orec[2] = item.Address;
+                orec[3] = item.date.ToString("yyyy-MM-dd HH:mm:ss");
+                orec[4] = item.money.ToString();
+                odbf.Write(orec, true);
+            }
+            odbf.Close();
+        }
+
         private void kryBtOK_Click(object sender, EventArgs e)
         {
-
+            Test();
             string OriginPath = Path.Combine(kryTextBoxOriginPath.Text);
             string CffexOutPath1 = Path.Combine(kryTextBoxCffexOutPath1.Text);
             string CffexOutPath2 = Path.Combine(kryTextBoxCffexOutPath2.Text);
@@ -777,8 +805,10 @@ namespace KS.DataManage.Client
             {
                 XElement configRoot = configDocument.Root;
 
+                string targetDBFFileName = string.Empty;
+                string targetDBFDirectoryName = string.Empty;
                 string targetFileName = string.Empty;
-                string targetDirectoryName = string.Empty;
+                string targetDirectoryName = string.Empty; 
                 string targetDirectoryName1 = string.Empty;
                 string SourceFileName = string.Empty;
 
@@ -818,12 +848,13 @@ namespace KS.DataManage.Client
                                                     {
                                                         foreach (XElement itemfile in itemOrganCode.Nodes())
                                                         {
-                                                            string str = "其中：交易保证金                 1321.313130"; //我们抓取当前字符当中的123.11
-                                                             str = Regex.Replace(str, @"[^\d.\d]", "");
+                                                            string str = "其中：交易保证金               635757  "; //我们抓取当前字符当中的123.11
+                                                            str = Regex.Replace(str, @"[^\d.\d]", "");
 
-
+                                                            bool sdg = Regex.IsMatch(str, @"\d+$");
                                                             if (itemfile.Attribute("fileext").Value == "DBF")
                                                             {
+
                                                                 continue;
                                                             }
                                                             List<string> colnumName = new List<string>();
@@ -833,6 +864,7 @@ namespace KS.DataManage.Client
                                                             List<Dictionary<int, string>> colnumValueFinal = new List<Dictionary<int, string>>();
                                                             DataTable dtResult = new DataTable();
                                                             DataTable dt = new DataTable();
+                                                            List<string> DBFColumnNamelist = new List<string>();
                                                             bool IsTransverse = false;  //是否横向的标志
                                                             bool IsOutColumn = false;
 
@@ -842,6 +874,9 @@ namespace KS.DataManage.Client
                                                                 targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleMotorCenterAccount, targetFile));
                                                                 targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleMotorCenterAccount));
                                                                 targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleMotorCenterAccount));
+
+                                                                targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleMotorCenterAccount));
+                                                                targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleMotorCenterAccount, targetFile));
                                                             }
                                                             else   //按账号导出
                                                             {
@@ -849,26 +884,38 @@ namespace KS.DataManage.Client
                                                                 targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", itemSingleMotorCenterAccount, kryDTPDate.Value.ToString("yyyyMMdd"), targetFile));
                                                                 targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", itemSingleMotorCenterAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
                                                                 targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", itemSingleMotorCenterAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
+
+                                                                targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", itemSingleMotorCenterAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                                targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", itemSingleMotorCenterAccount, kryDTPDate.Value.ToString("yyyyMMdd"), targetFile));
                                                             }
                                                             if (!Directory.Exists(targetDirectoryName))
                                                             {
                                                                 Directory.CreateDirectory(targetDirectoryName);
                                                             }
+                                                            if (!Directory.Exists(targetDBFDirectoryName))
+                                                            {
+                                                                Directory.CreateDirectory(targetDBFDirectoryName);
+                                                            }
                                                             if (File.Exists(targetFileName))
                                                             {
                                                                 File.Delete(targetFileName);
+                                                            }
+                                                            if (File.Exists(targetDBFFileName))
+                                                            {
+                                                                File.Delete(targetDBFFileName);
                                                             }
                                                             using (FileStream fsTargetFile = new FileStream(targetFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
                                                             {
                                                                 using (StreamWriter swTargetFile = new StreamWriter(fsTargetFile))
                                                                 {
-                                                                    string info = itemfile.Attribute("filetitle").Value.ToString().PadLeft(30) + "\r\n" + "\r\n" + string.Format("结算会员号：{0}", 0102).PadRight(30) + string.Format("结算会员名称：{0}", "abc公司").PadRight(30) + string.Format("结算日期：{0}", kryDTPDate.Value.ToString("yyyyMMdd")).PadRight(30) + "\n";
+                                                                    string info = itemfile.Attribute("filetitle").Value.ToString().PadLeft(30) + "\r\n" + "\r\n" + string.Format("结算会员号：{0}", GlobalData.SGMemberID/*0102*/).PadRight(30) + string.Format("结算会员名称：{0}", GlobalData.CompanyName/*"abc公司"*/).PadRight(30) + string.Format("结算日期：{0}", kryDTPDate.Value.ToString("yyyyMMdd")).PadRight(30) + "\n";
                                                                     swTargetFile.Write(info);
 
                                                                 }
                                                             }
                                                             foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
                                                             {
+                                                                //生成横线行
                                                                 if (string.IsNullOrEmpty(itemfileSrc.Attribute("srcfile").Value))
                                                                 {
                                                                     IsTransverse = true;
@@ -886,7 +933,7 @@ namespace KS.DataManage.Client
                                                                             {
                                                                                 line += itemfilecols.Attribute("FixValue").Value.PadRight(int.Parse(itemfilecols.Attribute("vlength").Value), (padstr));
                                                                             }
-                                                                            
+
                                                                             if (itemfilecols.Attribute("isout").Value == "否")
                                                                             {
                                                                                 line = "";
@@ -909,10 +956,25 @@ namespace KS.DataManage.Client
                                                                             dtResult.Columns.Add(itemfilecols.Attribute("label").Value, typeof(System.String));
                                                                         }
                                                                     }
+                                                                    if (itemfilecols.Attribute("isout").Value == "是" && itemfile.Attribute("arrangeType").Value == "纵向") 
+                                                                    {
+                                                                        if (DBFColumnNamelist.Count == 0)
+                                                                        {
+                                                                            DBFColumnNamelist.Add(itemfilecols.Attribute("code").Value);
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (!DBFColumnNamelist.Contains(itemfilecols.Attribute("code").Value))
+                                                                            {
+                                                                                DBFColumnNamelist.Add(itemfilecols.Attribute("code").Value);
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    
                                                                 }
                                                                 if (itemfileSrc.Attribute("srcfileType").Value.Equals("监控中心"))
                                                                 {
-                                                                    SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\0228{0}{1}.txt", itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                                    SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\{0}{1}{2}.txt",GlobalData.SeatNo, itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
                                                                 }
                                                                 else if (itemfileSrc.Attribute("srcfileType").Value.Equals("交易所"))
                                                                 {
@@ -971,7 +1033,7 @@ namespace KS.DataManage.Client
                                                                     //}
                                                                     if (IsTransverse && !IsOutColumn)
                                                                     {
-                                                                        //横行输出的。线输出列
+                                                                        //横线行输出的。线输出列
                                                                         using (StreamWriter swTargetFile = File.AppendText(targetFileName))
                                                                         {
                                                                             foreach (XElement itemfilecols in itemfileSrc.Nodes())
@@ -1024,87 +1086,176 @@ namespace KS.DataManage.Client
                                                                                     {
                                                                                         Dictionary<int, string> colnumValue = new Dictionary<int, string>();
                                                                                         DataRow dr = dtResult.NewRow();
-                                                                                        foreach (XElement itemfilecols in itemfileSrc.Nodes())
-                                                                                        {
-                                                                                            //dtResult.Columns.Add(itemfilecols.Attribute("label").Value, typeof(System.String));
 
-                                                                                            if (colnumName.Count == 0)
+                                                                                        //为中国金融期货交易所 客户分项资金明细表做的特殊处理，因为他里面的字段索引cid从1 开始
+                                                                                        if (itemfile.Attribute("filetitle").Value.ToString() == "中国金融期货交易所 客户分项资金明细表")
+                                                                                        {
+
+                                                                                            foreach (XElement itemfilecols in itemfileSrc.Nodes())
                                                                                             {
-                                                                                                colnumName.Add(itemfilecols.Attribute("label").Value);
-                                                                                                colnumNameTMP.Add(itemfilecols.Attribute("label").Value);
-                                                                                            }
-                                                                                            else
-                                                                                            {
-                                                                                                if (!colnumNameTMP.Contains(itemfilecols.Attribute("label").Value.Trim()))
+                                                                                                //dtResult.Columns.Add(itemfilecols.Attribute("label").Value, typeof(System.String));
+
+                                                                                                if (colnumName.Count == 0)
                                                                                                 {
                                                                                                     colnumName.Add(itemfilecols.Attribute("label").Value);
                                                                                                     colnumNameTMP.Add(itemfilecols.Attribute("label").Value);
                                                                                                 }
-                                                                                            }
-
-                                                                                            if (!string.IsNullOrEmpty(itemfilecols.Attribute("isout").Value.Trim()))   //是否输出
-                                                                                            {
-                                                                                                if (itemfilecols.Attribute("isout").Value.Trim() == "否")
+                                                                                                else
                                                                                                 {
-                                                                                                    colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())] = "";
+                                                                                                    if (!colnumNameTMP.Contains(itemfilecols.Attribute("label").Value.Trim()))
+                                                                                                    {
+                                                                                                        colnumName.Add(itemfilecols.Attribute("label").Value);
+                                                                                                        colnumNameTMP.Add(itemfilecols.Attribute("label").Value);
+                                                                                                    }
+                                                                                                }
+                                                                                                if (!string.IsNullOrEmpty(itemfilecols.Attribute("isout").Value.Trim()))   //是否输出
+                                                                                                {
+                                                                                                    if (itemfilecols.Attribute("isout").Value.Trim() == "否")
+                                                                                                    {
+                                                                                                        colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1] = "";
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (!string.IsNullOrEmpty(itemfilecols.Attribute("tlength").Value) && (int.Parse(itemfilecols.Attribute("tlength").Value.Trim()) > 0)) //列名位数 +对齐方式
+                                                                                                        {
+                                                                                                            string align = itemfilecols.Attribute("align").Value;
+
+                                                                                                            if (!string.IsNullOrEmpty(align) && align.Equals("左"))
+                                                                                                            {
+                                                                                                                colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1] = colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1].Trim().PadRight(int.Parse(itemfilecols.Attribute("tlength").Value.Trim()), ' ');//以空格填充
+                                                                                                            }
+                                                                                                            if (!string.IsNullOrEmpty(align) && align.Equals("右"))
+                                                                                                            {
+                                                                                                                colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1] = colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1].Trim().PadLeft(int.Parse(itemfilecols.Attribute("tlength").Value.Trim()), ' ');//以空格填充
+                                                                                                            }
+
+                                                                                                        }
+                                                                                                    }
+                                                                                                    //sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1] = Datafilecols;
+                                                                                                }
+
+                                                                                                string Datafilecols = string.Empty;
+                                                                                                if (!string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value.Trim()))
+                                                                                                {
+                                                                                                    Datafilecols = sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1];
+
+                                                                                                    if (colnumValue.ContainsKey(int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1))
+                                                                                                    {
+                                                                                                        Dictionary<int, string>.ValueCollection value = colnumValue.Values;
+
+                                                                                                        //string newValue = (int.Parse(colnumValue[int.Parse(itemfilecols.Attribute("cid").Value.ToString())]) + int.Parse(SGDealData(itemfilecols, Datafilecols, sArray))).ToString();
+
+                                                                                                        string newValue = (int.Parse(value.ElementAt(int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1)) + int.Parse(SGDealData(itemfilecols, Datafilecols, sArray))).ToString();
+                                                                                                        colnumValue[int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1] = newValue.Trim();
+
+                                                                                                        //string newValue = dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())].ToString() + Datafilecols;
+
+                                                                                                        dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1] = newValue.Trim();
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        colnumValue.Add(int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1, SGDealData(itemfilecols, Datafilecols, sArray));
+                                                                                                        //dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = SGDealData(itemfilecols, Datafilecols, sArray);
+                                                                                                        if (!string.IsNullOrEmpty(itemfilecols.Attribute("express").Value.Trim().ToString()) && itemfilecols.Attribute("express").Value.Trim() == "-")
+                                                                                                        {
+                                                                                                            Datafilecols = "-" + Datafilecols.Trim();
+                                                                                                        }
+                                                                                                        dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1] = Datafilecols.Trim();
+                                                                                                    }
+                                                                                                }
+                                                                                                //sArray = SGDealData(itemfilecols, Datafilecols, sArray);
+                                                                                                if (sArray[0] == "数据处理出错")
+                                                                                                {
+                                                                                                    MessageBox.Show(sArray[0], "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                                                                    return;
+                                                                                                }
+
+                                                                                            }
+                                                                                        } 
+                                                                                        else  //普通的中金表
+                                                                                        {
+                                                                                            foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                                            {
+                                                                                                //dtResult.Columns.Add(itemfilecols.Attribute("label").Value, typeof(System.String));
+
+                                                                                                if (colnumName.Count == 0)
+                                                                                                {
+                                                                                                    colnumName.Add(itemfilecols.Attribute("label").Value);
+                                                                                                    colnumNameTMP.Add(itemfilecols.Attribute("label").Value);
                                                                                                 }
                                                                                                 else
                                                                                                 {
-                                                                                                    if (!string.IsNullOrEmpty(itemfilecols.Attribute("tlength").Value) && (int.Parse(itemfilecols.Attribute("tlength").Value.Trim()) > 0)) //列名位数 +对齐方式
+                                                                                                    if (!colnumNameTMP.Contains(itemfilecols.Attribute("label").Value.Trim()))
                                                                                                     {
-                                                                                                        string align = itemfilecols.Attribute("align").Value;
-
-                                                                                                        if (!string.IsNullOrEmpty(align) && align.Equals("左"))
-                                                                                                        {
-                                                                                                            colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())] = colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())].Trim().PadRight(int.Parse(itemfilecols.Attribute("tlength").Value.Trim()), ' ');//以空格填充
-                                                                                                        }
-                                                                                                        if (!string.IsNullOrEmpty(align) && align.Equals("右"))
-                                                                                                        {
-                                                                                                            colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())] = colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())].Trim().PadLeft(int.Parse(itemfilecols.Attribute("tlength").Value.Trim()), ' ');//以空格填充
-                                                                                                        }
-
+                                                                                                        colnumName.Add(itemfilecols.Attribute("label").Value);
+                                                                                                        colnumNameTMP.Add(itemfilecols.Attribute("label").Value);
                                                                                                     }
                                                                                                 }
-                                                                                                //sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1] = Datafilecols;
-                                                                                            }
-
-                                                                                            string Datafilecols = string.Empty;
-                                                                                            if (!string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value.Trim()))
-                                                                                            {
-                                                                                                Datafilecols = sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1];
-
-                                                                                                if (colnumValue.ContainsKey(int.Parse(itemfilecols.Attribute("cid").Value.ToString())))
+                                                                                                if (!string.IsNullOrEmpty(itemfilecols.Attribute("isout").Value.Trim()))   //是否输出
                                                                                                 {
-                                                                                                    Dictionary<int, string>.ValueCollection value = colnumValue.Values;
-
-                                                                                                    //string newValue = (int.Parse(colnumValue[int.Parse(itemfilecols.Attribute("cid").Value.ToString())]) + int.Parse(SGDealData(itemfilecols, Datafilecols, sArray))).ToString();
-
-                                                                                                    string newValue = (int.Parse(value.ElementAt(int.Parse(itemfilecols.Attribute("cid").Value.ToString()))) + int.Parse(SGDealData(itemfilecols, Datafilecols, sArray))).ToString();
-                                                                                                    colnumValue[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = newValue.Trim();
-
-                                                                                                    //string newValue = dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())].ToString() + Datafilecols;
-
-                                                                                                    dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = newValue.Trim();
-                                                                                                }
-                                                                                                else
-                                                                                                {
-                                                                                                    colnumValue.Add(int.Parse(itemfilecols.Attribute("cid").Value.ToString()), SGDealData(itemfilecols, Datafilecols, sArray));
-                                                                                                    //dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = SGDealData(itemfilecols, Datafilecols, sArray);
-                                                                                                    if (!string.IsNullOrEmpty( itemfilecols.Attribute("express").Value.Trim().ToString()) && itemfilecols.Attribute("express").Value.Trim() == "-")
+                                                                                                    if (itemfilecols.Attribute("isout").Value.Trim() == "否")
                                                                                                     {
-                                                                                                        Datafilecols = "-" + Datafilecols.Trim();
+                                                                                                        colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())] = "";
                                                                                                     }
-                                                                                                    dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = Datafilecols.Trim();
-                                                                                                }
-                                                                                            }
-                                                                                            //sArray = SGDealData(itemfilecols, Datafilecols, sArray);
-                                                                                            if (sArray[0] == "数据处理出错")
-                                                                                            {
-                                                                                                MessageBox.Show(sArray[0], "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                                                                                return;
-                                                                                            }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (!string.IsNullOrEmpty(itemfilecols.Attribute("tlength").Value) && (int.Parse(itemfilecols.Attribute("tlength").Value.Trim()) > 0)) //列名位数 +对齐方式
+                                                                                                        {
+                                                                                                            string align = itemfilecols.Attribute("align").Value;
 
+                                                                                                            if (!string.IsNullOrEmpty(align) && align.Equals("左"))
+                                                                                                            {
+                                                                                                                colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())] = colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())].Trim().PadRight(int.Parse(itemfilecols.Attribute("tlength").Value.Trim()), ' ');//以空格填充
+                                                                                                            }
+                                                                                                            if (!string.IsNullOrEmpty(align) && align.Equals("右"))
+                                                                                                            {
+                                                                                                                colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())] = colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())].Trim().PadLeft(int.Parse(itemfilecols.Attribute("tlength").Value.Trim()), ' ');//以空格填充
+                                                                                                            }
+
+                                                                                                        }
+                                                                                                    }
+                                                                                                    //sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1] = Datafilecols;
+                                                                                                }
+
+                                                                                                string Datafilecols = string.Empty;
+                                                                                                if (!string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value.Trim()))
+                                                                                                {
+                                                                                                    Datafilecols = sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1];
+
+                                                                                                    if (colnumValue.ContainsKey(int.Parse(itemfilecols.Attribute("cid").Value.ToString())))
+                                                                                                    {
+                                                                                                        Dictionary<int, string>.ValueCollection value = colnumValue.Values;
+
+                                                                                                        //string newValue = (int.Parse(colnumValue[int.Parse(itemfilecols.Attribute("cid").Value.ToString())]) + int.Parse(SGDealData(itemfilecols, Datafilecols, sArray))).ToString();
+
+                                                                                                        string newValue = (int.Parse(value.ElementAt(int.Parse(itemfilecols.Attribute("cid").Value.ToString()))) + int.Parse(SGDealData(itemfilecols, Datafilecols, sArray))).ToString();
+                                                                                                        colnumValue[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = newValue.Trim();
+
+                                                                                                        //string newValue = dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())].ToString() + Datafilecols;
+
+                                                                                                        dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = newValue.Trim();
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        colnumValue.Add(int.Parse(itemfilecols.Attribute("cid").Value.ToString()), SGDealData(itemfilecols, Datafilecols, sArray));
+                                                                                                        //dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = SGDealData(itemfilecols, Datafilecols, sArray);
+                                                                                                        if (!string.IsNullOrEmpty(itemfilecols.Attribute("express").Value.Trim().ToString()) && itemfilecols.Attribute("express").Value.Trim() == "-")
+                                                                                                        {
+                                                                                                            Datafilecols = "-" + Datafilecols.Trim();
+                                                                                                        }
+                                                                                                        dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = Datafilecols.Trim();
+                                                                                                    }
+                                                                                                }
+                                                                                                //sArray = SGDealData(itemfilecols, Datafilecols, sArray);
+                                                                                                if (sArray[0] == "数据处理出错")
+                                                                                                {
+                                                                                                    MessageBox.Show(sArray[0], "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                                                                    return;
+                                                                                                }
+
+                                                                                            }
                                                                                         }
+
                                                                                         // colnumValueFinal.Add(colnumValue);
                                                                                         dtResult.Rows.Add(dr);
                                                                                     }
@@ -1168,7 +1319,7 @@ namespace KS.DataManage.Client
 
                                                                                                                     //WrinteInValue = dtResult.AsEnumerable().Select(d => Convert.ToDouble(d.Field<string>(dtResult.Columns[int.Parse(itemfilecols.Attribute("cid").Value)].ToString()))).
 
-                                                                                                                    txtLineList[j] = txtLineList[j].Replace(txtLineList[j],txtLineList[j].Substring(0, (itemfilecols.Attribute("label").Value.Length)).PadRight(int.Parse(itemfilecols.Attribute("vlength").Value)) + WrinteInValue);
+                                                                                                                    txtLineList[j] = txtLineList[j].Replace(txtLineList[j], txtLineList[j].Substring(0, (itemfilecols.Attribute("label").Value.Length)).PadRight(int.Parse(itemfilecols.Attribute("vlength").Value)) + WrinteInValue);
                                                                                                                     break;
                                                                                                                 }
                                                                                                             }
@@ -1176,7 +1327,7 @@ namespace KS.DataManage.Client
                                                                                                     }
                                                                                                     fsTargentFileTemp.Seek(0, SeekOrigin.Begin);
                                                                                                     fsTargentFileTemp.SetLength(0);
-                                                                                                   // System.IO.File.WriteAllText(targetFileName, string.Empty);
+                                                                                                    // System.IO.File.WriteAllText(targetFileName, string.Empty);
                                                                                                     //swTargetFileTemp.Write("");
                                                                                                     for (int i = 0; i < txtLineList.Count; i++)
                                                                                                     {
@@ -1195,8 +1346,8 @@ namespace KS.DataManage.Client
                                                                                     catch (Exception ex)
                                                                                     {
                                                                                     }
-                                                                                   
-                                                                                    
+
+
 
                                                                                     //using (StreamWriter swTargetFile = File.AppendText(targetFileName))
                                                                                     //{
@@ -1246,50 +1397,149 @@ namespace KS.DataManage.Client
 
                                                                         }
                                                                     }
-                                                                    
+
                                                                 }
                                                                 else if (itemfileSrc.Attribute("srcfileType").Value.Equals("交易所"))
                                                                 {
-
-                                                                    //List<string> keywordList = new List<string>();
-                                                                    foreach (DataRow itemDrResul in dtResult.Rows)
+                                                                    if (itemfile.Attribute("filetitle").Value == "中国金融期货交易所 客户分项资金明细表")
                                                                     {
-                                                                        Dictionary<int, string> keywordList = new Dictionary<int, string>();
-                                                                        foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                        DataTable dtResultTemp = dtResult.Copy(); //dtResultd的克隆表，作用是将dtResultd表中无法与dr表匹配的行移除掉，但由于foreach无法直接对dtResultd操作，因此声明了这个临时表
+                                                                        //List<string> keywordList = new List<string>();
+                                                                        DataRow drTemp = dtResultTemp.NewRow();
+                                                                        for (int i = dtResult.Rows.Count - 1; i >= 0; i--)
                                                                         {
-                                                                            foreach (XElement itemfilepkg in itemfile.Descendants("filepkg"))
-                                                                            {
-                                                                                if (itemfilecols.Attribute("cid").Value == itemfilepkg.Attribute("pkgColIndex").Value && !string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value))
-                                                                                {
-                                                                                    keywordList.Add(int.Parse(itemfilecols.Attribute("colIndex").Value), itemDrResul[int.Parse(itemfilecols.Attribute("cid").Value)].ToString());
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                        //string keyword1 = itemDrResul[2].ToString();
-                                                                        //string keyword2 = itemDrResul[3].ToString();
-                                                                        foreach (DataRow itemDr in dt.Rows)
-                                                                        {
-
+                                                                            var itemDrResul = dtResult.Rows[i];
+                                                                            bool IsDtDataMatch = false; //dt表是否有匹配dr表的数据标志，若能匹配则为true，否则为false
+                                                                            Dictionary<int, string> keywordList = new Dictionary<int, string>();
                                                                             foreach (XElement itemfilecols in itemfileSrc.Nodes())
                                                                             {
-                                                                                if (!string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value.Trim()))
+                                                                                foreach (XElement itemfilepkg in itemfile.Descendants("filepkg"))
                                                                                 {
-                                                                                    if (itemDr[keywordList.Keys.First() - 1].ToString() == keywordList[keywordList.Keys.First()])
+                                                                                    if ((int.Parse(itemfilecols.Attribute("cid").Value) - 1) == (int.Parse(itemfilepkg.Attribute("pkgColIndex").Value)) && !string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value))
                                                                                     {
-                                                                                        itemDrResul[int.Parse(itemfilecols.Attribute("cid").Value)] = itemDr[int.Parse(itemfilecols.Attribute("colIndex").Value.Trim())].ToString();
+                                                                                        keywordList.Add(int.Parse(itemfilecols.Attribute("colIndex").Value), itemDrResul[int.Parse(itemfilecols.Attribute("cid").Value) - 1].ToString());
                                                                                     }
                                                                                 }
                                                                             }
-                                                                            //if (itemDr[2].ToString() == keyword1 && itemDr[3].ToString() == keyword2)  //colIndex的值
-                                                                            //{
-                                                                            //    itemDrResul[16] = itemDr[16].ToString();
-                                                                            //}
+                                                                            //string keyword1 = itemDrResul[2].ToString();
+                                                                            //string keyword2 = itemDrResul[3].ToString();
+                                                                            foreach (DataRow itemDr in dt.Rows)
+                                                                            {
+                                                                                foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                                {
+                                                                                    if (!string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value.Trim()))
+                                                                                    {
+                                                                                        if (itemDr[keywordList.Keys.First() - 1].ToString() == keywordList[keywordList.Keys.First()])
+                                                                                        {
+                                                                                            IsDtDataMatch = true;
+                                                                                            itemDrResul[int.Parse(itemfilecols.Attribute("cid").Value)] = itemDr[int.Parse(itemfilecols.Attribute("colIndex").Value.Trim())].ToString();
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                                //if (itemDr[2].ToString() == keyword1 && itemDr[3].ToString() == keyword2)  //colIndex的值
+                                                                                //{
+                                                                                //    itemDrResul[16] = itemDr[16].ToString();
+                                                                                //}
+                                                                            }
+                                                                            if (!IsDtDataMatch)
+                                                                            {
+                                                                                dtResult.Rows.RemoveAt(i);
+                                                                            }
                                                                         }
+
+
+                                                                        //foreach (DataRow itemDrResul in dtResult.Rows)
+                                                                        //{
+                                                                        //    //dtResult.Rows.Remove(itemDrResul);
+                                                                        //    bool IsDtDataMatch = false; //dt表是否有匹配dr表的数据标志，若能匹配则为true，否则为false
+                                                                        //    Dictionary<int, string> keywordList = new Dictionary<int, string>();
+                                                                        //    foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                        //    {
+                                                                        //        foreach (XElement itemfilepkg in itemfile.Descendants("filepkg"))
+                                                                        //        {
+                                                                        //            if ( (int.Parse( itemfilecols.Attribute("cid").Value) - 1) == (int.Parse( itemfilepkg.Attribute("pkgColIndex").Value))  && !string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value))
+                                                                        //            {
+                                                                        //                keywordList.Add(int.Parse(itemfilecols.Attribute("colIndex").Value), itemDrResul[int.Parse(itemfilecols.Attribute("cid").Value) - 1].ToString());
+                                                                        //            }
+                                                                        //        }
+                                                                        //    }
+                                                                        //    //string keyword1 = itemDrResul[2].ToString();
+                                                                        //    //string keyword2 = itemDrResul[3].ToString();
+                                                                        //    foreach (DataRow itemDr in dt.Rows)
+                                                                        //    {
+                                                                        //        foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                        //        {
+                                                                        //            if (!string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value.Trim()))
+                                                                        //            {
+                                                                        //                if (itemDr[keywordList.Keys.First() - 1].ToString() == keywordList[keywordList.Keys.First()])
+                                                                        //                {
+                                                                        //                    IsDtDataMatch = true;
+                                                                        //                    itemDrResul[int.Parse(itemfilecols.Attribute("cid").Value)] = itemDr[int.Parse(itemfilecols.Attribute("colIndex").Value.Trim())].ToString();
+
+                                                                        //                }
+                                                                        //            }
+                                                                        //        }
+                                                                        //        //if (itemDr[2].ToString() == keyword1 && itemDr[3].ToString() == keyword2)  //colIndex的值
+                                                                        //        //{
+                                                                        //        //    itemDrResul[16] = itemDr[16].ToString();
+                                                                        //        //}
+                                                                        //    }
+                                                                        //    if (!IsDtDataMatch)
+                                                                        //    {
+                                                                        //        dtResult.Rows.Remove(itemDrResul);
+                                                                        //    }
+                                                                            
+                                                                        //}
+                                                                        //dtResult = dtResultTemp;
+                                                                        //foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                        //{
+                                                                        //    if (itemfilecols.Attribute("colIndex").Value.Trim())
+                                                                        //}
                                                                     }
-                                                                    //foreach (XElement itemfilecols in itemfileSrc.Nodes())
-                                                                    //{
-                                                                    //    if (itemfilecols.Attribute("colIndex").Value.Trim())
-                                                                    //}
+                                                                    else
+                                                                    {
+                                                                        //List<string> keywordList = new List<string>();
+                                                                        foreach (DataRow itemDrResul in dtResult.Rows)
+                                                                        {
+                                                                            Dictionary<int, string> keywordList = new Dictionary<int, string>();
+                                                                            foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                            {
+                                                                                foreach (XElement itemfilepkg in itemfile.Descendants("filepkg"))
+                                                                                {
+                                                                                    if (itemfilecols.Attribute("cid").Value == itemfilepkg.Attribute("pkgColIndex").Value && !string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value))
+                                                                                    {
+                                                                                        keywordList.Add(int.Parse(itemfilecols.Attribute("colIndex").Value), itemDrResul[int.Parse(itemfilecols.Attribute("cid").Value)].ToString());
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            //string keyword1 = itemDrResul[2].ToString();
+                                                                            //string keyword2 = itemDrResul[3].ToString();
+                                                                            foreach (DataRow itemDr in dt.Rows)
+                                                                            {
+
+                                                                                foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                                {
+                                                                                    if (!string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value.Trim()))
+                                                                                    {
+                                                                                        if (itemDr[keywordList.Keys.First() - 1].ToString() == keywordList[keywordList.Keys.First()])
+                                                                                        {
+                                                                                            itemDrResul[int.Parse(itemfilecols.Attribute("cid").Value)] = itemDr[int.Parse(itemfilecols.Attribute("colIndex").Value.Trim()) - 1].ToString();
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                                //if (itemDr[2].ToString() == keyword1 && itemDr[3].ToString() == keyword2)  //colIndex的值
+                                                                                //{
+                                                                                //    itemDrResul[16] = itemDr[16].ToString();
+                                                                                //}
+                                                                            }
+                                                                        }
+                                                                        //foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                        //{
+                                                                        //    if (itemfilecols.Attribute("colIndex").Value.Trim())
+                                                                        //}
+                                                                    }
+
                                                                 }
                                                             }
                                                             if (File.Exists(targetFileName))
@@ -1357,51 +1607,181 @@ namespace KS.DataManage.Client
                                                                     }
                                                                     else
                                                                     {
-                                                                        // string LineValueIonfo = string.Join(string.Empty, colnumValueFinal.ToArray());
-                                                                        string LineColNameIonfo = string.Join(string.Empty, colnumName.ToArray());
-                                                                        swTargetFile.WriteLine("\n" + LineColNameIonfo);
-                                                                        // swTargetFile.WriteLine(LineValueIonfo);
-                                                                        //string columns = "", content = "", columnName = "";
-                                                                        try
+                                                                        if (itemfile.Attribute("filetitle").Value == "中国金融期货交易所 客户分项资金明细表")
                                                                         {
-                                                                            for (int i = 0; i < dtResult.Rows.Count; i++)
+                                                                            string LineColNameIonfo = string.Join(string.Empty, colnumName.ToArray());
+                                                                            swTargetFile.WriteLine("\n" + LineColNameIonfo);
+                                                                            try
                                                                             {
-                                                                                DataRow dr = dtResult.Rows[i];
-                                                                                List<string> RowValueList = new List<string>();
-                                                                                foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                                                                                for (int i = 0; i < dtResult.Rows.Count; i++)
                                                                                 {
-                                                                                    foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                                    DataRow dr = dtResult.Rows[i];
+                                                                                    List<string> RowValueList = new List<string>();
+                                                                                    foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
                                                                                     {
-                                                                                        RowValueList.Add(SGDealDataRowValue(itemfilecols, dr[int.Parse(itemfilecols.Attribute("cid").Value)].ToString(), dr));
+                                                                                        foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                                        {
+                                                                                            RowValueList.Add(SGDealDataRowValueClientCapitalDetail(itemfilecols, dr[int.Parse(itemfilecols.Attribute("cid").Value) -1].ToString(), dr));
+                                                                                        }
+                                                                                        break;
                                                                                     }
-                                                                                    break;
+                                                                                    string line = string.Join(string.Empty, RowValueList.ToArray());
+
+                                                                                    swTargetFile.WriteLine(line);
                                                                                 }
-                                                                                string line = string.Join(string.Empty, RowValueList.ToArray());
+                                                                              
 
-                                                                                swTargetFile.WriteLine(line);
                                                                             }
-                                                                            //for (int i = 0; i < dtResult.Columns.Count; i++)
-                                                                            //{
-                                                                            //    //columns = dtResult.Columns[i].ColumnName.ToString();
-                                                                            //    foreach (var item in collection)
-                                                                            //    {
-
-                                                                            //    }
-                                                                            //    for (int j = 0; j < dtResult.Columns.Count; j++)
-                                                                            //    {
-                                                                            //        content += dtResult.Rows[i][j].ToString().Trim();
-                                                                            //    }
-                                                                            //    swTargetFile.WriteLine(content);
-                                                                            //}
+                                                                            catch (Exception ex)
+                                                                            {
+                                                                                MessageBox.Show(itemfile.Attribute("filetitle") + ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                                                return;
+                                                                            }
                                                                         }
-                                                                        catch (Exception ex)
+                                                                        else
                                                                         {
+                                                                            // string LineValueIonfo = string.Join(string.Empty, colnumValueFinal.ToArray());
+                                                                            string LineColNameIonfo = string.Join(string.Empty, colnumName.ToArray());
+                                                                            swTargetFile.WriteLine("\n" + LineColNameIonfo);
+                                                                            // swTargetFile.WriteLine(LineValueIonfo);
+                                                                            //string columns = "", content = "", columnName = "";
+                                                                            try
+                                                                            {
+                                                                                for (int i = 0; i < dtResult.Rows.Count; i++)
+                                                                                {
+                                                                                    DataRow dr = dtResult.Rows[i];
+                                                                                    List<string> RowValueList = new List<string>();
+                                                                                    foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                                                                                    {
+                                                                                        foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                                        {
+                                                                                            RowValueList.Add(SGDealDataRowValue(itemfilecols, dr[int.Parse(itemfilecols.Attribute("cid").Value)].ToString(), dr));
+                                                                                        }
+                                                                                        break;
+                                                                                    }
+                                                                                    string line = string.Join(string.Empty, RowValueList.ToArray());
+
+                                                                                    swTargetFile.WriteLine(line);
+                                                                                }
+                                                                                //for (int i = 0; i < dtResult.Columns.Count; i++)
+                                                                                //{
+                                                                                //    //columns = dtResult.Columns[i].ColumnName.ToString();
+                                                                                //    foreach (var item in collection)
+                                                                                //    {
+
+                                                                                //    }
+                                                                                //    for (int j = 0; j < dtResult.Columns.Count; j++)
+                                                                                //    {
+                                                                                //        content += dtResult.Rows[i][j].ToString().Trim();
+                                                                                //    }
+                                                                                //    swTargetFile.WriteLine(content);
+                                                                                //}
+
+
+
+                                                                            }
+                                                                            catch (Exception ex)
+                                                                            {
+                                                                                MessageBox.Show(itemfile.Attribute("filetitle") + ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                                                return;
+                                                                            }
                                                                         }
+                                                                       
                                                                     }
 
                                                                 }
 
                                                                 //TFileReader.SaveDataTableToTXT(dispatchFile, dtResult, targetFileName, true);
+
+                                                                //生成dbf文档  ，纵向输出，
+                                                                if (itemfile.Attribute("arrangeType").Value == "纵向")
+                                                                {
+                                                                    string testPath = AppDomain.CurrentDomain.BaseDirectory;
+                                                                    var odbf = new DbfFile(Encoding.GetEncoding(936));
+                                                                    // odbf.Open(Path.Combine(targetDirectoryName, "test.dbf"), FileMode.Create); 
+                                                                    odbf.Open(targetDBFFileName, FileMode.Create);
+
+                                                                    //创建列头
+                                                                    foreach (string item in DBFColumnNamelist)
+                                                                    {
+                                                                        odbf.Header.AddColumn(new DbfColumn(item, DbfColumn.DbfColumnType.Character, 20, 0));
+                                                                    }
+                                                                  
+                                                                    List<string> txtFileCount = File.ReadAllLines(targetFileName).ToList();
+
+                                                                    if (txtFileCount.Count > 5)
+                                                                    {
+                                                                        for (int i = 5; i < txtFileCount.Count; i++)
+                                                                        {
+
+                                                                            string line = txtFileCount[i].Trim();
+                                                                            if (!string.IsNullOrEmpty(line))
+                                                                            {
+                                                                                string lineTemp = new Regex("[\\s]+").Replace(line, "@");
+                                                                                string[] sArray = lineTemp.Split('@');
+                                                                                var orec = new DbfRecord(odbf.Header) { AllowDecimalTruncate = true };
+                                                                                for (int j = 0; j < sArray.Length; j++)
+                                                                                {
+                                                                                    orec[j] = sArray[j];
+
+                                                                                }
+                                                                                odbf.Write(orec, true);
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                   
+                                                                    odbf.Close();
+                                                                }
+                                                                else  //横向输出的 现在只有【会员资金情况表】
+                                                                {
+                                                                    string testPath = AppDomain.CurrentDomain.BaseDirectory;
+                                                                    var odbf = new DbfFile(Encoding.GetEncoding(936));
+                                                                    // odbf.Open(Path.Combine(targetDirectoryName, "test.dbf"), FileMode.Create); 
+                                                                    odbf.Open(targetDBFFileName, FileMode.Create);
+
+                                                                    //创建列头
+                                                                    //foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                                                                    //{
+                                                                    //    if (string.IsNullOrEmpty( itemfileSrc.Attribute("srcfile").Value))
+                                                                    //    {
+
+                                                                    //    }
+                                                                    //}
+                                                                    odbf.Header.AddColumn(new DbfColumn("accountID", DbfColumn.DbfColumnType.Character, 20, 0));
+                                                                    odbf.Header.AddColumn(new DbfColumn("itemDesc", DbfColumn.DbfColumnType.Character, 20, 0));
+                                                                    odbf.Header.AddColumn(new DbfColumn("itemValue", DbfColumn.DbfColumnType.Character, 20, 0));
+
+                                                                    //foreach (string item in DBFColumnNamelist)
+                                                                    //{
+                                                                    //    odbf.Header.AddColumn(new DbfColumn(item, DbfColumn.DbfColumnType.Character, 20, 0));
+                                                                    //}
+
+                                                                    List<string> txtFileCount = File.ReadAllLines(targetFileName).ToList();
+
+                                                                    if (txtFileCount.Count > 6)
+                                                                    {
+                                                                        for (int i = 6; i < txtFileCount.Count; i++)
+                                                                        {
+                                                                            string line = txtFileCount[i].Trim();
+                                                                            if (!string.IsNullOrEmpty(line) && Regex.IsMatch(line, @"\d+$"))
+                                                                            {
+                                                                                string lineTemp = new Regex("[\\s]+").Replace(line, "@");
+                                                                                string[] sArray = lineTemp.Split('@');
+                                                                                var orec = new DbfRecord(odbf.Header) { AllowDecimalTruncate = true };
+                                                                                //string dsg = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
+                                                                                orec[0] = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
+                                                                                for (int j = 0; j < sArray.Length; j++)
+                                                                                {
+                                                                                    orec[j+1] = sArray[j];
+
+                                                                                }
+                                                                                odbf.Write(orec, true);
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    odbf.Close();
+                                                                }
+                                                                
                                                             }
                                                         }
                                                     }
@@ -1432,7 +1812,7 @@ namespace KS.DataManage.Client
                                                     {
                                                         foreach (XElement itemfileSrc in itemfile.Nodes())
                                                         {
-                                                            SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\0228{0}{1}.txt", itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                            SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\{0}{1}{2}.txt", GlobalData.SeatNo,itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
 
 
                                                             if (itemAccountId.Attribute("outType").Value.Equals("1"))  //按日期导出
@@ -1907,7 +2287,7 @@ namespace KS.DataManage.Client
                                                 {
                                                     foreach (XElement itemfileSrc in itemfile.Nodes())
                                                     {
-                                                        SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\0228{0}{1}.txt", itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                        SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\{0}{1}{2}.txt", GlobalData.SeatNo,itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
 
 
                                                         if (itemAccountId.Attribute("outType").Value.Equals("1"))  //按日期导出
@@ -2520,6 +2900,12 @@ namespace KS.DataManage.Client
                 {
                     sArray[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = "0";
                 }
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("FixValue").Value.Trim()))   //固定值
+                {
+                    Datafilecols = itemfilecols.Attribute("FixValue").Value.Trim();
+
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value)] = Datafilecols;
+                }
                 if (!string.IsNullOrEmpty(itemfilecols.Attribute("precision").Value.Trim()) && (int.Parse(itemfilecols.Attribute("precision").Value.Trim()) > 0))   //列值精度处理
                 {
                     string _format = "#0.";
@@ -2568,12 +2954,7 @@ namespace KS.DataManage.Client
                     sArray[int.Parse(itemfilecols.Attribute("cid").Value)] = Datafilecols;
                 }
 
-                if (!string.IsNullOrEmpty(itemfilecols.Attribute("FixValue").Value.Trim()))   //固定值
-                {
-                    Datafilecols = itemfilecols.Attribute("FixValue").Value.Trim();
-
-                    sArray[int.Parse(itemfilecols.Attribute("cid").Value)] = Datafilecols;
-                }
+                
                 if (!string.IsNullOrEmpty(itemfilecols.Attribute("isout").Value.Trim()))   //是否输出
                 {
                     if (itemfilecols.Attribute("isout").Value.Trim() == "否")
@@ -2595,6 +2976,89 @@ namespace KS.DataManage.Client
             //return sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1];
         }
 
+        //处理每行数据 单独对中国金融期货交易所 客户分项资金明细表处理，因为他的字段索引从1开始
+        private string SGDealDataRowValueClientCapitalDetail(XElement itemfilecols, string Datafilecols, DataRow sArray)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(sArray[int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1].ToString().Trim()))
+                {
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1] = "0";
+                }
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("precision").Value.Trim()) && (int.Parse(itemfilecols.Attribute("precision").Value.Trim()) > 0))   //列值精度处理
+                {
+                    string _format = "#0.";
+                    for (int i = 0; i < int.Parse(itemfilecols.Attribute("precision").Value.Trim()); i++)
+                    {
+                        _format = _format + "0";
+                    }
+
+                    Datafilecols = decimal.Parse(sArray[int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1].ToString()).ToString(_format);
+
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+
+                }
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("vlength").Value) && (int.Parse(itemfilecols.Attribute("vlength").Value.Trim()) > 0)) //列值位数 +对齐方式
+                {
+                    string align = itemfilecols.Attribute("align").Value;
+
+                    if (!string.IsNullOrEmpty(align) && align.Equals("左"))
+                    {
+                        sArray[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1] = sArray[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1].ToString().Trim().PadRight(int.Parse(itemfilecols.Attribute("vlength").Value.Trim()), ' ');//以空格填充
+                    }
+                    if (!string.IsNullOrEmpty(align) && align.Equals("右"))
+                    {
+                        sArray[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1] = sArray[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1].ToString().Trim().PadLeft(int.Parse(itemfilecols.Attribute("vlength").Value.Trim()), ' ');//以空格填充
+                    }
+                    Datafilecols = sArray[int.Parse(itemfilecols.Attribute("cid").Value.ToString().Trim()) - 1].ToString();
+                }
+
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("isAbs").Value.Trim())) //绝对值
+                {
+                    if (itemfilecols.Attribute("isAbs").Value.Trim() == "是")
+                    {
+                        Datafilecols = System.Math.Abs(decimal.Parse(Datafilecols)).ToString();
+                    }
+
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+                }
+
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("express").Value.Trim())) //计算符号
+                {
+                    if (itemfilecols.Attribute("express").Value.Trim() == "-")
+                    {
+                        Datafilecols = "-" + Datafilecols;
+                    }
+
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+                }
+
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("FixValue").Value.Trim()))   //固定值
+                {
+                    Datafilecols = itemfilecols.Attribute("FixValue").Value.Trim();
+
+                    sArray[int.Parse(itemfilecols.Attribute("cid").Value) - 1] = Datafilecols;
+                }
+                if (!string.IsNullOrEmpty(itemfilecols.Attribute("isout").Value.Trim()))   //是否输出
+                {
+                    if (itemfilecols.Attribute("isout").Value.Trim() == "否")
+                    {
+                        Datafilecols = "";
+                    }
+
+                    //sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1] = Datafilecols;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string errorInfo = "数据处理出错";
+                MessageBox.Show(ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return errorInfo;
+            }
+            return Datafilecols;
+            //return sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1];
+        }
         private string[] MonitorCenterDealData(XElement itemfilecols, string Datafilecols, string[] sArray)
         {
             try
@@ -3003,4 +3467,22 @@ namespace KS.DataManage.Client
         //}
     }
 
+    public class User
+    {
+        public string UserCode { get; set; }
+        public string UserName { get; set; }
+        public string Address { get; set; }
+        public DateTime date { get; set; }
+        public decimal money { get; set; }
+
+        public static List<User> GetList()
+        {
+            List<User> list = new List<User>();
+            list.Add(new User() { UserCode = "A1", UserName = "张三", Address = "上海杨浦", date = DateTime.Now, money = 1000.12m });
+            list.Add(new User() { UserCode = "A2", UserName = "李四", Address = "湖北武汉", date = DateTime.Now, money = 31000.008m });
+            list.Add(new User() { UserCode = "A3", UserName = "王子龙", Address = "陕西西安", date = DateTime.Now, money = 2000.12m });
+            list.Add(new User() { UserCode = "A4", UserName = "李三", Address = "北京", date = DateTime.Now, money = 3000.12m });
+            return list;
+        }
+    }
 }

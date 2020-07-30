@@ -64,7 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbfColumn.cs" />
+    <Compile Include="DbfDataTruncateException.cs" />
+    <Compile Include="DbfFile.cs" />
+    <Compile Include="DbfHeader.cs" />
     <Compile Include="DBFReader.cs" />
+    <Compile Include="DbfRecord.cs" />
     <Compile Include="DispatchFileConfig.cs" />
     <Compile Include="FileListDataTable.cs" />
     <Compile Include="FileReader.cs" />

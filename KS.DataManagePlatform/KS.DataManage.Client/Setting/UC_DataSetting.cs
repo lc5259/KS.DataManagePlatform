@@ -63,7 +63,7 @@ namespace KS.DataManage.Client
         /// <param name="e"></param>
         private void btnAddTradeID_Click(object sender, EventArgs e)
         {
-            FrmTradeAccountSet ftas = new FrmTradeAccountSet(true, kCombTradeID.Text);
+            FrmTradeAccountSet ftas = new FrmTradeAccountSet(false, kCombTradeID.Text);
             ftas.ShowDialog();
             if (ftas.IsSave)
             {
@@ -195,11 +195,25 @@ namespace KS.DataManage.Client
         #region  文件列表增删改
         private void btnAddTargetFile_Click(object sender, EventArgs e)
         {
-            int drIndex = kDGVFileList.CurrentRow.Index;
-            DataTable dt = kDGVFileList.DataSource as DataTable;
-            FrmTargetFileSet frmTargetFileSet = new FrmTargetFileSet(drIndex, dt, "文件列表增加");
-            frmTargetFileSet.ShowDialog();
-            this.kDGVFileList.DataSource = ReturnDt;
+            if (kDGVFileList.CurrentRow != null)
+            {
+                int drIndex = kDGVFileList.CurrentRow.Index;
+                DataTable dt = kDGVFileList.DataSource as DataTable;
+                FrmTargetFileSet frmTargetFileSet = new FrmTargetFileSet(drIndex, dt, "文件列表增加");
+                frmTargetFileSet.ShowDialog();
+                if (ReturnDt == null)
+                {
+                    ReturnDt = dt;
+                }
+                this.kDGVFileList.DataSource = ReturnDt;
+            }
+            else
+            {
+                FrmTargetFileSet frmTargetFileSet = new FrmTargetFileSet();
+                frmTargetFileSet.ShowDialog();
+
+                this.kDGVFileList.DataSource = ReturnDt;
+            }
 
             foreach (XElement item in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
             {
@@ -221,10 +235,19 @@ namespace KS.DataManage.Client
 
         private void btnUpdateTargetFile_Click(object sender, EventArgs e)
         {
+            if (kDGVFileList.CurrentRow == null)
+            {
+                MessageBox.Show("请先选中一行数据", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             int drIndex = kDGVFileList.CurrentRow.Index;
             DataTable dt = kDGVFileList.DataSource as DataTable;
             FrmTargetFileSet frmTargetFileSet = new FrmTargetFileSet(drIndex, dt, "文件列表修改");
             frmTargetFileSet.ShowDialog();
+            if (ReturnDt == null)
+            {
+                ReturnDt = dt;
+            }
             this.kDGVFileList.DataSource = ReturnDt;
 
             //foreach (XElement itemFile in GlobalData.TemplateConfigInfo.Descendants("OrganCode"))
