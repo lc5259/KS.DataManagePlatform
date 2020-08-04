@@ -30,7 +30,7 @@ namespace KS.DataManage.Client
             UC_DataSetting.ReturnDt = null;
             if (title == "文件字段列表修改")
             {
-                kryCBBFileFieldNo.Enabled = false;
+               // kryCBBFileFieldNo.Enabled = false;  //为了调试暂时注释掉
             }
            
 

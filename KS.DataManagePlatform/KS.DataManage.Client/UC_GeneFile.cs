@@ -22,17 +22,41 @@ namespace KS.DataManage.Client
     public partial class UC_GeneFile : UserControl
     {
         string _fileGroup = "";
+        bool IsSuccess = true;
+
         public UC_GeneFile()
         {
             InitializeComponent();
+            //if (AppDatas.ListData != null && AppDatas.ListData.Count > 0)
+            //{
+            //    foreach (string item in AppDatas.ListData)
+            //    {
+            //        if (!item.Contains("模版"))
+            //        {
+            //            kryCbBSingleFundAcconutNo.Items.Add(item);
+            //        }
+            //    }
+            //}
+            //kryCbBSingleFundAcconutNo.DataSource = AppDatas.ListData;
             //SetFont();//测试阶段暂时关闭
-            
+
         }
 
 
         public UC_GeneFile(string group)
         {
             InitializeComponent();
+            //if (AppDatas.ListData != null && AppDatas.ListData.Count > 0)
+            //{
+            //    foreach (string item in AppDatas.ListData)
+            //    {
+            //        if (!item.StartsWith("模版"))
+            //        {
+            //            kryCbBSingleFundAcconutNo.Items.Add(item);
+            //        }
+            //    }
+            //}
+            //kryCbBSingleFundAcconutNo.DataSource = AppDatas.ListData;
             //SetFont();//测试阶段暂时关闭
 
             //this.SuspendLayout();
@@ -44,6 +68,43 @@ namespace KS.DataManage.Client
         {
             _fileGroup = grp;
             this.SuspendLayout();
+
+            //获取资金账号
+            if (true)
+            {
+                string _ConfigFileName = GlobalData.GetDataConfigPath(grp);
+                if (!File.Exists(_ConfigFileName))
+                {
+                    KryptonMessageBox.Show(string.Format("配置文件 {0} 不存在！", _ConfigFileName), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.Error(string.Format("配置文件 {0} 不存在！", _ConfigFileName));
+                    return;
+                }
+                XDocument _configDocument = XDocument.Load(_ConfigFileName);
+                XElement configRoot = _configDocument.Root;
+                List<string> a = new List<string>();
+                //kCombTradeID.Items.Clear();
+                foreach (var xNode in configRoot.Nodes())
+                {
+                    if (xNode is XElement)
+                    {
+                        // a.Add(((XElement)xNode).Attribute("value").Value);
+                        if (!((XElement)xNode).Attribute("value").Value.StartsWith("模版"))
+                        {
+                            kryCbBSingleFundAcconutNo.Items.Add(((XElement)xNode).Attribute("value").Value);
+                        }
+                    }
+                }
+                //foreach (string item in a)
+                //{
+                //    if (!item.StartsWith("模板"))
+                //    {
+                //        kryCbBSingleFundAcconutNo.Items.Add(item);
+                //    }
+                //}
+                // kryCbBSingleFundAcconutNo.DataSource = a;
+            }
+
+
             string ConfigFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, string.Format("Config\\{0}_UserConfig.xml", grp));
             if (!File.Exists(ConfigFileName))
             {
@@ -270,18 +331,18 @@ namespace KS.DataManage.Client
         }
         private void kryBtSingleAccountCffex_Click(object sender, EventArgs e)
         {
-            if (!kryCLBSingleCffexAccount.Items.Contains(kryTBSingleFundAcconutNo.Text.ToString()))
+            if (!kryCLBSingleCffexAccount.Items.Contains(kryCbBSingleFundAcconutNo.Text.ToString()))
             {
-                kryCLBSingleCffexAccount.Items.Add(kryTBSingleFundAcconutNo.Text.ToString());
+                kryCLBSingleCffexAccount.Items.Add(kryCbBSingleFundAcconutNo.Text.ToString());
                 kryLbSingleCffexAccountCount.Text = "(" + kryCLBSingleCffexAccount.CheckedItems.Count + "/" + kryCLBSingleCffexAccount.Items.Count.ToString() + ")";
             }
         }
 
         private void krypBtSingleAccountMotorCenter_Click(object sender, EventArgs e)
         {
-            if (!kryCLBSingleMotorCenterAccount.Items.Contains(kryTBSingleFundAcconutNo.Text.ToString()))
+            if (!kryCLBSingleMotorCenterAccount.Items.Contains(kryCbBSingleFundAcconutNo.Text.ToString()))
             {
-                kryCLBSingleMotorCenterAccount.Items.Add(kryTBSingleFundAcconutNo.Text.ToString());
+                kryCLBSingleMotorCenterAccount.Items.Add(kryCbBSingleFundAcconutNo.Text.ToString());
                 kryLbSingleMotorCenterAccountCount.Text = "(" + kryCLBSingleMotorCenterAccount.CheckedItems.Count + "/" + kryCLBSingleMotorCenterAccount.Items.Count.ToString() + ")";
             }
 
@@ -808,7 +869,7 @@ namespace KS.DataManage.Client
                 string targetDBFFileName = string.Empty;
                 string targetDBFDirectoryName = string.Empty;
                 string targetFileName = string.Empty;
-                string targetDirectoryName = string.Empty; 
+                string targetDirectoryName = string.Empty;
                 string targetDirectoryName1 = string.Empty;
                 string SourceFileName = string.Empty;
 
@@ -822,7 +883,8 @@ namespace KS.DataManage.Client
                     krypLbFlag.Text = "读入原文件开始...";
                     //临时测试用
 
-                    #region 业务逻辑处理
+
+                    #region 业务逻辑处理 单账号生成
                     Task task = new Task(() =>
                     {
                         if (this.InvokeRequired)
@@ -844,6 +906,10 @@ namespace KS.DataManage.Client
                                             {
                                                 foreach (XElement itemOrganCode in itemAccountId.Descendants("OrganCode"))
                                                 {
+                                                    if (itemOrganCode.Attribute("cffexFile").Equals("0")) //不生成中金所文件
+                                                    {
+                                                        return;
+                                                    }
                                                     if (itemOrganCode.Attribute("name").Value == "中金所")
                                                     {
                                                         foreach (XElement itemfile in itemOrganCode.Nodes())
@@ -904,6 +970,11 @@ namespace KS.DataManage.Client
                                                             {
                                                                 File.Delete(targetDBFFileName);
                                                             }
+
+                                                            if (itemfile.Attribute("IsOutPut").Value == "否")
+                                                            {
+                                                                continue;
+                                                            }
                                                             using (FileStream fsTargetFile = new FileStream(targetFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
                                                             {
                                                                 using (StreamWriter swTargetFile = new StreamWriter(fsTargetFile))
@@ -956,7 +1027,7 @@ namespace KS.DataManage.Client
                                                                             dtResult.Columns.Add(itemfilecols.Attribute("label").Value, typeof(System.String));
                                                                         }
                                                                     }
-                                                                    if (itemfilecols.Attribute("isout").Value == "是" && itemfile.Attribute("arrangeType").Value == "纵向") 
+                                                                    if (itemfilecols.Attribute("isout").Value == "是" && itemfile.Attribute("arrangeType").Value == "纵向")
                                                                     {
                                                                         if (DBFColumnNamelist.Count == 0)
                                                                         {
@@ -970,11 +1041,11 @@ namespace KS.DataManage.Client
                                                                             }
                                                                         }
                                                                     }
-                                                                    
+
                                                                 }
                                                                 if (itemfileSrc.Attribute("srcfileType").Value.Equals("监控中心"))
                                                                 {
-                                                                    SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\{0}{1}{2}.txt",GlobalData.SeatNo, itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                                    SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\{0}{1}{2}.txt", GlobalData.SeatNo, itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
                                                                 }
                                                                 else if (itemfileSrc.Attribute("srcfileType").Value.Equals("交易所"))
                                                                 {
@@ -990,6 +1061,7 @@ namespace KS.DataManage.Client
                                                                     }
                                                                     catch (Exception ex)
                                                                     {
+                                                                        IsSuccess = false;
                                                                         MessageBox.Show(this, ex.Message, "加载DBF失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                         return;
                                                                     }
@@ -1087,93 +1159,10 @@ namespace KS.DataManage.Client
                                                                                         Dictionary<int, string> colnumValue = new Dictionary<int, string>();
                                                                                         DataRow dr = dtResult.NewRow();
 
-                                                                                        //为中国金融期货交易所 客户分项资金明细表做的特殊处理，因为他里面的字段索引cid从1 开始
+                                                                                        //为中国金融期货交易所 客户分项资金明细表做的特殊处理，因为他里面的字段索引cid从1 开始 ，已改成从0开始
                                                                                         if (itemfile.Attribute("filetitle").Value.ToString() == "中国金融期货交易所 客户分项资金明细表")
                                                                                         {
 
-                                                                                            foreach (XElement itemfilecols in itemfileSrc.Nodes())
-                                                                                            {
-                                                                                                //dtResult.Columns.Add(itemfilecols.Attribute("label").Value, typeof(System.String));
-
-                                                                                                if (colnumName.Count == 0)
-                                                                                                {
-                                                                                                    colnumName.Add(itemfilecols.Attribute("label").Value);
-                                                                                                    colnumNameTMP.Add(itemfilecols.Attribute("label").Value);
-                                                                                                }
-                                                                                                else
-                                                                                                {
-                                                                                                    if (!colnumNameTMP.Contains(itemfilecols.Attribute("label").Value.Trim()))
-                                                                                                    {
-                                                                                                        colnumName.Add(itemfilecols.Attribute("label").Value);
-                                                                                                        colnumNameTMP.Add(itemfilecols.Attribute("label").Value);
-                                                                                                    }
-                                                                                                }
-                                                                                                if (!string.IsNullOrEmpty(itemfilecols.Attribute("isout").Value.Trim()))   //是否输出
-                                                                                                {
-                                                                                                    if (itemfilecols.Attribute("isout").Value.Trim() == "否")
-                                                                                                    {
-                                                                                                        colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1] = "";
-                                                                                                    }
-                                                                                                    else
-                                                                                                    {
-                                                                                                        if (!string.IsNullOrEmpty(itemfilecols.Attribute("tlength").Value) && (int.Parse(itemfilecols.Attribute("tlength").Value.Trim()) > 0)) //列名位数 +对齐方式
-                                                                                                        {
-                                                                                                            string align = itemfilecols.Attribute("align").Value;
-
-                                                                                                            if (!string.IsNullOrEmpty(align) && align.Equals("左"))
-                                                                                                            {
-                                                                                                                colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1] = colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1].Trim().PadRight(int.Parse(itemfilecols.Attribute("tlength").Value.Trim()), ' ');//以空格填充
-                                                                                                            }
-                                                                                                            if (!string.IsNullOrEmpty(align) && align.Equals("右"))
-                                                                                                            {
-                                                                                                                colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1] = colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim()) - 1].Trim().PadLeft(int.Parse(itemfilecols.Attribute("tlength").Value.Trim()), ' ');//以空格填充
-                                                                                                            }
-
-                                                                                                        }
-                                                                                                    }
-                                                                                                    //sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1] = Datafilecols;
-                                                                                                }
-
-                                                                                                string Datafilecols = string.Empty;
-                                                                                                if (!string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value.Trim()))
-                                                                                                {
-                                                                                                    Datafilecols = sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1];
-
-                                                                                                    if (colnumValue.ContainsKey(int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1))
-                                                                                                    {
-                                                                                                        Dictionary<int, string>.ValueCollection value = colnumValue.Values;
-
-                                                                                                        //string newValue = (int.Parse(colnumValue[int.Parse(itemfilecols.Attribute("cid").Value.ToString())]) + int.Parse(SGDealData(itemfilecols, Datafilecols, sArray))).ToString();
-
-                                                                                                        string newValue = (int.Parse(value.ElementAt(int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1)) + int.Parse(SGDealData(itemfilecols, Datafilecols, sArray))).ToString();
-                                                                                                        colnumValue[int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1] = newValue.Trim();
-
-                                                                                                        //string newValue = dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())].ToString() + Datafilecols;
-
-                                                                                                        dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1] = newValue.Trim();
-                                                                                                    }
-                                                                                                    else
-                                                                                                    {
-                                                                                                        colnumValue.Add(int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1, SGDealData(itemfilecols, Datafilecols, sArray));
-                                                                                                        //dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = SGDealData(itemfilecols, Datafilecols, sArray);
-                                                                                                        if (!string.IsNullOrEmpty(itemfilecols.Attribute("express").Value.Trim().ToString()) && itemfilecols.Attribute("express").Value.Trim() == "-")
-                                                                                                        {
-                                                                                                            Datafilecols = "-" + Datafilecols.Trim();
-                                                                                                        }
-                                                                                                        dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString()) - 1] = Datafilecols.Trim();
-                                                                                                    }
-                                                                                                }
-                                                                                                //sArray = SGDealData(itemfilecols, Datafilecols, sArray);
-                                                                                                if (sArray[0] == "数据处理出错")
-                                                                                                {
-                                                                                                    MessageBox.Show(sArray[0], "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                                                                                    return;
-                                                                                                }
-
-                                                                                            }
-                                                                                        } 
-                                                                                        else  //普通的中金表
-                                                                                        {
                                                                                             foreach (XElement itemfilecols in itemfileSrc.Nodes())
                                                                                             {
                                                                                                 //dtResult.Columns.Add(itemfilecols.Attribute("label").Value, typeof(System.String));
@@ -1255,12 +1244,97 @@ namespace KS.DataManage.Client
 
                                                                                             }
                                                                                         }
+                                                                                        else  //普通的中金表
+                                                                                        {
+                                                                                            foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                                            {
+                                                                                                //dtResult.Columns.Add(itemfilecols.Attribute("label").Value, typeof(System.String));
+
+                                                                                                if (colnumName.Count == 0)
+                                                                                                {
+                                                                                                    colnumName.Add(itemfilecols.Attribute("label").Value);
+                                                                                                    colnumNameTMP.Add(itemfilecols.Attribute("label").Value);
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    if (!colnumNameTMP.Contains(itemfilecols.Attribute("label").Value.Trim()))
+                                                                                                    {
+                                                                                                        colnumName.Add(itemfilecols.Attribute("label").Value);
+                                                                                                        colnumNameTMP.Add(itemfilecols.Attribute("label").Value);
+                                                                                                    }
+                                                                                                }
+                                                                                                if (!string.IsNullOrEmpty(itemfilecols.Attribute("isout").Value.Trim()))   //是否输出
+                                                                                                {
+                                                                                                    if (itemfilecols.Attribute("isout").Value.Trim() == "否")
+                                                                                                    {
+                                                                                                        colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())] = "";
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (!string.IsNullOrEmpty(itemfilecols.Attribute("tlength").Value) && (int.Parse(itemfilecols.Attribute("tlength").Value.Trim()) > 0)) //列名位数 +对齐方式
+                                                                                                        {
+                                                                                                            string align = itemfilecols.Attribute("align").Value;
+
+                                                                                                            if (!string.IsNullOrEmpty(align) && align.Equals("左"))
+                                                                                                            {
+                                                                                                                colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())] = colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())].Trim().PadRight(int.Parse(itemfilecols.Attribute("tlength").Value.Trim()), ' ');//以空格填充
+                                                                                                            }
+                                                                                                            if (!string.IsNullOrEmpty(align) && align.Equals("右"))
+                                                                                                            {
+                                                                                                                colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())] = colnumName[int.Parse(itemfilecols.Attribute("cid").Value.Trim())].Trim().PadLeft(int.Parse(itemfilecols.Attribute("tlength").Value.Trim()), ' ');//以空格填充
+                                                                                                            }
+
+                                                                                                        }
+                                                                                                    }
+                                                                                                    //sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1] = Datafilecols;
+                                                                                                }
+
+                                                                                                string Datafilecols = string.Empty;
+                                                                                                if (!string.IsNullOrEmpty(itemfilecols.Attribute("colIndex").Value.Trim()))
+                                                                                                {
+                                                                                                    Datafilecols = sArray[int.Parse(itemfilecols.Attribute("colIndex").Value) - 1];
+
+                                                                                                    if (colnumValue.ContainsKey(int.Parse(itemfilecols.Attribute("cid").Value.ToString())))
+                                                                                                    {
+                                                                                                        Dictionary<int, string>.ValueCollection value = colnumValue.Values;
+
+                                                                                                        //string newValue = (int.Parse(colnumValue[int.Parse(itemfilecols.Attribute("cid").Value.ToString())]) + int.Parse(SGDealData(itemfilecols, Datafilecols, sArray))).ToString();
+
+                                                                                                        string newValue = (int.Parse(value.ElementAt(int.Parse(itemfilecols.Attribute("cid").Value.ToString()))) + int.Parse(SGDealData(itemfilecols, Datafilecols, sArray))).ToString();
+                                                                                                        colnumValue[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = newValue.Trim();
+
+                                                                                                        //string newValue = dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())].ToString() + Datafilecols;
+
+                                                                                                        dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = newValue.Trim();
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        colnumValue.Add(int.Parse(itemfilecols.Attribute("cid").Value.ToString()), SGDealData(itemfilecols, Datafilecols, sArray));
+                                                                                                        //dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = SGDealData(itemfilecols, Datafilecols, sArray);
+                                                                                                        if (!string.IsNullOrEmpty(itemfilecols.Attribute("express").Value.Trim().ToString()) && itemfilecols.Attribute("express").Value.Trim() == "-")
+                                                                                                        {
+                                                                                                            Datafilecols = "-" + Datafilecols.Trim();
+                                                                                                        }
+                                                                                                        dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())] = Datafilecols.Trim();
+                                                                                                    }
+                                                                                                }
+                                                                                                //sArray = SGDealData(itemfilecols, Datafilecols, sArray);
+                                                                                                if (sArray[0] == "数据处理出错")
+                                                                                                {
+                                                                                                    IsSuccess = false;
+                                                                                                    MessageBox.Show(sArray[0], "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                                                                    return;
+                                                                                                }
+
+                                                                                            }
+                                                                                        }
 
                                                                                         // colnumValueFinal.Add(colnumValue);
                                                                                         dtResult.Rows.Add(dr);
                                                                                     }
                                                                                     catch (Exception ex)
                                                                                     {
+                                                                                        IsSuccess = false;
                                                                                         MessageBox.Show(itemfile.Attribute("filetitle") + ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                                         return;
                                                                                     }
@@ -1345,6 +1419,7 @@ namespace KS.DataManage.Client
                                                                                     }
                                                                                     catch (Exception ex)
                                                                                     {
+                                                                                        IsSuccess = false;
                                                                                     }
 
 
@@ -1489,7 +1564,7 @@ namespace KS.DataManage.Client
                                                                         //    {
                                                                         //        dtResult.Rows.Remove(itemDrResul);
                                                                         //    }
-                                                                            
+
                                                                         //}
                                                                         //dtResult = dtResultTemp;
                                                                         //foreach (XElement itemfilecols in itemfileSrc.Nodes())
@@ -1621,7 +1696,7 @@ namespace KS.DataManage.Client
                                                                                     {
                                                                                         foreach (XElement itemfilecols in itemfileSrc.Nodes())
                                                                                         {
-                                                                                            RowValueList.Add(SGDealDataRowValueClientCapitalDetail(itemfilecols, dr[int.Parse(itemfilecols.Attribute("cid").Value) -1].ToString(), dr));
+                                                                                            RowValueList.Add(SGDealDataRowValueClientCapitalDetail(itemfilecols, dr[int.Parse(itemfilecols.Attribute("cid").Value) - 1].ToString(), dr));
                                                                                         }
                                                                                         break;
                                                                                     }
@@ -1629,11 +1704,12 @@ namespace KS.DataManage.Client
 
                                                                                     swTargetFile.WriteLine(line);
                                                                                 }
-                                                                              
+
 
                                                                             }
                                                                             catch (Exception ex)
                                                                             {
+                                                                                IsSuccess = false;
                                                                                 MessageBox.Show(itemfile.Attribute("filetitle") + ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                                 return;
                                                                             }
@@ -1682,11 +1758,12 @@ namespace KS.DataManage.Client
                                                                             }
                                                                             catch (Exception ex)
                                                                             {
+                                                                                IsSuccess = false;
                                                                                 MessageBox.Show(itemfile.Attribute("filetitle") + ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                                 return;
                                                                             }
                                                                         }
-                                                                       
+
                                                                     }
 
                                                                 }
@@ -1706,7 +1783,7 @@ namespace KS.DataManage.Client
                                                                     {
                                                                         odbf.Header.AddColumn(new DbfColumn(item, DbfColumn.DbfColumnType.Character, 20, 0));
                                                                     }
-                                                                  
+
                                                                     List<string> txtFileCount = File.ReadAllLines(targetFileName).ToList();
 
                                                                     if (txtFileCount.Count > 5)
@@ -1729,7 +1806,7 @@ namespace KS.DataManage.Client
                                                                             }
                                                                         }
                                                                     }
-                                                                   
+
                                                                     odbf.Close();
                                                                 }
                                                                 else  //横向输出的 现在只有【会员资金情况表】
@@ -1772,7 +1849,7 @@ namespace KS.DataManage.Client
                                                                                 orec[0] = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
                                                                                 for (int j = 0; j < sArray.Length; j++)
                                                                                 {
-                                                                                    orec[j+1] = sArray[j];
+                                                                                    orec[j + 1] = sArray[j];
 
                                                                                 }
                                                                                 odbf.Write(orec, true);
@@ -1781,7 +1858,7 @@ namespace KS.DataManage.Client
                                                                     }
                                                                     odbf.Close();
                                                                 }
-                                                                
+
                                                             }
                                                         }
                                                     }
@@ -1806,13 +1883,17 @@ namespace KS.DataManage.Client
                                         {
                                             foreach (XElement itemOrganCode in itemAccountId.Descendants("OrganCode"))
                                             {
+                                                if (itemOrganCode.Attribute("cfmmcFile").Equals("0")) //不生成监控中心文件
+                                                {
+                                                    return;
+                                                }
                                                 if (itemOrganCode.Attribute("name").Value == "监控中心")
                                                 {
                                                     foreach (XElement itemfile in itemOrganCode.Nodes())
                                                     {
                                                         foreach (XElement itemfileSrc in itemfile.Nodes())
                                                         {
-                                                            SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\{0}{1}{2}.txt", GlobalData.SeatNo,itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                            SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\{0}{1}{2}.txt", GlobalData.SeatNo, itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
 
 
                                                             if (itemAccountId.Attribute("outType").Value.Equals("1"))  //按日期导出
@@ -1841,6 +1922,10 @@ namespace KS.DataManage.Client
                                                                 MessageBox.Show(string.Format("{0}文件不存在", itemfile.Attribute("filetitle").Value), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                 continue;
                                                             }
+                                                            if (itemfile.Attribute("IsOutPut").Value == "否")
+                                                            {
+                                                                continue;
+                                                            }
                                                             using (FileStream fsSourceFile = new FileStream(SourceFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
                                                             {
                                                                 using (StreamReader swSourceFile = new StreamReader(fsSourceFile))
@@ -1861,7 +1946,7 @@ namespace KS.DataManage.Client
                                                                                     sArray = MonitorCenterDealData(itemfilecols, Datafilecols, sArray);
                                                                                     if (sArray[0] == "数据处理出错")
                                                                                     {
-                                                                                        MessageBox.Show(sArray[0], "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                                                        MessageBox.Show(itemfile.Attribute("filetitle").Value + sArray[0], "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                                         return;
                                                                                     }
                                                                                     #region
@@ -1871,6 +1956,7 @@ namespace KS.DataManage.Client
                                                                             }
                                                                             catch (Exception ex)
                                                                             {
+                                                                                IsSuccess = false;
                                                                                 MessageBox.Show(itemfile.Attribute("filetitle") + ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                                 return;
                                                                             }
@@ -2063,7 +2149,7 @@ namespace KS.DataManage.Client
                                                                             }
                                                                             catch (Exception ex)
                                                                             {
-
+                                                                                IsSuccess = false;
                                                                             }
 
                                                                         }
@@ -2213,6 +2299,7 @@ namespace KS.DataManage.Client
                                                                             }
                                                                             catch (Exception ex)
                                                                             {
+                                                                                IsSuccess = false;
                                                                                 MessageBox.Show(ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                                 return;
                                                                             }
@@ -2287,7 +2374,7 @@ namespace KS.DataManage.Client
                                                 {
                                                     foreach (XElement itemfileSrc in itemfile.Nodes())
                                                     {
-                                                        SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\{0}{1}{2}.txt", GlobalData.SeatNo,itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                        SourceFileName = Path.Combine(kryTextBoxOriginPath.Text.ToString() + "\\" + kryDTPDate.Value.ToString("yyyyMMdd") + string.Format("\\{0}{1}{2}.txt", GlobalData.SeatNo, itemfileSrc.Attribute("srcfile").Value, kryDTPDate.Value.ToString("yyyyMMdd")));
 
 
                                                         if (itemAccountId.Attribute("outType").Value.Equals("1"))  //按日期导出
@@ -2389,6 +2476,7 @@ namespace KS.DataManage.Client
                                                                         }
                                                                         catch (Exception ex)
                                                                         {
+                                                                            IsSuccess = false;
                                                                             MessageBox.Show(itemfile.Attribute("filetitle") + ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                             return;
                                                                         }
@@ -2584,7 +2672,7 @@ namespace KS.DataManage.Client
                                                                         }
                                                                         catch (Exception ex)
                                                                         {
-
+                                                                            IsSuccess = false;
                                                                         }
 
                                                                     }
@@ -2718,6 +2806,7 @@ namespace KS.DataManage.Client
                                                                         }
                                                                         catch (Exception ex)
                                                                         {
+                                                                            IsSuccess = false;
                                                                             MessageBox.Show(ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                                             return;
                                                                         }
@@ -2755,65 +2844,72 @@ namespace KS.DataManage.Client
                             this.Invoke(new Action(() =>
                             {
                                 // _frmWait.Close();
-                                krypLbFlag.Text = "读入原文件结束...";
-                                MessageBox.Show("文件生成成功", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (IsSuccess)
+                                {
+                                    krypLbFlag.Text = "读入原文件结束...";
+                                    MessageBox.Show("文件生成成功", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    //由于IsSuccess是全局变量。当某一次文件生成失败为false时，后续的值就一直是false了，因为这个将其置为true
+                                    IsSuccess = true;
+                                    krypLbFlag.Text = "读入原文件结束...";
+                                    MessageBox.Show("文件生成失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
 
                             }));
                         }
                         else
                         {
-                            //_frmWait.Close();
-                            krypLbFlag.Text = "读入原文件结束...";
-                            MessageBox.Show("文件生成成功", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (IsSuccess)
+                            {
+                                //由于IsSuccess是全局变量。当某一次文件生成失败为false时，后续的值就一直是false了，因为这个将其置为true
+                                IsSuccess = true;
+                                krypLbFlag.Text = "读入原文件结束...";
+                                MessageBox.Show("文件生成失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     });
-                    #endregion 
-                    //MessageBox.Show("11111111111123333333333333");
-                    //FrmFundOtherSet fr = new FrmFundOtherSet();
-                    //fr.Show();
-                    //Task tsk = new Task(() =>
-                    //{
-                    //    if (this.InvokeRequired)
-                    //    {
-                    //        this.BeginInvoke((Action)delegate ()
-                    //        {
-                    //            _frmWait.ShowDialog();
+                    #endregion
+                   
 
-                    //        });
-                    //        //Thread.Sleep(5000);
-                    //        //if (this.InvokeRequired)
-                    //        //{
-                    //        //    this.Invoke(new Action(() =>
-                    //        //    {
-                    //        //        _frmWait.Close();
+                    //多账户合并
+                    Task taskMERGE = new Task(() =>
+                    {
+                        if (this.InvokeRequired)
+                        {
+                            this.Invoke(new Action(() =>
+                            {
+                                string MergeFolderName = "";
+                                if (kryRadioButtonFolderCustomizeYES.Checked)
+                                {
+                                    MergeFolderName = krypTBFolderName.Text;
+                                }
+                                else
+                                {
+                                    //targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleMotorCenterAccount));
+                                    //targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleMotorCenterAccount));
 
-                    //        //    }));
-                    //        //}
-                    //        //else
-                    //        //{
-                    //        //    _frmWait.Close();
-                    //        //}
+                                    //MergeFolderName = 
+                                }
+                            }));
+                        }
+                    });
+                    taskMERGE.Start();
+                    taskMERGE.ContinueWith((t)=>
+                    {
 
-                    //    }
-                    //    else
-
-                    //    {
-                    //        _frmWait.ShowDialog();
-
-                    //    }
-                    //});
-                    //tsk.Start();
+                    });
 
                 }
                 catch (Exception ex)
                 {
-
+                    IsSuccess = false;
                 }
-
-
             }
             catch (Exception ex)
             {
+                IsSuccess = false;
                 MessageBox.Show(ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -2883,6 +2979,7 @@ namespace KS.DataManage.Client
             }
             catch (Exception ex)
             {
+                IsSuccess = false;
                 string errorInfo = "数据处理出错";
                 MessageBox.Show(ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return errorInfo;
@@ -2954,7 +3051,7 @@ namespace KS.DataManage.Client
                     sArray[int.Parse(itemfilecols.Attribute("cid").Value)] = Datafilecols;
                 }
 
-                
+
                 if (!string.IsNullOrEmpty(itemfilecols.Attribute("isout").Value.Trim()))   //是否输出
                 {
                     if (itemfilecols.Attribute("isout").Value.Trim() == "否")
@@ -2968,6 +3065,7 @@ namespace KS.DataManage.Client
             }
             catch (Exception ex)
             {
+                IsSuccess = false;
                 string errorInfo = "数据处理出错";
                 MessageBox.Show(ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return errorInfo;
@@ -3052,6 +3150,7 @@ namespace KS.DataManage.Client
             }
             catch (Exception ex)
             {
+                IsSuccess = false;
                 string errorInfo = "数据处理出错";
                 MessageBox.Show(ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return errorInfo;
@@ -3112,6 +3211,7 @@ namespace KS.DataManage.Client
             }
             catch (Exception ex)
             {
+                IsSuccess = false;
                 MessageBox.Show(ex.Message.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return new string[] { "数据处理出错" };
             }
@@ -3465,6 +3565,10 @@ namespace KS.DataManage.Client
 
 
         //}
+        public void RefreshSingleFundAcconutNo(List<string> _list)
+        {
+            kryCbBSingleFundAcconutNo.DataSource = AppDatas.ListData;
+        }
     }
 
     public class User

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace KS.DataManage.Client
 {
@@ -22,11 +23,34 @@ namespace KS.DataManage.Client
         {
             InitializeComponent();
         }
-        public FrmTradeAccountSet(bool _IsSave,string FundAccountNo)
+        public FrmTradeAccountSet(bool _IsSave,string FundAccountNo, XElement TemplateConfigInfo)
         {
             InitializeComponent();
             this.IsSave = _IsSave;
             this.kryTextBoxFundAccountNo.Text = FundAccountNo;
+            kryCheckBoxCffex.Checked = (TemplateConfigInfo.Attribute("cffexFile").Value.Equals("1")) ? (true) : (false);
+            kryCheckBoxMotorCenter.Checked = (TemplateConfigInfo.Attribute("cfmmcFile").Value.Equals("1")) ? (true) : (false);
+            switch (TemplateConfigInfo.Attribute("cffexext").Value)
+            {
+                case "0":
+                    krypCBCffexTxt.Checked = false;
+                    krypCBCffexDBF.Checked = false;
+                    break;
+                case "1":
+                    krypCBCffexTxt.Checked = true;
+                    krypCBCffexDBF.Checked = false;
+                    break;
+                case "2":
+                    krypCBCffexTxt.Checked = false;
+                    krypCBCffexDBF.Checked = true;
+                    break;
+                case "3":
+                    krypCBCffexTxt.Checked = true;
+                    krypCBCffexDBF.Checked = true;
+                    break;
+            }
+            krypCBMotorCenterTXT.Checked = (TemplateConfigInfo.Attribute("cfmmcext").Value.Equals("1")) ? (true) : (false);
+
         }
         
         private void kbtnSave_Click(object sender, EventArgs e)
@@ -50,6 +74,13 @@ namespace KS.DataManage.Client
                 MessageBox.Show("资金账号不能为空", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            AppDatas.CffexFile = (kryCheckBoxCffex.Checked is true) ? ("1") : ("0");
+            AppDatas.CfmmcFile = (kryCheckBoxMotorCenter.Checked is true) ? ("1") : ("0");
+            AppDatas.Cffexext = "0";
+            AppDatas.Cffexext = (krypCBCffexTxt.Checked is true) ? ((int.Parse(AppDatas.Cffexext) + 1).ToString()) : (AppDatas.Cffexext);
+            AppDatas.Cffexext = (krypCBCffexDBF.Checked is true) ? ((int.Parse(AppDatas.Cffexext) + 2).ToString()) : (AppDatas.Cffexext);
+            AppDatas.Cfmmcext = "0";
+            AppDatas.Cfmmcext = (krypCBMotorCenterTXT.Checked is true) ? ((int.Parse(AppDatas.Cfmmcext) + 1).ToString()) : (AppDatas.Cfmmcext);
             this.IsSave = true;
             this.Close();
 

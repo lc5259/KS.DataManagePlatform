@@ -33,9 +33,9 @@
             this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryCheckBoxCffex = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.kryCheckBoxMotorCenter = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonCheckBox3 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonCheckBox4 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
-            this.kryptonCheckBox5 = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
+            this.krypCBCffexTxt = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
+            this.krypCBMotorCenterTXT = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
+            this.krypCBCffexDBF = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.kryTextBoxFundAccountNo = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryPanelBottom)).BeginInit();
             this.kryPanelBottom.SuspendLayout();
@@ -48,25 +48,25 @@
             // kryPanelBottom
             // 
             this.kryPanelBottom.Location = new System.Drawing.Point(0, 526);
-            this.kryPanelBottom.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kryPanelBottom.Margin = new System.Windows.Forms.Padding(6);
             this.kryPanelBottom.Size = new System.Drawing.Size(614, 74);
             // 
             // kryPanelCancle
             // 
             this.kryPanelCancle.Location = new System.Drawing.Point(434, 0);
-            this.kryPanelCancle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kryPanelCancle.Margin = new System.Windows.Forms.Padding(6);
             this.kryPanelCancle.Size = new System.Drawing.Size(180, 74);
             // 
             // kryPanelSave
             // 
             this.kryPanelSave.Location = new System.Drawing.Point(254, 0);
-            this.kryPanelSave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kryPanelSave.Margin = new System.Windows.Forms.Padding(6);
             this.kryPanelSave.Size = new System.Drawing.Size(180, 74);
             // 
             // kbtnSave
             // 
             this.kbtnSave.Location = new System.Drawing.Point(14, 16);
-            this.kbtnSave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kbtnSave.Margin = new System.Windows.Forms.Padding(6);
             this.kbtnSave.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
             this.kbtnSave.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
             this.kbtnSave.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -119,7 +119,7 @@
             // kbtnCancle
             // 
             this.kbtnCancle.Location = new System.Drawing.Point(12, 16);
-            this.kbtnCancle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kbtnCancle.Margin = new System.Windows.Forms.Padding(6);
             this.kbtnCancle.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
             this.kbtnCancle.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
             this.kbtnCancle.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -172,7 +172,7 @@
             // kryptonLabel1
             // 
             this.kryptonLabel1.Location = new System.Drawing.Point(114, 87);
-            this.kryptonLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.Size = new System.Drawing.Size(110, 29);
             this.kryptonLabel1.TabIndex = 1;
@@ -181,7 +181,7 @@
             // kryptonLabel2
             // 
             this.kryptonLabel2.Location = new System.Drawing.Point(114, 173);
-            this.kryptonLabel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel2.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel2.Name = "kryptonLabel2";
             this.kryptonLabel2.Size = new System.Drawing.Size(71, 29);
             this.kryptonLabel2.TabIndex = 2;
@@ -190,7 +190,7 @@
             // kryptonLabel3
             // 
             this.kryptonLabel3.Location = new System.Drawing.Point(237, 173);
-            this.kryptonLabel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel3.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel3.Name = "kryptonLabel3";
             this.kryptonLabel3.Size = new System.Drawing.Size(148, 29);
             this.kryptonLabel3.TabIndex = 3;
@@ -201,7 +201,7 @@
             this.kryCheckBoxCffex.Checked = true;
             this.kryCheckBoxCffex.CheckState = System.Windows.Forms.CheckState.Checked;
             this.kryCheckBoxCffex.Location = new System.Drawing.Point(114, 246);
-            this.kryCheckBoxCffex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCheckBoxCffex.Margin = new System.Windows.Forms.Padding(4);
             this.kryCheckBoxCffex.Name = "kryCheckBoxCffex";
             this.kryCheckBoxCffex.Size = new System.Drawing.Size(84, 29);
             this.kryCheckBoxCffex.TabIndex = 4;
@@ -212,50 +212,50 @@
             this.kryCheckBoxMotorCenter.Checked = true;
             this.kryCheckBoxMotorCenter.CheckState = System.Windows.Forms.CheckState.Checked;
             this.kryCheckBoxMotorCenter.Location = new System.Drawing.Point(114, 315);
-            this.kryCheckBoxMotorCenter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCheckBoxMotorCenter.Margin = new System.Windows.Forms.Padding(4);
             this.kryCheckBoxMotorCenter.Name = "kryCheckBoxMotorCenter";
             this.kryCheckBoxMotorCenter.Size = new System.Drawing.Size(103, 29);
             this.kryCheckBoxMotorCenter.TabIndex = 5;
             this.kryCheckBoxMotorCenter.Values.Text = "监控中心";
             // 
-            // kryptonCheckBox3
+            // krypCBCffexTxt
             // 
-            this.kryptonCheckBox3.Checked = true;
-            this.kryptonCheckBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.kryptonCheckBox3.Location = new System.Drawing.Point(237, 246);
-            this.kryptonCheckBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.kryptonCheckBox3.Name = "kryptonCheckBox3";
-            this.kryptonCheckBox3.Size = new System.Drawing.Size(132, 29);
-            this.kryptonCheckBox3.TabIndex = 6;
-            this.kryptonCheckBox3.Values.Text = "中金所 - TXT";
+            this.krypCBCffexTxt.Checked = true;
+            this.krypCBCffexTxt.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.krypCBCffexTxt.Location = new System.Drawing.Point(237, 246);
+            this.krypCBCffexTxt.Margin = new System.Windows.Forms.Padding(4);
+            this.krypCBCffexTxt.Name = "krypCBCffexTxt";
+            this.krypCBCffexTxt.Size = new System.Drawing.Size(132, 29);
+            this.krypCBCffexTxt.TabIndex = 6;
+            this.krypCBCffexTxt.Values.Text = "中金所 - TXT";
             // 
-            // kryptonCheckBox4
+            // krypCBMotorCenterTXT
             // 
-            this.kryptonCheckBox4.Checked = true;
-            this.kryptonCheckBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.kryptonCheckBox4.Enabled = false;
-            this.kryptonCheckBox4.Location = new System.Drawing.Point(237, 315);
-            this.kryptonCheckBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.kryptonCheckBox4.Name = "kryptonCheckBox4";
-            this.kryptonCheckBox4.Size = new System.Drawing.Size(151, 29);
-            this.kryptonCheckBox4.TabIndex = 8;
-            this.kryptonCheckBox4.Values.Text = "监控中心 - TXT";
+            this.krypCBMotorCenterTXT.Checked = true;
+            this.krypCBMotorCenterTXT.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.krypCBMotorCenterTXT.Enabled = false;
+            this.krypCBMotorCenterTXT.Location = new System.Drawing.Point(237, 315);
+            this.krypCBMotorCenterTXT.Margin = new System.Windows.Forms.Padding(4);
+            this.krypCBMotorCenterTXT.Name = "krypCBMotorCenterTXT";
+            this.krypCBMotorCenterTXT.Size = new System.Drawing.Size(151, 29);
+            this.krypCBMotorCenterTXT.TabIndex = 8;
+            this.krypCBMotorCenterTXT.Values.Text = "监控中心 - TXT";
             // 
-            // kryptonCheckBox5
+            // krypCBCffexDBF
             // 
-            this.kryptonCheckBox5.Checked = true;
-            this.kryptonCheckBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.kryptonCheckBox5.Location = new System.Drawing.Point(404, 246);
-            this.kryptonCheckBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.kryptonCheckBox5.Name = "kryptonCheckBox5";
-            this.kryptonCheckBox5.Size = new System.Drawing.Size(134, 29);
-            this.kryptonCheckBox5.TabIndex = 7;
-            this.kryptonCheckBox5.Values.Text = "中金所 - DBF";
+            this.krypCBCffexDBF.Checked = true;
+            this.krypCBCffexDBF.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.krypCBCffexDBF.Location = new System.Drawing.Point(404, 246);
+            this.krypCBCffexDBF.Margin = new System.Windows.Forms.Padding(4);
+            this.krypCBCffexDBF.Name = "krypCBCffexDBF";
+            this.krypCBCffexDBF.Size = new System.Drawing.Size(134, 29);
+            this.krypCBCffexDBF.TabIndex = 7;
+            this.krypCBCffexDBF.Values.Text = "中金所 - DBF";
             // 
             // kryTextBoxFundAccountNo
             // 
             this.kryTextBoxFundAccountNo.Location = new System.Drawing.Point(221, 82);
-            this.kryTextBoxFundAccountNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryTextBoxFundAccountNo.Margin = new System.Windows.Forms.Padding(4);
             this.kryTextBoxFundAccountNo.Name = "kryTextBoxFundAccountNo";
             this.kryTextBoxFundAccountNo.Size = new System.Drawing.Size(253, 31);
             this.kryTextBoxFundAccountNo.TabIndex = 9;
@@ -266,15 +266,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 600);
             this.Controls.Add(this.kryTextBoxFundAccountNo);
-            this.Controls.Add(this.kryptonCheckBox4);
-            this.Controls.Add(this.kryptonCheckBox5);
-            this.Controls.Add(this.kryptonCheckBox3);
+            this.Controls.Add(this.krypCBMotorCenterTXT);
+            this.Controls.Add(this.krypCBCffexDBF);
+            this.Controls.Add(this.krypCBCffexTxt);
             this.Controls.Add(this.kryCheckBoxMotorCenter);
             this.Controls.Add(this.kryCheckBoxCffex);
             this.Controls.Add(this.kryptonLabel3);
             this.Controls.Add(this.kryptonLabel2);
             this.Controls.Add(this.kryptonLabel1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmTradeAccountSet";
             this.StateActive.Border.Color1 = System.Drawing.Color.Black;
             this.StateActive.Border.Color2 = System.Drawing.Color.Black;
@@ -298,9 +298,9 @@
             this.Controls.SetChildIndex(this.kryPanelBottom, 0);
             this.Controls.SetChildIndex(this.kryCheckBoxCffex, 0);
             this.Controls.SetChildIndex(this.kryCheckBoxMotorCenter, 0);
-            this.Controls.SetChildIndex(this.kryptonCheckBox3, 0);
-            this.Controls.SetChildIndex(this.kryptonCheckBox5, 0);
-            this.Controls.SetChildIndex(this.kryptonCheckBox4, 0);
+            this.Controls.SetChildIndex(this.krypCBCffexTxt, 0);
+            this.Controls.SetChildIndex(this.krypCBCffexDBF, 0);
+            this.Controls.SetChildIndex(this.krypCBMotorCenterTXT, 0);
             this.Controls.SetChildIndex(this.kryTextBoxFundAccountNo, 0);
             ((System.ComponentModel.ISupportInitialize)(this.kryPanelBottom)).EndInit();
             this.kryPanelBottom.ResumeLayout(false);
@@ -320,9 +320,9 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel3;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryCheckBoxCffex;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryCheckBoxMotorCenter;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox3;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox4;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox kryptonCheckBox5;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox krypCBCffexTxt;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox krypCBMotorCenterTXT;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox krypCBCffexDBF;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox kryTextBoxFundAccountNo;
     }
 }

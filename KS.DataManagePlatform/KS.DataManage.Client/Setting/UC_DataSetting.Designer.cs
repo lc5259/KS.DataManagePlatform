@@ -338,8 +338,8 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 132F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 132F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 143F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(1235, 143);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
@@ -742,6 +742,7 @@
             this.kCombTradeID.TabIndex = 1;
             this.kCombTradeID.Text = "-请选择资金账号-";
             this.kCombTradeID.SelectedIndexChanged += new System.EventHandler(this.kCombTradeID_SelectedIndexChanged);
+            this.kCombTradeID.DataSourceChanged += new System.EventHandler(this.kCombTradeID_DataSourceChanged);
             // 
             // kBtnOtherSet
             // 

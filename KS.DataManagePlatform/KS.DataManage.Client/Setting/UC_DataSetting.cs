@@ -63,7 +63,7 @@ namespace KS.DataManage.Client
         /// <param name="e"></param>
         private void btnAddTradeID_Click(object sender, EventArgs e)
         {
-            FrmTradeAccountSet ftas = new FrmTradeAccountSet(false, kCombTradeID.Text);
+            FrmTradeAccountSet ftas = new FrmTradeAccountSet(false, kCombTradeID.Text, GlobalData.TemplateConfigInfo);
             ftas.ShowDialog();
             if (ftas.IsSave)
             {
@@ -89,6 +89,11 @@ namespace KS.DataManage.Client
                         break;
                     }
                 }
+
+                AddNode.Attribute("cffexFile").Value = AppDatas.CffexFile;
+                AddNode.Attribute("cfmmcFile").Value = AppDatas.CfmmcFile;
+                AddNode.Attribute("cffexext").Value = AppDatas.Cffexext;
+                AddNode.Attribute("cfmmcext").Value = AppDatas.Cfmmcext;
 
                 _configDocument.Root.Add(AddNode);
 
@@ -116,10 +121,10 @@ namespace KS.DataManage.Client
         }
         private void btnUpdateTradeID_Click(object sender, EventArgs e)
         {
-            FrmTradeAccountSet ftas = new FrmTradeAccountSet(false, kCombTradeID.Text);
+            FrmTradeAccountSet ftas = new FrmTradeAccountSet(false, kCombTradeID.Text, GlobalData.TemplateConfigInfo);
             ftas.ShowDialog();
 
-            if (!ftas.IsSave)
+            if (ftas.IsSave)
             {
                 this.SuspendLayout();
                 string FundAccountNo = ftas.kryTextBoxFundAccountNo.Text.ToString();
@@ -153,7 +158,10 @@ namespace KS.DataManage.Client
                         break;
                     }
                 }
-               
+                GlobalData.TemplateConfigInfo.Attribute("cffexFile").Value = AppDatas.CffexFile;
+                GlobalData.TemplateConfigInfo.Attribute("cfmmcFile").Value = AppDatas.CfmmcFile;
+                GlobalData.TemplateConfigInfo.Attribute("cffexext").Value = AppDatas.Cffexext;
+                GlobalData.TemplateConfigInfo.Attribute("cfmmcext").Value = AppDatas.Cfmmcext;
             }
         }
 
@@ -1166,6 +1174,14 @@ namespace KS.DataManage.Client
                         foreach (DataGridViewRow item in kDGVFileList.Rows)
                         {
                             item.Cells[0].Value = true; // item[0] = true;
+                            foreach (XElement itemfile in GlobalData.TemplateConfigInfo.Descendants("file"))
+                            {
+                                if (itemfile.Attribute("filetitle").Value == item.Cells[3].Value.ToString())
+                                {
+                                    itemfile.Attribute("IsOutPut").Value = "是";
+                                    break;
+                                }
+                            }
                         }
                     }
                     else
@@ -1173,8 +1189,17 @@ namespace KS.DataManage.Client
                         foreach (DataGridViewRow item in kDGVFileList.Rows)
                         {
                             item.Cells[0].Value = false;
+                            foreach (XElement itemfile in GlobalData.TemplateConfigInfo.Descendants("file"))
+                            {
+                                if (itemfile.Attribute("filetitle").Value == item.Cells[3].Value.ToString())
+                                {
+                                    itemfile.Attribute("IsOutPut").Value = "否";
+                                    break;
+                                }
+                            }
                         }
                     }
+                    
                 }
             }
             catch (Exception ex)
@@ -1250,6 +1275,16 @@ namespace KS.DataManage.Client
             {
                 GlobalData.TemplateConfigInfo.Attribute("outType").Value = "1";
             }
+        }
+
+        private void kCombTradeID_DataSourceChanged(object sender, EventArgs e)
+        {
+            List<string> _list = new List<string>();
+            _list =   this.kCombTradeID.DataSource as List<string>;
+            AppDatas.ListData = _list;
+            // UC_GeneFile _uC_GeneFile = new UC_GeneFile();
+            //_uC_GeneFile.RefreshSingleFundAcconutNo(_list);
+            
         }
     }
 }
