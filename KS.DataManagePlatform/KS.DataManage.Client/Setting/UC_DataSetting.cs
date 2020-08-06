@@ -1275,6 +1275,7 @@ namespace KS.DataManage.Client
             {
                 GlobalData.TemplateConfigInfo.Attribute("outType").Value = "1";
             }
+            
         }
 
         private void kCombTradeID_DataSourceChanged(object sender, EventArgs e)
