@@ -23,10 +23,12 @@ namespace KS.DataManage.Client
 
         public static string SelectedTargetFileTitle = string.Empty;
         public static string SelectedTargetFileName = string.Empty;
+        public static string SelectedTargetfileext = string.Empty;
         public static string SelectedSourceFileNo = string.Empty;
         public static string SelectedSourceFileName = string.Empty;
         public static string SelectedTXTColumnName = string.Empty;
         public static string SelectedFileFieldNo = string.Empty;
+        
         public UC_DataSetting()
         {
             InitializeComponent();
@@ -952,6 +954,7 @@ namespace KS.DataManage.Client
                 string TargetFileName = this.kDGVFileList.Rows[e.RowIndex].Cells["TargetFileName"].Value.ToString();
                 SelectedTargetFileTitle = TargetFileTitle;
                 SelectedTargetFileName = TargetFileName;
+                SelectedTargetfileext = this.kDGVFileList.Rows[e.RowIndex].Cells["TargetFileFormat"].Value.ToString();
                 try
                 {
                     foreach (XElement xNode in _configDocument.Descendants("AccountId"))
@@ -1031,8 +1034,8 @@ namespace KS.DataManage.Client
                     SelectedSourceFileNo = SourceFileNo;
                     //string TargetFileNo = this.kDGVFileList.Rows[e.RowIndex].Cells["TargetFileNo"].Value.ToString();
                     string TargetFileTitle = SelectedTargetFileTitle;
-                    string TargetFileName = SelectedTargetFileName;
-
+                    string TargetFileName = SelectedTargetFileName; 
+                    string Targetfileext = SelectedTargetfileext;
                     foreach (XElement xNode in _configDocument.Descendants("AccountId"))
                     {
                         if (xNode.Attribute("value").Value.Equals(kCombTradeID.SelectedItem.ToString()))
@@ -1041,7 +1044,7 @@ namespace KS.DataManage.Client
                             {
                                 foreach (XElement fileSrc in itemFileNode.Nodes())
                                 {
-                                    if (fileSrc.Attribute("filetitle").Value.Equals(TargetFileTitle) && fileSrc.Attribute("filename").Value.ToString().Equals(TargetFileName))
+                                    if (fileSrc.Attribute("filetitle").Value.Equals(TargetFileTitle) && fileSrc.Attribute("filename").Value.ToString().Equals(TargetFileName) && fileSrc.Attribute("fileext").Value.ToString().Equals(Targetfileext))
                                     {
                                         foreach (XElement itemFilecols in fileSrc.Descendants("fileSrc"))
                                         {
@@ -1101,9 +1104,9 @@ namespace KS.DataManage.Client
 
                     string TargetFileTitle = SelectedTargetFileTitle;
                     string TargetFileName = SelectedTargetFileName;
+                    string Targetfileext = SelectedTargetfileext;
                     string SourceFileName = SelectedSourceFileName;
                     string SourceFileNo = SelectedSourceFileNo;
-
                     string TXTColumnName = this.kDGVFileWordsList.Rows[e.RowIndex].Cells["FileFieldTXTColumnName"].Value.ToString();
                     string FileFieldNo = this.kDGVFileWordsList.Rows[e.RowIndex].Cells["FileFieldNo"].Value.ToString();
                     SelectedTXTColumnName = TXTColumnName;
@@ -1117,7 +1120,7 @@ namespace KS.DataManage.Client
                             {
                                 foreach (XElement fileSrc in itemFileNode.Nodes())
                                 {
-                                    if (fileSrc.Attribute("filetitle").Value.Equals(TargetFileTitle) && fileSrc.Attribute("filename").Value.ToString().Equals(TargetFileName))
+                                    if (fileSrc.Attribute("filetitle").Value.Equals(TargetFileTitle) && fileSrc.Attribute("filename").Value.ToString().Equals(TargetFileName) && fileSrc.Attribute("fileext").Value.ToString().Equals(Targetfileext))
                                     {
                                         foreach (XElement itemFilecols in fileSrc.Descendants("fileSrc"))
                                         {

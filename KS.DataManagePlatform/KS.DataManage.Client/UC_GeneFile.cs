@@ -91,6 +91,7 @@ namespace KS.DataManage.Client
                         if (!((XElement)xNode).Attribute("value").Value.StartsWith("模版"))
                         {
                             kryCbBSingleFundAcconutNo.Items.Add(((XElement)xNode).Attribute("value").Value);
+                            kryCbBMoreFundAcconutNo.Items.Add(((XElement)xNode).Attribute("value").Value);
                         }
                     }
                 }
@@ -331,6 +332,7 @@ namespace KS.DataManage.Client
         }
         private void kryBtSingleAccountCffex_Click(object sender, EventArgs e)
         {
+            
             if (!kryCLBSingleCffexAccount.Items.Contains(kryCbBSingleFundAcconutNo.Text.ToString()))
             {
                 kryCLBSingleCffexAccount.Items.Add(kryCbBSingleFundAcconutNo.Text.ToString());
@@ -405,18 +407,18 @@ namespace KS.DataManage.Client
 
         private void kryBtMoreAccountCffex_Click(object sender, EventArgs e)
         {
-            if (!kryCLBMoreCffexAccount.Items.Contains(kryTBMoreFundAcconutNo.Text.ToString()))
+            if (!kryCLBMoreCffexAccount.Items.Contains(kryCbBMoreFundAcconutNo.Text.ToString()))
             {
-                kryCLBMoreCffexAccount.Items.Add(kryTBMoreFundAcconutNo.Text.ToString());
+                kryCLBMoreCffexAccount.Items.Add(kryCbBMoreFundAcconutNo.Text.ToString());
                 kryLbMoreCffexAccountCount.Text = "(" + kryCLBMoreCffexAccount.CheckedItems.Count + "/" + kryCLBMoreCffexAccount.Items.Count.ToString() + ")";
             }
         }
 
         private void krypBtMoreAccountMotorCenter_Click(object sender, EventArgs e)
         {
-            if (!kryCLBMoreMotorCenterAccount.Items.Contains(kryTBMoreFundAcconutNo.Text.ToString()))
+            if (!kryCLBMoreMotorCenterAccount.Items.Contains(kryCbBMoreFundAcconutNo.Text.ToString()))
             {
-                kryCLBMoreMotorCenterAccount.Items.Add(kryTBMoreFundAcconutNo.Text.ToString());
+                kryCLBMoreMotorCenterAccount.Items.Add(kryCbBMoreFundAcconutNo.Text.ToString());
                 kryLbMoreMotorCenterAccountCount.Text = "(" + kryCLBMoreMotorCenterAccount.CheckedItems.Count + "/" + kryCLBMoreMotorCenterAccount.Items.Count.ToString() + ")";
             }
         }
@@ -918,15 +920,18 @@ namespace KS.DataManage.Client
                                                         str = Regex.Replace(str, @"[^\d.\d]", "");
 
                                                         bool sdg = Regex.IsMatch(str, @"\d+$");
-                                                        if (itemfile.Attribute("fileext").Value == "DBF")
-                                                        {
-
-                                                            continue;
-                                                        }
-                                                        else
+                                                        if ((itemfile.Attribute("filetitle").Value == "会员资金情况表") && itemfile.Attribute("fileext").Value == "DBF")
                                                         {
 
                                                         }
+                                                        if (itemfile.Attribute("fileext").Value == "DBF") //此时过滤之后，能进入到下面的dbf文件。只有会员资金情况表
+                                                        {
+                                                            if (itemfile.Attribute("filetitle").Value != "会员资金情况表")
+                                                            {
+                                                                continue;
+                                                            }
+                                                        }
+
                                                         List<string> colnumName = new List<string>();
                                                         List<string> colnumNameTMP = new List<string>();
                                                         //List<string> colnumValue = new List<string>();
@@ -938,26 +943,55 @@ namespace KS.DataManage.Client
                                                         bool IsTransverse = false;  //是否横向的标志
                                                         bool IsOutColumn = false;
 
-                                                        if (itemAccountId.Attribute("outType").Value.Equals("1"))  //按日期导出at
+                                                        if (itemfile.Attribute("fileext").Value == "DBF" && itemfile.Attribute("filetitle").Value == "会员资金情况表") //单独处理会员资金情况表的dbf文件，设计思路是先生成一个这个dbf文件的txt文件
                                                         {
-                                                            string targetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", itemSingleCffexAccount)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd"));
-                                                            targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount, targetFile));
-                                                            targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount));
-                                                            targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount));
+                                                            if (itemAccountId.Attribute("outType").Value.Equals("1"))  //按日期导出at
+                                                            {
+                                                                string targetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", itemSingleCffexAccount)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd")) + "Temp";
+                                                                string DBFtargetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", itemSingleCffexAccount)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd"));
+                                                                targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount, targetFile));
+                                                                targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount));
+                                                                targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount));
 
-                                                            targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount));
-                                                            targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount, targetFile));
+                                                                targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount));
+                                                                targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount, DBFtargetFile));
+                                                            }
+                                                            else   //按账号导出
+                                                            {
+                                                                string targetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", itemSingleCffexAccount)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd")) + "Temp";
+                                                                string DBFtargetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", itemSingleCffexAccount)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd"));
+                                                                targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd"), targetFile));
+                                                                targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                                targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
+
+                                                                targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                                targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd"), DBFtargetFile));
+                                                            }
                                                         }
-                                                        else   //按账号导出
+                                                        else
                                                         {
-                                                            string targetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", itemSingleCffexAccount)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd"));
-                                                            targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd"), targetFile));
-                                                            targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
-                                                            targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                            if (itemAccountId.Attribute("outType").Value.Equals("1"))  //按日期导出at
+                                                            {
+                                                                string targetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", itemSingleCffexAccount)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd"));
+                                                                targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount, targetFile));
+                                                                targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount));
+                                                                targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount));
 
-                                                            targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
-                                                            targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd"), targetFile));
+                                                                targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount));
+                                                                targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", kryDTPDate.Value.ToString("yyyyMMdd"), itemSingleCffexAccount, targetFile));
+                                                            }
+                                                            else   //按账号导出
+                                                            {
+                                                                string targetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", itemSingleCffexAccount)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd"));
+                                                                targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd"), targetFile));
+                                                                targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                                targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
+
+                                                                targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd")));
+                                                                targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", itemSingleCffexAccount, kryDTPDate.Value.ToString("yyyyMMdd"), targetFile));
+                                                            }
                                                         }
+
                                                         if (!Directory.Exists(targetDirectoryName))
                                                         {
                                                             Directory.CreateDirectory(targetDirectoryName);
@@ -1810,52 +1844,56 @@ namespace KS.DataManage.Client
                                                             }
                                                             else  //横向输出的 现在只有【会员资金情况表】
                                                             {
-                                                                string testPath = AppDomain.CurrentDomain.BaseDirectory;
-                                                                var odbf = new DbfFile(Encoding.GetEncoding(936));
-                                                                // odbf.Open(Path.Combine(targetDirectoryName, "test.dbf"), FileMode.Create); 
-                                                                odbf.Open(targetDBFFileName, FileMode.Create);
-
-                                                                //创建列头
-                                                                //foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
-                                                                //{
-                                                                //    if (string.IsNullOrEmpty( itemfileSrc.Attribute("srcfile").Value))
-                                                                //    {
-
-                                                                //    }
-                                                                //}
-                                                                odbf.Header.AddColumn(new DbfColumn("accountID", DbfColumn.DbfColumnType.Character, 20, 0));
-                                                                odbf.Header.AddColumn(new DbfColumn("itemDesc", DbfColumn.DbfColumnType.Character, 20, 0));
-                                                                odbf.Header.AddColumn(new DbfColumn("itemValue", DbfColumn.DbfColumnType.Character, 20, 0));
-
-                                                                //foreach (string item in DBFColumnNamelist)
-                                                                //{
-                                                                //    odbf.Header.AddColumn(new DbfColumn(item, DbfColumn.DbfColumnType.Character, 20, 0));
-                                                                //}
-
-                                                                List<string> txtFileCount = File.ReadAllLines(targetFileName).ToList();
-
-                                                                if (txtFileCount.Count > 6)
+                                                                if (itemfile.Attribute("fileext").Value == "DBF" && itemfile.Attribute("filetitle").Value == "会员资金情况表")
                                                                 {
-                                                                    for (int i = 6; i < txtFileCount.Count; i++)
-                                                                    {
-                                                                        string line = txtFileCount[i].Trim();
-                                                                        if (!string.IsNullOrEmpty(line) && Regex.IsMatch(line, @"\d+$"))
-                                                                        {
-                                                                            string lineTemp = new Regex("[\\s]+").Replace(line, "@");
-                                                                            string[] sArray = lineTemp.Split('@');
-                                                                            var orec = new DbfRecord(odbf.Header) { AllowDecimalTruncate = true };
-                                                                            //string dsg = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
-                                                                            orec[0] = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
-                                                                            for (int j = 0; j < sArray.Length; j++)
-                                                                            {
-                                                                                orec[j + 1] = sArray[j];
+                                                                    string testPath = AppDomain.CurrentDomain.BaseDirectory;
+                                                                    var odbf = new DbfFile(Encoding.GetEncoding(936));
+                                                                    // odbf.Open(Path.Combine(targetDirectoryName, "test.dbf"), FileMode.Create); 
+                                                                    odbf.Open(targetDBFFileName, FileMode.Create);
 
+                                                                    //创建列头
+                                                                    //foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                                                                    //{
+                                                                    //    if (string.IsNullOrEmpty( itemfileSrc.Attribute("srcfile").Value))
+                                                                    //    {
+
+                                                                    //    }
+                                                                    //}
+                                                                    odbf.Header.AddColumn(new DbfColumn("accountID", DbfColumn.DbfColumnType.Character, 20, 0));
+                                                                    odbf.Header.AddColumn(new DbfColumn("itemDesc", DbfColumn.DbfColumnType.Character, 20, 0));
+                                                                    odbf.Header.AddColumn(new DbfColumn("itemValue", DbfColumn.DbfColumnType.Character, 20, 0));
+
+                                                                    //foreach (string item in DBFColumnNamelist)
+                                                                    //{
+                                                                    //    odbf.Header.AddColumn(new DbfColumn(item, DbfColumn.DbfColumnType.Character, 20, 0));
+                                                                    //}
+
+                                                                    List<string> txtFileCount = File.ReadAllLines(targetFileName).ToList();
+
+                                                                    if (txtFileCount.Count > 4)
+                                                                    {
+                                                                        for (int i = 4; i < txtFileCount.Count; i++)
+                                                                        {
+                                                                            string line = txtFileCount[i].Trim();
+                                                                            if (!string.IsNullOrEmpty(line) && Regex.IsMatch(line, @"\d+$"))
+                                                                            {
+                                                                                string lineTemp = new Regex("[\\s]+").Replace(line, "@");
+                                                                                string[] sArray = lineTemp.Split('@');
+                                                                                var orec = new DbfRecord(odbf.Header) { AllowDecimalTruncate = true };
+                                                                                //string dsg = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
+                                                                                orec[0] = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
+                                                                                for (int j = 0; j < sArray.Length; j++)
+                                                                                {
+                                                                                    orec[j + 1] = sArray[j];
+
+                                                                                }
+                                                                                odbf.Write(orec, true);
                                                                             }
-                                                                            odbf.Write(orec, true);
                                                                         }
                                                                     }
+                                                                    odbf.Close();
                                                                 }
-                                                                odbf.Close();
+
                                                             }
 
                                                         }
@@ -2889,6 +2927,8 @@ namespace KS.DataManage.Client
                                     bool IsExistCffex = false; //此标志是为了第二次写入文件事，向已存在的文件追加东西，而不是覆盖原文件
                                     Dictionary<string, string> ColumnNameDict = new Dictionary<string, string>();
                                     List<string> FileHaveColumnNameList = new List<string>();
+
+                                    List<string> CapitalDBFAccountNo = new List<string>(); //这个标志的作用是将会员资金情况表的dbf文件的accountNo列的值写入正确的资金账号
                                     foreach (string itemMoreMotorCenterAccount in kryCLBMoreMotorCenterAccount.CheckedItems)
                                     {
                                         foreach (XElement itemAccountId in configDocument.Descendants("AccountId"))
@@ -2910,10 +2950,16 @@ namespace KS.DataManage.Client
                                                             str = Regex.Replace(str, @"[^\d.\d]", "");
 
                                                             bool sdg = Regex.IsMatch(str, @"\d+$");
-                                                            if (itemfile.Attribute("fileext").Value == "DBF")
+                                                            if ((itemfile.Attribute("filetitle").Value == "会员资金情况表") && itemfile.Attribute("fileext").Value == "DBF")
                                                             {
 
-                                                                continue;
+                                                            }
+                                                            if (itemfile.Attribute("fileext").Value == "DBF") //此时过滤之后，能进入到下面的dbf文件。只有会员资金情况表
+                                                            {
+                                                                if (itemfile.Attribute("filetitle").Value != "会员资金情况表")
+                                                                {
+                                                                    continue;
+                                                                }
                                                             }
                                                             List<string> colnumName = new List<string>();
                                                             List<string> colnumNameTMP = new List<string>();
@@ -2926,15 +2972,32 @@ namespace KS.DataManage.Client
                                                             bool IsTransverse = false;  //是否横向的标志
                                                             bool IsOutColumn = false;
 
+
                                                             //if (itemAccountId.Attribute("outType").Value.Equals("1"))  //按日期导出at
                                                             //{
-                                                            string targetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", GlobalData.SGMemberID)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd"));
-                                                            targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID, targetFile));
-                                                            targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID));
-                                                            targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID));
 
-                                                            targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID));
-                                                            targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID, targetFile));
+                                                            if (itemfile.Attribute("fileext").Value == "DBF" && itemfile.Attribute("filetitle").Value == "会员资金情况表") //单独处理会员资金情况表的dbf文件，设计思路是先生成一个这个dbf文件的txt文件
+                                                            {
+                                                                string targetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", GlobalData.SGMemberID)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd")) + "Temp";
+                                                                string DBFtargetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", GlobalData.SGMemberID)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd"));
+                                                                targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID, targetFile));
+                                                                targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID));
+                                                                targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID));
+
+                                                                targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID));
+                                                                targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID, DBFtargetFile));
+                                                            }
+                                                            else
+                                                            {
+                                                                string targetFile = (itemfile.Attribute("filename").Value.ToString().Replace("{accountid}", GlobalData.SGMemberID)).Replace("{tradingday}", kryDTPDate.Value.ToString("yyyyMMdd"));
+                                                                targetFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}\{2}.txt", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID, targetFile));
+                                                                targetDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID));
+                                                                targetDirectoryName1 = Path.Combine(kryTextBoxMonitorCenterOutPath2.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\TXT文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID));
+
+                                                                targetDBFDirectoryName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID));
+                                                                targetDBFFileName = Path.Combine(kryTextBoxMonitorCenterOutPath1.Text.ToString() + "\\" + string.Format(@"{0}\中金所格式\DBF文件\{1}\{2}.dbf", kryDTPDate.Value.ToString("yyyyMMdd"), GlobalData.SGMemberID, targetFile));
+                                                            }
+
                                                             //}
                                                             //else   //按账号导出
                                                             //{
@@ -3427,7 +3490,7 @@ namespace KS.DataManage.Client
                                                                                             //    {
                                                                                             //        swTargetFileTemp.WriteLine(txtLineList[i]);
                                                                                             //    }
-                                                                                               
+
                                                                                             //}
                                                                                             using (FileStream fsTargentFileTemp = new FileStream(targetFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
                                                                                             {
@@ -3442,10 +3505,10 @@ namespace KS.DataManage.Client
                                                                                                             WrinteInValue = dr[int.Parse(itemfilecols.Attribute("cid").Value.ToString())].ToString();
                                                                                                             for (int j = txtLineList.Count - 1; j >= 0; j--)
                                                                                                             {
-                                                                                                                string txtEachLine = System.Text.RegularExpressions.Regex.Replace(txtLineList[j].Trim(), @"\d", "").Replace(".","").Trim(); //去掉字符串中的数字
+                                                                                                                string txtEachLine = System.Text.RegularExpressions.Regex.Replace(txtLineList[j].Trim(), @"\d", "").Replace(".", "").Trim(); //去掉字符串中的数字
                                                                                                                 if (txtEachLine.Equals(itemfilecols.Attribute("label").Value.Trim()) /*&& !Regex.IsMatch(txtLineList[j], @"\d+$")*/)
                                                                                                                 {
-                                                                                                                    
+
                                                                                                                     WrinteInValue = dtResult.AsEnumerable().Select(d => Convert.ToDouble(d.Field<string>(dtResult.Columns[int.Parse(itemfilecols.Attribute("cid").Value)].ToString()))).Sum().ToString();
 
                                                                                                                     if (!string.IsNullOrEmpty(itemfilecols.Attribute("express").Value.Trim()) && itemfilecols.Attribute("express").Value == "-")
@@ -3470,6 +3533,10 @@ namespace KS.DataManage.Client
                                                                                                     for (int i = 0; i < txtLineList.Count; i++)
                                                                                                     {
                                                                                                         swTargetFileTemp.WriteLine(txtLineList[i]);
+                                                                                                    }
+                                                                                                    if (!CapitalDBFAccountNo.Contains(itemMoreMotorCenterAccount))
+                                                                                                    {
+                                                                                                        CapitalDBFAccountNo.Add(itemMoreMotorCenterAccount);
                                                                                                     }
                                                                                                     //foreach (string item in txtLineList)
                                                                                                     //{
@@ -3885,53 +3952,64 @@ namespace KS.DataManage.Client
                                                                 }
                                                                 else  //横向输出的 现在只有【会员资金情况表】
                                                                 {
-                                                                    string testPath = AppDomain.CurrentDomain.BaseDirectory;
-                                                                    var odbf = new DbfFile(Encoding.GetEncoding(936));
-                                                                    // odbf.Open(Path.Combine(targetDirectoryName, "test.dbf"), FileMode.Create); 
-                                                                    odbf.Open(targetDBFFileName, FileMode.Create);
-
-                                                                    //创建列头
-                                                                    //foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
-                                                                    //{
-                                                                    //    if (string.IsNullOrEmpty( itemfileSrc.Attribute("srcfile").Value))
-                                                                    //    {
-
-                                                                    //    }
-                                                                    //}
-                                                                    odbf.Header.AddColumn(new DbfColumn("accountID", DbfColumn.DbfColumnType.Character, 20, 0));
-                                                                    odbf.Header.AddColumn(new DbfColumn("itemDesc", DbfColumn.DbfColumnType.Character, 20, 0));
-                                                                    odbf.Header.AddColumn(new DbfColumn("itemValue", DbfColumn.DbfColumnType.Character, 20, 0));
-
-                                                                    //foreach (string item in DBFColumnNamelist)
-                                                                    //{
-                                                                    //    odbf.Header.AddColumn(new DbfColumn(item, DbfColumn.DbfColumnType.Character, 20, 0));
-                                                                    //}
-
-                                                                    List<string> txtFileCount = File.ReadAllLines(targetFileName).ToList();
-
-                                                                    if (txtFileCount.Count > 6)
+                                                                    if (itemfile.Attribute("fileext").Value == "DBF" && itemfile.Attribute("filetitle").Value == "会员资金情况表")
                                                                     {
-                                                                        for (int i = 6; i < txtFileCount.Count; i++)
-                                                                        {
-                                                                            string line = txtFileCount[i].Trim();
-                                                                            if (!string.IsNullOrEmpty(line) && Regex.IsMatch(line, @"\d+$"))
-                                                                            {
-                                                                                string lineTemp = new Regex("[\\s]+").Replace(line, "@");
-                                                                                string[] sArray = lineTemp.Split('@');
-                                                                                var orec = new DbfRecord(odbf.Header) { AllowDecimalTruncate = true };
-                                                                                //string dsg = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
-                                                                                orec[0] = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
-                                                                                for (int j = 0; j < sArray.Length; j++)
-                                                                                {
-                                                                                    orec[j + 1] = sArray[j];
+                                                                        string testPath = AppDomain.CurrentDomain.BaseDirectory;
+                                                                        var odbf = new DbfFile(Encoding.GetEncoding(936));
+                                                                        // odbf.Open(Path.Combine(targetDirectoryName, "test.dbf"), FileMode.Create); 
+                                                                        odbf.Open(targetDBFFileName, FileMode.Create);
 
+                                                                        //创建列头
+                                                                        //foreach (XElement itemfileSrc in itemfile.Descendants("fileSrc"))
+                                                                        //{
+                                                                        //    if (string.IsNullOrEmpty( itemfileSrc.Attribute("srcfile").Value))
+                                                                        //    {
+
+                                                                        //    }
+                                                                        //}
+                                                                        odbf.Header.AddColumn(new DbfColumn("accountID", DbfColumn.DbfColumnType.Character, 20, 0));
+                                                                        odbf.Header.AddColumn(new DbfColumn("itemDesc", DbfColumn.DbfColumnType.Character, 20, 0));
+                                                                        odbf.Header.AddColumn(new DbfColumn("itemValue", DbfColumn.DbfColumnType.Character, 20, 0));
+
+                                                                        //foreach (string item in DBFColumnNamelist)
+                                                                        //{
+                                                                        //    odbf.Header.AddColumn(new DbfColumn(item, DbfColumn.DbfColumnType.Character, 20, 0));
+                                                                        //}
+
+                                                                        List<string> txtFileCount = File.ReadAllLines(targetFileName).ToList();
+                                                                        string FundAccountNo = string.Empty;
+                                                                        int number = 0;
+                                                                        if (txtFileCount.Count > 4)
+                                                                        {
+                                                                            for (int i = 3; i < txtFileCount.Count; i++) //从3开始是为了把这一行作为标志
+                                                                            {
+                                                                                string line = txtFileCount[i].Trim();
+                                                                               
+                                                                                if (line.Contains("accountID"))
+                                                                                {
+                                                                                    number++;
+                                                                                    FundAccountNo = CapitalDBFAccountNo[number - 1];
                                                                                 }
-                                                                                odbf.Write(orec, true);
+
+                                                                                if (!string.IsNullOrEmpty(line) && Regex.IsMatch(line, @"\d+$"))
+                                                                                {
+                                                                                    string lineTemp = new Regex("[\\s]+").Replace(line, "@");
+                                                                                    string[] sArray = lineTemp.Split('@');
+                                                                                    var orec = new DbfRecord(odbf.Header) { AllowDecimalTruncate = true };
+                                                                                    //string dsg = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
+                                                                                    //orec[0] = Path.GetFileNameWithoutExtension(targetFileName).Split('_')[0];
+                                                                                    orec[0] = FundAccountNo;
+                                                                                    for (int j = 0; j < sArray.Length; j++)
+                                                                                    {
+                                                                                        orec[j + 1] = sArray[j];
+
+                                                                                    }
+                                                                                    odbf.Write(orec, true);
+                                                                                }
                                                                             }
                                                                         }
+                                                                        odbf.Close();
                                                                     }
-                                                                    odbf.Close();
-
                                                                 }
                                                             }
                                                         }

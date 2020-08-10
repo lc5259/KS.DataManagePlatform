@@ -52,6 +52,7 @@
             this.kryptonSplitContainer2 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kryGroupBoxSingleAccountGenerate = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryCbBSingleFundAcconutNo = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryLbSingleMotorCenterAccountCount = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -75,6 +76,7 @@
             this.kryLbStorageMode = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryGroupBoxMoreAccountGenerate = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryCbBMoreFundAcconutNo = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.krypTBFolderName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryLbMoreMotorCenterAccountCount = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -89,7 +91,6 @@
             this.krypBtMoreAccountMotorCenter = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryBtMoreAccountCffex = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryBtMoreAccountAll = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryTBMoreFundAcconutNo = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryRadioButtonFolderCustomizeNO = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.kryRadioButtonFolderCustomizeYES = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.kryLbMoreFundAccountNo = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -104,7 +105,6 @@
             this.kryLbDate = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonSplitContainer3 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kryptonPalette2 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
-            this.kryCbBSingleFundAcconutNo = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonCheckSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer1.Panel1)).BeginInit();
@@ -126,6 +126,7 @@
             this.kryGroupBoxSingleAccountGenerate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryCbBSingleFundAcconutNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryGroupBoxMoreAccountGenerate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryGroupBoxMoreAccountGenerate.Panel)).BeginInit();
@@ -133,6 +134,7 @@
             this.kryGroupBoxMoreAccountGenerate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
             this.kryptonPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryCbBMoreFundAcconutNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel6)).BeginInit();
@@ -143,7 +145,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel2)).BeginInit();
             this.kryptonSplitContainer3.Panel2.SuspendLayout();
             this.kryptonSplitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryCbBSingleFundAcconutNo)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonSplitContainer1
@@ -151,7 +152,7 @@
             this.kryptonSplitContainer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.kryptonSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonSplitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonSplitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonSplitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonSplitContainer1.Name = "kryptonSplitContainer1";
             this.kryptonSplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -187,7 +188,7 @@
             this.kryptonPanel4.Controls.Add(this.krylbOriginPath);
             this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel4.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel4.Name = "kryptonPanel4";
             this.kryptonPanel4.Size = new System.Drawing.Size(1398, 318);
             this.kryptonPanel4.TabIndex = 35;
@@ -195,7 +196,7 @@
             // kryBtOpenMonitorCenterOutPathFile2
             // 
             this.kryBtOpenMonitorCenterOutPathFile2.Location = new System.Drawing.Point(860, 225);
-            this.kryBtOpenMonitorCenterOutPathFile2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtOpenMonitorCenterOutPathFile2.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtOpenMonitorCenterOutPathFile2.Name = "kryBtOpenMonitorCenterOutPathFile2";
             this.kryBtOpenMonitorCenterOutPathFile2.Size = new System.Drawing.Size(135, 38);
             this.kryBtOpenMonitorCenterOutPathFile2.TabIndex = 49;
@@ -205,7 +206,7 @@
             // kryBtOpenMonitorCenterOutPathFile1
             // 
             this.kryBtOpenMonitorCenterOutPathFile1.Location = new System.Drawing.Point(860, 178);
-            this.kryBtOpenMonitorCenterOutPathFile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtOpenMonitorCenterOutPathFile1.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtOpenMonitorCenterOutPathFile1.Name = "kryBtOpenMonitorCenterOutPathFile1";
             this.kryBtOpenMonitorCenterOutPathFile1.Size = new System.Drawing.Size(135, 38);
             this.kryBtOpenMonitorCenterOutPathFile1.TabIndex = 48;
@@ -215,7 +216,7 @@
             // kryBtOpenCffexOutPathFile2
             // 
             this.kryBtOpenCffexOutPathFile2.Location = new System.Drawing.Point(860, 132);
-            this.kryBtOpenCffexOutPathFile2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtOpenCffexOutPathFile2.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtOpenCffexOutPathFile2.Name = "kryBtOpenCffexOutPathFile2";
             this.kryBtOpenCffexOutPathFile2.Size = new System.Drawing.Size(135, 38);
             this.kryBtOpenCffexOutPathFile2.TabIndex = 47;
@@ -225,7 +226,7 @@
             // kryBtOpenCffexOutPathFile1
             // 
             this.kryBtOpenCffexOutPathFile1.Location = new System.Drawing.Point(860, 86);
-            this.kryBtOpenCffexOutPathFile1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtOpenCffexOutPathFile1.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtOpenCffexOutPathFile1.Name = "kryBtOpenCffexOutPathFile1";
             this.kryBtOpenCffexOutPathFile1.Size = new System.Drawing.Size(135, 38);
             this.kryBtOpenCffexOutPathFile1.TabIndex = 46;
@@ -235,7 +236,7 @@
             // kryBtOpenOriginPathFile
             // 
             this.kryBtOpenOriginPathFile.Location = new System.Drawing.Point(860, 39);
-            this.kryBtOpenOriginPathFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtOpenOriginPathFile.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtOpenOriginPathFile.Name = "kryBtOpenOriginPathFile";
             this.kryBtOpenOriginPathFile.Size = new System.Drawing.Size(135, 38);
             this.kryBtOpenOriginPathFile.TabIndex = 45;
@@ -245,7 +246,7 @@
             // kryTextBoxMonitorCenterOutPath2
             // 
             this.kryTextBoxMonitorCenterOutPath2.Location = new System.Drawing.Point(376, 230);
-            this.kryTextBoxMonitorCenterOutPath2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryTextBoxMonitorCenterOutPath2.Margin = new System.Windows.Forms.Padding(4);
             this.kryTextBoxMonitorCenterOutPath2.Name = "kryTextBoxMonitorCenterOutPath2";
             this.kryTextBoxMonitorCenterOutPath2.Size = new System.Drawing.Size(466, 31);
             this.kryTextBoxMonitorCenterOutPath2.TabIndex = 44;
@@ -253,7 +254,7 @@
             // kryTextBoxMonitorCenterOutPath1
             // 
             this.kryTextBoxMonitorCenterOutPath1.Location = new System.Drawing.Point(376, 183);
-            this.kryTextBoxMonitorCenterOutPath1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryTextBoxMonitorCenterOutPath1.Margin = new System.Windows.Forms.Padding(4);
             this.kryTextBoxMonitorCenterOutPath1.Name = "kryTextBoxMonitorCenterOutPath1";
             this.kryTextBoxMonitorCenterOutPath1.Size = new System.Drawing.Size(466, 31);
             this.kryTextBoxMonitorCenterOutPath1.TabIndex = 43;
@@ -261,7 +262,7 @@
             // kryTextBoxCffexOutPath2
             // 
             this.kryTextBoxCffexOutPath2.Location = new System.Drawing.Point(376, 136);
-            this.kryTextBoxCffexOutPath2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryTextBoxCffexOutPath2.Margin = new System.Windows.Forms.Padding(4);
             this.kryTextBoxCffexOutPath2.Name = "kryTextBoxCffexOutPath2";
             this.kryTextBoxCffexOutPath2.Size = new System.Drawing.Size(466, 31);
             this.kryTextBoxCffexOutPath2.TabIndex = 42;
@@ -269,7 +270,7 @@
             // kryTextBoxCffexOutPath1
             // 
             this.kryTextBoxCffexOutPath1.Location = new System.Drawing.Point(376, 90);
-            this.kryTextBoxCffexOutPath1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryTextBoxCffexOutPath1.Margin = new System.Windows.Forms.Padding(4);
             this.kryTextBoxCffexOutPath1.Name = "kryTextBoxCffexOutPath1";
             this.kryTextBoxCffexOutPath1.Size = new System.Drawing.Size(466, 31);
             this.kryTextBoxCffexOutPath1.TabIndex = 41;
@@ -277,7 +278,7 @@
             // kryTextBoxOriginPath
             // 
             this.kryTextBoxOriginPath.Location = new System.Drawing.Point(376, 44);
-            this.kryTextBoxOriginPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryTextBoxOriginPath.Margin = new System.Windows.Forms.Padding(4);
             this.kryTextBoxOriginPath.Name = "kryTextBoxOriginPath";
             this.kryTextBoxOriginPath.Size = new System.Drawing.Size(466, 31);
             this.kryTextBoxOriginPath.TabIndex = 40;
@@ -285,7 +286,7 @@
             // krylbMonitorCenterOutPath2
             // 
             this.krylbMonitorCenterOutPath2.Location = new System.Drawing.Point(192, 230);
-            this.krylbMonitorCenterOutPath2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.krylbMonitorCenterOutPath2.Margin = new System.Windows.Forms.Padding(4);
             this.krylbMonitorCenterOutPath2.Name = "krylbMonitorCenterOutPath2";
             this.krylbMonitorCenterOutPath2.Size = new System.Drawing.Size(178, 29);
             this.krylbMonitorCenterOutPath2.TabIndex = 39;
@@ -294,7 +295,7 @@
             // krylbMonitorCenterOutPath1
             // 
             this.krylbMonitorCenterOutPath1.Location = new System.Drawing.Point(192, 183);
-            this.krylbMonitorCenterOutPath1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.krylbMonitorCenterOutPath1.Margin = new System.Windows.Forms.Padding(4);
             this.krylbMonitorCenterOutPath1.Name = "krylbMonitorCenterOutPath1";
             this.krylbMonitorCenterOutPath1.Size = new System.Drawing.Size(178, 29);
             this.krylbMonitorCenterOutPath1.TabIndex = 38;
@@ -303,7 +304,7 @@
             // krylbCffexOutPath2
             // 
             this.krylbCffexOutPath2.Location = new System.Drawing.Point(212, 136);
-            this.krylbCffexOutPath2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.krylbCffexOutPath2.Margin = new System.Windows.Forms.Padding(4);
             this.krylbCffexOutPath2.Name = "krylbCffexOutPath2";
             this.krylbCffexOutPath2.Size = new System.Drawing.Size(158, 29);
             this.krylbCffexOutPath2.TabIndex = 37;
@@ -312,7 +313,7 @@
             // krylbCffexOutPath1
             // 
             this.krylbCffexOutPath1.Location = new System.Drawing.Point(212, 90);
-            this.krylbCffexOutPath1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.krylbCffexOutPath1.Margin = new System.Windows.Forms.Padding(4);
             this.krylbCffexOutPath1.Name = "krylbCffexOutPath1";
             this.krylbCffexOutPath1.Size = new System.Drawing.Size(158, 29);
             this.krylbCffexOutPath1.TabIndex = 36;
@@ -321,7 +322,7 @@
             // krylbOriginPath
             // 
             this.krylbOriginPath.Location = new System.Drawing.Point(240, 44);
-            this.krylbOriginPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.krylbOriginPath.Margin = new System.Windows.Forms.Padding(4);
             this.krylbOriginPath.Name = "krylbOriginPath";
             this.krylbOriginPath.Size = new System.Drawing.Size(129, 29);
             this.krylbOriginPath.TabIndex = 35;
@@ -332,7 +333,7 @@
             this.kryptonSplitContainer2.Cursor = System.Windows.Forms.Cursors.Default;
             this.kryptonSplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonSplitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonSplitContainer2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonSplitContainer2.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonSplitContainer2.Name = "kryptonSplitContainer2";
             // 
             // kryptonSplitContainer2.Panel1
@@ -351,7 +352,7 @@
             // 
             this.kryGroupBoxSingleAccountGenerate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryGroupBoxSingleAccountGenerate.Location = new System.Drawing.Point(0, 0);
-            this.kryGroupBoxSingleAccountGenerate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryGroupBoxSingleAccountGenerate.Margin = new System.Windows.Forms.Padding(4);
             this.kryGroupBoxSingleAccountGenerate.Name = "kryGroupBoxSingleAccountGenerate";
             // 
             // kryGroupBoxSingleAccountGenerate.Panel
@@ -388,15 +389,24 @@
             this.kryptonPanel1.Controls.Add(this.kryLbStorageMode);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(666, 611);
             this.kryptonPanel1.TabIndex = 20;
             // 
+            // kryCbBSingleFundAcconutNo
+            // 
+            this.kryCbBSingleFundAcconutNo.DropDownWidth = 381;
+            this.kryCbBSingleFundAcconutNo.Location = new System.Drawing.Point(201, 128);
+            this.kryCbBSingleFundAcconutNo.Name = "kryCbBSingleFundAcconutNo";
+            this.kryCbBSingleFundAcconutNo.Size = new System.Drawing.Size(381, 29);
+            this.kryCbBSingleFundAcconutNo.TabIndex = 41;
+            this.kryCbBSingleFundAcconutNo.Text = " ";
+            // 
             // kryptonPanel5
             // 
             this.kryptonPanel5.Location = new System.Drawing.Point(2, 620);
-            this.kryptonPanel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel5.Name = "kryptonPanel5";
             this.kryptonPanel5.Size = new System.Drawing.Size(309, 48);
             this.kryptonPanel5.TabIndex = 5;
@@ -404,7 +414,7 @@
             // kryptonButton1
             // 
             this.kryptonButton1.Location = new System.Drawing.Point(296, 492);
-            this.kryptonButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonButton1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.Size = new System.Drawing.Size(99, 38);
             this.kryptonButton1.TabIndex = 40;
@@ -414,7 +424,7 @@
             // kryLbSingleMotorCenterAccountCount
             // 
             this.kryLbSingleMotorCenterAccountCount.Location = new System.Drawing.Point(564, 254);
-            this.kryLbSingleMotorCenterAccountCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryLbSingleMotorCenterAccountCount.Margin = new System.Windows.Forms.Padding(4);
             this.kryLbSingleMotorCenterAccountCount.Name = "kryLbSingleMotorCenterAccountCount";
             this.kryLbSingleMotorCenterAccountCount.Size = new System.Drawing.Size(51, 29);
             this.kryLbSingleMotorCenterAccountCount.TabIndex = 39;
@@ -423,7 +433,7 @@
             // kryLbSingleCffexAccountCount
             // 
             this.kryLbSingleCffexAccountCount.Location = new System.Drawing.Point(231, 254);
-            this.kryLbSingleCffexAccountCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryLbSingleCffexAccountCount.Margin = new System.Windows.Forms.Padding(4);
             this.kryLbSingleCffexAccountCount.Name = "kryLbSingleCffexAccountCount";
             this.kryLbSingleCffexAccountCount.Size = new System.Drawing.Size(51, 29);
             this.kryLbSingleCffexAccountCount.TabIndex = 38;
@@ -432,7 +442,7 @@
             // kryCBTXT
             // 
             this.kryCBTXT.Location = new System.Drawing.Point(525, 34);
-            this.kryCBTXT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCBTXT.Margin = new System.Windows.Forms.Padding(4);
             this.kryCBTXT.Name = "kryCBTXT";
             this.kryCBTXT.Size = new System.Drawing.Size(56, 29);
             this.kryCBTXT.TabIndex = 37;
@@ -441,7 +451,7 @@
             // kryCBDBF
             // 
             this.kryCBDBF.Location = new System.Drawing.Point(524, 74);
-            this.kryCBDBF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCBDBF.Margin = new System.Windows.Forms.Padding(4);
             this.kryCBDBF.Name = "kryCBDBF";
             this.kryCBDBF.Size = new System.Drawing.Size(58, 29);
             this.kryCBDBF.TabIndex = 36;
@@ -450,7 +460,7 @@
             // kryBtSingleToCffex
             // 
             this.kryBtSingleToCffex.Location = new System.Drawing.Point(296, 438);
-            this.kryBtSingleToCffex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtSingleToCffex.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtSingleToCffex.Name = "kryBtSingleToCffex";
             this.kryBtSingleToCffex.Size = new System.Drawing.Size(99, 38);
             this.kryBtSingleToCffex.TabIndex = 35;
@@ -460,7 +470,7 @@
             // kryBtSingleToSync
             // 
             this.kryBtSingleToSync.Location = new System.Drawing.Point(296, 375);
-            this.kryBtSingleToSync.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtSingleToSync.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtSingleToSync.Name = "kryBtSingleToSync";
             this.kryBtSingleToSync.Size = new System.Drawing.Size(99, 38);
             this.kryBtSingleToSync.TabIndex = 34;
@@ -470,7 +480,7 @@
             // kryBtSingleToMotorCenter
             // 
             this.kryBtSingleToMotorCenter.Location = new System.Drawing.Point(296, 315);
-            this.kryBtSingleToMotorCenter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtSingleToMotorCenter.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtSingleToMotorCenter.Name = "kryBtSingleToMotorCenter";
             this.kryBtSingleToMotorCenter.Size = new System.Drawing.Size(99, 38);
             this.kryBtSingleToMotorCenter.TabIndex = 33;
@@ -481,9 +491,9 @@
             // 
             this.kryCLBSingleMotorCenterAccount.CheckOnClick = true;
             this.kryCLBSingleMotorCenterAccount.Location = new System.Drawing.Point(412, 292);
-            this.kryCLBSingleMotorCenterAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCLBSingleMotorCenterAccount.Margin = new System.Windows.Forms.Padding(4);
             this.kryCLBSingleMotorCenterAccount.Name = "kryCLBSingleMotorCenterAccount";
-            this.kryCLBSingleMotorCenterAccount.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kryCLBSingleMotorCenterAccount.Padding = new System.Windows.Forms.Padding(2);
             this.kryCLBSingleMotorCenterAccount.Size = new System.Drawing.Size(180, 254);
             this.kryCLBSingleMotorCenterAccount.TabIndex = 32;
             this.kryCLBSingleMotorCenterAccount.SelectedValueChanged += new System.EventHandler(this.kryCLBSingleMotorCenterAccount_SelectedValueChanged);
@@ -492,9 +502,9 @@
             // 
             this.kryCLBSingleCffexAccount.CheckOnClick = true;
             this.kryCLBSingleCffexAccount.Location = new System.Drawing.Point(99, 292);
-            this.kryCLBSingleCffexAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCLBSingleCffexAccount.Margin = new System.Windows.Forms.Padding(4);
             this.kryCLBSingleCffexAccount.Name = "kryCLBSingleCffexAccount";
-            this.kryCLBSingleCffexAccount.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kryCLBSingleCffexAccount.Padding = new System.Windows.Forms.Padding(2);
             this.kryCLBSingleCffexAccount.Size = new System.Drawing.Size(180, 254);
             this.kryCLBSingleCffexAccount.TabIndex = 31;
             this.kryCLBSingleCffexAccount.SelectedValueChanged += new System.EventHandler(this.kryCLBSingleCffexAccount_SelectedValueChanged);
@@ -504,7 +514,7 @@
             // kryCBSingleMotorCenterAccount
             // 
             this.kryCBSingleMotorCenterAccount.Location = new System.Drawing.Point(412, 254);
-            this.kryCBSingleMotorCenterAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCBSingleMotorCenterAccount.Margin = new System.Windows.Forms.Padding(4);
             this.kryCBSingleMotorCenterAccount.Name = "kryCBSingleMotorCenterAccount";
             this.kryCBSingleMotorCenterAccount.Size = new System.Drawing.Size(161, 29);
             this.kryCBSingleMotorCenterAccount.TabIndex = 30;
@@ -514,7 +524,7 @@
             // kryCBSingleCffexAccount
             // 
             this.kryCBSingleCffexAccount.Location = new System.Drawing.Point(99, 254);
-            this.kryCBSingleCffexAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCBSingleCffexAccount.Margin = new System.Windows.Forms.Padding(4);
             this.kryCBSingleCffexAccount.Name = "kryCBSingleCffexAccount";
             this.kryCBSingleCffexAccount.Size = new System.Drawing.Size(142, 29);
             this.kryCBSingleCffexAccount.TabIndex = 29;
@@ -524,7 +534,7 @@
             // krypBtSingleAccountMotorCenter
             // 
             this.krypBtSingleAccountMotorCenter.Location = new System.Drawing.Point(482, 183);
-            this.krypBtSingleAccountMotorCenter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.krypBtSingleAccountMotorCenter.Margin = new System.Windows.Forms.Padding(4);
             this.krypBtSingleAccountMotorCenter.Name = "krypBtSingleAccountMotorCenter";
             this.krypBtSingleAccountMotorCenter.Size = new System.Drawing.Size(110, 38);
             this.krypBtSingleAccountMotorCenter.TabIndex = 28;
@@ -534,7 +544,7 @@
             // kryBtSingleAccountCffex
             // 
             this.kryBtSingleAccountCffex.Location = new System.Drawing.Point(340, 183);
-            this.kryBtSingleAccountCffex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtSingleAccountCffex.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtSingleAccountCffex.Name = "kryBtSingleAccountCffex";
             this.kryBtSingleAccountCffex.Size = new System.Drawing.Size(110, 38);
             this.kryBtSingleAccountCffex.TabIndex = 27;
@@ -544,7 +554,7 @@
             // kryBtSingleAccountAll
             // 
             this.kryBtSingleAccountAll.Location = new System.Drawing.Point(201, 183);
-            this.kryBtSingleAccountAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtSingleAccountAll.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtSingleAccountAll.Name = "kryBtSingleAccountAll";
             this.kryBtSingleAccountAll.Size = new System.Drawing.Size(110, 38);
             this.kryBtSingleAccountAll.TabIndex = 26;
@@ -554,7 +564,7 @@
             // kryRadioButtonByAccount
             // 
             this.kryRadioButtonByAccount.Location = new System.Drawing.Point(201, 74);
-            this.kryRadioButtonByAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryRadioButtonByAccount.Margin = new System.Windows.Forms.Padding(4);
             this.kryRadioButtonByAccount.Name = "kryRadioButtonByAccount";
             this.kryRadioButtonByAccount.Size = new System.Drawing.Size(83, 29);
             this.kryRadioButtonByAccount.TabIndex = 24;
@@ -563,7 +573,7 @@
             // krypRadioButtonByDate
             // 
             this.krypRadioButtonByDate.Location = new System.Drawing.Point(201, 34);
-            this.krypRadioButtonByDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.krypRadioButtonByDate.Margin = new System.Windows.Forms.Padding(4);
             this.krypRadioButtonByDate.Name = "krypRadioButtonByDate";
             this.krypRadioButtonByDate.Size = new System.Drawing.Size(83, 29);
             this.krypRadioButtonByDate.TabIndex = 23;
@@ -572,7 +582,7 @@
             // kryLbSingleFundAccountNo
             // 
             this.kryLbSingleFundAccountNo.Location = new System.Drawing.Point(99, 128);
-            this.kryLbSingleFundAccountNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryLbSingleFundAccountNo.Margin = new System.Windows.Forms.Padding(4);
             this.kryLbSingleFundAccountNo.Name = "kryLbSingleFundAccountNo";
             this.kryLbSingleFundAccountNo.Size = new System.Drawing.Size(110, 29);
             this.kryLbSingleFundAccountNo.TabIndex = 22;
@@ -581,7 +591,7 @@
             // kryLbOutFileFormat
             // 
             this.kryLbOutFileFormat.Location = new System.Drawing.Point(384, 34);
-            this.kryLbOutFileFormat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryLbOutFileFormat.Margin = new System.Windows.Forms.Padding(4);
             this.kryLbOutFileFormat.Name = "kryLbOutFileFormat";
             this.kryLbOutFileFormat.Size = new System.Drawing.Size(148, 29);
             this.kryLbOutFileFormat.TabIndex = 21;
@@ -590,7 +600,7 @@
             // kryLbStorageMode
             // 
             this.kryLbStorageMode.Location = new System.Drawing.Point(99, 34);
-            this.kryLbStorageMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryLbStorageMode.Margin = new System.Windows.Forms.Padding(4);
             this.kryLbStorageMode.Name = "kryLbStorageMode";
             this.kryLbStorageMode.Size = new System.Drawing.Size(110, 29);
             this.kryLbStorageMode.TabIndex = 20;
@@ -600,7 +610,7 @@
             // 
             this.kryGroupBoxMoreAccountGenerate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryGroupBoxMoreAccountGenerate.Location = new System.Drawing.Point(0, 0);
-            this.kryGroupBoxMoreAccountGenerate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryGroupBoxMoreAccountGenerate.Margin = new System.Windows.Forms.Padding(4);
             this.kryGroupBoxMoreAccountGenerate.Name = "kryGroupBoxMoreAccountGenerate";
             // 
             // kryGroupBoxMoreAccountGenerate.Panel
@@ -613,6 +623,7 @@
             // kryptonPanel3
             // 
             this.kryptonPanel3.AutoScroll = true;
+            this.kryptonPanel3.Controls.Add(this.kryCbBMoreFundAcconutNo);
             this.kryptonPanel3.Controls.Add(this.kryptonButton2);
             this.kryptonPanel3.Controls.Add(this.krypTBFolderName);
             this.kryptonPanel3.Controls.Add(this.kryLbMoreMotorCenterAccountCount);
@@ -627,22 +638,30 @@
             this.kryptonPanel3.Controls.Add(this.krypBtMoreAccountMotorCenter);
             this.kryptonPanel3.Controls.Add(this.kryBtMoreAccountCffex);
             this.kryptonPanel3.Controls.Add(this.kryBtMoreAccountAll);
-            this.kryptonPanel3.Controls.Add(this.kryTBMoreFundAcconutNo);
             this.kryptonPanel3.Controls.Add(this.kryRadioButtonFolderCustomizeNO);
             this.kryptonPanel3.Controls.Add(this.kryRadioButtonFolderCustomizeYES);
             this.kryptonPanel3.Controls.Add(this.kryLbMoreFundAccountNo);
             this.kryptonPanel3.Controls.Add(this.kryLbFolderCustomize);
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel3.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel3.Name = "kryptonPanel3";
             this.kryptonPanel3.Size = new System.Drawing.Size(719, 611);
             this.kryptonPanel3.TabIndex = 41;
             // 
+            // kryCbBMoreFundAcconutNo
+            // 
+            this.kryCbBMoreFundAcconutNo.DropDownWidth = 381;
+            this.kryCbBMoreFundAcconutNo.Location = new System.Drawing.Point(134, 124);
+            this.kryCbBMoreFundAcconutNo.Name = "kryCbBMoreFundAcconutNo";
+            this.kryCbBMoreFundAcconutNo.Size = new System.Drawing.Size(403, 29);
+            this.kryCbBMoreFundAcconutNo.TabIndex = 42;
+            this.kryCbBMoreFundAcconutNo.Text = " ";
+            // 
             // kryptonButton2
             // 
             this.kryptonButton2.Location = new System.Drawing.Point(244, 492);
-            this.kryptonButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonButton2.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonButton2.Name = "kryptonButton2";
             this.kryptonButton2.Size = new System.Drawing.Size(99, 38);
             this.kryptonButton2.TabIndex = 59;
@@ -653,7 +672,7 @@
             // 
             this.krypTBFolderName.Enabled = false;
             this.krypTBFolderName.Location = new System.Drawing.Point(207, 70);
-            this.krypTBFolderName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.krypTBFolderName.Margin = new System.Windows.Forms.Padding(4);
             this.krypTBFolderName.Name = "krypTBFolderName";
             this.krypTBFolderName.Size = new System.Drawing.Size(330, 31);
             this.krypTBFolderName.TabIndex = 58;
@@ -661,7 +680,7 @@
             // kryLbMoreMotorCenterAccountCount
             // 
             this.kryLbMoreMotorCenterAccountCount.Location = new System.Drawing.Point(513, 250);
-            this.kryLbMoreMotorCenterAccountCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryLbMoreMotorCenterAccountCount.Margin = new System.Windows.Forms.Padding(4);
             this.kryLbMoreMotorCenterAccountCount.Name = "kryLbMoreMotorCenterAccountCount";
             this.kryLbMoreMotorCenterAccountCount.Size = new System.Drawing.Size(51, 29);
             this.kryLbMoreMotorCenterAccountCount.TabIndex = 57;
@@ -670,7 +689,7 @@
             // kryLbMoreCffexAccountCount
             // 
             this.kryLbMoreCffexAccountCount.Location = new System.Drawing.Point(178, 250);
-            this.kryLbMoreCffexAccountCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryLbMoreCffexAccountCount.Margin = new System.Windows.Forms.Padding(4);
             this.kryLbMoreCffexAccountCount.Name = "kryLbMoreCffexAccountCount";
             this.kryLbMoreCffexAccountCount.Size = new System.Drawing.Size(51, 29);
             this.kryLbMoreCffexAccountCount.TabIndex = 56;
@@ -679,7 +698,7 @@
             // kryBtMoreToCffex
             // 
             this.kryBtMoreToCffex.Location = new System.Drawing.Point(244, 440);
-            this.kryBtMoreToCffex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtMoreToCffex.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtMoreToCffex.Name = "kryBtMoreToCffex";
             this.kryBtMoreToCffex.Size = new System.Drawing.Size(99, 38);
             this.kryBtMoreToCffex.TabIndex = 55;
@@ -689,7 +708,7 @@
             // kryBtMoreToSync
             // 
             this.kryBtMoreToSync.Location = new System.Drawing.Point(244, 376);
-            this.kryBtMoreToSync.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtMoreToSync.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtMoreToSync.Name = "kryBtMoreToSync";
             this.kryBtMoreToSync.Size = new System.Drawing.Size(99, 38);
             this.kryBtMoreToSync.TabIndex = 54;
@@ -699,7 +718,7 @@
             // kryBtMoreToMotorCenter
             // 
             this.kryBtMoreToMotorCenter.Location = new System.Drawing.Point(244, 316);
-            this.kryBtMoreToMotorCenter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtMoreToMotorCenter.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtMoreToMotorCenter.Name = "kryBtMoreToMotorCenter";
             this.kryBtMoreToMotorCenter.Size = new System.Drawing.Size(99, 38);
             this.kryBtMoreToMotorCenter.TabIndex = 53;
@@ -710,9 +729,9 @@
             // 
             this.kryCLBMoreMotorCenterAccount.CheckOnClick = true;
             this.kryCLBMoreMotorCenterAccount.Location = new System.Drawing.Point(362, 296);
-            this.kryCLBMoreMotorCenterAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCLBMoreMotorCenterAccount.Margin = new System.Windows.Forms.Padding(4);
             this.kryCLBMoreMotorCenterAccount.Name = "kryCLBMoreMotorCenterAccount";
-            this.kryCLBMoreMotorCenterAccount.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kryCLBMoreMotorCenterAccount.Padding = new System.Windows.Forms.Padding(2);
             this.kryCLBMoreMotorCenterAccount.Size = new System.Drawing.Size(180, 248);
             this.kryCLBMoreMotorCenterAccount.TabIndex = 52;
             this.kryCLBMoreMotorCenterAccount.SelectedValueChanged += new System.EventHandler(this.kryCLBMoreMotorCenterAccount_SelectedValueChanged);
@@ -721,9 +740,9 @@
             // 
             this.kryCLBMoreCffexAccount.CheckOnClick = true;
             this.kryCLBMoreCffexAccount.Location = new System.Drawing.Point(48, 296);
-            this.kryCLBMoreCffexAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCLBMoreCffexAccount.Margin = new System.Windows.Forms.Padding(4);
             this.kryCLBMoreCffexAccount.Name = "kryCLBMoreCffexAccount";
-            this.kryCLBMoreCffexAccount.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kryCLBMoreCffexAccount.Padding = new System.Windows.Forms.Padding(2);
             this.kryCLBMoreCffexAccount.Size = new System.Drawing.Size(180, 248);
             this.kryCLBMoreCffexAccount.TabIndex = 51;
             this.kryCLBMoreCffexAccount.SelectedValueChanged += new System.EventHandler(this.kryCLBMoreCffexAccount_SelectedValueChanged);
@@ -731,7 +750,7 @@
             // kryCBMoreMotorCenterAccount
             // 
             this.kryCBMoreMotorCenterAccount.Location = new System.Drawing.Point(362, 250);
-            this.kryCBMoreMotorCenterAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCBMoreMotorCenterAccount.Margin = new System.Windows.Forms.Padding(4);
             this.kryCBMoreMotorCenterAccount.Name = "kryCBMoreMotorCenterAccount";
             this.kryCBMoreMotorCenterAccount.Size = new System.Drawing.Size(161, 29);
             this.kryCBMoreMotorCenterAccount.TabIndex = 50;
@@ -741,7 +760,7 @@
             // kryCBMoreCffexAccount
             // 
             this.kryCBMoreCffexAccount.Location = new System.Drawing.Point(46, 250);
-            this.kryCBMoreCffexAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryCBMoreCffexAccount.Margin = new System.Windows.Forms.Padding(4);
             this.kryCBMoreCffexAccount.Name = "kryCBMoreCffexAccount";
             this.kryCBMoreCffexAccount.Size = new System.Drawing.Size(142, 29);
             this.kryCBMoreCffexAccount.TabIndex = 49;
@@ -751,7 +770,7 @@
             // krypBtMoreAccountMotorCenter
             // 
             this.krypBtMoreAccountMotorCenter.Location = new System.Drawing.Point(428, 180);
-            this.krypBtMoreAccountMotorCenter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.krypBtMoreAccountMotorCenter.Margin = new System.Windows.Forms.Padding(4);
             this.krypBtMoreAccountMotorCenter.Name = "krypBtMoreAccountMotorCenter";
             this.krypBtMoreAccountMotorCenter.Size = new System.Drawing.Size(110, 38);
             this.krypBtMoreAccountMotorCenter.TabIndex = 48;
@@ -761,7 +780,7 @@
             // kryBtMoreAccountCffex
             // 
             this.kryBtMoreAccountCffex.Location = new System.Drawing.Point(290, 180);
-            this.kryBtMoreAccountCffex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtMoreAccountCffex.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtMoreAccountCffex.Name = "kryBtMoreAccountCffex";
             this.kryBtMoreAccountCffex.Size = new System.Drawing.Size(110, 38);
             this.kryBtMoreAccountCffex.TabIndex = 47;
@@ -771,26 +790,18 @@
             // kryBtMoreAccountAll
             // 
             this.kryBtMoreAccountAll.Location = new System.Drawing.Point(150, 180);
-            this.kryBtMoreAccountAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtMoreAccountAll.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtMoreAccountAll.Name = "kryBtMoreAccountAll";
             this.kryBtMoreAccountAll.Size = new System.Drawing.Size(110, 38);
             this.kryBtMoreAccountAll.TabIndex = 46;
             this.kryBtMoreAccountAll.Values.Text = "全部";
             this.kryBtMoreAccountAll.Click += new System.EventHandler(this.kryBtMoreAccountAll_Click);
             // 
-            // kryTBMoreFundAcconutNo
-            // 
-            this.kryTBMoreFundAcconutNo.Location = new System.Drawing.Point(126, 120);
-            this.kryTBMoreFundAcconutNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.kryTBMoreFundAcconutNo.Name = "kryTBMoreFundAcconutNo";
-            this.kryTBMoreFundAcconutNo.Size = new System.Drawing.Size(411, 31);
-            this.kryTBMoreFundAcconutNo.TabIndex = 45;
-            // 
             // kryRadioButtonFolderCustomizeNO
             // 
             this.kryRadioButtonFolderCustomizeNO.Checked = true;
             this.kryRadioButtonFolderCustomizeNO.Location = new System.Drawing.Point(268, 32);
-            this.kryRadioButtonFolderCustomizeNO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryRadioButtonFolderCustomizeNO.Margin = new System.Windows.Forms.Padding(4);
             this.kryRadioButtonFolderCustomizeNO.Name = "kryRadioButtonFolderCustomizeNO";
             this.kryRadioButtonFolderCustomizeNO.Size = new System.Drawing.Size(44, 29);
             this.kryRadioButtonFolderCustomizeNO.TabIndex = 44;
@@ -800,7 +811,7 @@
             // kryRadioButtonFolderCustomizeYES
             // 
             this.kryRadioButtonFolderCustomizeYES.Location = new System.Drawing.Point(207, 32);
-            this.kryRadioButtonFolderCustomizeYES.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryRadioButtonFolderCustomizeYES.Margin = new System.Windows.Forms.Padding(4);
             this.kryRadioButtonFolderCustomizeYES.Name = "kryRadioButtonFolderCustomizeYES";
             this.kryRadioButtonFolderCustomizeYES.Size = new System.Drawing.Size(44, 29);
             this.kryRadioButtonFolderCustomizeYES.TabIndex = 43;
@@ -810,7 +821,7 @@
             // kryLbMoreFundAccountNo
             // 
             this.kryLbMoreFundAccountNo.Location = new System.Drawing.Point(28, 124);
-            this.kryLbMoreFundAccountNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryLbMoreFundAccountNo.Margin = new System.Windows.Forms.Padding(4);
             this.kryLbMoreFundAccountNo.Name = "kryLbMoreFundAccountNo";
             this.kryLbMoreFundAccountNo.Size = new System.Drawing.Size(110, 29);
             this.kryLbMoreFundAccountNo.TabIndex = 42;
@@ -819,7 +830,7 @@
             // kryLbFolderCustomize
             // 
             this.kryLbFolderCustomize.Location = new System.Drawing.Point(27, 32);
-            this.kryLbFolderCustomize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryLbFolderCustomize.Margin = new System.Windows.Forms.Padding(4);
             this.kryLbFolderCustomize.Name = "kryLbFolderCustomize";
             this.kryLbFolderCustomize.Size = new System.Drawing.Size(168, 29);
             this.kryLbFolderCustomize.TabIndex = 41;
@@ -831,7 +842,7 @@
             this.kryptonPanel2.Controls.Add(this.kryptonPanel6);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.Size = new System.Drawing.Size(1398, 76);
             this.kryptonPanel2.TabIndex = 5;
@@ -839,7 +850,7 @@
             // krypLbFlag
             // 
             this.krypLbFlag.Location = new System.Drawing.Point(30, 21);
-            this.krypLbFlag.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.krypLbFlag.Margin = new System.Windows.Forms.Padding(4);
             this.krypLbFlag.Name = "krypLbFlag";
             this.krypLbFlag.Size = new System.Drawing.Size(160, 29);
             this.krypLbFlag.TabIndex = 6;
@@ -855,7 +866,7 @@
             this.kryptonPanel6.Controls.Add(this.kryLbDate);
             this.kryptonPanel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.kryptonPanel6.Location = new System.Drawing.Point(567, 0);
-            this.kryptonPanel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel6.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel6.Name = "kryptonPanel6";
             this.kryptonPanel6.Size = new System.Drawing.Size(831, 76);
             this.kryptonPanel6.TabIndex = 5;
@@ -866,7 +877,7 @@
             this.kryDTPDate.CustomFormat = "yyyy-MM-dd";
             this.kryDTPDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.kryDTPDate.Location = new System.Drawing.Point(106, 21);
-            this.kryDTPDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryDTPDate.Margin = new System.Windows.Forms.Padding(4);
             this.kryDTPDate.Name = "kryDTPDate";
             this.kryDTPDate.Size = new System.Drawing.Size(176, 30);
             this.kryDTPDate.TabIndex = 9;
@@ -874,7 +885,7 @@
             // kryBtCancel
             // 
             this.kryBtCancel.Location = new System.Drawing.Point(650, 18);
-            this.kryBtCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtCancel.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtCancel.Name = "kryBtCancel";
             this.kryBtCancel.Size = new System.Drawing.Size(135, 38);
             this.kryBtCancel.TabIndex = 8;
@@ -883,7 +894,7 @@
             // kryBtOK
             // 
             this.kryBtOK.Location = new System.Drawing.Point(478, 18);
-            this.kryBtOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtOK.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtOK.Name = "kryBtOK";
             this.kryBtOK.Size = new System.Drawing.Size(135, 38);
             this.kryBtOK.TabIndex = 7;
@@ -893,7 +904,7 @@
             // kryBtSave
             // 
             this.kryBtSave.Location = new System.Drawing.Point(314, 18);
-            this.kryBtSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryBtSave.Margin = new System.Windows.Forms.Padding(4);
             this.kryBtSave.Name = "kryBtSave";
             this.kryBtSave.Size = new System.Drawing.Size(135, 38);
             this.kryBtSave.TabIndex = 6;
@@ -903,7 +914,7 @@
             // kryLbDate
             // 
             this.kryLbDate.Location = new System.Drawing.Point(46, 22);
-            this.kryLbDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryLbDate.Margin = new System.Windows.Forms.Padding(4);
             this.kryLbDate.Name = "kryLbDate";
             this.kryLbDate.Size = new System.Drawing.Size(71, 29);
             this.kryLbDate.TabIndex = 5;
@@ -914,7 +925,7 @@
             this.kryptonSplitContainer3.Cursor = System.Windows.Forms.Cursors.Default;
             this.kryptonSplitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonSplitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.kryptonSplitContainer3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonSplitContainer3.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonSplitContainer3.Name = "kryptonSplitContainer3";
             this.kryptonSplitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -930,21 +941,12 @@
             this.kryptonSplitContainer3.SplitterDistance = 967;
             this.kryptonSplitContainer3.TabIndex = 6;
             // 
-            // kryCbBSingleFundAcconutNo
-            // 
-            this.kryCbBSingleFundAcconutNo.DropDownWidth = 381;
-            this.kryCbBSingleFundAcconutNo.Location = new System.Drawing.Point(201, 128);
-            this.kryCbBSingleFundAcconutNo.Name = "kryCbBSingleFundAcconutNo";
-            this.kryCbBSingleFundAcconutNo.Size = new System.Drawing.Size(381, 29);
-            this.kryCbBSingleFundAcconutNo.TabIndex = 41;
-            this.kryCbBSingleFundAcconutNo.Text = " ";
-            // 
             // UC_GeneFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.kryptonSplitContainer3);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_GeneFile";
             this.Size = new System.Drawing.Size(1398, 1048);
             this.Load += new System.EventHandler(this.UCShowData_Load);
@@ -971,6 +973,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryCbBSingleFundAcconutNo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryGroupBoxMoreAccountGenerate.Panel)).EndInit();
             this.kryGroupBoxMoreAccountGenerate.Panel.ResumeLayout(false);
@@ -979,6 +982,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
             this.kryptonPanel3.ResumeLayout(false);
             this.kryptonPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryCbBMoreFundAcconutNo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
@@ -991,7 +995,6 @@
             this.kryptonSplitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3)).EndInit();
             this.kryptonSplitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryCbBSingleFundAcconutNo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1052,7 +1055,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton krypBtMoreAccountMotorCenter;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryBtMoreAccountCffex;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryBtMoreAccountAll;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryTBMoreFundAcconutNo;
         private ComponentFactory.Krypton.Toolkit.KryptonRadioButton kryRadioButtonFolderCustomizeNO;
         private ComponentFactory.Krypton.Toolkit.KryptonRadioButton kryRadioButtonFolderCustomizeYES;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryLbMoreFundAccountNo;
@@ -1073,5 +1075,6 @@
         protected ComponentFactory.Krypton.Toolkit.KryptonCheckedListBox kryCLBSingleCffexAccount;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel krypLbFlag;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryCbBSingleFundAcconutNo;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryCbBMoreFundAcconutNo;
     }
 }
