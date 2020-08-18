@@ -587,7 +587,7 @@ namespace KS.DataManage.Client
 
         private void GeneTSMItem_Click(object sender, EventArgs e)
         {
-            BatchFileGeneration _batchFileGeneration = new BatchFileGeneration();
+            BatchFileGeneration11 _batchFileGeneration = new BatchFileGeneration11(ucMenu.kryptonTreeView.Nodes);
             _batchFileGeneration.ShowDialog();
         }
 

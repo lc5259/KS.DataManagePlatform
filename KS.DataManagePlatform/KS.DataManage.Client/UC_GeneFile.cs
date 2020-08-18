@@ -1028,30 +1028,40 @@ namespace KS.DataManage.Client
                                                             //生成横线行
                                                             if (string.IsNullOrEmpty(itemfileSrc.Attribute("srcfile").Value))
                                                             {
-                                                                IsTransverse = true;
-                                                                using (StreamWriter swTargetFile = File.AppendText(targetFileName))
+                                                                try
                                                                 {
-                                                                    string line = string.Empty;
-                                                                    foreach (XElement itemfilecols in itemfileSrc.Nodes())
+                                                                    IsTransverse = true;
+                                                                    using (StreamWriter swTargetFile = File.AppendText(targetFileName))
                                                                     {
-                                                                        char padstr = string.IsNullOrEmpty(itemfilecols.Attribute("padstr").Value.Trim()) ? (' ') : (itemfilecols.Attribute("padstr").Value.Trim().ToCharArray()[0]);
-                                                                        if (string.IsNullOrEmpty(itemfilecols.Attribute("FixValue").Value))
+                                                                        string line = string.Empty;
+                                                                        foreach (XElement itemfilecols in itemfileSrc.Nodes())
                                                                         {
-                                                                            line = "";
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            line += itemfilecols.Attribute("FixValue").Value.PadRight(int.Parse(itemfilecols.Attribute("vlength").Value), (padstr));
-                                                                        }
+                                                                            char padstr = string.IsNullOrEmpty(itemfilecols.Attribute("padstr").Value.Trim()) ? (' ') : (itemfilecols.Attribute("padstr").Value.Trim().ToCharArray()[0]);
+                                                                            if (string.IsNullOrEmpty(itemfilecols.Attribute("FixValue").Value))
+                                                                            {
+                                                                                line = "";
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                line += itemfilecols.Attribute("FixValue").Value.PadRight(int.Parse(itemfilecols.Attribute("vlength").Value), (padstr));
+                                                                            }
 
-                                                                        if (itemfilecols.Attribute("isout").Value == "否")
-                                                                        {
-                                                                            line = "";
+                                                                            if (itemfilecols.Attribute("isout").Value == "否")
+                                                                            {
+                                                                                line = "";
+                                                                            }
                                                                         }
+                                                                        swTargetFile.WriteLine(line);
                                                                     }
-                                                                    swTargetFile.WriteLine(line);
+                                                                    continue;
                                                                 }
-                                                                continue;
+                                                                catch (Exception ex)
+                                                                {
+                                                                    SingleFileIsSuccess = false;
+                                                                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                                    return;
+                                                                }
+                                                               
                                                             }
                                                             foreach (XElement itemfilecols in itemfileSrc.Nodes())
                                                             {
