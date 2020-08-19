@@ -30,6 +30,11 @@
         {
             this.labelGroupData = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelDate = new System.Windows.Forms.Label();
             this.buttonOneTouch = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -38,11 +43,6 @@
             this.labelGroupGenerateStaus = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.label1GroupTime = new System.Windows.Forms.Label();
-            this.check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,6 +58,8 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.check,
@@ -72,6 +74,40 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(882, 294);
             this.dataGridView.TabIndex = 1;
+            // 
+            // check
+            // 
+            this.check.HeaderText = "";
+            this.check.Name = "check";
+            this.check.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.check.Width = 50;
+            // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "DataName";
+            this.Name.HeaderText = "分组名称";
+            this.Name.Name = "Name";
+            this.Name.Width = 120;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "DataStatus";
+            this.Status.HeaderText = "生成状态";
+            this.Status.Name = "Status";
+            // 
+            // Time
+            // 
+            this.Time.DataPropertyName = "DataTime";
+            this.Time.HeaderText = "耗时";
+            this.Time.Name = "Time";
+            this.Time.Width = 80;
+            // 
+            // Remark
+            // 
+            this.Remark.DataPropertyName = "DataRemark";
+            this.Remark.HeaderText = "备注";
+            this.Remark.Name = "Remark";
+            this.Remark.Width = 180;
             // 
             // labelDate
             // 
@@ -122,6 +158,7 @@
             this.label1GroupName.Size = new System.Drawing.Size(80, 18);
             this.label1GroupName.TabIndex = 6;
             this.label1GroupName.Text = "分组名称";
+            this.label1GroupName.Visible = false;
             // 
             // labelGroupGenerateStaus
             // 
@@ -132,6 +169,7 @@
             this.labelGroupGenerateStaus.Size = new System.Drawing.Size(80, 18);
             this.labelGroupGenerateStaus.TabIndex = 7;
             this.labelGroupGenerateStaus.Text = "生成状态";
+            this.labelGroupGenerateStaus.Visible = false;
             // 
             // labelTime
             // 
@@ -142,6 +180,7 @@
             this.labelTime.Size = new System.Drawing.Size(35, 18);
             this.labelTime.TabIndex = 9;
             this.labelTime.Text = "0秒";
+            this.labelTime.Visible = false;
             // 
             // label1GroupTime
             // 
@@ -152,39 +191,7 @@
             this.label1GroupTime.Size = new System.Drawing.Size(44, 18);
             this.label1GroupTime.TabIndex = 8;
             this.label1GroupTime.Text = "耗时";
-            // 
-            // check
-            // 
-            this.check.HeaderText = "";
-            this.check.Name = "check";
-            this.check.Width = 50;
-            // 
-            // Name
-            // 
-            this.Name.DataPropertyName = "DataName";
-            this.Name.HeaderText = "分组名称";
-            this.Name.Name = "Name";
-            this.Name.Width = 120;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "DataStatus";
-            this.Status.HeaderText = "生成状态";
-            this.Status.Name = "Status";
-            // 
-            // Time
-            // 
-            this.Time.DataPropertyName = "DataTime";
-            this.Time.HeaderText = "耗时";
-            this.Time.Name = "Time";
-            this.Time.Width = 80;
-            // 
-            // Remark
-            // 
-            this.Remark.DataPropertyName = "DataRemark";
-            this.Remark.HeaderText = "备注";
-            this.Remark.Name = "Remark";
-            this.Remark.Width = 120;
+            this.label1GroupTime.Visible = false;
             // 
             // BatchFileGeneration11
             // 

@@ -31,6 +31,14 @@ namespace KS.DataManage.Client
             if (title == "文件列表修改")
             {
                 kryCBBTargetFileNo.Enabled = false;
+                kryCBBTargetFileOrganizationName.Enabled = false;
+                kryCBBTargetFileColumnDirection.Enabled = false;
+                kryCBBTargetFileOrganizationName.Enabled = false;
+                kryCBBTargetFileNo.Enabled = false;
+                kryCBBTargetFileOrganizationName.Enabled = false;
+                kryCBBTargetFileNo.Enabled = false;
+                kryCBBTargetFileOrganizationName.Enabled = false;
+
             }
 
             this.Text = title;

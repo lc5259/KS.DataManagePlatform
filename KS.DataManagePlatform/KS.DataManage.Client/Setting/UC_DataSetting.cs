@@ -1290,5 +1290,7 @@ namespace KS.DataManage.Client
             //_uC_GeneFile.RefreshSingleFundAcconutNo(_list);
             
         }
+
+       
     }
 }
