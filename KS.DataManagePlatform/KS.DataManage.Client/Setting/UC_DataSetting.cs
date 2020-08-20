@@ -856,6 +856,38 @@ namespace KS.DataManage.Client
                         this.kDGVFileList.DataSource = FileDataTable.FildListDT(xNode);
                         break;
                     }
+                   
+                }
+                DataTable dtSourceFile = (DataTable)kDGVSourceFileList.DataSource;
+                if (dtSourceFile != null)
+                {
+                    dtSourceFile.Rows.Clear();
+                    kDGVSourceFileList.DataSource = dtSourceFile;
+                }
+                DataTable dtKeyWords = (DataTable)kDGVKeyWords.DataSource;
+                if (dtKeyWords != null)
+                {
+                    dtKeyWords.Rows.Clear();
+                    kDGVKeyWords.DataSource = dtKeyWords;
+                }
+                DataTable dtFileWords = (DataTable)kDGVFileWordsList.DataSource;
+                if (dtFileWords != null)
+                {
+                    dtFileWords.Rows.Clear();
+                    kDGVFileWordsList.DataSource = dtFileWords;
+
+                }
+                DataTable dtFilter = (DataTable)kDGVFilter.DataSource;
+                if (dtFilter != null)
+                {
+                    dtFilter.Rows.Clear();
+                    kDGVFilter.DataSource = dtFilter;
+                }
+                DataTable dtDict = (DataTable)kDGVDict.DataSource;
+                if (dtDict != null)
+                {
+                    dtDict.Rows.Clear();
+                    kDGVDict.DataSource = dtDict;
                 }
             }
             catch (Exception ex)

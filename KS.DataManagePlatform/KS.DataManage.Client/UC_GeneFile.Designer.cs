@@ -408,6 +408,8 @@
             // 
             // kryCBTXT
             // 
+            this.kryCBTXT.Checked = true;
+            this.kryCBTXT.CheckState = System.Windows.Forms.CheckState.Checked;
             this.kryCBTXT.Location = new System.Drawing.Point(350, 17);
             this.kryCBTXT.Name = "kryCBTXT";
             this.kryCBTXT.Size = new System.Drawing.Size(44, 20);
@@ -416,6 +418,8 @@
             // 
             // kryCBDBF
             // 
+            this.kryCBDBF.Checked = true;
+            this.kryCBDBF.CheckState = System.Windows.Forms.CheckState.Checked;
             this.kryCBDBF.Location = new System.Drawing.Point(349, 43);
             this.kryCBDBF.Name = "kryCBDBF";
             this.kryCBDBF.Size = new System.Drawing.Size(45, 20);
